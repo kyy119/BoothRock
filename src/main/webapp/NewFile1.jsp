@@ -9,11 +9,7 @@
 </head>
 <body>
 <button class = "btn btn-danger" >
-<<<<<<< HEAD
-test
-=======
-abcdefg
->>>>>>> 40637ee1c3c9634cb994d56e93e5d5bb3dc52bf4
+sync
 </button>
 </body>
 </html>
