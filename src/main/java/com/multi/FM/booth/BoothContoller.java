@@ -6,5 +6,4 @@ public class BoothContoller {
 		// TODO Auto-generated method stub
 
 	}
-
 }
