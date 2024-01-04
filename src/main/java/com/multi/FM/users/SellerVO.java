@@ -35,5 +35,5 @@ public class SellerVO {
 		return "SellerVO [user_id=" + user_id + ", selling_number=" + selling_number + ", create_date=" + create_date
 				+ "]";
 	}
-	
+	 
 }

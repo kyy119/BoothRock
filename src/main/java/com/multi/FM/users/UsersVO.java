@@ -56,5 +56,5 @@ public class UsersVO {
 				+ ", user_created_at=" + user_created_at + ", user_updated_at=" + user_updated_at + ", user_name="
 				+ user_name + ", user_tel=" + user_tel + "]";
 	}
-			
+	 		
 }

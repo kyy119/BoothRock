@@ -24,5 +24,5 @@ public class UsersService {
 		int result = usersdao.email_duplicate(user_id);
 		return result;
 	}
-	
+	 
 }

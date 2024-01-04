@@ -26,4 +26,5 @@ public class UsersDAO {
 		int result = my.selectOne("users.email_duplicate", user_id);
 		return result;
 	}
+	 
 }
