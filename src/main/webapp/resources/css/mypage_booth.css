@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+.booth-head h1 {
+	display: inline-block;
+}
+.booth-head a {
+	font-weight: bold;
+	display: inline-block;
+	float: right;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+.booth-head a, .booth-head i {
+	color: #808080;
+	font-size: 20px;
+}
+.booth-head a:hover {
+	border-bottom: 1px solid #808080;
+}
+.booth-form {
+	width: 800px;
+}
+.booth-form ul li {
+	display: inline-block;
+	border: 1px solid #000;
+	border-radius: 15px;
+	padding: 20px;
+}
+.booth-form ul li:first-child {
+	margin-right: 28px;
+}
+.booth-form ul li img {
+	width: 340px;
+	height: 340px;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+.booth-form .booth-type {
+	color: #808080;
+	line-height: 30px;
+	margin-bottom: 3px;
+}
+.booth-form ul li button {
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+}
+.booth-form ul li button:hover {
+	background-color: #ddd;
+}
+.booth-delete {
+	width: 70px;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	margin-right: 3px;
+}
+.booth-edit {
+	width: 110px;
+	background-color: #fff;
+	border: 1px solid #000;
+}

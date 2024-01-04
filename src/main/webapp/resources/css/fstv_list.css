@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+.bodywrap {
+    width: 1400px;
+    overflow: auto;
+    margin-bottom: 100px;
+}
+.fstv-list-form {
+	width: 1000px;
+	margin-top: 50px;
+}
+.fstv-list-head {
+	width: 950px;
+	margin-bottom: 60px;
+	margin-left: 50px;
+}
+.fstv-list-head .sort {
+	float: right;
+	margin-right: 20px;
+}
+.sort button {
+	background-color: #fff;
+	border: none;
+}
+.fstv-list-head span button:hover {
+	color: #808080;
+}
+.bold-text {
+	font-weight: bold;
+}
+.fstv-list {
+	width: 1100px;
+}
+.fstv-list ul li {
+    width: 300px;
+    height: 350px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.fstv-list ul li:hover {
+   	opacity: 0.8;
+}
+.fstv-list img {
+	width: 300px;
+    height: 200px;
+    border-radius: 20px;
+}
+.fstv-list .fstv-title {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 35px;
+}
+.fstv-list .fstv-loc {
+	font-size: 15px;
+	color: #808080;
+}
+.fstv-list .fstv-date {
+	background-color: #ff8080;
+	color: #fff;
+	border-radius: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 180px;
+	margin: 0;
+	margin: 5px 0px;
+}
+.fstv-list i {
+	color: pink;
+	font-size: 25px;
+}
+.bold-text {
+	font-weight: bold !important;
+}

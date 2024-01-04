@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin: 200px 0px 250px;
+}
+.login-form {
+	width: 400px;
+	height: 350px;
+	border: 1px solid #000;
+	border-radius: 15px;
+}
+.input-form {
+	width: 252px;
+	margin-top: 40px;
+}
+.input-form label {
+	font-size: 15px;
+	font-weight: bold;
+}
+.input-form input {
+	width: 240px;
+	height: 35px;
+	border: 1px solid #000;
+	margin: 10px 0px;
+	background-color: #fff;
+	border-radius: 15px;
+	padding-left: 10px;
+	font-size: 15px;
+}
+.login {
+	width: 252px !important;
+	height: 35px;
+	border: 1px solid #000;
+	margin: 10px 0px;
+	background-color: #fff;
+	border-radius: 15px;
+	font-weight: bold;
+}
+.login:hover {
+	background-color: #ddd;
+}
+.sub-btn {
+	width: 252px;
+	height: 35px;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 30px;
+}
+.find-info {
+	width: 167px;
+	margin-right: 10px;
+}
+.signup {
+	width: 70px;
+}
+.sub-btn ul li {
+	float: left;
+}
+.sub-btn ul li a {
+	height: 35px;
+    background-color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+}
+.sub-btn ul li a:hover {
+	font-weight: bold;
+}
