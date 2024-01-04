@@ -7,6 +7,10 @@
 		select * from booth order by booth_no
 	</select>
 	
+	<select id="product.list" resultType="com.multi.FM.myboothpage.BoothVO">
+		select * from booth_product order by booth_no
+	</select>
+	
 	
 	
 </mapper>

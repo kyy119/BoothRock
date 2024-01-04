@@ -18,4 +18,9 @@ public class boothDAO {
 		return detail;
 	}
 
+	public List<BoothProductVO> product() throws Exception {
+		List<BoothProductVO> product = my.selectList("product.list");
+		return product;
+	}
+
 }
