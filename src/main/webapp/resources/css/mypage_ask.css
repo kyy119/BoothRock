@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin-bottom: 100px !important;
+	height: 650px;
+}
+.ask-list table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 760px;
+}
+.ask-list th {
+  padding: 8px;
+  border-bottom: 1px solid #000;
+}
+.ask-list td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.ask-title:hover {
+	color: #c0c0c0;
+}

@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.ask-form {
+	width: 600px;
+	margin-top: 30px;
+}
+.ask-detail h2 {
+	display: inline-block;
+}
+.ask-info {
+	float: right;
+	font-size: 15px;
+	color: #808080;
+}
+.ask-content {
+	width: 600px;
+	height: 200px;
+	margin-top: 20px;
+}
+.comment-form {
+	margin-left: 10px;
+	margin-top: 20px;
+}
+.icon-form {
+	font-size: 30px;
+	float: left;
+	width: 80px;
+	height: 100%;
+}
+.icon-form span {
+	transform: rotateY(180deg);
+}
+.admin-comment {
+	float: left;
+	width: 500px;
+}

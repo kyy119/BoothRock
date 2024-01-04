@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin-bottom: 150px !important;
+}
+.jjim-list {
+	width: 800px;
+}
+.jjim-list li {
+	width: 240px;
+	height: 250px;
+	display: inline-block;
+	margin: 11px;
+}
+.jjim-list li:hover {
+	opacity: 0.8;
+}
+.fa-solid.fa-heart {
+	font-size : 20px;
+	color: pink;
+}
+.jjim-list li a img {
+	width: 240px;
+	height: 150px;
+	border-radius: 20px;
+}
+.jjim-list .fstv-title {
+	font-weight: bold;
+	line-height: 30px;
+	font-size: 18px;
+}
+.jjim-list .fstv-loc {
+	font-size: 15px;
+	color: #808080;
+}
+.jjim-list .fstv-date {
+	background-color: #ff8080;
+	color: #fff;
+	border-radius: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 30px;
+}
