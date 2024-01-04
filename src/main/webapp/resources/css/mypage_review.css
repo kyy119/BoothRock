@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin-bottom: 100px !important;
+}
+.review-list {
+	margin-top: 20px;
+}
+.review-form {
+	height: 100px;
+	width: 500px;
+	border: 1px solid #000;
+	padding: 30px;
+	margin-bottom: 30px;
+	border-radius: 20px;
+}
+#review-icon {
+	font-size: 40px;
+	color: #000;
+	float: left;
+	width: 55px;
+}
+.review {
+	float: left;
+}
+.star-point i {
+	color: #f0d828;
+}
+.id-date {
+	color: #808080;
+	font-size: 14px;
+	line-height: 25px;
+}
+.review h3 {
+	display: inline-block;
+}
+.review ul {
+	margin-top: 10px;
+}
+.review ul li {
+	display: inline-block;
+    border-radius: 7px;
+	background-color: #e7e7e7;
+	margin-right: 7px;
+	padding: 0px 7px;
+}
+.review ul li i {
+	color: #876ed5;
+	font-weight: 540 !important;
+}
