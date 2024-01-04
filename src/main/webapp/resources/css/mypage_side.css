@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+.bodywrap {
+	width: 1400px;
+	margin: 100px auto 0px;
+}
+.mypage-form {
+	width: 800px;
+	display: inline-block;
+	margin-left: 130px;
+}
+.side-menu {
+	width: 180px;
+	height: 700px;
+	display: inline-block;
+	margin-left: 140px;
+	margin-top: 80px;
+	vertical-align: top;
+}
+.side-navi {
+	margin-top: 40px;
+	background-color: #f2f2f2;
+	padding: 20px 0px;
+	overflow: auto;
+}
+.side-navi li {
+	width: 140px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 15px;
+	float: left;
+}
+.side-navi li a {
+	padding-left: 35px;
+}
+.side-navi li a:hover {
+	color: #c0c0c0;
+}
+.stick {
+	float: left;
+	height: 20px;
+	width: 5px;
+	background-color: #876ed5;
+}
+.show-stick {
+	float: left;
+	height: 20px;
+	width: 5px;
+	background-color: #876ed5;
+}
+.shadow {
+	border: 1px solid #ddd;
+}

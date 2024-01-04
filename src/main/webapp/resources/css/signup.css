@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin: 150px 0px 220px;
+}
+.signup-form {
+	width: 410px;
+	height: 450px;
+	border: 1px solid #000;
+	border-radius: 15px;
+}
+.input-form {
+	width: 350px;
+	height: 350px;
+	margin: 50px 30px;
+	text-align: center;
+}
+.input-form div {
+	height: 35px;
+	margin: 20px 0px;
+}
+.input-form div label {
+	font-weight: bold;
+	line-height: 35px;
+	float: left;
+	text-align: center;
+	width: 110px;
+}
+.input-form div input {
+	width: 160px;
+	height: 35px;
+	border: 1px solid #000;
+	background-color: #fff;
+	border-radius: 15px;
+	font-weight: bold;
+	float: left;
+	padding-left: 10px;
+	text-align: center;
+}
+.input-form div button {
+	width: 62px;
+	height: 35px;
+	float: right;
+	border-radius: 15px;
+	border: 1px solid #808080;
+	color: #808080;
+	background-color: #fff;
+	font-weight: 600;
+}
+.input-form div button:hover {
+	background-color: #ddd;
+}
+.seller-number {
+	display: none;
+}
+#seller-check {
+	margin-bottom: 10px;
+}
+.signup {
+	width: 100px;
+	height: 40px;
+	border: 1px solid #000;
+	background-color: #fff;
+	border-radius: 15px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 15px;
+}
+.signup:hover {
+	background-color: #ddd;
+}
