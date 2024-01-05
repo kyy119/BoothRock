@@ -39,10 +39,9 @@ jQuery(document).ready(function() {
 		url : "bannerlist",
 		success : function(list) {
 			$('#banner').html(list)
-			$('.banner-img').each(function() {
-       			adjustImageSize($(this));
-       			console.log($(this))
-    		})
+			$('.banner-img').on('load', function() {
+                adjustImageSize($(this));
+            });
 		}
 	})
 	
