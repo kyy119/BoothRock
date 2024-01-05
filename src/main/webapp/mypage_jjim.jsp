@@ -30,7 +30,7 @@
 	    	<br><hr class="shadow"><br>
 			<ul class="jjim-list">
          		<li>
-					<i id="jjim" class="fa-solid fa-heart"></i>
+					<i class="fa-solid fa-heart"></i>
                  	<a href="fstv_detail.jsp">
 						<img src="resources/img/청계천.jpg" alt="이미지1">
 						<span class="fstv-title">겨울, 청계천의 빛</span><br>
@@ -39,7 +39,7 @@
                  	</a>
              	</li>
              	<li>
-             		<i id="jjim" class="fa-solid fa-heart"></i>
+             		<i class="fa-solid fa-heart"></i>
                  	<a href="#">
                      	<img src="resources/img/광화문.png" alt="이미지2">
                      	<span class="fstv-title">광화문광장 마켓</span><br>
@@ -48,7 +48,7 @@
                  	</a>
              	</li>
              	<li>
-             		<i id="jjim" class="fa-solid fa-heart"></i>
+             		<i class="fa-solid fa-heart"></i>
                  	<a href="#">
                      	<img src="resources/img/금리단.jpg" alt="이미지3">
                      	<span class="fstv-title">금리단아트페스타</span><br>
@@ -57,7 +57,7 @@
                  	</a>
              	</li>
 				<li>
-					<i id="jjim" class="fa-solid fa-heart"></i>
+					<i class="fa-solid fa-heart"></i>
              		<a href="#">
                       	<img src="resources/img/빛초롱.jpg" alt="이미지1">
                       	<span class="fstv-title">서울 빛초롱 축제</span><br>
@@ -66,7 +66,7 @@
                  	</a>
              	</li>  
              	<li>
-             		<i id="jjim" class="fa-solid fa-heart"></i>
+             		<i class="fa-solid fa-heart"></i>
                  	<a href="#">
 	                    <img src="resources/img/송현동.jpg" alt="이미지2">
 	                    <span class="fstv-title">송현동 솔빛축제</span><br>
@@ -75,7 +75,7 @@
                  	</a>
              	</li>
              	<li>
-             		<i id="jjim" class="fa-solid fa-heart"></i>
+             		<i class="fa-solid fa-heart"></i>
                 	<a href="#">
 						<img src="resources/img/금리단.jpg" alt="이미지3">
                      	<span class="fstv-title">금리단아트페스타</span><br>
@@ -84,7 +84,7 @@
 					</a>     
              	</li>
              	<li>
-             		<i id="jjim" class="fa-solid fa-heart"></i>
+             		<i class="fa-solid fa-heart"></i>
                 	<a href="#">
 						<img src="resources/img/금리단.jpg" alt="이미지3">
                      	<span class="fstv-title">금리단아트페스타</span><br>
