@@ -1,7 +1,6 @@
 jQuery(document).ready(function(){
 
-    $("#jjim").on("click", function(){
-    
+    $("#fa-solid fa-heart").on("click", function(){
         $(this).closest("li").remove();
         
     });
