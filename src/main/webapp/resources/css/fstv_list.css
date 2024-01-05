@@ -49,7 +49,7 @@
 .fstv-list .fstv-title {
 	font-size: 20px;
 	font-weight: bold;
-	line-height: 35px;
+	margin : 5px 0px;
 }
 .fstv-list .fstv-loc {
 	font-size: 15px;
@@ -71,4 +71,15 @@
 }
 .bold-text {
 	font-weight: bold !important;
+}
+.fstv-list li {
+  position: relative;
+}
+.fstv-list li i.fa-regular.fa-heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.fstv-list li i.fa-regular.fa-heart:hover {
+   	font-weight: bold;
 }
