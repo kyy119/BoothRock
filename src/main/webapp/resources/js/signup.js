@@ -25,6 +25,7 @@ jQuery(document).ready(function() {
 	
 	//회원가입 규칙 위배 여부 확인
 	$(document).ready(function() {
+		$('.signup').hide();
 		let emailIsValid = false;
 		let passwordIsValid = false;
 		let passwordSameIsValid = false;
@@ -42,21 +43,17 @@ jQuery(document).ready(function() {
 							emailIsValid = true;
 							alert('회원가입 가능한 이메일입니다!');
 			      			$('#emailConfirm').hide();
-			      			$('.signup').show();
 			      			let inputElement = document.getElementById("user_id");
 			    			inputElement.readOnly = true;
-			    			$('.signup').show();
 			      		}else{
 			      			emailIsValid = false;
 			      			alert('이미 가입된 이메일입니다!');
-			      			$('.signup').hide();
 			      		}
 			      		console.log('이메일 : ' + emailIsValid);// 삭제예정 
 					} // success
 				}); // ajax(이메일 중복)
 			}else{
 				alert('이메일 입력칸이 비어있거나 이메일 형식이 아닙니다!');
-				$('.signup').hide();
 			}
 	 	});// #emailConfirm click function
      // 입력 필드에 대한 input 이벤트 리스너 등록
@@ -70,10 +67,8 @@ jQuery(document).ready(function() {
 			addImage1();
 			passwordMessage.textContent = "";
            	passwordMessage.style.display = "none";
-           	$('.signup').show();
 		} else {
 			removeImage1();
-			$('.signup').hide();
 			//alert('8자리 이상,대소문자,숫자,특수문자(@$!%*?&)가 입력되었는지 확인해주세요!'); // 삭제예정
 			passwordMessage.textContent = "조건:8자이상,대소문자,숫자,특수문자(@$!%*?&)";
            	passwordMessage.style.display = "block";
@@ -86,20 +81,28 @@ jQuery(document).ready(function() {
 			passwordSameIsValid = true;
 			removeImage2();
 			addImage2();
-			$('.signup').show();
 		}else{
 			removeImage2();
 			passwordSameIsValid = false;
-			$('.signup').hide();
 		}
 		console.log('패스워드2 : ' + passwordSameIsValid);// 삭제예정 
 	});// 비밀번호와 비밀번호 확인 로직
 	//console.log(emailIsValid + ' ' + passwordIsValid + ' ' + passwordSameIsValid);
 	$('#user_name').on('blur', function() {
 		if($(this).val() != ''){
-			$('.signup').show();
-		}else{
-			$('.signup').hide();
+			if(emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true){
+				$('.signup').show();				
+			}else if(emailIsValid == false && passwordIsValid == true && passwordSameIsValid == true){
+				alert('이메일 형식이 맞는지 또는 이메일이 입력되었는지 확인해주세요!');
+				$('.signup').hide();
+			}else if(emailIsValid == true && passwordIsValid == false && passwordSameIsValid == true){
+				alert('비밀번호 형식이 맞는지 또는 비밀번호가 입력되었는지 확인해주세요!');
+				$('.signup').hide();
+			}else if(emailIsValid == true && passwordIsValid == true && passwordSameIsValid == false){
+				alert('비밀번호가 일치하는지 확인해주세요!');
+				$('.signup').hide();
+			}
+			// 이름까지 규칙만족할시 회원가입 가능으로!
 		}
 	});	
 	// 아래는 3가지 조건이 만족할시 회원가입이 가능하도록 하는 로직 짤 예정
@@ -204,8 +207,4 @@ function businessHTML(businessIsValid) {
 	sellerNumberHTML += '<input type="text" id="selling_number" name="selling_number" required>';
 	sellerNumberHTML += '<button id="auth" onclick="authenticateBusiness(\'' + businessIsValid + '\')">인증하기</button>';
 	return sellerNumberHTML;
-}
-    
-function register(){
-	let a = '';
 }
