@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fest">
+
+	<insert id="insert" parameterType="festivalVO">
+		insert into festival values
+		(#{fstv_no}, #{fstv_title}, #{fstv_startdate}, #{fstv_enddate},
+		#{fstv_addr1}, #{fstv_mapx}, #{fstv_mapy}, #{fstv_image},
+		#{fstv_tel},
+		#{fstv_eventinfo}, #{fstv_eventcont},
+		#{fstv_usetimefestival},
+		#{fstv_eventplace}, #{fstv_playtime}, #{fstv_homepage}
+		)
+	</insert>
+	
+	<!-- 배너 지금 마감임박 limit 3으로 만들었는데 찜 리스트 추가 후 찜 갯수 많은순(인기순)으로 다시 sql문 작성 예정 -->
+	<select id="bannerlist" resultType="festivalVO">
+		select * from festival
+		where fstv_startdate &lt;= current_date()
+		and fstv_enddate &gt;= current_date()
+		and fstv_image is not null
+		order by fstv_enddate limit 3
+	</select>
+	
+	<select id="endlist" resultType="festivalVO">
+		select * from festival where fstv_startdate
+		&lt;= current_date() and fstv_enddate &gt;= current_date()
+		and fstv_image is not null
+		and datediff(fstv_enddate, current_date()) &lt;=21 order by fstv_enddate
+	</select>
+	
+		<!-- endlist 페이지개수 계산할 때 전체 게시물 개수가 필요함. total / 한페이지당개수 = pages -->
+	<select id="cnt" resultType="int">
+		select count(*) from festival where fstv_startdate
+		&lt;= current_date() and fstv_enddate &gt;= current_date()
+		and fstv_image is not null
+		and datediff(fstv_enddate, current_date()) &lt;=21 order by fstv_enddate
+	</select>
+	
+	<select id="list" resultType="festivalVO" parameterType="fstvPageVO">
+		select * from (
+		(select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_enddate)
+		union all
+		(select * from festival	where fstv_startdate &gt; current_date() order by fstv_startdate)
+		union all
+		(select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate desc)
+		) as result limit #{index}, 9
+	</select>
+	
+</mapper>
