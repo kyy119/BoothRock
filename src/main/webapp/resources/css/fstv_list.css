@@ -39,7 +39,7 @@
     margin-right: 20px;
 }
 .fstv-list ul li:hover {
-   	opacity: 0.8;
+	opacity: 0.8;
 }
 .fstv-list img {
 	width: 300px;
@@ -73,12 +73,12 @@
 	font-weight: bold !important;
 }
 .fstv-list li {
-  position: relative;
+	position: relative;
 }
 .fstv-list li i.fa-regular.fa-heart {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }
 .fstv-list li i.fa-regular.fa-heart:hover {
    	font-weight: bold;

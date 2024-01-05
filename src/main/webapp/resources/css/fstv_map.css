@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-    width: 1200px;
+    width: 1250px;
     margin-bottom: 150px;
 }
 .fstv-map-from {
@@ -38,6 +38,7 @@
 	width: 500px;
 	display: inline-block;
 	float: left;
+	position: fixed;
 }
 .fstv-map img {
 	width: 500px;
@@ -48,13 +49,13 @@
 	padding-left: 50px;
 	display: inline-block;
 	float: left;
+	margin-left: 500px;
 }
 .fstv-list-form ul li {
     width: 175px;
-    height: 250px;
+    height: 280px;
     float: left;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0px 20px;
 }
 .fstv-list-form ul li:hover {
    	opacity: 0.8;
@@ -67,7 +68,7 @@
 .fstv-title {
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 30px;
+	margin: 5px 0px;
 }
 .fstv-loc {
 	color: #808080;
@@ -81,6 +82,7 @@
 	padding-right: 10px;
 	line-height: 20px;
 	font-size: 13px;
+	margin-top: 5px;
 }
 .fstv-list i {
 	color: pink;
@@ -88,4 +90,15 @@
 }
 .bold-text {
 	font-weight: bold !important;
+}
+.fstv-list li {
+  position: relative;
+}
+.fstv-list li i.fa-regular.fa-heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.fstv-list li i.fa-regular.fa-heart:hover {
+   	font-weight: bold;
 }
