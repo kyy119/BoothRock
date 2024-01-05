@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="resources/css/main.css" type="text/css">
-    <script src="resources/js/main2.js" defer type="text/javascript"></script>
+    <script src="resources/js/main.js" defer type="text/javascript"></script>
 </head>
 <body>
     <%@ include file="header.jsp" %>
