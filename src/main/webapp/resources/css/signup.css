@@ -4,13 +4,13 @@
 	margin: 150px 0px 220px;
 }
 .signup-form {
-	width: 410px;
+	width: 420px;
 	height: 450px;
 	border: 1px solid #000;
 	border-radius: 15px;
 }
 .input-form {
-	width: 350px;
+	width: 360px;
 	height: 350px;
 	margin: 50px 30px;
 	text-align: center;
@@ -24,17 +24,17 @@
 	line-height: 35px;
 	float: left;
 	text-align: center;
-	width: 110px;
+	width: 120px;
 }
 .input-form div input {
-	width: 160px;
+	width: 150px;
 	height: 35px;
 	border: 1px solid #000;
 	background-color: #fff;
 	border-radius: 15px;
 	font-weight: bold;
 	float: left;
-	padding-left: 10px;
+	padding: 0px 10px;
 	text-align: center;
 }
 .input-form div button {
