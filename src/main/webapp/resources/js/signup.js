@@ -21,6 +21,7 @@ jQuery(document).ready(function() {
 	    let sellerNumberHTML = businessHTML(businessIsValid); // >> 판매자 체크박스를 클릭할 경우
 	    $('.seller-number').html(sellerNumberHTML);
 		$('.seller-number').slideToggle();
+		
 	}); // '#seller-check'.change
 	
 	//회원가입 규칙 위배 여부 확인
@@ -38,9 +39,10 @@ jQuery(document).ready(function() {
 						user_id : $('#user_id').val()
 					},
 					success : function(result){
+						console.log(result)
 						if(result == 0){ 
 							emailIsValid = true;
-							alert('회원가입 가능한 이메일입니다!');
+							alert('회원가입 가능한 이메일입니다!---> ' + emailIsValid);
 			      			$('#emailConfirm').hide();
 			      			$('.signup').show();
 			      			let inputElement = document.getElementById("user_id");
@@ -62,6 +64,7 @@ jQuery(document).ready(function() {
      // 입력 필드에 대한 input 이벤트 리스너 등록
     $('#user_password').on('blur', function() {
         // 입력 값이 변경되었을 때 실행되는 함수
+        console.log('이메일 : ' + emailIsValid);
 	 	passwordIsValid = validatePassword($(this).val());
 			 
 		if (passwordIsValid && $(this).val() != '') {
@@ -98,6 +101,8 @@ jQuery(document).ready(function() {
 	$('#user_name').on('blur', function() {
 		if($(this).val() != ''){
 			$('.signup').show();
+			console.log(emailIsValid + ' ' + passwordIsValid+ ' ' + passwordSameIsValid)
+			// 이름 까지 만족하면 실행하면됨	
 		}else{
 			$('.signup').hide();
 		}
