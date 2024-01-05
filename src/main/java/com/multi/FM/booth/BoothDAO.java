@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.multi.FM.myboothpage.BoothVO;
 
 @Repository
-public class BoothDAO {
+public class boothDAO {
 	@Autowired
 	SqlSessionTemplate my;
 	
