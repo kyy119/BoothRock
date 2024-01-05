@@ -38,6 +38,7 @@
 	width: 500px;
 	display: inline-block;
 	float: left;
+	position: fixed;
 }
 .fstv-map img {
 	width: 500px;
@@ -48,6 +49,7 @@
 	padding-left: 50px;
 	display: inline-block;
 	float: left;
+	margin-left: 500px;
 }
 .fstv-list-form ul li {
     width: 175px;
