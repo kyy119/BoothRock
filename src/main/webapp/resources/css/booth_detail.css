@@ -10,6 +10,11 @@
 	font-size: 17px;
 	color: #808080;
 }
+.booth-menu {
+	width: 1000px;
+	height: 300px;
+	margin-top: 20px;
+}
 .booth-img {
 	float: left;
 	width: 300px;
@@ -55,7 +60,7 @@
 }
 .booth-info-form {
     width: 1000px;
-    height: 350px;
+    height: 300px;
     margin-top: 40px;
     margin-bottom: 100px;
 }
@@ -66,7 +71,7 @@
 	padding: 0 6%;
 	border-bottom: 1px solid #e0e0e0;
 	zoom: 1;
-	width: 500px;
+	width: 860px;
 }
 .tabmenu:before, .tabmenu:after {
 	content: "\0020"; display: block; height: 0; visibility: hidden;	
@@ -117,14 +122,14 @@
 }
 .tabmenu li.active div {
 	height: auto;
-    width: 960px;
+    width: 1000px;
     z-index: 1;
 }
 .booth-info {
 	padding: 20px;
 }
 .booth-info ul {
-    width: 960px;
+    width: 1000px;
     margin-top: 12px;
     margin-bottom: 12px;
 }
@@ -138,7 +143,7 @@
 .booth-intro {
 	font-size: 18px !important;
 	font-weight: 600;
-	margin-bottom: 20px;
+	margin: 20px 0px;
 }
 .report {
 	font-size: 15px;
@@ -150,18 +155,19 @@
 	color: #808080;
 }
 .review-form {
-	width: 500px;
 	height: 200px;
 }
 .review-ul {
-	width: 500px;
-	margin-left: 40px;
+	width: 1000px;
 	margin-top: 20px;
 }
-.review-ul hr {
-	width: 500px;
-	border: 2px dotted #ccc;
-	margin: 25px 0px !important;
+.review-li {
+	display: inline-block;
+	width: 420px;
+	margin: 0px 10px 20px;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+	padding: 20px;
 }
 .star-point {
 	margin: 0 !important;
@@ -176,7 +182,7 @@
 	margin: 0 !important;
 }
 .review-li ul {
-	margin-top: 5px;
+	margin-top: 10px;
 }
 .review-li ul li{
     border-radius: 7px;
@@ -192,24 +198,28 @@
 .review-form .write-review {
 	width: 153px;
 	margin-top: 30px;
-	margin-left: 200px;
 	font-size: 18px;
-	color: #dd390d;
-	border: 1px solid #dd390d;
+	background: linear-gradient(to right top, #876ed5, #0b123f);
+    color: transparent;
+    -webkit-background-clip: text;
+	border: 1px solid #876ed5;
 	border-radius: 20px;
 	padding: 5px 15px;
 }
 .review-form .write-review i {
-	color: #dd390d;
+	background: linear-gradient(to right top, #876ed5, #0b123f);
+    color: transparent;
+    -webkit-background-clip: text;
 }
 .review-form .write-review:hover {
 	font-weight: bold;
-	border: 2px solid #dd390d;
+	border: 2px solid #876ed5;
 }
 .review-more {
-	margin-left: 530px;
 	font-weight: bold;
 	width: 103px;
+	float: right;
+	margin-right: 25px;
 }
 .review-more:hover {
 	border-bottom: 1px solid #000;

@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin-bottom: 100px;
+}
+.edit-form {
+	width: 420px;
+	height: 480px;
+	border: 1px solid #000;
+	border-radius: 15px;
+	margin-top: 50px;
+}
+.input-form {
+	width: 360px;
+	height: 380px;
+	margin: 50px 30px;
+	text-align: center;
+}
+.input-form div {
+	height: 35px;
+	margin: 20px 0px;
+}
+.input-form div label {
+	font-weight: bold;
+	line-height: 35px;
+	float: left;
+	text-align: center;
+	width: 120px;
+}
+.input-form div input {
+	width: 150px;
+	height: 35px;
+	border: 1px solid #000;
+	background-color: #fff;
+	border-radius: 15px;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px 10px;
+}
+.input-form div button {
+	width: 62px;
+	height: 35px;
+	float: right;
+	border-radius: 15px;
+	border: 1px solid #808080;
+	color: #808080;
+	background-color: #fff;
+	font-weight: 600;
+}
+.input-form div button:hover {
+	background-color: #ddd;
+}
+.seller-number {
+	/* display: none; 세션 적용시 변경 필요 */
+}
+.edit {
+	width: 100px;
+	height: 40px;
+	border: 1px solid #000;
+	background-color: #fff;
+	border-radius: 15px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 15px;
+}
+.edit:hover {
+	background-color: #ddd;
+}
