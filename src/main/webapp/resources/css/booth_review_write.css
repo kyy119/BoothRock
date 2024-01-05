@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+.bodywrap {
+    margin-bottom: 170px;
+}
+.booth-detail-form {
+	width: 700px;
+	margin-top: 60px;
+}
+.booth-type {
+	font-size: 17px;
+	color: #808080;
+}
+.review-write-form {
+	width: 700px;
+	margin-top: 40px;
+	text-align: center;
+}
+.review-write-form h2 {
+	font-weight: 500 !important;
+}
+.star-point {
+	width: 700px;
+	margin: 30px 0px;
+}
+.star-point i {
+	font-size: 35px;
+	color: #f0d828;
+	margin: 0px 10px;
+}
+.bold-text {
+	font-weight: bold !important;
+}
+.tag-list p {
+	color: #808080;
+	float: right;
+	font-size: 14px;
+	margin-right: 50px;
+}
+.tag-list ul {
+	display: inline-block;
+	margin: 0px 10px;
+}
+.tag-list ul li {
+	width: 300px;
+	height: 50px;
+	margin: 10px 0px;
+	border: 1px solid #000;
+	border-radius: 15px;
+	font-size: 18px;
+	padding: 0px 25px;
+	box-sizing: border-box;
+}
+.tag-list .fa-solid {
+	float: left;
+	line-height: 50px;
+}
+.tag-list .fa-regular {
+	float: right;
+	line-height: 50px;
+}
+.select-tag-text {
+	color: #876ed5 !important;
+}
+.select-tag-border {
+	border: 2px solid #876ed5 !important;
+}
+.tag-list input {
+	width: 150px;
+	height: 45px;
+	border: 1px solid #876ed5;
+	border-radius: 20px;
+	margin-top: 30px;
+	font-size: 17px;
+	background: linear-gradient(to right top, #876ed5, #0b123f);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+.tag-list input:hover {
+	opacity: 0.5;
+}

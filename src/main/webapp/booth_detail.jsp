@@ -16,7 +16,7 @@
     	<div class="booth-detail-form">
 	    	<div class="booth-title">
 	    		<h3 class="fstv-title">양평 산수유마을 빙어축제</h3>
-	    		<h1 style="display: inline-block">산수유 떡볶이</h1>
+	    		<a href="booth_detail.jsp" style="display: inline-block"><h1>산수유 떡볶이</h1></a>
 	    		<span class="booth-type"> | 판매형</span>
 		    </div>
 		    <div class="booth-menu" style="width: 1000px; height: 300px; margin-top: 20px;">
@@ -71,7 +71,7 @@
 	                </li>
 	                <li id="tab"><a href="#" class="tab-name">리뷰</a>
 	                    <div class="review-form">
-                        	<a href="#" class="write-review"><i class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
+                        	<a href="booth_review_write.jsp" class="write-review"><i class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 	                    	<ul class="review-ul">
 		                    	<li class="review-li">
 		                          	<span class="star-point">
@@ -88,7 +88,6 @@
 		                            	<li><i class="fa-solid fa-hashtag">가격이 비싸요</i></li>
 		                           	</ul>
 	                           	</li>
-	                           	<hr>
 		                    	<li class="review-li">
 		                          	<span class="star-point">
 										<i class="fa-solid fa-star"></i>
@@ -104,7 +103,7 @@
 		                           	</ul>
 	                           	</li>
                         	</ul>
-                        	<a href="#" class="review-more">리뷰 더보기 <i class="fa-solid fa-chevron-right""></i></a>
+                        	<a href="booth_review.jsp" class="review-more">리뷰 더보기 <i class="fa-solid fa-chevron-right""></i></a>
 	                    </div>
 	                </li>   
 	            </ul>
