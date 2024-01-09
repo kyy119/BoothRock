@@ -27,7 +27,7 @@
 			});
 			$.ajax({
 				url : activeTab, //탭메뉴 li태그의 data-tab
-				data : {},
+				data : {user_id:"user1"},
 				success : function(x) {
 					$('#result').html(x)
 				}//success

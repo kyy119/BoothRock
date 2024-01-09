@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myPage">
+
+	<select id="review_list" parameterType="String"
+		resultType="reviewVO">
+		SELECT r.review_no, r.review_starpoint, r.keyword1,
+		r.keyword2 , r.keyword3 ,
+		r.review_created_at ,b.booth_name ,
+		f.fstv_title
+		FROM review r
+		join booth b on r.booth_no = b.booth_no
+		join festival f on b.fstv_no = f.fstv_no
+		where r.user_id = #{user_id}
+	</select>
+	
+	<!-- <delete id="review_delete" parameterType="int">
+		DELETE FROM review
+		WHERE review_no = #{review_no}
+	</delete> -->
+
+	<!-- <select id="jjim_list" parameterType="String"
+		resultType="festivalVO">
+		select f.fstv_title, f.fstv_eventcont,
+		f.fstv_image
+		FROM jjim jj
+		JOIN festival f ON jj.fstv_no = f.fstv_no
+		WHERE jj.user_id =
+		#{user_id}
+	</select> -->
+</mapper>
