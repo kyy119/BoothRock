@@ -3,12 +3,17 @@
 <mapper namespace="com.multi.FM.mapper.boothMapper">
 
 
-	<select id="detail.list" resultType="com.multi.FM.myboothpage.BoothVO">
-		select * from booth order by booth_no
+	<select id="detail" resultType="com.multi.FM.myboothpage.BoothVO">
+		SELECT b.*, f.fstv_title
+		FROM booth b
+		INNER JOIN festival f ON b.fstv_no = f.fstv_no
+		WHERE b.booth_no = #{booth_no}
 	</select>
 	
-	<select id="product.list" resultType="com.multi.FM.myboothpage.BoothVO">
-		select * from booth_product order by booth_no
+	<select id="product" resultType="com.multi.FM.booth.BoothProductVO">
+		SELECT * 
+		FROM booth_product 
+		WHERE booth_no = #{booth_no}
 	</select>
 	
 	
