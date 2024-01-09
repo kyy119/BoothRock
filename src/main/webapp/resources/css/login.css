@@ -48,13 +48,11 @@
 }
 .find-info {
 	width: 167px;
-	margin-right: 10px;
-}
-.signup {
-	width: 70px;
+	display: inline;
 }
 .sub-btn ul li {
 	float: left;
+	margin: 0px 2px;
 }
 .sub-btn ul li a {
 	height: 35px;

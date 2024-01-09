@@ -59,6 +59,44 @@
 	display: block;
     border-radius: 10px;
 }
+.banner-btn {
+	width: 980px;
+	position: absolute;
+	top: 220px;
+    z-index: 1;
+    margin: 0px 10px;
+}
+.banner-prev-btn {
+	float: left;
+}
+.banner-next-btn {
+	float: right;
+}
+.banner-btn button {
+	background-color: transparent;
+	border: none;
+	font-size: 50px;
+	position: relative;
+}
+.dot {
+	text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: 460px;
+    right: 430px;
+}
+.dot i {
+	margin: 0px 2px;
+    display: inline-block;
+    font-size: 18px;
+    color: #808080;
+}
+.current-img {
+	transform: scaleX(3);
+	width: 47px;
+	color: #000 !important;
+	box-sizing: border-box;
+}
 .soon-fstv {
     width: 1200px;
     position: relative;
