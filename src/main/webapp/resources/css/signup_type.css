@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin: 170px 0px 250px;
+}
+.signup-type {
+	width: 1000px;
+	border: 1px solid #000;
+	border-radius: 15px;
+	padding: 50px;
+	text-align: center;
+}
+.signup-type h3 {
+	margin-bottom: 50px;
+}
+.cus-type, .seller-type {
+	display: inline-block;
+	margin: 0px 50px;
+	width: 300px;
+	height: 200px;
+	vertical-align: top;
+}
+.signup-type a {
+	border: 1px solid #000;
+	border-radius: 15px;
+	overflow: auto;
+	height: 200px;
+}
+.signup-type a div {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 200px;
+}
+.signup-type a:hover div {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+	line-height: 30px;
+}
+.signup-type a:hover {
+	background-color: #e8e8e8;
+}
+.signup-type a p, .signup-type a hr {
+    display: none;
+}
+.signup-type a:hover p, .signup-type a:hover hr {
+    display: block;
+}
+.signup-type a hr {
+	margin: 10px 0px;
+}

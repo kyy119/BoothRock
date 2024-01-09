@@ -41,6 +41,7 @@
 	padding: 20px;
 	border: 2px dotted #808080;
 	border-radius: 15px;
+	height: 215px;
 }
 .booth-item li {
 	display: inline-block;
@@ -195,7 +196,7 @@
 	color: #876ed5;
 	font-weight: 540 !important;
 }
-.review-form .write-review {
+.write-review {
 	width: 153px;
 	margin-top: 30px;
 	font-size: 18px;
@@ -206,12 +207,12 @@
 	border-radius: 20px;
 	padding: 5px 15px;
 }
-.review-form .write-review i {
+.write-review i {
 	background: linear-gradient(to right top, #876ed5, #0b123f);
     color: transparent;
     -webkit-background-clip: text;
 }
-.review-form .write-review:hover {
+.write-review:hover {
 	font-weight: bold;
 	border: 2px solid #876ed5;
 }

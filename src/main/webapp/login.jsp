@@ -22,7 +22,10 @@
     		</div>
    			<div class="sub-btn">
             	<ul>
-                    <li><a href="#" class="find-info">아이디 / 비밀번호 찾기</a></li>
+                    <li><a href="#" class="find-id">아이디 찾기</a></li>
+                    <li>|</li>
+                    <li><a href="#" class="find-pw">비밀번호 찾기</a></li>
+                    <li>|</li>
                     <li><a href="sign_up.jsp" class="signup">회원가입</a></li>
                 </ul>
    			</div>
