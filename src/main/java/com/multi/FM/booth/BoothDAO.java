@@ -10,17 +10,17 @@ import com.multi.FM.myboothpage.BoothVO;
 
 @Repository
 public class BoothDAO {
-	@Autowired
-	SqlSessionTemplate my;
-	
-	public List<BoothVO> detail() throws Exception {
-		List<BoothVO> detail = my.selectList("detail.list");
-		return detail;
-	}
-
-	public List<BoothProductVO> product() throws Exception {
-		List<BoothProductVO> product = my.selectList("product.list");
-		return product;
-	}
+//  @Autowired
+//  SqlSessionTemplate my;
+//
+//  public List<BoothVO> detail() throws Exception {
+//    List<BoothVO> detail = my.selectList("detail");
+//    return detail;
+//  }
+//
+//  public List<BoothProductVO> product() throws Exception {
+//    List<BoothProductVO> product = my.selectList("product");
+//    return product;
+//  }
 
 }
