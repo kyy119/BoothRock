@@ -27,7 +27,7 @@
 	       			<ul>
 	       				<li class="booth-item-menu">
 	       					<i class="fa-solid fa-chevron-left"></i>
-	       						MENU
+	       						판매 정보
 	       					<i class="fa-solid fa-chevron-right"></i>
 	       				</li>
 	       				<li>빙어떡볶이<span>4000원</span></li>

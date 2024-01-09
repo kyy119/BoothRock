@@ -20,8 +20,8 @@
                     <li><a href="fstv_map.jsp">전국축제지도</a></li>
                     <li><a href="#">고객센터</a>
                         <ul class="sub-menu">
-                            <li><a href="#">자주 묻는 질문</a></li>
-                            <li><a href="#">문의하기</a></li>
+                            <li><a href="cs_question.jsp">자주 묻는 질문</a></li>
+                            <li><a href="cs_ask.jsp">문의하기</a></li>
                         </ul>
                     </li>
                     <li class="input-line">

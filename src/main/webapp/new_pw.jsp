@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
 	<style>
-		.signup-form {
+		.new-pw-form {
 			width: 380px;
 			height: 265px;
 			border: 1px solid #000;
@@ -71,7 +71,7 @@
 	</style>
 </head>
 <body>
-   	<div class="signup-form">
+   	<div class="new-pw-form">
    		<form class="input-form">
    			<div>
     			<label for="new-password">새 비밀번호</label>

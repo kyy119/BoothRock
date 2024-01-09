@@ -55,7 +55,7 @@
 		    		</div>
 	    			<div>
 		    			<label for="booth-img">이미지</label>
-						<input type="text" id="booth-img" name="booth-img" style="margin-right: 5px;"><button>첨부파일</button>
+						<input type="text" id="booth-img" name="booth-img" style="margin-right: 5px;" placeholder="하나만 첨부 가능"><button>첨부파일</button>
 	    			</div>
 	    			<div>
 		    			<label for="booth-loc">위치</label>

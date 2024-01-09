@@ -19,6 +19,7 @@ jQuery(document).ready(function() {
 	    }
 	}
 	
+	
 	// 이미지 사이즈 조절 함수
 	function adjustImageSize(img) {
  
@@ -61,17 +62,37 @@ jQuery(document).ready(function() {
     		updateButtonStates();
     	}
     })
-   
-    setInterval (function() {
-        $('.slide-list').delay(3000);
-        $('.slide-list').animate({marginLeft : -1000});
-        $('.slide-list').delay(3000);
-        $('.slide-list').animate({marginLeft : -2000});
-        $('.slide-list').delay(3000);
-        $('.slide-list').animate({marginLeft : 0});
-        $('.slide-list').delay(3000);
-    });
+    
+	// 배너 슬라이드 및 버튼 구현
+	let currentIndex = 0;
+	const totalSlides = 3;
+	function showSlide(index) {
+	    const marginLeft = -index * 1000;
+	    $('.slide-list').animate({ marginLeft }, 500);
+	    
+	    for (let i = 0; i < totalSlides; i++) {
+	        if (i !== index) {
+	            $(`#img${i + 1}`).removeClass('current-img');
+        	}
+    	}
+	   	$(`#img${index + 1}`).addClass('current-img');
+	}
 
+	function prevSlide() {
+	    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+	    showSlide(currentIndex);
+	}
+	
+	function nextSlide() {
+	    currentIndex = (currentIndex + 1) % totalSlides;
+	    showSlide(currentIndex);
+	}
+	
+	$('.banner-prev-btn').on('click', prevSlide);
+	$('.banner-next-btn').on('click', nextSlide);
+	
+	setInterval(nextSlide, 3000);
+   
     $('.next-btn').click(function() {
     	org++;
     	updateButtonStates();
