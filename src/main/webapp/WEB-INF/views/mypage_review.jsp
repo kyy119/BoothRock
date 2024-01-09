@@ -17,7 +17,7 @@ System.out.print(VO);
 <div class="review-list">
 
 	<%
-	  for (BoothReviewVO list : VO) {
+	  for (BoothReviewVO list : VO) { //카테고리별 이미지
 	%>
 	<div class="review-form">
 		<%
@@ -35,7 +35,7 @@ System.out.print(VO);
 			<div class="star-point">
 				<%
 				  for (int i = 0; i < 5; i++) {
-				  if (i < list.getReview_starpoint()) {
+				  if (i < list.getReview_starpoint()) { //별점
 				%>
 				<i class="fa-solid fa-star"></i>
 				<%

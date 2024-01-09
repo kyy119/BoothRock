@@ -52,7 +52,7 @@
 			</ul>
 		</nav>
 
-		<div class="mypage-form" id="result"></div>
+		<div class="mypage-form" id="result"></div> 
 	</div>
 
 	<%@ include file="footer.jsp"%>

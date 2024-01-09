@@ -13,7 +13,7 @@ public class MypageDAO {
     @Autowired
     SqlSessionTemplate my;
     
-    public List<BoothReviewVO> review_list(String user_id) {
+    public List<BoothReviewVO> review_list(String user_id) { //리뷰 조회
         return my.selectList("myPage.review_list", user_id);
     }
 //    
