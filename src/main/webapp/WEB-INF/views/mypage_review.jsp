@@ -20,11 +20,21 @@ System.out.print(VO);
 	  for (BoothReviewVO list : VO) {
 	%>
 	<div class="review-form">
+		<%
+		  if (list.getBooth_category().equals("food")) {
+		%>
 		<i class="fa-solid fa-utensils" id="review-icon"></i>
+		<%
+		  } else {
+		%>
+		<i class="fa-solid fa-rocket" id="review-icon"></i>
+		<%
+		  }
+		%>
 		<div class="review">
 			<div class="star-point">
 				<%
-				for (int i = 0; i < 5; i++) {
+				  for (int i = 0; i < 5; i++) {
 				  if (i < list.getReview_starpoint()) {
 				%>
 				<i class="fa-solid fa-star"></i>

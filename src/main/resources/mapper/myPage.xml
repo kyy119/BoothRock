@@ -8,7 +8,7 @@
 		resultType="reviewVO">
 		SELECT r.review_no, r.review_starpoint, r.keyword1,
 		r.keyword2 , r.keyword3 ,
-		r.review_created_at ,b.booth_name ,
+		r.review_created_at ,b.booth_name , b.booth_category,
 		f.fstv_title
 		FROM review r
 		join booth b on r.booth_no = b.booth_no

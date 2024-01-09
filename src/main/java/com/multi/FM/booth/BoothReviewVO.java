@@ -12,7 +12,15 @@ public class BoothReviewVO {
   private String review_created_at;
   private String booth_name;
   private String fstv_title;
+  private String booth_category;
   
+  
+  public String getBooth_category() {
+    return booth_category;
+  }
+  public void setBooth_category(String booth_category) {
+    this.booth_category = booth_category;
+  }
   public int getReview_no() {
     return review_no;
   }
@@ -78,8 +86,9 @@ public class BoothReviewVO {
     return "BoothReviewVO [review_no=" + review_no + ", booth_no=" + booth_no
         + ", review_starpoint=" + review_starpoint + ", user_id=" + user_id + ", keyword1="
         + keyword1 + ", keyword2=" + keyword2 + ", keyword3=" + keyword3 + ", review_created_at="
-        + review_created_at + ", booth_name=" + booth_name + ", fstv_title=" + fstv_title + "]";
+        + review_created_at + ", booth_name=" + booth_name + ", fstv_title=" + fstv_title
+        + ", booth_category=" + booth_category + "]";
   }
-
+  
 
 }
