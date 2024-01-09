@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/booth_detail.css" type="text/css">
-    <script src="resources/js/booth_detail.js" defer type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모든 축제의 부스를 담다 - 부스락</title>
+<link rel="stylesheet" href="resources/css/booth_detail.css"
+	type="text/css">
+<script src="resources/js/booth_detail.js" defer type="text/javascript"></script>
 </head>
 <body>
     <%@ include file="header.jsp" %>
@@ -113,5 +116,7 @@
 	
 	<%@ include file="footer.jsp" %>
 
+
 </body>
 </html>
+ --%>
