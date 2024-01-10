@@ -108,7 +108,6 @@ header {
 	font-size: 18px;
 }
 .user-btn {
-	width: 200px;
 	height: 80px;
 	float: right;
 	margin-top: 30px;
@@ -129,4 +128,7 @@ header {
 	background: linear-gradient(to right top, #876ed5, #0b123f);
     color: transparent;
     -webkit-background-clip: text;
+}
+.user-btn ul li a:hover {
+	opacity: 0.5;
 }

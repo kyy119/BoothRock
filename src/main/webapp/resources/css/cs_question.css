@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.bodywrap {
+	margin: 100px 0px 280px;
+}
+.question-form {
+	width: 800px;
+}
+.question-list {
+	padding: 20px;
+}
+.question-list hr {
+	margin: 20px 0px;
+}
+.question h2 {
+	margin-bottom: 10px;
+	background: linear-gradient(to right top, #876ed5, #0b123f);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+.question p {
+	display: none;
+	margin-left: 30px;
+	font-size: 17px;
+}
