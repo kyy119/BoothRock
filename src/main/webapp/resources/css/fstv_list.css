@@ -14,9 +14,27 @@
 	margin-bottom: 60px;
 	margin-left: 50px;
 }
+.fstv-list-head h1 {
+	display: inline-block;
+}
+.date-search {
+	display: inline-block;
+	margin-left: 20px;
+}
+.date-search input {
+	padding: 2px 15px;
+	border: 1px solid #876ed5;
+	border-radius: 15px;
+	font-size: 17px;
+	background-color: #fff;
+}
+.date-search input:hover {
+	background-color: #ddd;
+}
 .fstv-list-head .sort {
 	float: right;
 	margin-right: 20px;
+	margin-top: 50px;
 }
 .sort button {
 	background-color: #fff;
