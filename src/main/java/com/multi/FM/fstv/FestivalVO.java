@@ -21,6 +21,7 @@ public class FestivalVO {
 	private String fstv_playtime;
 	private String fstv_homepage;
 	private String fstv_banneraddr;
+	private int fstv_jjimCount;
 	
 	public int getFstv_no() {
 		return fstv_no;
@@ -123,6 +124,14 @@ public class FestivalVO {
 	public void setFstv_banneraddr(String fstv_banneraddr) {
 		this.fstv_banneraddr = fstv_banneraddr;
 	}
+	
+	public int getFstv_jjimCount() {
+      return fstv_jjimCount;
+    }
+
+	public void setFstv_jjimCount(int fstv_jjimcount) {
+      this.fstv_jjimCount = fstv_jjimcount;
+    }
 
 	@Override
 	public String toString() {

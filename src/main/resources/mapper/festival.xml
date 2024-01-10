@@ -15,13 +15,12 @@
 		)
 	</insert>
 	
-	<!-- 배너 지금 마감임박 limit 3으로 만들었는데 찜 리스트 추가 후 찜 갯수 많은순(인기순)으로 다시 sql문 작성 예정 -->
+	<!-- 진행중인 축제 찜순으로 정렬 완료 -->
 	<select id="bannerlist" resultType="festivalVO">
 		select * from festival
 		where fstv_startdate &lt;= current_date()
 		and fstv_enddate &gt;= current_date()
-		and fstv_image is not null
-		order by fstv_enddate limit 3
+		order by fstv_jjimCount desc limit 3
 	</select>
 	
 	<select id="endlist" resultType="festivalVO">
@@ -31,7 +30,7 @@
 		and datediff(fstv_enddate, current_date()) &lt;=21 order by fstv_enddate
 	</select>
 	
-		<!-- endlist 페이지개수 계산할 때 전체 게시물 개수가 필요함. total / 한페이지당개수 = pages -->
+		<!-- 페이지 갯수 계산, 리스트까지 완료 -->
 	<select id="cnt" resultType="int">
 		select count(*) from festival where fstv_startdate
 		&lt;= current_date() and fstv_enddate &gt;= current_date()
@@ -39,6 +38,8 @@
 		and datediff(fstv_enddate, current_date()) &lt;=21 order by fstv_enddate
 	</select>
 	
+	<!-- 축제 리스트 불러오는데 조금 수정사항 있음 이거 토대로 아래쪽에 수정 진행중 -->
+	<!-- 사용은 안하지만 일단 코드는 남겨둠 -->
 	<select id="list" resultType="festivalVO" parameterType="fstvPageVO">
 		select * from (
 		(select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_enddate)
@@ -47,6 +48,29 @@
 		union all
 		(select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate desc)
 		) as result limit #{index}, 9
+	</select>
+	
+	<!-- 현재 진행중인 축제 / 시작날짜가 가까운게 먼저 전으로 뒤로 -->
+	<select id="list1" resultType="festivalVO">
+		select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_startdate desc
+	</select>
+	
+	<!-- 시작 예정인 축제 / 시작날짜가 가까운게 먼저 멀수록 뒤로 -->
+	<select id="list2" resultType="festivalVO">
+		select * from festival	where fstv_startdate &gt; current_date() order by fstv_startdate
+	</select>
+	
+	<!-- 완료된 축제 / 정렬은 예정인 축제와 동일 -->
+	<select id="list3" resultType="festivalVO">
+		select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate
+	</select>
+	
+	<select id="one" parameterType="festivalVO" resultType="festivalVO">
+		select * from festival where fstv_no = ${fstv_no}
+	</select>
+	
+	<select id="jjim" parameterType="fstvPageVO" resultType="festivalVO">
+		select * from festival order by fstv_jjimCount desc limit #{index}, 9
 	</select>
 	
 </mapper>
