@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 170px 0px 250px;
+	margin: 200px 0px 250px;
 }
 .signup-type {
 	width: 1000px;
@@ -20,32 +20,32 @@
 	height: 200px;
 	vertical-align: top;
 }
-.signup-type a {
+.signup-type form {
 	border: 1px solid #000;
 	border-radius: 15px;
 	overflow: auto;
 	height: 200px;
 }
-.signup-type a div {
+.signup-type form div {
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 200px;
 }
-.signup-type a:hover div {
+.signup-type form:hover div {
 	font-size: 20px;
 	font-weight: bold;
 	margin-top: 20px;
 	line-height: 30px;
 }
-.signup-type a:hover {
+.signup-type form:hover {
 	background-color: #e8e8e8;
 }
-.signup-type a p, .signup-type a hr {
+.signup-type form p, .signup-type form hr {
     display: none;
 }
-.signup-type a:hover p, .signup-type a:hover hr {
+.signup-type form:hover p, .signup-type form:hover hr {
     display: block;
 }
-.signup-type a hr {
+.signup-type form hr {
 	margin: 10px 0px;
 }

@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모든 축제의 부스를 담다 - 부스락</title>
+	<script type="text/javascript">
+		alert('판매자회원가입이 완료되었습니다!');
+		location.href="main.jsp";	
+	</script>
 </head>
 <body>
-	<h3>판매자가입이 완료되었습니다!</h3>
-	<a href="sign_up.jsp">첫 화면으로 돌아가기</a>
 </body>
 </html>
