@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<title>모든 축제의 부스를 담다 - 부스락</title>
 <script type="text/javascript">
 	alert('회원가입이 완료되었습니다!');
 	location.href="main.jsp";
 </script>
+</head>
 <body>
 	
 </body>
