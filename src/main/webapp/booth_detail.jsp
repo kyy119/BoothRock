@@ -67,7 +67,7 @@
 	       							010-1234-5678
 	                            </li>
 	                        </ul>
-				            <a href="report.jsp" class="report"><i class="fa-solid fa-triangle-exclamation"></i>
+				            <a href="booth_report.jsp" class="report"><i class="fa-solid fa-triangle-exclamation"></i>
 				    			부스정보 신고하기
 				    		</a>
 	                    </div>
