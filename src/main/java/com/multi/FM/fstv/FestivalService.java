@@ -33,8 +33,16 @@ public class FestivalService {
 		return dao.cnt();
 	}
 	
-	public List<FestivalVO>list(FstvPageVO fstvPageVO) {
-		return dao.list(fstvPageVO);
+	public List<FestivalVO> list() {
+		return dao.list();
 	}
+	
+	public List<FestivalVO> jjim(FstvPageVO fstvpageVO) {
+      return dao.jjim(fstvpageVO);
+  }
+	
+	public FestivalVO one(FestivalVO festivalVO) {
+      return dao.one(festivalVO);
+    }
 	
 }
