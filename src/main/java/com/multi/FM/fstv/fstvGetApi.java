@@ -97,6 +97,7 @@ public class fstvGetApi {
 			
 			//vo.setEventInfo(arr.getJSONObject(i).getString("infotext"));
 			//vo.setEventCont(arr.getJSONObject(i).getString("infocont"));
+			System.out.println(vo);
 			list.add(vo);
 		}
 		
