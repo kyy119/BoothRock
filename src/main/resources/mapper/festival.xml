@@ -62,7 +62,7 @@
 	
 	<!-- 완료된 축제 / 정렬은 예정인 축제와 동일 -->
 	<select id="list3" resultType="festivalVO">
-		select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate
+		select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate desc
 	</select>
 	
 	<select id="one" parameterType="festivalVO" resultType="festivalVO">
