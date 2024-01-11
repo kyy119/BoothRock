@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 	<link rel="stylesheet" href="resources/css/header.css" type="text/css">
-	<link rel="stylesheet" href="resources/css/mypage_side.css" type="text/css">
     <script src="resources/js/jquery-1.12.3.js"></script>
-    <script src="resources/js/mypage_side.js" defer type="text/javascript"></script>
     <script src="resources/js/header.js" defer type="text/javascript"></script>
 	<script src="https://kit.fontawesome.com/fdb840a8cc.js" crossorigin="anonymous"></script>
     
