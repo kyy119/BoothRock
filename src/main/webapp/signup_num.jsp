@@ -12,7 +12,8 @@
 <body>
 	<%@ include file="header.jsp"%>
 
-	<div class="bodywrap" style="height: 430px; display: flex; align-items: center; justify-content: center;">
+	<div class="bodywrap">
+		<h3>회원가입을 원하시면 휴대전화 인증을 진행해주세요</h3>
 		<div class="signup-form">
 			<form action="signup_type.jsp" class="input-form" method="post">
 				<div>
