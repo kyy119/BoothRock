@@ -63,7 +63,9 @@
 	        				<i class="fa-solid fa-headset" style="color: #004080;"></i>
 	        				<%=vo.getFstv_tel() %>
 	        			</div>
-	        			<%=vo.getFstv_homepage()%>
+	        			<div id="home-page-link">
+		        			<%=vo.getFstv_homepage()%>
+	        			</div>
 	        		</div>
 	        	</div>
 	        	<hr>

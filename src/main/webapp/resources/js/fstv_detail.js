@@ -10,12 +10,23 @@ jQuery(document).ready(function() {
         $("#def-btn").removeClass("bold-text");
     });
     
-    $(".fa-regular.fa-heart").click(function(){
+    $("#jjim").click(function(){
 		$(this).toggleClass("bold-text");
 	});
 	
 	$(".more").click(function(){
-		$(this).siblings('.info-cont').slideToggle();
+		var infoCont = $(this).siblings('.info-cont');
+		var infoText = $(this).siblings('.info-text');
+		
+		var isOpen = infoCont.is(':visible');
+		
+		infoCont.slideToggle();
+		
+		if (isOpen) {
+		    infoText.css({'overflow': 'hidden', 'height': '120px'});
+		} else {
+		    infoText.css({'overflow': 'visible', 'height': 'auto'});
+		}
 	});
 	
     // 이용시간에 공백이 있을 시 시계 아이콘 가리기
@@ -36,3 +47,9 @@ jQuery(document).ready(function() {
     
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var link = document.querySelector('#home-page-link a');
+    if (link) {
+        link.innerHTML = '<i class="fa-regular fa-paper-plane"></i> 공식 홈페이지';
+    }
+});
