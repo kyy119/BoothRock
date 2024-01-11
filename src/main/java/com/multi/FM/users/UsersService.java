@@ -20,6 +20,11 @@ public class UsersService {
 		usersdao.create_account_consumer(usersvo);
 	}
 	
+	public String find_id(UsersVO usersvo) {
+	  String result = usersdao.find_id(usersvo);
+      return result;
+    }
+	
 	public void message_send(String receive,String num) {
 	   sms.sendOne(receive, num);
     }

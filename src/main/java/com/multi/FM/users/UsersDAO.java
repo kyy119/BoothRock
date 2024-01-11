@@ -19,6 +19,11 @@ public class UsersDAO {
 		my.insert("users.create_account",usersvo);
 	}
 	
+	public String find_id(UsersVO usersvo) {
+	  String result = my.selectOne("users.find_id",usersvo);
+	  return result;
+    }
+	
 	public int login(UsersVO usersvo) {
       int result = my.selectOne("users.login",usersvo);
       return result;

@@ -42,6 +42,26 @@ public class UsersController {
 		usersservice.create_account_consumer(usersvo);
 	}
 	
+	@RequestMapping("find_id")
+    public void find_id(UsersVO usersvo,Model model) {
+	  String result = usersservice.find_id(usersvo);
+	  String notify = "";
+	  String find_id_result = "0";
+	  if(!result.equals(null)) {
+	    notify = "일치하는 정보가 존재합니다!";
+	    find_id_result = result;
+	  }else {
+	    notify = "일치하는 정보가 없습니다!";
+	  }
+	  model.addAttribute("find_id_notify", notify);
+	  model.addAttribute("find_id_result", find_id_result);
+    }
+	
+	@RequestMapping("find_password")
+	public void find_password() {
+	  
+    }
+	
 	@RequestMapping("login")
 	public void login(UsersVO usersvo,Model model,HttpSession session) throws Exception{
 	  int resultTemp = usersservice.login(usersvo);
