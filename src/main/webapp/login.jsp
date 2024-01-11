@@ -14,11 +14,13 @@
     <div class="bodywrap">
     	<div class="login-form">
     		<div class="input-form">
-	    		<label for="email">E-MAIL</label><br>
-				<input type="email" id="email" name="email" placeholder="email@address.com" required><br>
-	    		<label for="password">PASSWORD</label><br>
-				<input type="password" id="password" name="password" placeholder="password" required>
-	    		<input type="submit" class="login" value="로그인">
+    			<form action="login" method="post">
+		    		<label for="user_id">E-MAIL</label><br>
+					<input type="email" id="user_id" name="user_id" placeholder="email@address.com" required><br>
+		    		<label for="user_password">PASSWORD</label><br>
+					<input type="password" id="user_password" name="user_password" placeholder="password" required>
+		    		<input type="submit" class="login" value="로그인">
+    			</form>
     		</div>
    			<div class="sub-btn">
             	<ul>
@@ -26,7 +28,7 @@
                     <li>|</li>
                     <li><a href="#" class="find-pw">비밀번호 찾기</a></li>
                     <li>|</li>
-                    <li><a href="sign_up.jsp" class="signup">회원가입</a></li>
+                    <li><a href="signup_to_num.jsp" class="signup">회원가입</a></li>
                 </ul>
    			</div>
     	</div>

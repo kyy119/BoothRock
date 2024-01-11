@@ -18,6 +18,12 @@ public class UsersDAO {
 	public void create_account_consumer(UsersVO usersvo) {
 		my.insert("users.create_account",usersvo);
 	}
+	
+	public int login(UsersVO usersvo) {
+      int result = my.selectOne("users.login",usersvo);
+      return result;
+    }
+	
 	public int phone_duplicate(String user_tel) {
 		int result = my.selectOne("users.phone_duplicate", user_tel);
 		return result;
@@ -26,5 +32,4 @@ public class UsersDAO {
 		int result = my.selectOne("users.email_duplicate", user_id);
 		return result;
 	}
-	 
 }

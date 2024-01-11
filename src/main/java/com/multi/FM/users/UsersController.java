@@ -5,19 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UsersController {
 	
 	@Autowired
 	UsersService usersservice;
-	
-	@Autowired
-	SmsSend sms;
 	
 	SecureRandom r = new SecureRandom();
 	String num = "";
@@ -44,11 +42,22 @@ public class UsersController {
 		usersservice.create_account_consumer(usersvo);
 	}
 	
-	@RequestMapping("create_authentication1")
+	@RequestMapping("login")
+	public void login(UsersVO usersvo,Model model,HttpSession session) throws Exception{
+	  int resultTemp = usersservice.login(usersvo);
+	  String result = String.valueOf(resultTemp);
+	  if (result.equals("1")) {
+         session.setAttribute("id", usersvo.getUser_id());
+      } 
+	  model.addAttribute("result",result);
+    }
+	
+	
+	@RequestMapping("create_authentication")
 	@ResponseBody
 	public String create_authentication1(String receive) {
 		num = String.valueOf(100000 + r.nextInt(900000));// >> 서비스로 빠져야함
-//		sms.sendOne(receive, num); // >> 서비스로 빠져야함
+		//usersservice.message_send(receive,num);
 		return num;
 	}
 	
@@ -66,5 +75,4 @@ public class UsersController {
 		String result2 = String.valueOf(result);
 		return result2;
 	}
-	 
 }

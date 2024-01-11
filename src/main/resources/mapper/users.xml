@@ -6,13 +6,13 @@
 	<insert id="create_account" parameterType="usersVO">
 		insert into users
 		values(#{user_id},#{user_password},#{user_role},#{user_created_at},#{user_updated_at},#{user_name},#{user_tel})
-	</insert>
+	</insert> <!-- 소비자 회원가입 -->
 	<insert id="create_seller" parameterType="sellerVO">
 		INSERT INTO seller
 		(user_id, selling_number, create_date)
 		VALUES (#{user_id},#{selling_number},#{create_date}
 		);
-	</insert>
+	</insert> <!-- 판매자 회원가입 -->
 	<!-- <select id="list" parameterType="pageVO" resultType="bbsVO"> select 
 		* from (select ROW_NUMBER() over(order by id desc) as bbs_no, id, title, 
 		content, writer from bbs b) b2 where b2.bbs_no BETWEEN ${start} and ${end} 
@@ -21,10 +21,15 @@
 		SELECT count(*)
     	FROM users
 		WHERE  user_tel = #{user_tel}
-	</select>
+	</select> <!-- 회원가입 할때 전화번호 중복검사용 -->
 	<select id="email_duplicate" parameterType="string" resultType="int">
 		SELECT count(*)
     	FROM users
 		WHERE  user_id = #{user_id}
-	</select> 
+	</select> <!-- 회원가입 할때 이메일 중복검사용 -->
+	<select id="login" parameterType="usersVO" resultType="int">
+		SELECT count(*)
+		FROM users
+		WHERE user_id = #{user_id} and user_password = #{user_password}
+	</select> <!-- 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
 </mapper>
