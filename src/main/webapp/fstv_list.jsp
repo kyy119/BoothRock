@@ -16,8 +16,11 @@
 	    	<div class="fstv-list-head">
 	    		<h1>축제리스트</h1>
 	    		<div class="date-search">
-	    			<input type="date" id="date1" name="date1"> ~ <input type="date" id="date2" name="date2">
-	    			<input type="submit" value="검색" style="height: 31px; margin-left: 5px;">
+		    		<form action="fstv_date_search">
+		    		<!-- date값을 받아들여 검색하는 기능 -->
+		    			<input type="date" id="date1" name="date1"> ~ <input type="date" id="date2" name="date2">
+		    			<input type="submit" value="검색" style="height: 31px; margin-left: 5px;">
+		    		</form>
 	    		</div>
 		        <div class="sort">
 		        	<button id="def-btn" class="bold-text">기본순</button> | <button id="pop-btn">인기순</button>
