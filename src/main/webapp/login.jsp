@@ -24,7 +24,7 @@
     		</div>
    			<div class="sub-btn">
             	<ul>
-                    <li><a href="#" class="find-id">아이디 찾기</a></li>
+                    <li><a href="find_id_num.jsp" class="find-id">아이디 찾기</a></li>
                     <li>|</li>
                     <li><a href="#" class="find-pw">비밀번호 찾기</a></li>
                     <li>|</li>
