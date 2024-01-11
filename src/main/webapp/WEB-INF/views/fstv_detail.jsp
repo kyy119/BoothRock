@@ -9,12 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
 	<link rel="stylesheet" href="resources/css/fstv_detail.css" type="text/css">
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APPkey"></script>
 	<script src="resources/js/fstv_detail.js" defer type="text/javascript"></script>
-	<script src="resources/js/fstv_list.js" defer type="text/javascript"></script>
 </head>
 <body>
+
     <%@ include file="../../header.jsp" %>
-    
+   
     <div class="bodywrap">
     	<div class="fstv-detail-form">
 	    	<div class="fstv-title">
@@ -71,9 +73,11 @@
 		        			찾아오는 길
 		        		<i class="fa-solid fa-chevron-right"></i>
 	        		</h3>
-	        		<div class="fstv-map">
+	        	
+	        		<div id="map" class="fstv-map"></div>
+	        		<!-- <div class="fstv-map">
 	        			<img alt="카카오맵" src="resources/img/카카오맵.png">
-	        		</div>
+	        		</div> -->
 	        	</div>
 	        	<hr>
 	        	<div class="booth-form">
@@ -209,6 +213,38 @@
     </div>
 	
 	<%@ include file="../../footer.jsp" %>
+	<script>
+		const lat = <%=vo.getFstv_mapy()%>;
+		const lng = <%=vo.getFstv_mapx()%>;
+		var title = "<%=vo.getFstv_title()%>";
+		console.log(lat)
+		console.log(lng)
+ 
+		var mapContainer = document.getElementById('map'), 		// 지도 표시 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(lat, lng), 			// 지도 중심좌표
+			level : 3 											// 지도 확대 lv
+		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption);	// 지도 생성
+		var markerPosition = new kakao.maps.LatLng(lat, lng);	// 마커 position
+		var marker = new kakao.maps.Marker({					// 마커를 생성합니다
+			position : markerPosition
+		});
+		marker.setMap(map);										// 마커 지도에 배치
+		
+		// 인포윈도우에 표출될 내용(HTML 문자열이나 document element 가능)
+		var iwContent = '<div style="padding:5px;">'+ title +'<br><a href="https://map.kakao.com/link/map/' + title + ','
+						+ lat + ',' + lng + '+" style="color:blue" target="_blank">큰지도보기</a><a href="https://map.kakao.com/link/to/'
+						+ title + lat + lng + '"style="color:blue" target="_blank">길찾기</a></div>',
+		iwPosition = new kakao.maps.LatLng(lat, lng); 			//인포윈도우 표시 위치
+
+		var infowindow = new kakao.maps.InfoWindow({			// 인포윈도우를 생성합니다
+			position : iwPosition,
+			content : iwContent	});
+		
+		infowindow.open(map, marker);							// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	</script>
 
 </body>
 </html>
