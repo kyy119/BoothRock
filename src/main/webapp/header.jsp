@@ -34,7 +34,7 @@
             	%>
 	            	<ul>
 	                    <li><a href="login.jsp">로그인</a></li>		<%-- 로그인 세션을 받아오면 로그아웃/마이페이지로 변경 --%>
-	                    <li><a href="signup_to_num.jsp">회원가입</a></li>
+	                    <li><a href="signup_num.jsp">회원가입</a></li>
 	                </ul>
                 <% }else{ %>
                  	<ul>
