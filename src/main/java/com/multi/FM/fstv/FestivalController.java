@@ -1,16 +1,19 @@
 package com.multi.FM.fstv;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -55,7 +58,7 @@ public class FestivalController {
 
   // 리스트 페이지 전체 축제리스트 불러오는 메서드 / 페이징 처리 포함
   @RequestMapping("fstv_list")
-  public void list(FstvPageVO fstvpageVO, Model model) {
+  public void list(FestivalPageVO fstvpageVO, Model model) {
     fstvpageVO.calidx(); // js에서 page데이터를 받아오고 index를 설정
     List<FestivalVO> list = service.list(); // list를 불러옴
     model.addAttribute("list", list); // views에 가져온 list전달
@@ -63,7 +66,7 @@ public class FestivalController {
   }
 
   @RequestMapping("fstv_jjim")
-  public void list_jjim(FstvPageVO fstvpageVO, Model model) {
+  public void list_jjim(FestivalPageVO fstvpageVO, Model model) {
     fstvpageVO.calidx();
     List<FestivalVO> list = service.jjim(fstvpageVO);
     model.addAttribute("list", list);
@@ -73,6 +76,14 @@ public class FestivalController {
   public void detail(FestivalVO festivalVO, Model model) {
     FestivalVO vo = service.one(festivalVO);
     model.addAttribute("vo", vo);
+  }
+  
+  @RequestMapping("fstv_date_search")
+  public void date(
+      @RequestParam("date1") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date1,
+      @RequestParam("date2") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date2,
+      FestivalDateVO date) {
+    service.date(date);
   }
 
 }

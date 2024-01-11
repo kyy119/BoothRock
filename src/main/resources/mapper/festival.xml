@@ -40,7 +40,7 @@
 	
 	<!-- 축제 리스트 불러오는데 조금 수정사항 있음 이거 토대로 아래쪽에 수정 진행중 -->
 	<!-- 사용은 안하지만 일단 코드는 남겨둠 -->
-	<select id="list" resultType="festivalVO" parameterType="fstvPageVO">
+	<select id="list" resultType="festivalVO" parameterType="festivalPageVO">
 		select * from (
 		(select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_enddate)
 		union all
@@ -69,8 +69,12 @@
 		select * from festival where fstv_no = ${fstv_no}
 	</select>
 	
-	<select id="jjim" parameterType="fstvPageVO" resultType="festivalVO">
+	<select id="jjim" parameterType="festivalPageVO" resultType="festivalVO">
 		select * from festival order by fstv_jjimCount desc limit #{index}, 9
+	</select>
+	
+	<select id="date" parameterType="festivalDateVO" resultType="festivalVO">
+		select * from festival
 	</select>
 	
 </mapper>

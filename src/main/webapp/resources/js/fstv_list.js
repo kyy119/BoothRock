@@ -78,6 +78,27 @@ jQuery(document).ready(function(){
 	        });
 	    }
 	});
+	
+	$('#myForm').submit(function(event) {
+            // 폼 전송을 막음
+            event.preventDefault();
+            
+            // AJAX 호출
+            $.ajax({
+                url: 'your_backend_url',  // 백엔드 URL 설정
+                method: 'POST',  // 또는 'GET' 등 원하는 HTTP 메서드 사용
+                data: $(this).serialize(),  // 폼 데이터를 직렬화하여 전송
+                success: function(response) {
+                    // 성공 시 처리
+                    console.log(response);
+                },
+                error: function(error) {
+                    // 실패 시 처리
+                    console.error(error);
+                }
+            });
+        });
+	
 	// ===============================================================================================
 	
 });

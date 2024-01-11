@@ -235,8 +235,8 @@
 		
 		// 인포윈도우에 표출될 내용(HTML 문자열이나 document element 가능)
 		var iwContent = '<div style="padding:5px;">'+ title +'<br><a href="https://map.kakao.com/link/map/' + title + ','
-						+ lat + ',' + lng + '+" style="color:blue" target="_blank">큰지도보기</a><a href="https://map.kakao.com/link/to/'
-						+ title + lat + lng + '"style="color:blue" target="_blank">길찾기</a></div>',
+						+ lat + ',' + lng + '" style="color:blue" target="_blank">큰지도보기</a><a href="https://map.kakao.com/link/to/'
+						+ title + ',' + lat + ',' + lng + '"style="color:blue" target="_blank">길찾기</a></div>',
 		iwPosition = new kakao.maps.LatLng(lat, lng); 			//인포윈도우 표시 위치
 
 		var infowindow = new kakao.maps.InfoWindow({			// 인포윈도우를 생성합니다
