@@ -28,11 +28,10 @@ jQuery(document).ready(function() {
 	
 		var imgRatio = imgWidth / imgHeight;
 	
-		if (imgRatio > 1) {
+		if (imgRatio >= 1) {
 			img.css('width', '480px');
 		} else if (imgRatio < 1) {
 			img.css('height', '500px');
-			img.css('width', 'auto');
 		}
 	}
 	

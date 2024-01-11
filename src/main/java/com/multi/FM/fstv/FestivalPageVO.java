@@ -1,6 +1,6 @@
 package com.multi.FM.fstv;
 
-public class FstvPageVO {
+public class FestivalPageVO {
 	private int index;
 	private int page;
 	

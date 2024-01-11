@@ -37,12 +37,15 @@ public class FestivalService {
 		return dao.list();
 	}
 	
-	public List<FestivalVO> jjim(FstvPageVO fstvpageVO) {
+    public List<FestivalVO> jjim(FestivalPageVO fstvpageVO) {
       return dao.jjim(fstvpageVO);
-  }
+    }
 	
 	public FestivalVO one(FestivalVO festivalVO) {
       return dao.one(festivalVO);
     }
 	
+    public List<FestivalVO> date(FestivalDateVO date) {
+      return dao.date(date);
+    }	
 }
