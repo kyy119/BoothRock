@@ -45,7 +45,7 @@ public class FestivalService {
       return dao.one(festivalVO);
     }
 	
-    public List<FestivalVO> date(FestivalDateVO date) {
-      return dao.date(date);
+    public List<FestivalVO> date(FestivalPageVO vo) {
+      return dao.date(vo);
     }	
 }

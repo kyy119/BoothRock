@@ -69,12 +69,12 @@
 		select * from festival where fstv_no = ${fstv_no}
 	</select>
 	
-	<select id="jjim" parameterType="festivalPageVO" resultType="festivalVO">
+	<select id="jjim" parameterType="festivalVO" resultType="festivalVO">
 		select * from festival order by fstv_jjimCount desc limit #{index}, 9
 	</select>
 	
-	<select id="date" parameterType="festivalDateVO" resultType="festivalVO">
-		select * from festival
+	<select id="date" parameterType="festivalPageVO" resultType="festivalVO">
+		select * from festival where fstv_startdate &gt;= #{date1} and fstv_enddate &lt;= #{date2} order by fstv_startdate
 	</select>
 	
 </mapper>
