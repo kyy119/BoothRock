@@ -1,13 +1,11 @@
 package com.multi.FM.fstv;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,13 +75,11 @@ public class FestivalController {
     FestivalVO vo = service.one(festivalVO);
     model.addAttribute("vo", vo);
   }
-  
+
   @RequestMapping("fstv_date_search")
-  public void date(
-      @RequestParam("date1") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date1,
-      @RequestParam("date2") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date2,
-      FestivalDateVO date) {
-    service.date(date);
+  public void date(Model model, FestivalPageVO vo) {
+    List<FestivalVO> list = service.date(vo);
+    model.addAttribute("list", list);
   }
 
 }
