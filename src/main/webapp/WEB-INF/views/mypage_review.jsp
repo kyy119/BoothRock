@@ -8,7 +8,6 @@
 <%
   /* List<ReviewVO> VO = (List<ReviewVO>)request.getAttribute("list"); */
 List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
-System.out.print(VO);
 %>
 <h1>내 리뷰보기</h1>
 <br>
