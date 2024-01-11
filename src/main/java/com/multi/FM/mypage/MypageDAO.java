@@ -6,12 +6,17 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.multi.FM.booth.BoothReviewVO;
+import com.multi.FM.users.UsersVO;
 
 @Repository
 public class MypageDAO {
     
     @Autowired
     SqlSessionTemplate my;
+    
+    public List<UsersVO> user_info(String user_id){
+      return my.selectList("myPage.user_info", user_id);
+    }
     
     public List<BoothReviewVO> review_list(String user_id) { //리뷰 조회
         return my.selectList("myPage.review_list", user_id);
