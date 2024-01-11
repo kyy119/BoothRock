@@ -19,8 +19,8 @@ public class SmsSend {
 		return this.messageService.getMessageList(request);
 	}
 
-	private String apiKey = "NCSC2AZXNKGTMGC3";
-	private String apiSecretKey = "GGEZPQA2GDMUZQVVQLMVYL8RAFGLJUMU";
+	private String apiKey = "";
+	private String apiSecretKey = "";
 
 	final DefaultMessageService messageService;
 
