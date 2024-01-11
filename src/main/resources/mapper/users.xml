@@ -32,4 +32,9 @@
 		FROM users
 		WHERE user_id = #{user_id} and user_password = #{user_password}
 	</select> <!-- 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
+	<select id="find_id" parameterType="usersVO" resultType="String">
+		SELECT user_id
+		FROM users
+		WHERE user_name = #{user_name} and user_tel = #{user_tel}
+	</select> <!-- 아이디 찾기  -->
 </mapper>
