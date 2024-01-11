@@ -4,7 +4,7 @@
 <ul>
 	<c:forEach items="${endlist}" var="vo">
 	<li>
-		<a href="fstv_detail.jsp">
+		<a href="fstv_detail?fstv_no=${vo.fstv_no}">
 			<img src="${vo.fstv_image}" alt="이미지1">
 			<div class="fstv-title">${vo.fstv_title}</div>
 			<div class="fstv-loc">${vo.fstv_banneraddr}</div>

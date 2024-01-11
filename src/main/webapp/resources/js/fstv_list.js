@@ -51,6 +51,26 @@ jQuery(document).ready(function(){
 			$('.fstv-list').html(list)
 		}
 	})
+		
+	// 기간입력 검색파트
+	$('#dateform').submit(function(event) {
+		event.preventDefault();					// 폼 전송 막기
+		let date1 = document.getElementById('date1').value;
+		let date2 = document.getElementById('date2').value;
+		list_url = "fstv_date_search";
+		console.log(date1);
+		$.ajax({
+			url : list_url,
+			data : {
+				date1 : date1,
+				date2 : date2,
+			},
+			success : function(data) {
+				$('.fstv-list').html(data);
+				page = "1";
+			}
+		})
+	});
 	
 	// ====================================스크롤 페이징 처리파트============================================
 	let loading = false; // 로딩 중인지 여부를 나타내는 변수
@@ -64,7 +84,7 @@ jQuery(document).ready(function(){
 	
 	        $.ajax({										// AJAX를 사용하여 새로운 리스트를 서버에서 가져옴
 	            url: list_url,
-	            data : {
+	            data : {           	
 	            	page : page								// 스크롤할때마다 추가된 page를 controller에 전달
 	            },
 	            type: 'GET',
@@ -78,26 +98,6 @@ jQuery(document).ready(function(){
 	        });
 	    }
 	});
-	
-	$('#myForm').submit(function(event) {
-            // 폼 전송을 막음
-            event.preventDefault();
-            
-            // AJAX 호출
-            $.ajax({
-                url: 'your_backend_url',  // 백엔드 URL 설정
-                method: 'POST',  // 또는 'GET' 등 원하는 HTTP 메서드 사용
-                data: $(this).serialize(),  // 폼 데이터를 직렬화하여 전송
-                success: function(response) {
-                    // 성공 시 처리
-                    console.log(response);
-                },
-                error: function(error) {
-                    // 실패 시 처리
-                    console.error(error);
-                }
-            });
-        });
 	
 	// ===============================================================================================
 	

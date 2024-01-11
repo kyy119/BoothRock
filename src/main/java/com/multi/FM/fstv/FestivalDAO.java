@@ -53,8 +53,8 @@ public class FestivalDAO {
     return my.selectOne("fest.one", festivalVO);
   }
   
-  public List<FestivalVO> date(FestivalDateVO date) {
-    return my.selectList("fest.date", date);
+  public List<FestivalVO> date(FestivalPageVO vo) {
+    return my.selectList("fest.date", vo);
   }
 
 }
