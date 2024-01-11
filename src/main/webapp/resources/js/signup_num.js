@@ -45,7 +45,7 @@ function dupli(duplicate){
 	     authNumHTML += '<button id="verify">인증하기</button>';
 	     $('#authNum').html(authNumHTML);
 		 $.ajax({
-			url : "create_authentication1",
+			url : "create_authentication",
 			data : {
 				receive : $('#phone_number').val()
 			},
