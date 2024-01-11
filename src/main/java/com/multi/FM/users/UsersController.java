@@ -47,11 +47,11 @@ public class UsersController {
 	  String result = usersservice.find_id(usersvo);
 	  String notify = "";
 	  String find_id_result = "0";
-	  if(!result.equals(null)) {
-	    notify = "ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ Á¸ÀçÇÕ´Ï´Ù!";
+	  if(result != null && !result.equals("")) {
+	    notify = "ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì¡´ìž¬í•©ë‹ˆë‹¤";
 	    find_id_result = result;
 	  }else {
-	    notify = "ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾ø½À´Ï´Ù!";
+	    notify = "ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤";
 	  }
 	  model.addAttribute("find_id_notify", notify);
 	  model.addAttribute("find_id_result", find_id_result);
@@ -76,7 +76,7 @@ public class UsersController {
 	@RequestMapping("create_authentication")
 	@ResponseBody
 	public String create_authentication1(String receive) {
-		num = String.valueOf(100000 + r.nextInt(900000));// >> ¼­ºñ½º·Î ºüÁ®¾ßÇÔ
+		num = String.valueOf(100000 + r.nextInt(900000));// >> ï¿½ï¿½ï¿½ñ½º·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		//usersservice.message_send(receive,num);
 		return num;
 	}

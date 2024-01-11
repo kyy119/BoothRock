@@ -11,52 +11,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>모든 축제의 부스를 담다 - 부스락</title>
 <style>
-	.find-id-result {
-		width: 380px;
-		height: 265px;
-		border: 1px solid #000;
-		border-radius: 15px;
+	.bodywrap {
+		margin: 200px 0px 350px;
 		text-align: center;
 	}
+	.find-id-result {
+		width: 380px;
+		height: 200px;
+		border: 1px solid #000;
+		border-radius: 15px;
+	}
+	.find-id-result .find-id {
+		font-size : 25px;
+		color: red;
+		margin: 50px 0px;
+	}
 	.find-id-result a button {
-		width: 100px;
-		height: 100px;
+		width: 150px;
+		height: 40px;
 		border-radius: 15px;
 		border: 1px solid #808080;
 		color: #808080;
 		background-color: #fff;
-		font-weight: 600;
+		font-weight: bold;
+		font-size: 16px;
 	}
 	.find-id-result a button:hover {
 		background-color: #ddd;
-	}
-	.find-id-result p{
-		font-size : 20px;
-		color: red;
-	}
-	.find-id-result h3{
-		font-size : 20px;
-		color: blue;
 	}
 </style>
 </head>
 <body>
 	<%@ include file="../../header.jsp" %>
 	
-	<div class="find-id-result">
+	<div class="bodywrap">
 		<h3><%= notify %></h3><br>
-		<% 
-			if(find_id_result.equals("0")){
-		%>
-			<a href="find_id_num.jsp"><button>다시 찾기</button></a>
-		<%
-			}else{
-		%>
-			<p>아이디 : <%= find_id_result %><p><br><br>
-			<a href="login.jsp"><button>로그인 하러가기</button></a>		
-		<%
-			}
-		%>
+		<div class="find-id-result">
+			<% 
+				if(find_id_result.equals("0")){
+			%>
+				<a href="find_id_num.jsp" style="margin-top: 70px;">
+					<button>다시 찾기</button>
+				</a>
+			<%
+				}else{
+			%>
+				<div class="find-id">ID : <%= find_id_result %></div>
+				<a href="login.jsp">
+					<button>로그인 하러가기</button>
+				</a>		
+			<%
+				}
+			%>
+		</div>
 	</div>
 	
 	<%@ include file="../../footer.jsp" %>
