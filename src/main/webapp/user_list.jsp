@@ -48,7 +48,7 @@
 				</thead>
 				<tbody>
     				<tr>
-				      	<td>Admin</td>
+				      	<td>관리자</td>
 				      	<td>Boothrock@gmail.com</td>
 				      	<td>관리자</td>
 				      	<td>010-1234-5678</td>
@@ -58,7 +58,7 @@
 				    </tr>
     				<tr>
 				      	<td>김유미</td>
-				      	<td>yumii2307@naver.com</td>
+				      	<td><a href="user_detail_cus.jsp">yumii2307@naver.com</a></td>
 				      	<td>소비자</td>
 				      	<td>010-5706-2307</td>
 				      	<td>2024-01-10</td>
@@ -67,7 +67,7 @@
     				</tr>
     				<tr>
 				      	<td>김종현</td>
-				      	<td>whdgus9696@daum.net</td>
+				      	<td><a href="user_detail_seller.jsp">whdgus9696@daum.net</a></td>
 				      	<td>판매자</td>
 				      	<td>010-2560-5783</td>
 				      	<td>2024-01-10</td>

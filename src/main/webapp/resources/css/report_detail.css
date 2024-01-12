@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.bodywrap {
+	width: 1200px;
+	margin: 110px auto 201px;
+}
+.report-form {
+	width: 600px;
+}
+.report-booth .back {
+	float: right;
+	display: inline-block;
+}
+.report-booth {
+	margin-bottom: 20px;
+}
+.report-booth .booth-title {
+	display: inline-block;
+	color: red;
+}
+.report-detail h2 {
+	display: inline-block;
+}
+.report-info {
+	float: right;
+	font-size: 15px;
+	color: #808080;
+	margin-top: 10px;
+}
+.report-content {
+	width: 600px;
+	height: 200px;
+	margin-top: 20px;
+}
+.btn {
+	text-align: center;
+	margin-top: 40px;
+	width: 400px;
+}
+.btn button {
+	padding: 5px 10px;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 6px;
+	font-size: 17px;
+	margin: 0px 6px 10px;
+}
+.btn button:hover {
+	background-color: #ddd;
+}

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 100px 0px;
+	margin: 50px 0px;
 	height: 700px;
 }
 .admin-main-form {
@@ -13,26 +13,22 @@
 	float: left;
 	width: 400px;
 }
-.admin-main-form h2 {
-	margin-bottom: 20px;
-	font-size: 26px;
-}
 .admin-main-form a {
 	width: 300px;
 	height: 230px;
-	background-color: #f0f0f0;
 	margin: 70px auto;
 	border-radius: 15px;
 	padding: 20px;
 	box-sizing: border-box;
-	text-align: left;
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px dotted #808080;
+    box-shadow: 0px 2px 3px #888;
 }
 .admin-main-form a:hover {
 	opacity: 0.6;
+}
+.admin-main-form a i {
+	font-size: 40px;
+	margin: 20px;
+	display: block;
 }
 .admin-main-form span {
 	font-size: 19px;
