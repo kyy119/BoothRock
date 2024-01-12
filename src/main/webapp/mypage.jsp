@@ -9,7 +9,7 @@
 <!-- 임의로 세션 설정 -->
 <%
 	session.setAttribute("userId", "user1");
-	session.setAttribute("userRole", "sell");
+	session.setAttribute("userRole", "cus");
 %>
 <!-- 세션 값 가져오기 -->
 <%
