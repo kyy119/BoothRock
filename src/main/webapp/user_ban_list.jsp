@@ -7,57 +7,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="resources/css/user_list.css" type="text/css">
+    <script src="resources/js/user_list.js" defer type="text/javascript"></script>
 </head>
 <body>
     <%@ include file="admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="ban-list-form"> <!-- 페이징 필요 -->
-	    	<h1>Ban List</h1>
+	    	<h1>User Ban List</h1>
+	    	<div class="select-search-form">
+	    		<select>
+		    		<option>Name</option>
+		    		<option>Email</option>
+		    		<option>Tel</option>
+		    		<option>Created</option>
+		    		<option>Updated</option>
+		    		<option>F / C</option>
+		    	</select>
+		    	<input type="text" id="search">
+		    	<input type="submit" id="submit" value="검색">
+	    	</div>
 	    	<table>
 				<thead>
     				<tr>
-      					<th>ID</th>
-      					<th class=type-select>
+					    <th>Name</th>
+      					<th>Email</th>
+      					<th class="type-select">
       						<select>
       							<option>Type</option>
       							<option>소비자</option>
       							<option>판매자</option>
-      							<option>관리자</option>
       						</select>
       					</th>
-					    <th>Name</th>
 					    <th>Tel</th>
-					    <th>Created</th>
-					    <th>Updated</th>
-					    <th>Selling Num</th>
-					    <th>Ban</th>
+					    <th>Created <i class="fa-solid fa-caret-down"></i></th>
+					    <th>Updated <i class="fa-solid fa-caret-down"></i></th>
+					    <th>F / C</th>
     				</tr>
 				</thead>
 				<tbody>
     				<tr>
-				      	<td>yumii2307</td>
-				      	<td>소비자</td>
 				      	<td>김유미</td>
+				      	<td><a href="user_detail.jsp">yumii2307@naver.com</a></td>
+				      	<td>소비자</td>
 				      	<td>010-5706-2307</td>
 				      	<td>2024-01-10</td>
 				      	<td>2024-01-10</td>
-				      	<td></td>
-				      	<td>
-				      		<button>해제</button>
-				      	</td>
+				      	<td>2 회</td>
     				</tr>
     				<tr>
-				      	<td>whdgus9696</td>
-				      	<td>판매자</td>
 				      	<td>김종현</td>
+				      	<td><a href="user_detail.jsp">whdgus9696@daum.net</a></td>
+				      	<td>판매자</td>
 				      	<td>010-2560-5783</td>
 				      	<td>2024-01-10</td>
 				      	<td>2024-01-10</td>
-				      	<td>387-50-65201</td>
-				      	<td>
-				      		<button>해제</button>
-				      	</td>
+				      	<td>2 회</td>
     				</tr>
 				</tbody>
 			</table>

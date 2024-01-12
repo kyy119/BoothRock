@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
     });
     
     $("#jjim").click(function(){
-		$(this).toggleClass("bold-text");
+		$(this).toggleClass("jjim-bold-text");
 	});
 	
 	$(".more").click(function(){

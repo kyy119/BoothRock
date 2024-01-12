@@ -31,7 +31,7 @@
 	    		<table>
 					<thead>
 	    				<tr>
-	      					<th>User ID</th>
+	      					<th>Email</th>
 	      					<th>Type</th>
 						    <th>Title</th>
 						    <th>Date</th>
