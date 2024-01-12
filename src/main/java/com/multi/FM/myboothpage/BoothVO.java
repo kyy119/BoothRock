@@ -1,10 +1,12 @@
 package com.multi.FM.myboothpage;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class BoothVO {
 	private int booth_no;
 	private String booth_name;
@@ -17,5 +19,4 @@ public class BoothVO {
 	private String booth_category;
 	private String booth_introduction;
 	private String booth_ban;
-
 }
