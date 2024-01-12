@@ -9,4 +9,5 @@ jQuery(document).ready(function() {
         $(this).find('.sub-menu').stop().slideUp(500);
         
     });
+    
 });

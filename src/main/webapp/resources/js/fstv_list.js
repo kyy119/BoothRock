@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 		$.ajax({
         	url : list_url,								// 기본순(fstv_list)으로 지정된 url 어노테이션으로 이동
         	data : {
-        	page : "1"									// 페이지값 1지정 후 idx계산해서 첫페이지 출력
+        		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
         	},
         	success : function(list) {
         		$('.fstv-list').empty();				// 기존 fstv-list에 있던 내용들 지우고
@@ -26,7 +26,7 @@ jQuery(document).ready(function(){
         $.ajax({										// 동시에 ajax
         	url : list_url,								// 인기순(fstv_jjim)으로 지정된 url 어노테이션으로 이동
         	data : {
-        	page : "1"									// 페이지값 1지정 후 idx계산해서 첫페이지 출력
+        		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
         	},
         	success : function(list) {
         		console.log(list_url);
@@ -41,20 +41,11 @@ jQuery(document).ready(function(){
 		$(this).toggleClass("bold-text");
 	});
 	
-	// 지도 스크롤
-	var originalPosition = $(".fstv-map").offset().top;
-	
-	$(window).scroll(function() {
-	    var position = $(window).scrollTop(); 
-	    var newPosition = Math.max(originalPosition, position + 40);
-	    $(".fstv-map").stop().animate({"top": newPosition + "px"}, 800);
-	});
-	
 	// 축제 리스트 첫 페이지를 위한 ajax, idx 0~9까지의 결과를 가져온다
 	$.ajax({
 		url : list_url,
 		data : {
-		page : "1"
+			page : "1"
 		},
 		success : function(list) {
 			$('.fstv-list').html(list)

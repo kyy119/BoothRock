@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.multi.FM.myboothpage.BoothVO;
 
 @Repository
 public class FestivalDAO {
@@ -56,5 +57,16 @@ public class FestivalDAO {
   public List<FestivalVO> date(FestivalPageVO vo) {
     return my.selectList("fest.date", vo);
   }
+  
+  public List<FestivalBoothVO> booth_in(FestivalVO vo) {
+    return my.selectList("fest.booth_in", vo);
+  }
 
+  public List<FestivalBoothVO> booth_star(FestivalVO vo) {
+    return my.selectList("fest.booth_star", vo);
+  }
+  
+  public List<FestivalVO> search(String q) {
+    return my.selectList("fest.search", q);
+  }
 }
