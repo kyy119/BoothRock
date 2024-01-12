@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
+	height: 800px;
     width: 1400px;
     overflow: auto;
     margin-bottom: 100px;

@@ -10,7 +10,7 @@
     <title>모든 축제의 부스를 담다 - 부스락</title>
 	<link rel="stylesheet" href="resources/css/fstv_detail.css" type="text/css">
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bfc76317e78b81b1a32b1be44269182"></script>
 	<script src="resources/js/fstv_detail.js" defer type="text/javascript"></script>
 </head>
 <body>

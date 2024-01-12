@@ -24,16 +24,15 @@ public class SmsSend {
 
 	final DefaultMessageService messageService;
 
-	public SmsSend() { // ¹İµå½Ã °èÁ¤ ³» µî·ÏµÈ À¯È¿ÇÑ API Å°, API Secret Key¸¦
+	public SmsSend() { 
 		this.messageService = NurigoApp.INSTANCE.initialize(apiKey, apiSecretKey, "https://api.coolsms.co.kr");
 	}
 
 	public SingleMessageSentResponse sendOne(String receive,String num) {
 		Message message = new Message();
-		// ¹ß½Å¹øÈ£ ¹× ¼ö½Å¹øÈ£´Â ¹İµå½Ã 01012345678 ÇüÅÂ·Î ÀÔ·ÂµÇ¾î¾ß ÇÕ´Ï´Ù.
 		message.setFrom("01041784636");
 		message.setTo(receive);
-		message.setText("[ºÎ½ºäÅ] ¾Æ·¡ÀÇ ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n" + num);
+		message.setText("[ë¶€ìŠ¤æ¨‚] ì•„ë˜ì˜ ì¸ì¦ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”\n" + num);
 
 		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
 		System.out.println(response);
