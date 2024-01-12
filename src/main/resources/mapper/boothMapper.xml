@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.multi.FM.mapper.boothMapper">
+<mapper namespace="booth">
 
 
-	<select id="detail" resultType="com.multi.FM.myboothpage.BoothVO">
-		SELECT b.*, f.fstv_title
-		FROM booth b
-		INNER JOIN festival f ON b.fstv_no = f.fstv_no
-		WHERE b.booth_no = #{booth_no}
+	<select id="detail" parameterType="boothVO" resultType="boothVO">
+		select * from booth where booth_no = #{booth_no}
 	</select>
 	
-	<select id="product" resultType="com.multi.FM.booth.BoothProductVO">
-		SELECT * 
-		FROM booth_product 
-		WHERE booth_no = #{booth_no}
+	
+	<select id="product" resultType="boothProductVO">
+		select * from booth_product where booth_no = #{booth_no}
 	</select>
 	
 	

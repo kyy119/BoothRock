@@ -1,14 +1,11 @@
 package com.multi.FM.booth;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.multi.FM.fstv.FestivalVO;
 import com.multi.FM.myboothpage.BoothVO;
 
 
@@ -16,34 +13,24 @@ import com.multi.FM.myboothpage.BoothVO;
 @Controller
 public class BoothContoller {
 
-//  @Autowired
-//  BoothDAO dao;
-//
-//  // booth ªÛºº ∆‰¿Ã¡ˆ_booth¡§∫∏
-//  @RequestMapping("/detail")
-//  public String detail(Model model) throws Exception {
-//    List<BoothVO> detail = dao.detail();
-//    model.addAttribute("booth_detail", detail);
-//    return "booth_detail";
-//  }// detail
-//
-//  // booth ªÛºº ∆‰¿Ã¡ˆ_booth_product¡§∫∏
-//  @RequestMapping("/product")
-//  public String product(Model model) throws Exception {
-//    List<BoothProductVO> product = dao.product();
-//    model.addAttribute("booth_product", product);
-//    return "booth_detail";
-//  }// product
-//
-//  // booth ªÛºº ∆‰¿Ã¡ˆ_¡ﬂ∫πΩ≈∞Ì√º≈©
-//  // 1 ID¥Á ∞¢ ∫ŒΩ∫ Ω≈∞Ì∏¶ «— π¯∏∏ «“ ºˆ ¿÷µµ∑œ ¡¶«—
-//  @RequestMapping("/duplicateReportCheck")
-//  public String report(Model model, HttpSession session) {
-//    String userId = (String) session.getAttribute("userId");
-//    model.addAttribute("userId", userId);
-//    return "booth_detail";
-//  }// duplicateReportCheck
+  @Autowired
+  BoothDAO dao;
+  
+  @Autowired
+  BoothService boothSV;
 
+  // booth ÏÉÅÏÑ∏ ÌéòÏù¥ÏßÄ_boothÏ†ïÎ≥¥
+  @RequestMapping("booth_detail")
+  public void detail(BoothVO boothVO, Model model) {
+    BoothVO boothDetail = boothSV.detail(boothVO);
+    model.addAttribute("boothDetail", boothDetail);
+  }//booth_detail
+  
 
-
+  // booth ÏÉÅÏÑ∏ ÌéòÏù¥ÏßÄ_booth_productÏ†ïÎ≥¥
+  @RequestMapping("booth_product")
+  public void product(Model model){
+    List<BoothProductVO> boothProduct = boothSV.product();
+    model.addAttribute("boothProduct", boothProduct);
+  }// product
 }// class

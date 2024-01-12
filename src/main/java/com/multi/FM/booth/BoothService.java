@@ -1,24 +1,22 @@
 package com.multi.FM.booth;
 
 import java.util.List;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import com.multi.FM.myboothpage.BoothVO;
 
-@Repository
-public class BoothDAO {
+@Service
+public class BoothService {
+  
   @Autowired
-  SqlSessionTemplate my;
-
+  BoothDAO dao;
+  
   public BoothVO detail(BoothVO boothVO) {
-    return my.selectOne("booth.detail", boothVO);
+    return dao.detail(boothVO);
   }
   
   public List<BoothProductVO> product() {
-    return my.selectList("booth.product");
+    return dao.product();
   }
-
-  
 
 }
