@@ -95,4 +95,12 @@ public class FestivalController {
     return "fstv_detail_boothin";
   }
   
+  @RequestMapping("fstv_search")
+  public void search(String q, Model model) {
+    System.out.println(q);
+    List<FestivalVO> list = service.search(q);
+    model.addAttribute("list", list);
+    model.addAttribute("q", q);
+  }
+  
 }

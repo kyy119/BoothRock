@@ -24,7 +24,9 @@
                         </ul>
                     </li>
                     <li class="input-line">
-                    	<input placeholder="검색어를 입력해주세요."><button class="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    	<form action="fstv_search">
+                    		<input name="q" placeholder="검색어를 입력해주세요."><button class="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    	</form>
                     </li>
                 </ul>
             </nav>

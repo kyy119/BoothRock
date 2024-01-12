@@ -104,4 +104,9 @@
 		order by booth_starpoint desc
 	</select>
 	
+	<!-- 헤더 검색기능 구현 -->
+	<select id="search" parameterType="String" resultType="festivalVO">
+		select * from festival where fstv_title like concat('%', #{title}, '%') 
+	</select>
+	
 </mapper>

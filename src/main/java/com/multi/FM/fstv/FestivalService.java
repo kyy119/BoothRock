@@ -56,4 +56,8 @@ public class FestivalService {
     public List<FestivalBoothVO> booth_star(FestivalVO vo) {
       return dao.booth_star(vo);
     }
+    
+    public List<FestivalVO> search(String q) {
+      return dao.search(q);
+    }
 }

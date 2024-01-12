@@ -65,4 +65,8 @@ public class FestivalDAO {
   public List<FestivalBoothVO> booth_star(FestivalVO vo) {
     return my.selectList("fest.booth_star", vo);
   }
+  
+  public List<FestivalVO> search(String q) {
+    return my.selectList("fest.search", q);
+  }
 }

@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 		$.ajax({
         	url : list_url,								// 기본순(fstv_list)으로 지정된 url 어노테이션으로 이동
         	data : {
-        	page : "1"									// 페이지값 1지정 후 idx계산해서 첫페이지 출력
+        		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
         	},
         	success : function(list) {
         		$('.fstv-list').empty();				// 기존 fstv-list에 있던 내용들 지우고
@@ -26,7 +26,7 @@ jQuery(document).ready(function(){
         $.ajax({										// 동시에 ajax
         	url : list_url,								// 인기순(fstv_jjim)으로 지정된 url 어노테이션으로 이동
         	data : {
-        	page : "1"									// 페이지값 1지정 후 idx계산해서 첫페이지 출력
+        		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
         	},
         	success : function(list) {
         		console.log(list_url);
@@ -45,7 +45,7 @@ jQuery(document).ready(function(){
 	$.ajax({
 		url : list_url,
 		data : {
-		page : "1"
+			page : "1"
 		},
 		success : function(list) {
 			$('.fstv-list').html(list)
