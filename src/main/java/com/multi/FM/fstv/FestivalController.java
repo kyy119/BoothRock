@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import javax.jws.WebParam.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -81,5 +81,26 @@ public class FestivalController {
     List<FestivalVO> list = service.date(vo);
     model.addAttribute("list", list);
   }
-
+  
+  @RequestMapping("fstv_detail_boothin")
+  public void booth_in(Model model, FestivalVO vo) {
+    List<FestivalBoothVO> list = service.booth_in(vo);
+    model.addAttribute("list", list);
+  }
+  
+  @RequestMapping("fstv_detail_boothstar")
+  public String booth_star(Model model, FestivalVO vo) {
+    List<FestivalBoothVO> list = service.booth_star(vo);
+    model.addAttribute("list", list);
+    return "fstv_detail_boothin";
+  }
+  
+  @RequestMapping("fstv_search")
+  public void search(String q, Model model) {
+    System.out.println(q);
+    List<FestivalVO> list = service.search(q);
+    model.addAttribute("list", list);
+    model.addAttribute("q", q);
+  }
+  
 }

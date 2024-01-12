@@ -65,16 +65,48 @@
 		select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate desc
 	</select>
 	
+	<!-- 축제 상세 데이터 가져오는 sql -->
 	<select id="one" parameterType="festivalVO" resultType="festivalVO">
 		select * from festival where fstv_no = ${fstv_no}
 	</select>
 	
+	<!-- 축제 리스트 찜 횟수별 정렬 sql -->
 	<select id="jjim" parameterType="festivalVO" resultType="festivalVO">
 		select * from festival order by fstv_jjimCount desc limit #{index}, 9
 	</select>
 	
+	<!-- 축제 리스트 기간별 검색 sql -->
 	<select id="date" parameterType="festivalPageVO" resultType="festivalVO">
 		select * from festival where fstv_startdate &gt;= #{date1} and fstv_enddate &lt;= #{date2} order by fstv_startdate
+	</select>
+	
+	<!-- 축제 상세 데이터 전체 부스 등록순으로 가져오는 sql -->
+	<select id="booth_in" parameterType="festivalVO" resultType="festivalBoothVO">
+		select b.booth_no, b.booth_name,
+		round(avg(r.review_starpoint), 1) as booth_starpoint,
+		b.booth_category, b.booth_image
+		from booth b
+		join review r on b.booth_no = r.booth_no
+		where b.fstv_no = #{fstv_no}
+		group by b.booth_no, b.booth_name, b.booth_category, b.booth_image
+		order by b.booth_no
+	</select>
+	
+	<!-- 축제 상세 데이터 전체 부스 별점순으로 가져오는 sql -->
+	<select id="booth_star" parameterType="festivalVO" resultType="festivalBoothVO">
+		select b.booth_no, b.booth_name,
+		round(avg(r.review_starpoint), 1) as booth_starpoint,
+		b.booth_category, b.booth_image 
+		from booth b
+		join review r on b.booth_no = r.booth_no 
+		where b.fstv_no = #{fstv_no}
+		group by b.booth_no, b.booth_name, b.booth_category, b.booth_image 
+		order by booth_starpoint desc
+	</select>
+	
+	<!-- 헤더 검색기능 구현 -->
+	<select id="search" parameterType="String" resultType="festivalVO">
+		select * from festival where fstv_title like concat('%', #{title}, '%') 
 	</select>
 	
 </mapper>
