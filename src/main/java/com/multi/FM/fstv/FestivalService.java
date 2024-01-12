@@ -48,4 +48,12 @@ public class FestivalService {
     public List<FestivalVO> date(FestivalPageVO vo) {
       return dao.date(vo);
     }	
+    
+    public List<FestivalBoothVO> booth_in(FestivalVO vo) {
+      return dao.booth_in(vo);
+    }
+    
+    public List<FestivalBoothVO> booth_star(FestivalVO vo) {
+      return dao.booth_star(vo);
+    }
 }

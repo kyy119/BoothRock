@@ -3,11 +3,31 @@ jQuery(document).ready(function() {
 	$("#def-btn").click(function(){
 		$("#def-btn").addClass("bold-text");
 		$("#pop-btn").removeClass("bold-text");
+		$.ajax({
+	    	url : "fstv_detail_boothin",
+	    	data : {
+	    		fstv_no : fstvNo
+	    	},
+	    	success : function(a){
+	    		$('.booth-list').empty();
+	    		$('.booth-list').html(a);
+	    	}
+	    })
 	});
 	
 	$("#pop-btn").click(function(){	
     	$("#pop-btn").addClass("bold-text");
         $("#def-btn").removeClass("bold-text");
+		$.ajax({
+	    	url : "fstv_detail_boothstar",
+	    	data : {
+	    		fstv_no : fstvNo
+	    	},
+	    	success : function(a){
+	    		$('.booth-list').empty();
+	    		$('.booth-list').html(a);
+	    	}
+	    })        
     });
     
     $("#jjim").click(function(){
@@ -44,6 +64,20 @@ jQuery(document).ready(function() {
             $(this).html('<i class="fa-solid fa-coins" style="color: #fbd037;"></i> 무료');
         }
     });
+    
+    var searchParams = new URLSearchParams(window.location.search);
+	var fstvNo = searchParams.get('fstv_no');
+    
+    // 부스 불러오는 ajax
+    $.ajax({
+    	url : "fstv_detail_boothin",
+    	data : {
+    		fstv_no : fstvNo
+    	},
+    	success : function(a){
+    		$('.booth-list').html(a);
+    	}
+    })
     
 });
 
