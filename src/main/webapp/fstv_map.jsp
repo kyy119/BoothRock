@@ -13,14 +13,14 @@
     <%@ include file="header.jsp" %>
     
     <div class="bodywrap">
-    	<h1 style="margin: 60px 50px 10px;">전국축제지도</h1>
-		<h2 style="margin: 10px 50px 10px;"><i class="fa-solid fa-location-dot"></i> 서울</h2>
 	    <div class="fstv-map-from">
 		    <div class="fstv-map">
+	    		<h1>전국축제지도</h1>
 		    	<img alt="지도" src="resources/img/map.jpg">
 		    </div>
 	        <div class="fstv-list-form"> <%-- 페이징 필요 --%>
 	        	<div class="fstv-list-loc">
+					<h2><i class="fa-solid fa-location-dot"></i> 서울</h2>
 		        	<div class="sort">
 		        		<button id="def-btn" class="bold-text">기본순</button> | <button id="pop-btn">인기순</button>
 		        	</div>

@@ -13,16 +13,15 @@
     <%@ include file="admin_header.jsp" %>
     
     <div class="bodywrap">
-    	<div class="user-list-form"> <!-- 페이징 필요 -->
-	    	<h1>User List</h1>
+    	<div class="ask-list-form"> <!-- 페이징 필요 -->
+	    	<h1>Ask List</h1>
 	    	<div class="select-search-form">
 	    		<select>
-		    		<option>Name</option>
+		    		<option>No</option>
 		    		<option>Email</option>
-		    		<option>Tel</option>
+		    		<option>Type</option>
+		    		<option>Title</option>
 		    		<option>Created</option>
-		    		<option>Updated</option>
-		    		<option>F / P</option>
 		    	</select>
 		    	<input type="text" id="search">
 		    	<input type="submit" id="submit" value="검색">
@@ -30,49 +29,37 @@
 	    	<table>
 				<thead>
     				<tr>
-					    <th>Name</th>
-      					<th>Email</th>
+      					<th>No</th>
+					    <th>Email</th>
       					<th class=type-select>
       						<select>
       							<option>Type</option>
-      							<option>소비자</option>
-      							<option>판매자</option>
-      							<option>관리자</option>
+      							<option>축제 문의</option>
+      							<option>부스 문의</option>
+      							<option>기타 문의</option>
       						</select>
       					</th>
-					    <th>Tel</th>
+					    <th>Title</th>
 					    <th>Created <i class="fa-solid fa-caret-down"></i></th>
-					    <th>Updated <i class="fa-solid fa-caret-down"></i></th>
-					    <th>F / C</th>
+					    <th>Response</th>
     				</tr>
 				</thead>
 				<tbody>
     				<tr>
-				      	<td>Admin</td>
-				      	<td>Boothrock@gmail.com</td>
-				      	<td>관리자</td>
-				      	<td>010-1234-5678</td>
-				      	<td>2024-01-10</td>
-				      	<td>2024-01-10</td>
-				      	<td>0 회</td>
+				      	<td>2</td>
+				      	<td><a href="user_detail.jsp">whdgus9696@daum.net</a></td>
+				      	<td>축제 문의</td>
+				      	<td><a href="ask_detail_answer.jsp">축제 날짜가 이상해요</a></td>
+				      	<td>2024-01-11</td>
+				      	<td><i class="fa-solid fa-check"></i></td>
 				    </tr>
     				<tr>
-				      	<td>김유미</td>
-				      	<td>yumii2307@naver.com</td>
-				      	<td>소비자</td>
-				      	<td>010-5706-2307</td>
-				      	<td>2024-01-10</td>
-				      	<td>2024-01-10</td>
-				      	<td>0 회</td>
-    				</tr>
-    				<tr>
-				      	<td>김종현</td>
-				      	<td>whdgus9696@daum.net</td>
-				      	<td>판매자</td>
-				      	<td>010-2560-5783</td>
-				      	<td>2024-01-10</td>
-				      	<td>2024-01-10</td>
-				      	<td>0 회</td>
+				      	<td>1</td>
+				      	<td><a href="user_detail.jsp">yumii2307@naver.com</a></td>
+				      	<td>기타 문의</td>
+				      	<td><a href="ask_detail.jsp">연예인 누구 온다는데 맞아요?</a></td>
+				      	<td>2024-01-11</td>
+				      	<td></td>
     				</tr>
 				</tbody>
 			</table>
