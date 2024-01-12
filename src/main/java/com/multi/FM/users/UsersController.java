@@ -48,27 +48,36 @@ public class UsersController {
 	  String notify = "";
 	  String find_id_result = "0";
 	  if(result != null && !result.equals("")) {
-	    notify = "ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì¡´ì¬í•©ë‹ˆë‹¤";
+	    notify = "ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ Á¸ÀçÇÕ´Ï´Ù!";
 	    find_id_result = result;
 	  }else {
-	    notify = "ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤";
+	    notify = "ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾ø½À´Ï´Ù!";
 	  }
 	  model.addAttribute("find_id_notify", notify);
 	  model.addAttribute("find_id_result", find_id_result);
     }
 	
-	@RequestMapping("find_password")
-	public void find_password() {
-	  
+	@RequestMapping("edit_password")
+	public void edit_password(UsersVO usersvo) {
+	  usersservice.edit_password(usersvo);
     }
 	
 	@RequestMapping("login")
 	public void login(UsersVO usersvo,Model model,HttpSession session) throws Exception{
-	  int resultTemp = usersservice.login(usersvo);
-	  String result = String.valueOf(resultTemp);
-	  if (result.equals("1")) {
+	  int resultCus = usersservice.cus_login(usersvo);
+	  int resultSeller = usersservice.seller_login(usersvo);
+	  String consumer = String.valueOf(resultCus);
+	  String seller = String.valueOf(resultSeller);
+	  String result = "0";
+	  if (consumer.equals("1")) {
          session.setAttribute("id", usersvo.getUser_id());
-      } 
+         session.setAttribute("role", "consumer");
+         result = "1";
+      }else if(seller.equals("1")) {
+        session.setAttribute("id", usersvo.getUser_id());
+        session.setAttribute("role", "seller");
+        result = "1";
+      }
 	  model.addAttribute("result",result);
     }
 	
@@ -76,7 +85,7 @@ public class UsersController {
 	@RequestMapping("create_authentication")
 	@ResponseBody
 	public String create_authentication1(String receive) {
-		num = String.valueOf(100000 + r.nextInt(900000));// >> ï¿½ï¿½ï¿½ñ½º·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		num = String.valueOf(100000 + r.nextInt(900000));// >> ¼­ºñ½º·Î ºüÁ®¾ßÇÔ
 		//usersservice.message_send(receive,num);
 		return num;
 	}
