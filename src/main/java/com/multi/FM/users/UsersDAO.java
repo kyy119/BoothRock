@@ -19,13 +19,22 @@ public class UsersDAO {
 		my.insert("users.create_account",usersvo);
 	}
 	
-	public String find_id(UsersVO usersvo) {
-	  String result = my.selectOne("users.find_id",usersvo);
-	  return result;
+	public void edit_password(UsersVO usersvo) {
+	  my.update("users.edit_password",usersvo);
     }
 	
-	public int login(UsersVO usersvo) {
-      int result = my.selectOne("users.login",usersvo);
+	public String find_id(UsersVO usersvo) {
+      String result = my.selectOne("users.find_id",usersvo);
+      return result;
+    }
+	
+	public int cus_login(UsersVO usersvo) {
+      int result = my.selectOne("users.cus_login",usersvo);
+      return result;
+    }
+	
+	public int seller_login(UsersVO usersvo) {
+      int result = my.selectOne("users.seller_login",usersvo);
       return result;
     }
 	

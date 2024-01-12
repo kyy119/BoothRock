@@ -21,18 +21,27 @@ public class UsersService {
 	}
 	
 	public String find_id(UsersVO usersvo) {
-	  String result = usersdao.find_id(usersvo);
-      return result;
+	    String result = usersdao.find_id(usersvo);
+        return result;
+    }
+	
+	public void edit_password(UsersVO usersvo) {
+	    usersdao.edit_password(usersvo);
     }
 	
 	public void message_send(String receive,String num) {
 	   sms.sendOne(receive, num);
     }
 	
-	public int login(UsersVO usersvo) {
-	  int result = usersdao.login(usersvo);
+	public int cus_login(UsersVO usersvo) {
+	  int result = usersdao.cus_login(usersvo);
 	  return result;
 	}
+	
+	public int seller_login(UsersVO usersvo) {
+      int result = usersdao.seller_login(usersvo);
+      return result;
+    }
 	
 	public int phone_duplicate(String user_tel) {
 		int result = usersdao.phone_duplicate(user_tel);
