@@ -18,15 +18,13 @@ public class MypageController {
     
     @RequestMapping("mypage_edit_info") //회원정보조회
     public void mypage_edit_info(String user_id, Model model) throws Exception {
-        System.out.println("get요청");
         List<UsersVO> list = dao.user_info(user_id);
         model.addAttribute("list",list);
     }
     
     @RequestMapping("mypage_edit") //회원정보수정
     public String mypage_edit() throws Exception {
-        System.out.println("post요청");
-        return "mypage_edit_info";
+        return "redirect:/mypage.jsp";
     }
     
     
