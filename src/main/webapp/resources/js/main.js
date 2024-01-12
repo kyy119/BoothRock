@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
     // 버튼 상태 업데이트 함수
     // 함수가 실행될때마다 <, > 버튼의 활성화/비활성화를 결정시킨다
     function updateButtonStates() {
-	    if (org >= cnt) {
+	    if (org >= (cnt - 1)) {
 	        $('.next-btn').prop('disabled', true); // nextbtn 비활성화
 	    } else {
 	        $('.next-btn').prop('disabled', false); // nextbtn 활성화
@@ -57,7 +57,7 @@ jQuery(document).ready(function() {
     	type : "GET",
     	dataType : 'json',
     	success : function(x){
-    		cnt = x.count - 3
+    		cnt = x.count - 3;
     		updateButtonStates();
     	}
     })
