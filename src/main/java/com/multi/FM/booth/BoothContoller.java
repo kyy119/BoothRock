@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.multi.FM.fstv.FestivalVO;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.multi.FM.myboothpage.BoothVO;
 
 
@@ -28,9 +28,11 @@ public class BoothContoller {
   
 
   // booth 상세 페이지_booth_product정보
-  @RequestMapping("booth_product")
-  public void product(Model model){
-    List<BoothProductVO> boothProduct = boothSV.product();
-    model.addAttribute("boothProduct", boothProduct);
+  @RequestMapping("/booth_product")
+  public String product(@RequestParam("booth_no") int booth_no, Model model) {
+      List<BoothProductVO> boothProduct = boothSV.product(booth_no);
+      model.addAttribute("boothProduct", boothProduct);
+      return "booth_product";
+ 
   }// product
 }// class

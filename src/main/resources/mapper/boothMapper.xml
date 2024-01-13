@@ -6,12 +6,22 @@
 	<select id="detail" parameterType="boothVO" resultType="boothVO">
 		select * from booth where booth_no = #{booth_no}
 	</select>
-	
-	
-	<select id="product" resultType="boothProductVO">
-		select * from booth_product where booth_no = #{booth_no}
+		
+	<select id="product" resultType="boothProductVO" parameterType="java.util.Map">
+    	select * from booth_product where booth_no = #{booth_no}
 	</select>
 	
 	
+	<select id="Rbooth" parameterType="int" resultType="boothVO">
+		select * from booth where booth_no = #{booth_no}
+	</select>
+	
+	<select id="reviewlist" resultType="reviewVO" parameterType="java.util.Map">
+    	select * from review where booth_no = #{booth_no} order by review_created_at DESC
+	</select>
+	
+	<select id="starPoint" resultType="reviewVO" parameterType="int">
+    	select review_starpoint from review where review_no = #{review_no}
+	</select>
 	
 </mapper>
