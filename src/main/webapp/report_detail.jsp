@@ -13,24 +13,25 @@
     
     <div class="bodywrap">
 		<div class="report-form">
-			<div class="report-booth">
-				<h3 class="booth-title">삼촌네 떡볶이</h3><span> / 서울 광장시장</span>
-				<h3 class="back">
-					<a href="report_list.jsp">
-						Report List <i class="fa-solid fa-chevron-right"></i>
-					</a>
-				</h3>
+			<h3 class="back">
+				<a href="report_list.jsp">
+					Report List <i class="fa-solid fa-chevron-right"></i>
+				</a>
+			</h3>
+			<div class="report-booth-fstv">
+				<button class="booth-title">삼촌네 떡볶이</button>
+				<span> / <button>서울 광장시장</button></span>
 			</div>
 			<div class="report-detail">
 				<h2>삼촌네 떡볶이에</h2>
-				<div class="report-info">boothrock | 2023-01-15</div><br>
+				<div class="report-info">boothrock | 2023-01-15</div>
 				<p class="report-content">
                		삼촌이 없고 떡볶이가 맛없어요
 				</p>
+			<hr>
         	</div>
         	<div class="btn">
         		<button>판매자 상세 페이지</button>
-        		<button>부스 상세 페이지</button>
         		<button>허위 신고 등록</button>
         		<button>부스 신고 누적</button>
         	</div>

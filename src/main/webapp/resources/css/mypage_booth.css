@@ -4,61 +4,60 @@
 	display: inline-block;
 }
 .booth-head a {
-	font-weight: bold;
 	display: inline-block;
 	float: right;
 	margin-top: 20px;
 	margin-right: 10px;
 }
 .booth-head a, .booth-head i {
-	color: #808080;
+	color: #757575;
 	font-size: 20px;
 }
-.booth-head a:hover {
-	border-bottom: 1px solid #808080;
+.booth-head a:hover, .booth-head a:hover i {
+	color: #876ed5;
 }
 .booth-form {
 	width: 800px;
 }
-.booth-form ul li {
-	display: inline-block;
-	border: 1px solid #000;
-	border-radius: 15px;
-	padding: 20px;
+.booth-form ul hr {
+	margin: 15px 0px;
 }
-.booth-form ul li:first-child {
-	margin-right: 28px;
+.booth-form ul li {
+	height: 120px;
 }
 .booth-form ul li img {
-	width: 340px;
-	height: 340px;
+	width: 140px;
+	height: 120px;
 	border-radius: 15px;
-	margin-bottom: 10px;
+}
+.booth-form ul li .booth {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 30px;
 }
 .booth-form .booth-type {
-	color: #808080;
+	color: #757575;
 	line-height: 30px;
-	margin-bottom: 3px;
 }
-.booth-form ul li button {
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 20px;
+.booth-form h4, .booth-form h2 {
+	font-weight: 500;
 }
-.booth-form ul li button:hover {
-	background-color: #ddd;
-}
-.booth-delete {
-	width: 70px;
-	background-color: #000;
-	color: #fff;
-	border: none;
-	margin-right: 3px;
-}
-.booth-edit {
-	width: 110px;
+.booth button {
+	border: 1px solid #757575;
+	border-radius: 15px;
+	font-size: 15px;
 	background-color: #fff;
-	border: 1px solid #000;
+	padding: 3px 7px;
+	margin-top: 7px;
+	color: #757575;
+}
+.booth button:hover {
+	border-color: #876ed5;
+	color: #876ed5;
+}
+.booth button:hover i {
+    color: #876ed5;
+}
+.booth a:hover {
+	color: #757575;
 }

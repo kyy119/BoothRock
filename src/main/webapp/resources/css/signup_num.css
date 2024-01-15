@@ -1,73 +1,71 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 170px 0px 360px;
-	text-align: center;
+	margin: 200px 0px 400px;
 }
 .bodywrap h3 {
-	margin-bottom: 50px;
+	margin-bottom: 70px;
+	text-align: center;
 }
 .signup-form {
-	width: 360px;
-	border: 1px solid #000;
-	border-radius: 15px;
-	padding: 30px 30px;
+	width: 382px;
 }
 .input-form {
 	text-align: center;
 }
 .input-form div {
-	height: 35px;
+	height: 40px;
 	margin: 20px 0px;
+	border-radius: 15px;
+	border: 1px solid #757575;
+	padding: 0px 15px;
+	width: 350px;
+	text-align: left;
 }
-.input-form div label {
-	font-weight: bold;
-	line-height: 35px;
-	float: left;
-	text-align: center;
-	width: 120px;
+.input-form div:focus-within {
+    border-color: #876ed5;
+}
+.input-form div:focus-within i, .input-form div:focus-within button {
+    color: #876ed5;
+}
+.input-form div i {
+	font-size: 18px;
+	color: #757575; 
 }
 .input-form div input {
-	width: 150px;
-	height: 35px;
-	border: 1px solid #000;
+	width: 220px;
+	height: 40px;
 	background-color: #fff;
-	border-radius: 15px;
-	font-weight: bold;
-	float: left;
 	padding: 0px 10px;
-	text-align: center;
+	border: none;
+	font-size: 15px;  
+}
+.input-form div input:focus {
+	outline: none;
 }
 .input-form div button {
-	width: 62px;
-	height: 35px;
-	float: right;
-	border-radius: 15px;
-	border: 1px solid #808080;
-	color: #808080;
+	color: #757575;
 	background-color: #fff;
-	font-weight: 600;
+	border: none;
+	float: right;
+	line-height: 40px;
 }
 .input-form div button:hover {
-	background-color: #ddd;
-}
-.seller-number {
-	display: none;
-}
-#seller-check {
-	margin-bottom: 10px;
-}
-.signup {
-	width: 100px;
-	height: 40px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-radius: 15px;
+	color: #876ed5;
 	font-weight: bold;
-	text-align: center;
-	font-size: 15px;
-	margin: 15px 0px 20px;
 }
-.signup:hover {
-	background-color: #ddd;
+.pw-edit {
+	width: 120px;
+	height: 40px;
+	border: 1px solid #757575;
+	color: #757575;
+	background-color: #fff;
+	border-radius: 20px;
+	margin-top: 15px;
+	font-size: 15px;
+}
+.pw-edit:hover {
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
 }

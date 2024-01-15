@@ -30,29 +30,29 @@
 	    	<div class="edit-form">
 	    		<form class="input-form">
 	    			<div>
-		    			<label for="email">이메일</label>	<%-- 변경 불가 --%>
-						<input type="email" id="email" name="email" placeholder="email@adress.com" required>
+	    				<i class="fa-regular fa-user"></i>
+						<input type="email" id="email" name="email" placeholder="email@adress.com" required> <%-- 변경 불가 --%>
 	    			</div>
 	    			<div>
-		    			<label for="password">비밀번호</label>
-						<input type="password" id="password" name="password" required>
+	    				<i class="fa-solid fa-unlock-keyhole"></i>
+						<input type="password" id="password" name="password" placeholder="비밀번호" required>
 	    			</div>
 	    			<div>
-		    			<label for="password2">비밀번호 확인</label>
-						<input type="password" id="password2" name="password2" required>
+	    				<i class="fa-solid fa-unlock-keyhole"></i>
+						<input type="password" id="password2" name="password2" placeholder="비밀번호 확인" required>
 	    			</div>
 	    			<div>
-		    			<label for="name">이름</label>		<%-- 변경 불가 --%>
-		    			<input type="text" id="name" name="name" placeholder="부스락" required>
+	    				<i class="fa-regular fa-user"></i>
+		    			<input type="text" id="name" name="name" placeholder="부스락" required> <%-- 변경 불가 --%>
 	    			</div>
 	    			<div>
-		    			<label for="tel">전화번호</label>
-		    			<input type="text" id="tel" name="tel" required>
+	    				<i class="fa-solid fa-mobile-screen"></i>
+		    			<input type="text" id="tel" name="tel" placeholder="전화번호" required>
 		    			<button>본인인증</button>
 		    		</div>
 		    		<div class="seller-number">
-		    			<label for="seller-number">사업자번호</label>
-		    			<input type="text" id="seller-number" name="seller-number">
+		    			<i class="fa-regular fa-address-card"></i>
+		    			<input type="text" id="seller-number" name="seller-number" placeholder="사업자등록번호">
 	    			</div>
 	    			<input type="submit" class="edit" value="완료">
 	    		</form>

@@ -13,12 +13,18 @@
     
     <div class="bodywrap">
     	<div class="login-form">
+    		<h1 style="font-weight: 500; text-align: left;">로그인</h1>
+		    <hr>
     		<div class="input-form">
     			<form action="login" method="post">
-		    		<label for="user_id">E-MAIL</label><br>
-					<input type="email" id="user_id" name="user_id" placeholder="email@address.com" required><br>
-		    		<label for="user_password">PASSWORD</label><br>
-					<input type="password" id="user_password" name="user_password" placeholder="password" required>
+    				<div>
+    					<i class="fa-regular fa-user"></i>
+						<input type="email" id="user_id" name="user_id" placeholder="이메일" required>
+					</div>
+					<div>
+						<i class="fa-solid fa-unlock-keyhole"></i>
+						<input type="password" id="user_password" name="user_password" placeholder="비밀번호" required>
+					</div>
 		    		<input type="submit" class="login" value="로그인">
     			</form>
     		</div>

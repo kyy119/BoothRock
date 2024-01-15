@@ -27,7 +27,6 @@
     left: 0;
     width: 100%;
     height: 400px;
-    background: url('../img/back.jpg');
     z-index: -1;
     border-radius: 10px;
 }
@@ -89,7 +88,7 @@
 	margin: 0px 2px;
     display: inline-block;
     font-size: 18px;
-    color: #808080;
+    color: #757575;
 }
 .current-img {
 	transform: scaleX(3);
@@ -104,6 +103,8 @@
 h2 {
 	margin-top : 80px;
 	margin-bottom : 40px;
+	font-weight: 500;
+	font-size: 28px;
 }
 .multi-slide {
     width: 1020px;
@@ -137,10 +138,10 @@ h2 {
 }
 .multi-slide-list .fstv-loc {
 	font-size: 15px;
-	color: #808080;
+	color: #757575;
 }
 .multi-slide-list .fstv-date {
-	background-color: #ff8080;
+	background-color: #876ed5;
 	color: #fff;
 	border-radius: 50px;
 	padding-left: 15px;
@@ -163,15 +164,20 @@ h2 {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    font-weight: bold;
     width: 50px;
     height: 50px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 2px solid #757575;
     border-radius: 50%;
 }
+.prev-btn i, .next-btn i {
+	color: #757575;
+}
 .prev-btn:hover, .next-btn:hover {
-	background-color: #ddd;
+	border-color: #876ed5;
+}
+.prev-btn:hover i, .next-btn:hover i {
+	color: #876ed5;
 }
 .hot-booth {
     width: 1200px;
@@ -196,17 +202,20 @@ h2 {
 	color: pink;
 }
 .hot-booth-list .booth-title {
-	font-size: 20px;
 	font-weight: bold;
-	line-height: 40px;
+	font-size: 20px;
 }
 .hot-booth-list .fstv-title {
 	line-height: 30px;
-	font-weight: bold;
 }
 .hot-booth-list hr {
 	margin: 10px 0px;
+	color: #757575;
 }
 .star-point i {
+	color: #000;
+	font-size: 15px;
+}
+.star-point i::before {
 	color: #f0d828;
 }

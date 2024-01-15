@@ -17,11 +17,15 @@
 		<div class="signup-form">
 			<form action="signup_type.jsp" class="input-form" method="post">
 				<div>
-					<label for="phone_number">전화번호</label> <input type="text" id="phone_number"
-						name="phone_number" maxlength="11" required>
-					<button id="send">인증번호</button>
+					<i class="fa-solid fa-mobile-screen"></i>
+					<input type="text" id="phone_number" name="phone_number" maxlength="11" placeholder="전화번호" required>
+					<button id="send">인증번호 전송</button>
 				</div>
-				<div id="authNum"></div>
+				<div id="authNum">
+					<i class="fa-solid fa-check"></i>
+					<input type="text" id="num" name="num" placeholder="인증번호를 입력해주세요">
+					<button id="verify">인증하기</button>
+				</div>
 			</form>
 		</div>
 	</div>

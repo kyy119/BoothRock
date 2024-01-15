@@ -18,7 +18,7 @@
 			<div class="ask-detail">
 				<h2>축제 개최일 수정 문의</h2>
 				<span class="ask-type">/ 축제 문의</span><br>
-				<div class="ask-info">boo****** | 2023-01-15</div><br>
+				<div class="ask-info">boo****** | 2023-01-15</div>
 				<p class="ask-content">
                		멍냥축제 개최측에 전화해 개최일이 3일 미뤄졌다는 답을 받았습니다.<br>
 					아직 사이트에 반영이 되지 않은 것 같아 문의드립니다.
