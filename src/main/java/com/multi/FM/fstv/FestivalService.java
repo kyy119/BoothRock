@@ -60,4 +60,5 @@ public class FestivalService {
     public List<FestivalVO> search(String q) {
       return dao.search(q);
     }
+    
 }
