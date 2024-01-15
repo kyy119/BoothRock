@@ -94,10 +94,9 @@
     border-radius: 20px;
     width: 180px;
     padding: 5px;
-    margin-bottom: 20px;
 }
 .fstv-info a:hover {
-	opacity: 0.5;
+	opacity: 0.7;
 }
 .fstv-info a i {
 	background: linear-gradient(to right top, #876ed5, #0b123f);
