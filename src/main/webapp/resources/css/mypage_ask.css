@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-.bodywrap {
-	margin-bottom: 100px !important;
-	height: 650px;
-}
 .ask-list table {
   border-collapse: collapse;
   margin-top: 20px;
@@ -19,5 +15,5 @@
   text-align: center;
 }
 .ask-title:hover {
-	color: #c0c0c0;
+	color: #757575;
 }

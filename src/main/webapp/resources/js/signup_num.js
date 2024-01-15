@@ -39,11 +39,7 @@ function dupli(duplicate){
 	     inputElement.readOnly = true;
 	     let num = 0
 		 alert('인증번호를 전송하였습니다!');
-		 // authNum이라는 div 태그에 인증번호를 받는 HTML 추가
-	     let authNumHTML = '<label for="num">인증번호</label>'; 
-	     authNumHTML += '<input type="text" id="num" name="num" required>';
-	     authNumHTML += '<button id="verify">인증하기</button>';
-	     $('#authNum').html(authNumHTML);
+
 		 $.ajax({
 			url : "create_authentication",
 			data : {

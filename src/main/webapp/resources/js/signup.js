@@ -1,28 +1,5 @@
 jQuery(document).ready(function() {
-	$('#seller-check').change(function() {
-		let businessIsValid = false;
-		if ($(this).is(':checked')) {
-	      $('.signup-form').css({
-	        height: '530px'
-	      });
-	      $('.input-form').css({
-	        height: '430px'
-	      });
-	     
-	    } else {
-	      $('.signup-form').css({
-	        height: '450px'
-	      });
-	      $('.input-form').css({
-	        height: '350px'
-	      });
-	    }
-	    
-	    let sellerNumberHTML = businessHTML(businessIsValid); // >> 판매자 체크박스를 클릭할 경우
-	    $('.seller-number').html(sellerNumberHTML);
-		$('.seller-number').slideToggle();
-	}); // '#seller-check'.change
-	
+
 	//회원가입 규칙 위배 여부 확인
 	$(document).ready(function() {
 		$('.signup').hide();

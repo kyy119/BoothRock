@@ -6,6 +6,9 @@
 .cs-ask-form {
 	width: 600px;
 }
+.cs-ask-form h1 {
+	font-weight: 500;
+}
 .ask-form {
 	width: 500px;
 	margin-top: 30px;
@@ -18,6 +21,10 @@
 	box-sizing: border-box;
 	font-size: 17px;
 }
+.ask-title:focus, #ask-type:focus, .ask-content:focus {
+	outline: none;
+	border: 1px solid #876ed5;
+}
 #ask-type {
 	height: 35px;
 	width: 90px;
@@ -28,34 +35,32 @@
 	padding: 10px;
 	width: 500px;
 	height: 200px;
-	margin-top: 20px;
+	margin-top: 15px;
 	box-sizing: border-box;
 	font-size: 17px;
+}
+.ask-submit, .back {
+	color: #757575;
+	border: 1px solid #757575;
+	background-color: #fff;
+	border-radius: 20px;
+	font-size: 15px;
+	display: inline-block;
 }
 .ask-submit {
 	width: 100px;
 	height: 40px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 15px;
 	margin: 15px 0px 20px;
-	display: inline-block;
-}
-.ask-submit:hover, .back:hover {
-	background-color: #ddd;
 }
 .back {
 	display: inline-block;
 	width: 98px;
 	height: 38px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 15px;
 	margin: 15px 5px 20px 0px;
-	display: inline-block;
 	line-height: 38px;
+}
+.ask-submit:hover, .back:hover {
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
 }

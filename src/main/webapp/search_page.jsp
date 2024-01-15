@@ -17,7 +17,6 @@
 	    		<h1>'산수유'</h1>
 	    		<h2>검색 결과 <i class="fa-solid fa-magnifying-glass"></i></h2>
 	    	</div>
-	    	<hr>
 	        <div class="search-fstv-list">
 	        	<h3><i class="fa-solid fa-chevron-left"></i> 축제 <i class="fa-solid fa-chevron-right"></i></h3>
 	            <ul>

@@ -30,8 +30,8 @@
 				<thead>
     				<tr>
       					<th>No</th>
-					    <th>Email</th>
 					    <th>Title</th>
+					    <th>Email</th>
 					    <th>Booth</th>
 					    <th>Created <i class="fa-solid fa-caret-down"></i></th>
     				</tr>
@@ -39,15 +39,15 @@
 				<tbody>
     				<tr>
 				      	<td>2</td>
-				      	<td><a href="user_detail.jsp">whdgus9696@daum.net</a></td>
 				      	<td><a href="report_detail.jsp">부스 날짜가 이상해요</a></td>
+				      	<td><a href="user_detail.jsp">whdgus9696@daum.net</a></td>
 				      	<td><a href="booth_detail.jsp">임실 치즈 축제</a></td>
 				      	<td>2024-01-11</td>
 				    </tr>
     				<tr>
 				      	<td>1</td>
-				      	<td><a href="user_detail.jsp">yumii2307@naver.com</a></td>
 				      	<td><a href="ask_detail.jsp">삼촌네 떡볶이에 삼촌이 없어요</a></td>
+				      	<td><a href="user_detail.jsp">yumii2307@naver.com</a></td>
 				      	<td><a href="booth_detail.jsp">삼촌네 떡볶이</a></td>
 				      	<td>2024-01-11</td>
     				</tr>

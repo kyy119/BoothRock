@@ -6,22 +6,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>모든 축제의 부스를 담다 - 부스락</title>
-<link rel="stylesheet" href="resources/css/signup.css" type="text/css">
+<link rel="stylesheet" href="resources/css/signup_num.css" type="text/css">
 <script src="resources/js/find_num.js" defer type="text/javascript"></script>
+
 </head>
 <body>
 	<%@ include file="header.jsp"%>
 
-	<div class="bodywrap" style="height: 430px; display: flex; align-items: center; justify-content: center;">
+	<div class="bodywrap">
+		<h3>본인 확인을 위해 휴대전화 인증을 진행해주세요</h3>
 		<div class="signup-form">
-		<h3 style="text-align: center;">전화번호 인증</h3>
 			<form action="new_pw.jsp" class="input-form" method="post">
 				<div>
-					<label for="phone_number">전화번호</label> <input type="text" id="phone_number"
-						name="phone_number" maxlength="11" required>
-					<button id="send">인증번호</button>
+					<i class="fa-solid fa-mobile-screen"></i>
+					<input type="text" id="phone_number" name="phone_number" maxlength="11" placeholder="전화번호" required>
+					<button id="send">인증번호 전송</button>
 				</div>
-				<div id="authNum"></div>
+				<div id="authNum">
+					<i class="fa-solid fa-check"></i>
+					<input type="text" id="num" name="num" placeholder="인증번호를 입력해주세요">
+					<button id="verify">인증하기</button>
+				</div>
 			</form>
 		</div>
 	</div>

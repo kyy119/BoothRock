@@ -15,9 +15,9 @@
 	display: inline-block;
 }
 .ask-info {
-	float: right;
 	font-size: 15px;
-	color: #808080;
+	color: #757575;
+	text-align: right;
 }
 .ask-content {
 	width: 600px;
