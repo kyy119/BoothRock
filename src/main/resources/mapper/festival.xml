@@ -105,17 +105,17 @@
 	<!-- 헤더 검색기능 기본순 구현 -->
 	<select id="search1" parameterType="String" resultType="festivalVO">
 		select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date()
-		and fstv_title like concat('%', #{title}, '%')
+		and ( fstv_title like concat('%', #{title}, '%') or fstv_addr1 like concat ('%', #{title}, '%'))
 		order by fstv_startdate desc
 	</select>
 	<select id="search2" parameterType="String" resultType="festivalVO">
 		select * from festival where fstv_startdate &gt; current_date()
-		and fstv_title like concat('%', #{title}, '%')
+		and ( fstv_title like concat('%', #{title}, '%') or fstv_addr1 like concat ('%', #{title}, '%'))
 		order by fstv_startdate
 	</select>
 	<select id="search3" parameterType="String" resultType="festivalVO">
 		select * from festival where fstv_enddate &lt; current_date()
-		and fstv_title like concat('%', #{title}, '%')
+		and ( fstv_title like concat('%', #{title}, '%') or fstv_addr1 like concat ('%', #{title}, '%'))
 		order by fstv_startdate desc
 	</select>
 	
