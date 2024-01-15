@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="resources/css/signup.css" type="text/css">
+    <script type="text/javascript" src="resources/js/jquery-1.12.3.js"></script>
     <script type="text/javascript" src="resources/js/signup_cus.js"></script>
 </head>
 <body>
@@ -28,11 +29,12 @@
     			<div id="password_box">
     				<i class="fa-solid fa-unlock-keyhole"></i>
 					<input type="password" id="user_password" name="user_password" placeholder="비밀번호" required>
-    				<output id="passwordMessage" style="color: red; font-size : 10px;"></output>
+    				<output id="passwordMessage" style="color: red; font-size : 10px; margin-top: 4px;"></output>
     			</div>
     			<div id="password_box2">
     				<i class="fa-solid fa-unlock-keyhole"></i>
 					<input type="password" id="user_password2" name="user_password2" placeholder="비밀번호 확인" required>
+					<output id="passwordMessage2" style="color: red; font-size : 10px; margin-top: 4px;"></output>
     			</div>
     			<div>
     				<i class="fa-regular fa-user"></i>
