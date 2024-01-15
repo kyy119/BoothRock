@@ -2,30 +2,39 @@
 
 .bodywrap {
 	width: 1200px;
-	margin: 110px auto 201px;
+	margin: 110px auto 265px;
 }
 .report-form {
 	width: 600px;
 }
-.report-booth .back {
-	float: right;
-	display: inline-block;
+.report-form .back {
+	text-align: right;
 }
-.report-booth {
-	margin-bottom: 20px;
+.report-booth-fstv button {
+	background-color: #fff;
+	border: none;
 }
-.report-booth .booth-title {
-	display: inline-block;
+.report-booth-fstv .booth-title {
+	font-size: 20px;
+	font-weight: bold;
 	color: red;
 }
-.report-detail h2 {
-	display: inline-block;
+.report-booth-fstv span button {
+	font-size: 16px;
+}
+.report-booth-fstv .booth-title:hover {
+	color: #ff6868;
+}
+.report-booth-fstv span button:hover {
+	color: #757575;
+}
+.report-detail {
+	margin-top: 10px;
 }
 .report-info {
-	float: right;
 	font-size: 15px;
-	color: #808080;
-	margin-top: 10px;
+	color: #757575;
+	text-align: right;
 }
 .report-content {
 	width: 600px;
@@ -35,7 +44,6 @@
 .btn {
 	text-align: center;
 	margin-top: 40px;
-	width: 400px;
 }
 .btn button {
 	padding: 5px 10px;

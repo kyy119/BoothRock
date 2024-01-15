@@ -6,9 +6,12 @@
 .booth-detail-form {
 	margin-top: 60px;
 }
+.fstv-title {
+	font-weight: 500;
+}
 .booth-type {
 	font-size: 17px;
-	color: #808080;
+	color: #757575;
 }
 .booth-menu {
 	width: 1000px;
@@ -39,7 +42,7 @@
 }
 .booth-item ul {
 	padding: 20px;
-	border: 2px dotted #808080;
+	border: 2px dotted #757575;
 	border-radius: 15px;
 	height: 215px;
 }
@@ -153,7 +156,7 @@
 	margin: 10px;
 }
 .report i, .report {
-	color: #808080;
+	color: #757575;
 }
 .review-form {
 	height: 200px;
@@ -177,7 +180,7 @@
 	color: #f0d828 !important;
 }
 .id-date {
-	color: #808080;
+	color: #757575;
 	font-size: 14px;
 	line-height: 25px;
 	margin: 0 !important;

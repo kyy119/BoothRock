@@ -9,9 +9,12 @@
 	display: inline-block;
 	margin-left: 130px;
 }
+.mypage-form h1 {
+	font-weight: 500;
+}
 .side-menu {
 	width: 180px;
-	height: 700px;
+	height: 620px;
 	display: inline-block;
 	margin-left: 140px;
 	margin-top: 80px;

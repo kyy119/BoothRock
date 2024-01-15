@@ -60,7 +60,7 @@
 		    				<i class="fa-solid fa-star"></i>
 		    				<i class="fa-regular fa-star"></i>
 		    			</div>
-		    			<div class="review-date">boo***** | 23.11.20</div>
+		    			<div class="id-date">boo***** | 23.11.20</div>
 		    			<ul>
 		    				<li><i class="fa-solid fa-hashtag">적당해요</i></li>
 		    				<li><i class="fa-solid fa-hashtag">친절해요</i></li>
@@ -80,7 +80,7 @@
 		    				<i class="fa-regular fa-star"></i>
 		    				<i class="fa-regular fa-star"></i>
 		    			</div>
-		    			<div class="review-date">boo***** | 23.10.01</div>
+		    			<div class="id-date">boo***** | 23.10.01</div>
 		    			<ul>
 		    				<li><i class="fa-solid fa-hashtag">줄이 길어요</i></li>
 		    				<li><i class="fa-solid fa-hashtag">불친절해요</i></li>

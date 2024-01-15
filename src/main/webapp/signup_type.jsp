@@ -27,19 +27,23 @@
     
     <div class="bodywrap">
     	<div class="signup-type">
-    		<h3>사이트 이용 유형을 선택해주세요</h3>
+    		<h2>사이트 이용 유형을 선택해주세요</h2>
     		<div class="cus-type">
     			<form id="cus-form" action="signup_cus.jsp" method="post">
     			<input type="hidden" name="phone_number" value="${param.phone_number}">
-    				<div>소비자</div><hr>
-    				<p>축제를 즐기는 일반 참가자로,<br>축제 부스에서 다양한 활동과 상품을 즐기려는 분들입니다.</p>
+    				<div>
+    					<i class="fa-solid fa-users"></i><br>소비자
+    				</div>
+    				<p>축제를 즐기는 일반 참가자로,<br>축제와 부스의 다양한 활동과<br>판매 상품들의 정보를 탐색하고<br>참여할 수 있습니다.</p>
     			</form>
     		
     		</div>
     		<div class="seller-type">
     			<form id="seller-form" action="signup_seller.jsp" method="post">
     			<input type="hidden" name="phone_number" value="${param.phone_number}">
-					<div>판매자</div><hr>
+					<div>
+    					<i class="fa-solid fa-store"></i><br>판매자
+    				</div>
 					<p>사업자 등록번호, 부스 정보,<br>판매하는 상품 또는 서비스에 대한<br>간략한 소개 등을 등록하여<br>사이트에 정보를 제공할 수 있습니다.</p>
 				</form>
     		</div>

@@ -1,55 +1,59 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin-bottom: 100px;
+	height: 700px;
 }
 .edit-form {
-	width: 420px;
+	width: 332px;
 	height: 480px;
-	border: 1px solid #000;
-	border-radius: 15px;
-	margin-top: 50px;
-}
-.input-form {
-	width: 360px;
-	height: 380px;
-	margin: 50px 30px;
+	margin-top: 30px;
 	text-align: center;
 }
 .input-form div {
-	height: 35px;
+	height: 40px;
 	margin: 20px 0px;
-}
-.input-form div label {
-	font-weight: bold;
-	line-height: 35px;
-	float: left;
-	text-align: center;
-	width: 120px;
+	border: 1px solid #757575;
+	border-radius: 15px;
+	padding: 0px 15px;
+	width: 300px;
+	text-align: left;
 }
 .input-form div input {
 	width: 150px;
-	height: 35px;
-	border: 1px solid #000;
+	height: 40px;
+	border: none;
 	background-color: #fff;
-	border-radius: 15px;
-	float: left;
-	text-align: center;
-	font-weight: bold;
 	padding: 0px 10px;
+	font-size: 15px;
+}
+.input-form div input:focus {
+	outline: none;
+}
+.input-form div:focus-within {
+	border-color: #876ed5;
+}
+.input-form div:focus-within i {
+    color: #876ed5;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
 }
 .input-form div button {
-	width: 62px;
-	height: 35px;
 	float: right;
-	border-radius: 15px;
-	border: 1px solid #808080;
-	color: #808080;
+	border: none;
+	color: #757575;
 	background-color: #fff;
-	font-weight: 600;
+	line-height: 40px;
 }
 .input-form div button:hover {
-	background-color: #ddd;
+	color: #876ed5;
+	font-weight: bold;
 }
 .seller-number {
 	/* display: none; 세션 적용시 변경 필요 */
@@ -57,14 +61,16 @@
 .edit {
 	width: 100px;
 	height: 40px;
-	border: 1px solid #000;
+	border: 1px solid #757575;
 	background-color: #fff;
 	border-radius: 15px;
-	font-weight: bold;
 	text-align: center;
 	margin-top: 15px;
 	font-size: 15px;
+	color: #757575;
 }
 .edit:hover {
-	background-color: #ddd;
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
 }

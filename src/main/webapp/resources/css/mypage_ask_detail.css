@@ -6,14 +6,14 @@
 }
 .ask-detail h2 {
 	display: inline-block;
+	font-weight: 500;
 }
 .ask-info {
 	float: right;
 	font-size: 15px;
-	color: #808080;
+	color: #757575;
 }
 .ask-content {
-	width: 600px;
 	height: 200px;
 	margin-top: 20px;
 }

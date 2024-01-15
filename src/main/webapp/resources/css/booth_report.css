@@ -6,12 +6,16 @@
 .booth-report-form {
 	width: 600px;
 }
+.booth-report-form h1 {
+	font-weight: 500;
+}
 .booth-info {
 	margin-bottom: 20px;
 	width: 500px;
 }
 .booth-info h2 {
 	display: inline-block;
+	font-weight: 500;
 }
 .report-form {
 	width: 500px;
@@ -28,34 +32,36 @@
 	padding: 10px;
 	width: 500px;
 	height: 200px;
-	margin-top: 20px;
+	margin-top: 15px;
 	box-sizing: border-box;
 	font-size: 17px;
+}
+.report-title:focus, .report-content:focus {
+	outline: none;
+	border: 1px solid #876ed5;
+}
+.report-submit, .back {
+	border: 1px solid #757575;
+	color: #757575;
+	background-color: #fff;
+	border-radius: 20px;
+	font-size: 15px;
+	display: inline-block;
 }
 .report-submit {
 	width: 100px;
 	height: 40px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 15px;
 	margin: 15px 0px 20px;
-	display: inline-block;
-}
-.report-submit:hover, .back:hover {
-	background-color: #ddd;
 }
 .back {
 	display: inline-block;
 	width: 98px;
 	height: 38px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 15px;
 	margin: 15px 5px 20px 0px;
-	display: inline-block;
 	line-height: 38px;
+}
+.report-submit:hover, .back:hover {
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
 }

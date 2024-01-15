@@ -43,7 +43,6 @@
             			<span>↪</span>
             			<i class="fa-solid fa-user-tie"></i>
             		</div>
-            		<h3>관리자</h3>
 	            	<p class="admin-comment">안녕하세요. 부스樂 페스티벌 매니저입니다. <br>이용에 불편을 끼쳐 죄송합니다. 불편 사항 접수 되었습니다. 신속한 조치 취하겠습니다.</p>
 	            </div>
             </div>

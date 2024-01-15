@@ -8,12 +8,15 @@
 	width: 1000px;
 	margin-top: 60px;
 }
+.fstv-title {
+	font-weight: 500;
+}
 .booth-title {
 	margin-left: 20px;
 }
 .booth-type {
 	font-size: 17px;
-	color: #808080;
+	color: #757575;
 }
 .review-form {
 	width: 1000px;
@@ -26,8 +29,8 @@
 .review-li {
 	display: inline-block;
 	width: 420px;
-	margin: 0px 10px 20px;
-	border: 1px solid #ddd;
+	margin: 0px 17px 20px;
+	border: 1px solid #757575;
 	border-radius: 15px;
 	padding: 20px;
 }
@@ -38,7 +41,7 @@
 	color: #f0d828 !important;
 }
 .id-date {
-	color: #808080;
+	color: #757575;
 	font-size: 14px;
 	line-height: 25px;
 	margin: 0 !important;
@@ -66,7 +69,7 @@
     -webkit-background-clip: text;
 	border: 1px solid #876ed5;
 	border-radius: 20px;
-	padding: 5px 15px;
+	padding: 5px 16px;
 }
 .review-list-form .write-review i {
 	background: linear-gradient(to right top, #876ed5, #0b123f);
@@ -74,8 +77,7 @@
     -webkit-background-clip: text;
 }
 .review-list-form .write-review:hover {
-	font-weight: bold;
-	border: 2px solid #876ed5;
+	opacity: 0.7;
 }
 .review-more {
 	margin-left: 530px;

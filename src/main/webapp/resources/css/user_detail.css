@@ -18,7 +18,7 @@
 	margin-right: 50px;
 }
 .user-detail-form .back:hover {
-	color: #808080;
+	color: #757575;
 }
 .user-detail {
 	width: 1000px;
@@ -62,7 +62,7 @@
 	font-weight: bold;
 }
 .user-detail span button:hover {
-	color: #808080;
+	color: #757575;
 }
 .btn {
 	text-align: center;
@@ -74,7 +74,6 @@
 	border: 1px solid #000;
 	border-radius: 6px;
 	font-size: 17px;
-	font-weight: bold;
 	margin: 0px 6px;
 }
 .btn button:hover {

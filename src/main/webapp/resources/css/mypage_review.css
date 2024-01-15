@@ -9,8 +9,8 @@
 .review-form {
 	height: 100px;
 	width: 500px;
-	border: 1px solid #000;
-	padding: 30px;
+	border: 1px solid #ddd;
+	padding: 25px;
 	margin-bottom: 30px;
 	border-radius: 20px;
 }
@@ -27,7 +27,7 @@
 	color: #f0d828;
 }
 .id-date {
-	color: #808080;
+	color: #757575;
 	font-size: 14px;
 	line-height: 25px;
 }
@@ -35,7 +35,7 @@
 	display: inline-block;
 }
 .review ul {
-	margin-top: 10px;
+	margin-top: 5px;
 }
 .review ul li {
 	display: inline-block;
