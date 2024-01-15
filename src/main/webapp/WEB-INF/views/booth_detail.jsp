@@ -1,8 +1,8 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="com.multi.FM.myboothpage.BoothVO"%>
 <%@page import="com.multi.FM.booth.BoothProductVO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
 <% BoothVO boothDetail = (BoothVO)request.getAttribute("boothDetail"); %>
 
 
@@ -14,7 +14,7 @@
 <title>모든 축제의 부스를 담다 - 부스락</title>
 <link rel="stylesheet" href="resources/css/booth_detail.css"
 	type="text/css">
-<script src="resources/js/booth_detail.js" defer type="text/javascript"></script>
+<script src="resources/js/booth_detail.js?ver=0114" defer type="text/javascript"></script>
 </head>
 <body>
 	<%@ include file="../../header.jsp"%>
@@ -23,7 +23,7 @@
 		<div class="booth-detail-form">
 			<div class="booth-title">
 				<!-- 부스이름 = 축제이름 + 부스 이름으로 없어질 예정 -->
-				<h3 class="fstv-title">양평 산수유마을 빙어축제</h3>
+				<!-- <h3 class="fstv-title">양평 산수유마을 빙어축제</h3> -->
 				<a href="booth_detail.jsp" style="display: inline-block"><%=boothDetail.getBooth_name() %></a>
 				<span class="booth-type"> | <%=boothDetail.getBooth_category() %></span>
 			</div>
@@ -32,23 +32,15 @@
 				<div class="booth-img">
 					<img alt="부스 이미지" src="<%=boothDetail.getBooth_image() %>">
 				</div>
-        <c:forEach items="${boothProduct}" var="product">
 					<div class="booth-item">
 						<ul>
 							<li class="booth-item-menu"><i
 								class="fa-solid fa-chevron-left"></i> 판매 정보 <i
-								class="fa-solid fa-chevron-right"></i></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
-							<li>${boothProduct.product}<span>${boothProduct.price}</span></li>
+								class="fa-solid fa-chevron-right"></i>
+							<div class="boothProduct"></div>			
+							</li>
 						</ul>
 					</div>
-				</c:forEach>
 			</div>
 			<div class="booth-info-form">
 				<ul class="tabmenu">
@@ -75,8 +67,9 @@
 							<a href="booth_review_write.jsp" class="write-review"><i
 								class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 							<ul class="review-ul">
-								<li class="review-li"><span class="star-point"> <i
-										class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+								<li class="review-li">
+								<span class="star-point"> 
+								<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
 										<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
 										<i class="fa-solid fa-star"></i>
 								</span><br> <span class="id-date">yumii**** | 2024.01.03</span>
@@ -95,8 +88,8 @@
 										<li><i class="fa-solid fa-hashtag">친절해요</i></li>
 									</ul></li>
 							</ul>
-							<a href="booth_review.jsp" class="review-more">리뷰 더보기 <i
-								class="fa-solid fa-chevron-right"></i></a>
+							<a href="booth_review?booth_no=<%= boothDetail.getBooth_no() %>" class="review-more">리뷰 더보기 <i class="fa-solid fa-chevron-right"></i></a>
+
 						</div></li>
 				</ul>
 			</div>
@@ -108,4 +101,3 @@
 
 </body>
 </html>
- --%>

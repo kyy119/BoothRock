@@ -6,18 +6,16 @@ import org.springframework.stereotype.Service;
 import com.multi.FM.myboothpage.BoothVO;
 
 @Service
-public class BoothService {
+public class BoothReviewService {
   
   @Autowired
-  BoothDAO dao;
-  
-  public BoothVO detail(BoothVO boothVO) {
-    return dao.detail(boothVO);
-  }
-  
-  public List<BoothProductVO> product(int booth_no) {
-    return dao.product(booth_no);
+  BoothReviewDAO dao;
+
+  public List<BoothReviewVO> list(int booth_no) {
+    return dao.list(booth_no);
   }
 
-
+  public BoothVO Rbooth(int booth_no) {
+    return dao.Rbooth(booth_no);
+  }
 }
