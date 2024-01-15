@@ -65,6 +65,26 @@ jQuery(document).ready(function() {
         }
     });
     
+    adjustHeights(); // 페이지 로드시 높이 조정 함수 호출
+
+    // 창 크기가 변경될 때 높이 조정 함수 호출
+    $(window).resize(function () {
+        adjustHeights();
+    });
+
+    function adjustHeights() {
+        var containerHeight = $('.fstv-container').height();
+        var infoHeight = $('.fstv-info').height();
+
+        if (infoHeight < 350) {
+            $('.fstv-container').css('height', '350px');
+        } else {
+            $('.fstv-container').css('height', infoHeight + 'px');
+            $('.fstv-img img').css('height', infoHeight + 'px');
+        }
+
+    }
+    
     var searchParams = new URLSearchParams(window.location.search);
 	var fstvNo = searchParams.get('fstv_no');
     
@@ -79,11 +99,23 @@ jQuery(document).ready(function() {
     	}
     })
     
+    var newChildren = $('#home-page-link').contents().filter(function () {
+                return this.nodeType !== 3; // 3은 텍스트 노드의 nodeType입니다.
+            }).clone();
+
+            // #home-page-link의 자식을 모두 비우고, 새로운 자식을 추가
+            $('#home-page-link').empty().append(newChildren);
+    
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var link = document.querySelector('#home-page-link a');
-    if (link) {
-        link.innerHTML = '<i class="fa-regular fa-paper-plane"></i> 공식 홈페이지';
+    var links = document.querySelectorAll('#home-page-link a');
+
+    if (links.length > 0) {
+        links[0].innerHTML = '<i class="fa-regular fa-paper-plane"></i> 공식 홈페이지';
+    }
+
+    if (links.length > 1) {
+        links[1].innerHTML = '<i class="fa-brands fa-instagram"></i> 인스타그램';
     }
 });

@@ -6,8 +6,8 @@
 .booth-detail-form {
 	margin-top: 60px;
 }
-.fstv-title {
-	font-weight: 500;
+.booth-title a {
+	font-size: 32px;
 }
 .booth-type {
 	font-size: 17px;
@@ -52,15 +52,18 @@
 	margin: 10px 27px;
 	font-size: 18px;
 	font-weight: 600;
+	text-align: left;
 }
 .booth-item-menu {
 	width: 556px !important;
-	text-align: center;
+	text-align: center !important;
 	margin: 0 !important;
-	margin-bottom: 10px !important;
 }
 .booth-item span {
 	float: right;
+}
+.boothProduct {
+	margin-top: 10px;
 }
 .booth-info-form {
     width: 1000px;
@@ -138,8 +141,7 @@
     margin-bottom: 12px;
 }
 .booth-info li {
-    height: 32px;
-    line-height: 32px;
+    line-height: 30px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 18px;
@@ -199,7 +201,7 @@
 	color: #876ed5;
 	font-weight: 540 !important;
 }
-.write-review {
+.review-form .write-review {
 	width: 153px;
 	margin-top: 30px;
 	font-size: 18px;
@@ -208,16 +210,15 @@
     -webkit-background-clip: text;
 	border: 1px solid #876ed5;
 	border-radius: 20px;
-	padding: 5px 15px;
+	padding: 5px 16px;
 }
-.write-review i {
+.review-form .write-review i {
 	background: linear-gradient(to right top, #876ed5, #0b123f);
     color: transparent;
     -webkit-background-clip: text;
 }
-.write-review:hover {
-	font-weight: bold;
-	border: 2px solid #876ed5;
+.review-form .write-review:hover {
+	opacity: 0.7;
 }
 .review-more {
 	font-weight: bold;
