@@ -36,54 +36,55 @@
     		<form class="input-form">
     			<div class="booth-add-form">
 	    			<div>
-		    			<label for="fstv-name">축제명</label>
+	    				<i class="fa-solid fa-drum"></i>
 						<select id="fstv-name" name="fstv-name">
 							<option value="fstv1">양평 산수유마을 빙어축제</option> <!-- value 고유번호로 가져가면 될듯 -->
 							<option value="fstv2">임실 치즈 축제</option>
 						</select>
 	    			</div>
 	    			<div>
-		    			<label for="booth-name">부스명</label>
-						<input type="text" id="booth-name" name="booth-name" required>
+	    				<i class="fa-solid fa-store"></i>
+						<input type="text" id="booth-name" name="booth-name" placeholder="부스명" required>
 	    			</div>
 	    			<div>
-						<label for="booth-type">부스타입</label>
+	    				<i class="fa-solid fa-hashtag"></i>
 						<select id="booth-type" name="booth-type">
 							<option value="selling">판매형</option>
 							<option value="trial">체험형</option>
 						</select>
 		    		</div>
 	    			<div>
-		    			<label for="booth-img">이미지</label>
-						<input type="text" id="booth-img" name="booth-img" style="margin-right: 5px;" placeholder="하나만 첨부 가능"><button>첨부파일</button>
+	    				<i class="fa-solid fa-image"></i>
+						<input type="text" name="booth-img" id="booth-img" placeholder="부스 대표이미지">
+						<button>첨부파일</button>
 	    			</div>
 	    			<div>
-		    			<label for="booth-loc">위치</label>
-		    			<input type="text" id="booth-loc" name="booth-loc">
+	    				<i class="fa-solid fa-location-dot"></i>
+		    			<input type="text" id="booth-loc" name="booth-loc" placeholder="부스 위치">
 	    			</div>
 	    			<div>
-		    			<label for="booth-tel">전화번호</label>
-		    			<input type="text" id="booth-tel" name="booth-tel">
+	    				<i class="fa-solid fa-phone"></i>
+		    			<input type="text" id="booth-tel" name="booth-tel" placeholder="부스 전화번호">
 	    			</div>
 	    			<div>
-		    			<label for="booth-hour">운영시간</label>
-		    			<input type="text" id="booth-hour" name="booth-hour">
+	    				<i class="fa-regular fa-clock"></i>
+		    			<input type="text" id="booth-hour" name="booth-hour" placeholder="부스 운영시간">
 	    			</div>
-	    			<div style="height: 100px;">
-		    			<label for="booth-intro">부스소개</label>
-		    			<textarea id="booth-intro" name="booth-intro"></textarea>
+	    			<div class="text-area">
+	    				<i class="fa-solid fa-store"></i>
+		    			<textarea id="booth-intro" name="booth-intro" placeholder="부스 소개"></textarea>
 	    			</div>
 	    		</div>
 	    		<div class="item-add-form">
 	    			<div class="item-form">
 	    				<div class="item">
 			    			<div>
-				    			<label for="booth-item">상품명</label>
-								<input type="text" id="booth-item" name="booth-item" required>
+			    				<i class="fa-solid fa-tag"></i>
+								<input type="text" id="booth-item" name="booth-item" placeholder="상품명" required>
 			    			</div>
 			    			<div>
-				    			<label for="booth-item-price">가격</label>
-								<input type="text" id="booth-item-price" name="booth-item-price" required>
+			    				<i class="fa-solid fa-sack-dollar"></i>
+								<input type="text" id="booth-item-price" name="booth-item-price" placeholder="가격" required>
 			    			</div>
 		    			</div>
 	    			</div>
