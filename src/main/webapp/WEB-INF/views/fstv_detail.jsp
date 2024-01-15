@@ -20,7 +20,7 @@
     <div class="bodywrap">
     	<div class="fstv-detail-form">
 	    	<div class="fstv-title">
-	    		<h1 style="display: inline-block"><%=vo.getFstv_title() %></h1>
+	    		<h1 style="display: inline-block; font-weight: 500;"><%=vo.getFstv_title() %></h1>
 	    		<i id="jjim" class="fa-regular fa-heart">  <%=vo.getFstv_jjimCount() %></i><br>
 	    		<span class="fstv-date"><%=vo.getFstv_startdate() %> ~ <%=vo.getFstv_enddate() %></span>
 		    </div>
@@ -34,7 +34,7 @@
 	            <p class="info-cont"><%=vo.getFstv_eventcont() %></p>
 				<button class="more">더보기</button><br>
 	        	<hr>
-	        	<div style="width: 1000px; height: 350px; text-align: center;">
+	        	<div class="fstv-container" style="width: 1000px; text-align: center;">
 	        		<div class="fstv-img">
 	        			<img alt="페스티벌 이미지" src="<%=vo.getFstv_image()%>">
 	        		</div>
@@ -149,6 +149,28 @@
 		    yAnchor: 1 
 		});
 	</script>
+<script>
+    $(document).ready(function () {
+        adjustHeights(); // 페이지 로드시 높이 조정 함수 호출
 
+        // 창 크기가 변경될 때 높이 조정 함수 호출
+        $(window).resize(function () {
+            adjustHeights();
+        });
+
+        function adjustHeights() {
+            var containerHeight = $('.fstv-container').height();
+            var infoHeight = $('.fstv-info').height();
+
+            if (infoHeight < 350) {
+                $('.fstv-container').css('height', '350px');
+            } else {
+                $('.fstv-container').css('height', infoHeight + 'px');
+	            $('.fstv-img img').css('height', infoHeight + 'px');
+            }
+
+        }
+    });
+</script>
 </body>
 </html>
