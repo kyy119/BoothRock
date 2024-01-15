@@ -16,7 +16,7 @@
 			<img src="<%=list.get(idx).getBooth_image()%>" alt="이미지1">
 			<div class="booth-title"><%=list.get(idx).getBooth_name()%></div>
 			<div class="booth-type"><%=list.get(idx).getBooth_category()%></div>
-			<div><i class="fa-solid fa-star"><%=list.get(idx).getBooth_starpoint()%></i></div>
+			<span><i class="fa-solid fa-star"> <%=list.get(idx).getBooth_starpoint()%></i></span>
 		</a>
 	</li>
 	<% idx++; }} catch (Exception e){} %>

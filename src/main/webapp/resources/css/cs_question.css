@@ -6,6 +6,9 @@
 .question-form {
 	width: 800px;
 }
+.question-form h1 {
+	font-weight: 500;
+}
 .question-list {
 	padding: 20px;
 }
@@ -14,9 +17,7 @@
 }
 .question h2 {
 	margin-bottom: 10px;
-	background: linear-gradient(to right top, #876ed5, #0b123f);
-    color: transparent;
-    -webkit-background-clip: text;
+	font-weight: 500;
 }
 .question p {
 	display: none;

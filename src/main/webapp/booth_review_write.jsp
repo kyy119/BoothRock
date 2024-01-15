@@ -32,37 +32,37 @@
 		        	<p>최대 3개 선택 가능</p><br>
 		        	<ul>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">가게가 청결해요</i>
+		        			<i class="fa-solid fa-hashtag"> 가게가 청결해요</i>
 		        			<i class="fa-regular fa-thumbs-up"></i>
 		        		</li>
 		        		<li>
-			        		<i class="fa-solid fa-hashtag">친절해요</i>
+			        		<i class="fa-solid fa-hashtag"> 친절해요</i>
 			        		<i class="fa-regular fa-thumbs-up"></i>
 		        		</li>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">음식이 맛있어요</i>
+		        			<i class="fa-solid fa-hashtag"> 음식이 맛있어요</i>
 		        			<i class="fa-regular fa-thumbs-up"></i>
 		        		</li>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">적당해요</i>
+		        			<i class="fa-solid fa-hashtag"> 적당해요</i>
 		        			<i class="fa-regular fa-thumbs-up"></i>
 		        		</li>
 		        	</ul>
 		        	<ul>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">그저 그랬어요</i>
+		        			<i class="fa-solid fa-hashtag"> 그저 그랬어요</i>
 		        			<i class="fa-regular fa-thumbs-down"></i>
 		        		</li>
 		        		<li>
-			        		<i class="fa-solid fa-hashtag">불친절해요</i>
+			        		<i class="fa-solid fa-hashtag"> 불친절해요</i>
 			        		<i class="fa-regular fa-thumbs-down"></i>
 		        		</li>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">위생이 좋지 않아요</i>
+		        			<i class="fa-solid fa-hashtag"> 위생이 좋지 않아요</i>
 		        			<i class="fa-regular fa-thumbs-down"></i>
 		        		</li>
 		        		<li>
-		        			<i class="fa-solid fa-hashtag">음식이 맛없어요</i>
+		        			<i class="fa-solid fa-hashtag"> 음식이 맛없어요</i>
 		        			<i class="fa-regular fa-thumbs-down"></i>
 		        		</li>
 		        	</ul>

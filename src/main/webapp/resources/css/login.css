@@ -1,65 +1,86 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 200px 0px 250px;
+	margin: 170px 0px 280px;
 }
 .login-form {
-	width: 400px;
+	width: 332px;
 	height: 350px;
-	border: 1px solid #000;
+}
+.login-form hr {
+	margin: 15px 0px 20px;
+	color: #757575;
+}
+.input-form div {
+	border: 1px solid #757575;
+	width: 300px;
+	padding: 0px 15px;
 	border-radius: 15px;
+	margin: 15px 0px;
 }
-.input-form {
-	width: 252px;
-	margin-top: 40px;
-}
-.input-form label {
-	font-size: 15px;
-	font-weight: bold;
-}
-.input-form input {
+.input-form div input {
 	width: 240px;
-	height: 35px;
-	border: 1px solid #000;
-	margin: 10px 0px;
+	height: 40px;
 	background-color: #fff;
-	border-radius: 15px;
-	padding-left: 10px;
+	padding: 0px 15px;
 	font-size: 15px;
+	border: none;
+}
+.input-form div i {
+	font-size: 18px;
+	color: #757575;
+}
+.input-form div:focus-within {
+	border-color: #876ed5;
+}
+.input-form div:focus-within i {
+    color: #876ed5;
+}
+.input-form div input:focus {
+	outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
 }
 .login {
-	width: 252px !important;
-	height: 35px;
-	border: 1px solid #000;
-	margin: 10px 0px;
+	width: 332px !important;
+	height: 40px;
+	border: 1px solid #757575;
 	background-color: #fff;
 	border-radius: 15px;
-	font-weight: bold;
+	font-size: 15px;
 }
 .login:hover {
-	background-color: #ddd;
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
 }
 .sub-btn {
-	width: 252px;
+	width: 332px;
 	height: 35px;
 	margin: 10px auto;
 	text-align: center;
 	line-height: 30px;
 }
-.find-info {
-	width: 167px;
-	display: inline;
-}
 .sub-btn ul li {
 	float: left;
-	margin: 0px 2px;
+	margin: 0px 10px;
+	color: #757575;
 }
 .sub-btn ul li a {
 	height: 35px;
     background-color: #fff;
     border-radius: 15px;
     font-size: 14px;
+    color: #757575;
 }
 .sub-btn ul li a:hover {
+	color: #876ed5;
 	font-weight: bold;
 }
