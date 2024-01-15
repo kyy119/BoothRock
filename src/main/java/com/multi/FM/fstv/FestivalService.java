@@ -61,4 +61,12 @@ public class FestivalService {
       return dao.search(q);
     }
     
+    public List<FestivalVO> map(String region) {
+      return dao.map(region);
+    }
+    
+    public List<FestivalVO> mapJ(String region) {
+      return dao.mapJ(region);
+    }
+    
 }
