@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@page import="com.multi.FM.booth.BoothReviewVO"%>
-<%@page import="com.multi.FM.myboothpage.BoothVO"%>
 <%@ page import="java.util.List" %>
-<% BoothVO Rbooth = (BoothVO)request.getAttribute("Rbooth"); %>
 <% List<BoothReviewVO> boothReview = (List<BoothReviewVO>) request.getAttribute("boothReview");%>
 
 <!DOCTYPE html>
@@ -22,10 +20,13 @@
     	<div class="booth-detail-form">
 	    	<div class="booth-title">
 				<!-- <h3 class="fstv-title">양평 산수유마을 빙어축제</h3> -->
-	    		<c:if test="${not empty Rbooth}">
-                    <a href="booth_detail.jsp" style="display: inline-block"><h1> <%=Rbooth.getBooth_name() %></h1></a>
-                    <span class="booth-type"> | <%=Rbooth.getBooth_category() %></span>
-                </c:if>
+	    		<c:if test="${not empty boothReview}">
+			        <c:set var="firstReview" value="${boothReview[0]}" />
+			        <a href="booth_detail.jsp" style="display: inline-block">
+			            <h1>${firstReview.getBooth_name()}</h1>
+			        </a>
+			        <span class="booth-type"> | ${firstReview.getBooth_category()}</span>
+    			</c:if>
             </div>
             <div class="review-list-form">
                 <a href="booth_review_write.jsp" class="write-review"><i class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
