@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
+	height: 1400px;
     width: 1400px;
     overflow: auto;
     margin-bottom: 100px;
@@ -10,12 +11,12 @@
 	margin-top: 50px;
 }
 .fstv-list-head h1 {
-	display: inline-block;
+	margin-left: 35px;
 	font-weight: 500;
 }
 .date-search {
-	display: inline-block;
-	margin-left: 20px;
+	margin-top: 20px;
+	margin-left: 30px;
 }
 .date-search input {
 	padding: 2px 15px;

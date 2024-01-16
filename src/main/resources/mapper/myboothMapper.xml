@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Mybooth">
-	<!-- 현재 진행중인 축제 / 시작날짜가 가까운게 먼저 전으로 뒤로 -->
-	<select id="getAllFestivals" resultType="festivalVO">
-		select fstv_no, fstv_title from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_startdate desc
-	</select>
-	<insert id="insertBooth" parameterType="boothVO">
-		INSERT INTO booths (booth_name, fstv_no, booth_addr, booth_image, booth_tel,
-		booth_hours, booth_category, booth_introduction)
-		VALUES (#{boothName}, #{fstvNo}, #{boothAddr}, #{boothImage}, #{boothTel},
-		#{boothHours}, #{boothCategory}, #{boothIntroduction})
-	</insert>
+<mapper namespace="MyboothMapper">
+
+   <resultMap id="boothResultMap" type="BoothVO">
+       <id property="boothId" column="booth_id"/>
+       <result property="boothName" column="booth_name"/>
+       <result property="fstvNo" column="fstv_no"/>
+       <result property="boothAddr" column="booth_addr"/>
+       <result property="boothImage" column="booth_image"/>
+       <result property="boothTel" column="booth_tel"/>
+       <result property="boothHours" column="booth_hours"/>
+       <result property="boothCategory" column="booth_category"/>
+       <result property="boothIntroduction" column="booth_introduction"/>
+   </resultMap>
+
+   <select id="getAllFestivals" resultType="FestivalVO">
+       SELECT * FROM festivals
+   </select>
+
+   <insert id="insertBooth" parameterType="BoothVO">
+       INSERT INTO booths (booth_name, fstv_no, booth_addr, booth_image, booth_tel, booth_hours, booth_category, booth_introduction)
+       VALUES (#{boothName}, #{fstvNo}, #{boothAddr}, #{boothImage}, #{boothTel}, #{boothHours}, #{boothCategory}, #{boothIntroduction})
+   </insert>
 
 </mapper>

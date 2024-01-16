@@ -67,20 +67,6 @@ public class FestivalDAO {
   }
   
   public List<FestivalVO> search(String q) {
-    List<FestivalVO> total = new ArrayList<FestivalVO>();
-    try {
-        List<FestivalVO> data1 = my.selectList("fest.search1", q);
-        total.addAll(data1);
-    } catch (Exception e) {}
-    try {
-      List<FestivalVO> data2 = my.selectList("fest.search2", q);
-      total.addAll(data2);
-    } catch (Exception e) {}
-    try {
-      List<FestivalVO> data3 = my.selectList("fest.search3", q);
-      total.addAll(data3);
-    } catch (Exception e) {}
-    return total;
+    return my.selectList("fest.search", q);
   }
-  
 }

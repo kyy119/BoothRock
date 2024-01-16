@@ -54,10 +54,12 @@
 	<select id="list1" resultType="festivalVO">
 		select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_startdate desc
 	</select>
+	
 	<!-- 시작 예정인 축제 / 시작날짜가 가까운게 먼저 멀수록 뒤로 -->
 	<select id="list2" resultType="festivalVO">
 		select * from festival	where fstv_startdate &gt; current_date() order by fstv_startdate
 	</select>
+	
 	<!-- 완료된 축제 / 정렬은 예정인 축제와 동일 -->
 	<select id="list3" resultType="festivalVO">
 		select * from festival	where fstv_enddate &lt; current_date() order by fstv_startdate desc
@@ -102,21 +104,9 @@
 		order by booth_starpoint desc
 	</select>
 	
-	<!-- 헤더 검색기능 기본순 구현 -->
-	<select id="search1" parameterType="String" resultType="festivalVO">
-		select * from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date()
-		and fstv_title like concat('%', #{title}, '%')
-		order by fstv_startdate desc
-	</select>
-	<select id="search2" parameterType="String" resultType="festivalVO">
-		select * from festival where fstv_startdate &gt; current_date()
-		and fstv_title like concat('%', #{title}, '%')
-		order by fstv_startdate
-	</select>
-	<select id="search3" parameterType="String" resultType="festivalVO">
-		select * from festival where fstv_enddate &lt; current_date()
-		and fstv_title like concat('%', #{title}, '%')
-		order by fstv_startdate desc
+	<!-- 헤더 검색기능 구현 -->
+	<select id="search" parameterType="String" resultType="festivalVO">
+		select * from festival where fstv_title like concat('%', #{title}, '%') 
 	</select>
 	
 </mapper>
