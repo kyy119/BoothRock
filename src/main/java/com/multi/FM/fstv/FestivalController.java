@@ -97,10 +97,24 @@ public class FestivalController {
   
   @RequestMapping("fstv_search")
   public void search(String q, Model model) {
-    System.out.println(q);
     List<FestivalVO> list = service.search(q);
     model.addAttribute("list", list);
     model.addAttribute("q", q);
+  }
+  
+  @RequestMapping("fstv_maplist")
+  public void map(String region, Model model) {
+    List<FestivalVO> list = service.map(region);
+    model.addAttribute("list", list);
+    model.addAttribute("region", region);
+  }
+  
+  @RequestMapping("fstv_maplistJ")
+  public String mapJ(String region, Model model) {
+    List<FestivalVO> list = service.mapJ(region);
+    model.addAttribute("list", list);
+    model.addAttribute("region", region);
+    return "fstv_maplist";
   }
   
 }
