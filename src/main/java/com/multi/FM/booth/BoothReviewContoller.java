@@ -27,15 +27,14 @@ public class BoothReviewContoller {
   public String review(@RequestParam("booth_no") int booth_no, Model model) {
       List<BoothReviewVO> boothReview = boothRSV.list(booth_no);
       model.addAttribute("boothReview", boothReview);
-       System.out.println("booth_review 호출");
       return "booth_review"; 
   }// review list
   
+  //review의 부스정보 불러오기
   @RequestMapping("booth_detail_review")
   public String detail_review(@RequestParam("booth_no") int booth_no, Model model) {
       List<BoothReviewVO> boothDetailReview = boothRSV.list(booth_no);
       model.addAttribute("boothDetailReview", boothDetailReview);
-       System.out.println("booth_detail_review 호출");
       return "booth_detail_review"; 
   }// booth_detail_review list
  

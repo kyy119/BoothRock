@@ -16,6 +16,9 @@ public class BoothVO {
   private String booth_hours;
   private String booth_category;
   private String booth_introduction;
-  private String booth_ban;    
+  private String booth_ban;  
+  //fstv table 조인
+  private String fstv_title;    
+
   
 }
