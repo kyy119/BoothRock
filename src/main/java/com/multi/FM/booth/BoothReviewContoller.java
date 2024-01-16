@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.multi.FM.myboothpage.BoothVO;
 
 
 
@@ -22,6 +23,15 @@ public class BoothReviewContoller {
   BoothService boothSV;
 
   
+//booth 상세 페이지_booth정보
+ @RequestMapping("Rbooth")
+ public String Rbooth(@RequestParam("booth_no") int booth_no, Model model) {
+   BoothVO Rbooth = boothRSV.Rbooth(booth_no);
+   model.addAttribute("Rbooth", Rbooth);
+   System.out.println("Rbooth 호출");
+   return "booth_review"; 
+ }//booth_detail
+  
   // review 리스트(더보기)
   @RequestMapping("booth_review")
   public String review(@RequestParam("booth_no") int booth_no, Model model) {
@@ -30,14 +40,6 @@ public class BoothReviewContoller {
        System.out.println("booth_review 호출");
       return "booth_review"; 
   }// review list
-  
-  @RequestMapping("booth_detail_review")
-  public String detail_review(@RequestParam("booth_no") int booth_no, Model model) {
-      List<BoothReviewVO> boothDetailReview = boothRSV.list(booth_no);
-      model.addAttribute("boothDetailReview", boothDetailReview);
-       System.out.println("booth_detail_review 호출");
-      return "booth_detail_review"; 
-  }// booth_detail_review list
  
   
 }// class
