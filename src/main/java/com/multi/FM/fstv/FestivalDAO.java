@@ -6,7 +6,6 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.multi.FM.myboothpage.BoothVO;
 
 @Repository
 public class FestivalDAO {
@@ -81,6 +80,27 @@ public class FestivalDAO {
       total.addAll(data3);
     } catch (Exception e) {}
     return total;
+  }
+  
+  public List<FestivalVO> map(String region) {
+    List<FestivalVO> total = new ArrayList<FestivalVO>();
+    try {
+      List<FestivalVO> data1 = my.selectList("fest.map1", region);
+      total.addAll(data1);
+    } catch (Exception e) {}
+    try {
+      List<FestivalVO> data2 = my.selectList("fest.map2", region);
+      total.addAll(data2);
+    } catch (Exception e) {}
+    try {
+      List<FestivalVO> data3 = my.selectList("fest.map3", region);
+      total.addAll(data3);
+    } catch (Exception e) {}
+    return total;
+  }
+  
+  public List<FestivalVO> mapJ(String region) {
+    return my.selectList("fest.mapJ", region);
   }
   
 }
