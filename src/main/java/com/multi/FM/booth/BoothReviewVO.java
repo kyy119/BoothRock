@@ -18,6 +18,8 @@ public class BoothReviewVO {
   private String booth_name;
   private String fstv_title;
   private String booth_category;
+
+  
   
   @Override
   public String toString() {
