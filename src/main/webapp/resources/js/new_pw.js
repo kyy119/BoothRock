@@ -39,12 +39,6 @@ jQuery(document).ready(function() {
 		console.log('패스워드2 : ' + passwordSameIsValid);// 삭제예정 
 	});// 비밀번호와 비밀번호 확인 로직
 		
-    $('.pw-edit').click(function(){
-    	if(editButtons[0].disabled){
-    		alert("회원가입 조건을 만족하지않습니다!");
-    		return false;
-    	}
-    })
 }); // 제이쿼리 전체
 
 function validatePassword(password) { // 비밀번호 유효성 검사 함수

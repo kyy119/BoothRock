@@ -78,3 +78,23 @@ input:-webkit-autofill:active {
 	color: #876ed5;
 	font-weight: bold;
 }
+.behind {
+	width: 100px;
+	height: 40px;
+	border: 1px solid #757575;
+	background-color: #fff;
+	border-radius: 15px;
+	text-align: center;
+	margin-top: 25px;
+	font-size: 15px;
+	color: #757575;
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+	line-height: 40px;
+}
+.behind:hover {
+	border-color: #876ed5;
+	color: #876ed5;
+	font-weight: bold;
+}

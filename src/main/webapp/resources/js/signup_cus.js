@@ -4,7 +4,8 @@ jQuery(document).ready(function() {
     let emailIsValid = false;
     let passwordIsValid = false;
     let passwordSameIsValid = false;
-
+	let agreeCheck = false;
+	let nameCheck = false;
     // 이메일 중복 확인
     $('#emailConfirm').click(function() {
         let emailType = validateEmail($('#user_id').val());
@@ -39,17 +40,14 @@ jQuery(document).ready(function() {
         passwordIsValid = validatePassword($(this).val());
 
         if (passwordIsValid && $(this).val() != '') {
-            passwordIsValid = true;
             passwordMessage.textContent = "조건을 만족합니다!";
             passwordMessage.style.color = "green";
             passwordMessage.style.display = "block";
         } else {
-        	submitButtons[0].disabled = true;
             passwordMessage.textContent = "비밀번호 조건을 만족해주세요!(8자이상,대소문자,숫자,특수문자(@$!%*?&))";
             passwordMessage.style.color = "red";
             passwordMessage.style.display = "block";
         }
-        console.log('패스워드1 : ' + passwordIsValid);
     });
 
     $('#user_password2').on('blur', function() {
@@ -59,29 +57,35 @@ jQuery(document).ready(function() {
             passwordMessage2.style.color = "green";
             passwordMessage2.style.display = "block";
         } else {
-        	submitButtons[0].disabled = true;
            	passwordMessage2.textContent = "비밀번호가 일치하지않습니다!";
             passwordMessage2.style.color = "red";
             passwordMessage2.style.display = "block";
             passwordSameIsValid = false;
         }
-        console.log('패스워드2 : ' + passwordSameIsValid);
     });
 
     $('#user_name').on('blur', function() {
         if ($(this).val() != '') {
+            nameCheck = true;
+        }
+    });
+    
+    $('#termsCheckbox').change(function() {
+         if ($(this).is(':checked')) {
+             // 체크됐을 때의 동작
             let emailConfirm = $('#emailConfirm');
-            if (emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true) {
+            if (nameCheck == true && emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true) {
                 submitButtons[0].disabled = false;
                 emailConfirm.hide();
             } else {
                 submitButtons[0].disabled = true;
             }
-        }
+         }
     });
     $('.signup').click(function(){
     	if(submitButtons[0].disabled){
     		alert("회원가입 조건을 만족하지않습니다!");
+    		return false;
     	}
     })
 });
