@@ -27,7 +27,7 @@
 	    <div class="mypage-form">
 	    	<div class="booth-head">
 		        <h1>내 부스관리</h1>
-		        <a href="mypage_booth_add.jsp">부스 등록 <i class="fa-solid fa-chevron-right"></i></a>
+		        <a href="mypage_booth_add">부스 등록 <i class="fa-solid fa-chevron-right"></i></a>
 	    	</div>
 		    <br><hr class="shadow"><br>
 	    	<div class="booth-form">		<%-- 페이징 필요 --%>

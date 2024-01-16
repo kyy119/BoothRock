@@ -12,32 +12,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/booth")
+//@RequestMapping("/Mybooth")
 public class MyBoothController {
 
   @Autowired
   private MyboothService MyboothService;
-//
-//  @GetMapping("/add")
-//  public String showBoothForm(Model model) {
-//    // Populate model with festival data from the database
-//    List<Festival> festivals = festivalService.getAllFestivals();
-//    model.addAttribute("festivals", festivals);
-//    model.addAttribute("booth", new Booth());
-//    return "mypage_booth_add";
-//  }
-//
+  
   @PostMapping("/add")
   public String addBooth(BoothVO boothVO) {
     MyboothService.addBooth(boothVO);
     return "redirect:/mypage_booth.jsp"; // Redirect to the booth management page
   }
-  @GetMapping("/booths")
-  public String showFestivalForm(Model model) {
-    System.out.println("Festivals: test");
-    List<FestivalVO> festivals = MyboothService.ShowAllfstv();
-    model.addAttribute("festivals", festivals);
-    System.out.println("Festivals: " + festivals);
-    return "mypage_booth_add";
+//  @GetMapping("/festivals")
+//  public String showFestivalForm(Model model) {
+//    System.out.println("Festivals: test");
+//    List<FestivalVO> festivals = MyboothService.ShowAllfstv();
+//    model.addAttribute("festivals", festivals);
+//    System.out.println("Festivals: " + festivals);
+//    return "mypage_booth_add";
+//  }
+//  @GetMapping("/getFestivals")
+//  @ResponseBody
+//  public List<FestivalVO> getFestivals() {
+//    System.out.println("getFestivals test");
+//      return MyboothService.ShowAllfstv();
+//  }
+  @GetMapping("/mypage_booth_add")
+  public void getFestivals(Model model) {
+    System.out.println("getFestivals test");
+      List<FestivalVO> festivals = MyboothService.ShowAllfstv();
+      model.addAttribute("festivals", festivals);
   }
 }
