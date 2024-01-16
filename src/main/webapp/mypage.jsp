@@ -16,9 +16,7 @@ String userRole = (String)session.getAttribute("role");
 <!-- 세션이 없다면 메인페이지로 이동 -->
 
 <script type="text/javascript">
-let userRoleJS = "<%=userRole%>";
-console.log('userRoleJS', userRoleJS);
-/* alert(userRoleJS); */
+let userRole = "<%=userRole%>";
 let userId = "<%=userId%>"; 
 if (userId == null) {
 	alert("로그인이 필요합니다.");
@@ -42,8 +40,9 @@ if (userId == null) {
 				<li data-tab="mypage_jjimlist" class="tabmenu"><span></span><a>찜목록</a></li>
 				<li data-tab="mypage_review" class="tabmenu"><span></span><a>내리뷰보기</a></li>
 				<li data-tab="mypage_ask" class="tabmenu"><span></span><a>내문의내역</a></li>
-				<%if(userRole=="consumer"){ %> <!-- 소비자면 부스관리 탭 없애기 -->
-				<%} else {%>
+				<!-- 소비자면 부스관리 탭 없애기 -->
+				<%if(userRole.equals("consumer")){
+				} else {%>
 				<li data-tab="mypage_booth" class="tabmenu"><span></span><a>내부스관리</a></li>
 				<%} %>
 			</ul>

@@ -7,6 +7,7 @@
 	type="text/css">
 <%
 List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
+String sellerNum = (String) request.getAttribute("sellerNum");
 %>
 <%
   String userRole = (String) session.getAttribute("role");
@@ -22,7 +23,7 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		<div>
 			<label for="email">이메일</label>
 			<%-- 변경 불가 --%>
-			<input type="email" id="email" name="user_id" style="color:#999;"
+			<input type="email" id="email" name="user_id" style="color: #999;"
 				value=<%=list.get(0).getUser_id()%> readonly>
 		</div>
 		<div id="password_box">
@@ -39,18 +40,18 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		<div>
 			<label for="name">이름</label>
 			<%-- 변경 불가 --%>
-			<input type="text" id="name" name="user_name" style="color:#999;"
+			<input type="text" id="name" name="user_name" style="color: #999;"
 				value=<%=list.get(0).getUser_name()%> readonly>
 		</div>
 		<div>
-			<label for="tel">전화번호</label> <input type="text" id="tel" name="user_tel"
-				value=<%=list.get(0).getUser_tel()%> required>
+			<label for="tel">전화번호</label> <input type="text" id="tel"
+				name="user_tel" value=<%=list.get(0).getUser_tel()%> required>
 			<button type="button" id="send">본인인증</button>
 			<!-- 전화번호가 기존과 동일하면 인증 진행 x / 동일하지 않으면 인증 진행 o -->
 		</div>
 		<div id="authNum"></div>
 		<%
-		  if (userRole == "consumer") {
+		  if (userRole.equals("consumer")) {
 		%>
 		<!-- 소비자면 사업자번호 입력칸 없애기 -->
 		<%
@@ -58,12 +59,13 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		%>
 		<div class="seller-number">
 			<label for="seller-number">사업자번호</label> <input type="text"
-				id="seller-number" name="seller-number" required>
+				id="seller-number" name="seller-number" value=<%=sellerNum %> required>
 		</div>
 		<%
 		  }
 		%>
-		<input type="text" name="user_role" value=<%=list.get(0).getUser_role()%> style="display:none;">
+		<input type="text" name="user_role"
+			value=<%=list.get(0).getUser_role()%> style="display: none;">
 		<input type="submit" class="edit" value="완료">
 	</form>
 </div>
