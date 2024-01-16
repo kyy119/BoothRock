@@ -1,9 +1,29 @@
 jQuery(document).ready(function() {
+        // 이벤트 핸들러: select 요소가 클릭될 때
+    $("#fstv_title").on("click", function() {
+        // Ajax 요청
+        $.ajax({
+            type: "GET",
+            url: "/Mybooth/getFestivals", // MyBoothController의 getFestivals 메소드와 매핑된 URL
+            success: function(data) {
+            	console.log("Ajax request success: ", data);
+                // 기존의 옵션 제거
+                $("#fstv_title").empty();
 
+                // 새로운 축제 목록으로 옵션 업데이트
+                $.each(data, function(index, festival) {
+                    $("#fstv_title").append('<option value="' + festival.fstv_no + '">' + festival.fstv_title + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching festivals: " + error);
+            }
+        });
+    });
+    
     $("#item-add").click(function(){
 		
 		var currentItemCount = $(".item").length;
-		
 		if (currentItemCount < 8) {
 	        var newItemForm = $(".item:first").clone();
 	        
