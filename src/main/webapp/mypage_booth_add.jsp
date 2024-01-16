@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +38,10 @@
     			<div class="booth-add-form">
 	    			<div>
 	    				<i class="fa-solid fa-drum"></i>
-						<select id="fstv-name" name="fstv-name">
-							<option value="fstv1">양평 산수유마을 빙어축제</option> <!-- value 고유번호로 가져가면 될듯 -->
-							<option value="fstv2">임실 치즈 축제</option>
+						<select id="fstv_title" name="fstvNo"> <!-- 이벤트 걸고 -> ajax --> 
+							<c:forEach var="festival" items="${festivals}">
+								<option value="${festival.fstv_no}">${festival.fstv_title}</option>
+							</c:forEach>
 						</select>
 	    			</div>
 	    			<div>
