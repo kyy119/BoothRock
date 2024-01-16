@@ -9,10 +9,9 @@
 List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 %>
 <%
-  String userRole = (String) session.getAttribute("userRole");
+  String userRole = (String) session.getAttribute("role");
 %>
 <script src="resources/js/mypage_edit.js" defer type="text/javascript"></script>
-
 <h1>회원정보수정</h1>
 <br>
 <hr class="shadow">
@@ -23,8 +22,8 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		<div>
 			<label for="email">이메일</label>
 			<%-- 변경 불가 --%>
-			<input type="email" id="email" name="email"
-				placeholder=<%=list.get(0).getUser_id()%> disabled>
+			<input type="email" id="email" name="user_id" style="color:#999;"
+				value=<%=list.get(0).getUser_id()%> readonly>
 		</div>
 		<div id="password_box">
 			<label for="user_password">비밀번호</label> <input type="password"
@@ -40,8 +39,8 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		<div>
 			<label for="name">이름</label>
 			<%-- 변경 불가 --%>
-			<input type="text" id="name" name="name"
-				placeholder=<%=list.get(0).getUser_name()%> disabled>
+			<input type="text" id="name" name="user_name" style="color:#999;"
+				value=<%=list.get(0).getUser_name()%> readonly>
 		</div>
 		<div>
 			<label for="tel">전화번호</label> <input type="text" id="tel" name="user_tel"
@@ -51,7 +50,7 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		</div>
 		<div id="authNum"></div>
 		<%
-		  if (userRole == "cus") {
+		  if (userRole == "consumer") {
 		%>
 		<!-- 소비자면 사업자번호 입력칸 없애기 -->
 		<%
@@ -64,6 +63,7 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		<%
 		  }
 		%>
+		<input type="text" name="user_role" value=<%=list.get(0).getUser_role()%> style="display:none;">
 		<input type="submit" class="edit" value="완료">
 	</form>
 </div>

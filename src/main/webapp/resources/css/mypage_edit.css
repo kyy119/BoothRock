@@ -74,3 +74,13 @@ input:-webkit-autofill:active {
 	color: #876ed5;
 	font-weight: bold;
 }
+#dynamicImage1 {
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+}
+#dynamicImage2 {
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+}

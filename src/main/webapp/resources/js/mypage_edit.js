@@ -178,7 +178,6 @@ jQuery(document).ready(function() {
 		} // else2
 	};
 	function validateForm() {
-		alert("비번 일치:"+passwordSameIsValid+"비번유효성:"+passwordIsValid+"번호인증"+sameTel+telAuth);
 		if (!passwordSameIsValid) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
@@ -189,6 +188,7 @@ jQuery(document).ready(function() {
 			alert("전화번호 인증이 필요합니다.");
 			return false;
 		} else {
+			alert("회원정보수정이 완료되었습니다.");
 			return true;
 		}
 		// 비밀번호 동일 하면 true 다르면 alert
