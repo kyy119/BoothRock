@@ -49,7 +49,8 @@
     				<input type="text" id="selling_number" name="selling_number" placeholder="사업자등록번호" required>
 					<button type ="button" id="auth">인증하기</button>
     			</div>
-    			<a href="signup_type.jsp" class="signup" style="margin-right: 10px;">뒤로가기</a>
+    			<input type="checkbox" id="termsCheckbox"><a href="agree.jsp" target="_blank">개인정보 수집, 조회, 활용 동의서 보기 > </a>
+    			<a href="signup_type.jsp" class="behind" style="margin-right: 10px;">뒤로가기</a>
     			<input type="submit" class="signup" value="회원가입">
     		</form>
     	</div>
