@@ -8,6 +8,6 @@
 <%@ include file="header.jsp" %>
 </head>
 <body>
-<a href="list" class="btn btn-danger">신고 전체 목록</a>
+<a href="report_list" class="btn btn-danger">신고 전체 목록</a>
 </body>
 </html>

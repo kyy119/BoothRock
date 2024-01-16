@@ -1,3 +1,5 @@
+<%@page import="com.multi.FM.manager.ReportVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
     <script src="resources/js/user_list.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="admin_header.jsp" %>
+    <%@ include file="../../admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="report-list-form"> <!-- 페이징 필요 -->
@@ -37,26 +39,24 @@
     				</tr>
 				</thead>
 				<tbody>
+					<%
+					ArrayList<ReportVO> list = (ArrayList<ReportVO>)request.getAttribute("report_list");
+					for(ReportVO bag: list){
+					%>
     				<tr>
-				      	<td>2</td>
-				      	<td><a href="report_detail.jsp">부스 날짜가 이상해요</a></td>
-				      	<td><a href="user_detail.jsp">whdgus9696@daum.net</a></td>
-				      	<td><a href="booth_detail.jsp">임실 치즈 축제</a></td>
-				      	<td>2024-01-11</td>
+				      	<td><%= bag.getReport_no() %></td>
+				      	<td><a href="report_detail.jsp"><%= bag.getReport_title() %></a></td>
+				      	<td><a href="user_detail.jsp"><%= bag.getUser_id() %></a></td>
+				      	<td><a href="booth_detail.jsp"><%= bag.getBooth_name() %></a></td>
+				      	<td><%= bag.getReport_date() %></td>
 				    </tr>
-    				<tr>
-				      	<td>1</td>
-				      	<td><a href="ask_detail.jsp">삼촌네 떡볶이에 삼촌이 없어요</a></td>
-				      	<td><a href="user_detail.jsp">yumii2307@naver.com</a></td>
-				      	<td><a href="booth_detail.jsp">삼촌네 떡볶이</a></td>
-				      	<td>2024-01-11</td>
-    				</tr>
+				    <% } %>
 				</tbody>
 			</table>
     	</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../../footer.jsp" %>
     
 </body>
 </html>

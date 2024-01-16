@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="report">
+	
+	<select id="list" parameterType="reportVO" resultType="reportVO">
+		SELECT report.*, users.user_role, booth.booth_name
+		FROM report
+		JOIN users ON report.user_id = users.user_id
+		JOIN booth ON report.booth_no = booth.booth_no;
+	</select>
+	
+</mapper>
