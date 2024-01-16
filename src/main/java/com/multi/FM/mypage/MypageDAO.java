@@ -21,6 +21,10 @@ public class MypageDAO {
     public List<BoothReviewVO> review_list(String user_id) { //리뷰 조회
         return my.selectList("myPage.review_list", user_id);
     }
+    
+    public int user_edit(UsersVO users) {
+      return my.update("myPage.mypage_edit", users);
+    }
 //    
 //    public List<FestivalVO> jjim_list(String user_id){
 //        return my.selectList("myPage.jjim_list", user_id);
