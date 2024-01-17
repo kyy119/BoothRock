@@ -48,7 +48,7 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 			</div>
 			<!-- 세션값으로 유저아이디 -->
 			<div class="id-date">
-				user1 |
+				<%=list.getUser_id() %> |
 				<%=list.getReview_created_at()%></div>
 			<h3><%=list.getBooth_name()%></h3>
 			<span> / <%=list.getFstv_title()%></span>

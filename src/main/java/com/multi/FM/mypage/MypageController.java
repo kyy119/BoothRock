@@ -20,8 +20,12 @@ public class MypageController {
   MypageDAO dao;
 
   @RequestMapping("mypage_edit_info") // 회원정보조회
-  public void mypage_edit_info(String user_id, Model model) throws Exception {
-    List<UsersVO> list = dao.user_info(user_id);
+  public void mypage_edit_info(UsersVO users, Model model) throws Exception {
+    List<UsersVO> list = dao.user_info(users.getUser_id());
+    if (users.getUser_role().equals("seller")) { //판매자이면 사업자 번호까지 조회
+      String sellerNum = dao.user_seller_info(users.getUser_id());
+      model.addAttribute("sellerNum", sellerNum);
+    }
     model.addAttribute("list", list);
   }
 
@@ -30,16 +34,15 @@ public class MypageController {
     Date date = new Date();
     SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
     users.setUser_updated_at(ft.format(date));
+    if (users.getUser_role().equals("seller")) { //판매자이면 사업자 번호 수정
+      dao.seller_edit(users);
+    }
     int result = dao.user_edit(users);
-    if (result == 1) {
+    if (result == 1) { // 수정 필요 - 성공여부에 따라 다른 결과 전송하기
       model.addAttribute("alertMessage", "Success!");
-      System.out.println("성공");
   } else {
       model.addAttribute("alertMessage", "Error!");
   }
-    System.out.println("result"+result);
-    System.out.println("test");
-    System.out.println(users);
     return "redirect:/mypage.jsp";
   }
 
