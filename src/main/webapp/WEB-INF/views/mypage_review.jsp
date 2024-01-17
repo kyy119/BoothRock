@@ -13,8 +13,8 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 <hr class="shadow">
 <br>
 <div class="review-list">
-
 	<%
+	if(VO.size()>0){
 	  for (BoothReviewVO list : VO) { 
 	%>
 	<div class="review-form">
@@ -59,7 +59,9 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 		</div>
 	</div>
 	<%
-	  }
+	  } 
+	} else {
 	%>
-
+		<div id="no-review">리뷰가 없습니다.</div>
+	<%} %>
 </div>
