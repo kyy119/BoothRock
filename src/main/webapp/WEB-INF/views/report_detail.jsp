@@ -1,5 +1,8 @@
+<%@page import="com.multi.FM.manager.ReportVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% ReportVO vo = (ReportVO)request.getAttribute("report_detail"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +12,25 @@
     <link rel="stylesheet" href="resources/css/report_detail.css" type="text/css">
 </head>
 <body>
-    <%@ include file="admin_header.jsp" %>
+    <%@ include file="../../admin_header.jsp" %>
     
     <div class="bodywrap">
 		<div class="report-form">
 			<h3 class="back">
-				<a href="report_list.jsp">
+				<a href="report_list">
 					Report List <i class="fa-solid fa-chevron-right"></i>
 				</a>
 			</h3>
 			<div class="report-booth-fstv">
-				<button class="booth-title">삼촌네 떡볶이</button>
-				<span> / <button>서울 광장시장</button></span>
+				<button class="booth-title"><%= vo.getBooth_name() %></button>
+				<span> / <button><%= vo.getFstv_title() %></button></span>
 			</div>
 			<div class="report-detail">
-				<h2>삼촌네 떡볶이에</h2>
-				<div class="report-info">boothrock | 2023-01-15</div>
-				<p class="report-content">
-               		삼촌이 없고 떡볶이가 맛없어요
-				</p>
+				<h2><%= vo.getReport_title() %></h2>
+				<div class="report-info"><%= vo.getUser_id() %> | <%= vo.getReport_date() %></div>
+				<p class="report-content"><%= vo.getReport_comment() %></p>
 			<hr>
-        	</div>
+		   	</div>
         	<div class="btn">
         		<button>판매자 상세 페이지</button>
         		<button>허위 신고 등록</button>
@@ -38,7 +39,7 @@
 		</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../../footer.jsp" %>
     
 </body>
 </html>
