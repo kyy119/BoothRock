@@ -4,11 +4,45 @@
 
 <mapper namespace="report">
 	
-	<select id="list" parameterType="reportVO" resultType="reportVO">
-		SELECT report.*, users.user_role, booth.booth_name
+	<select id="report_list" parameterType="reportVO" resultType="ReportVO">
+		SELECT report.*, booth.booth_name, festival.fstv_title
 		FROM report
-		JOIN users ON report.user_id = users.user_id
-		JOIN booth ON report.booth_no = booth.booth_no;
+		JOIN booth ON report.booth_no = booth.booth_no
+		JOIN festival ON report.fstv_no = festival.fstv_no
+		ORDER BY report_no DESC;
+	</select>
+	
+	<select id="report_search" parameterType="reportVO" resultType="ReportVO">
+		SELECT report.*, booth.booth_name, festival.fstv_title
+	    FROM report
+	    JOIN booth ON report.booth_no = booth.booth_no
+	    JOIN festival ON report.fstv_no = festival.fstv_no
+	    <where>
+	        <if test="type == 'no'">
+	            report_no = #{word}
+	        </if>
+	        <if test="type == 'title'">
+	            report_title LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	        <if test="type == 'email'">
+	            user_id LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	        <if test="type == 'booth'">
+	            booth_name LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	        <if test="type == 'created'">
+	            report_date LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	    </where>
+	    ORDER BY report_no DESC
+	</select>
+	
+	<select id="report_detail" parameterType="reportVO" resultType="ReportVO">
+		SELECT report.*, booth.booth_name, festival.fstv_title
+		FROM report
+		JOIN booth ON report.booth_no = booth.booth_no
+		JOIN festival ON report.fstv_no = festival.fstv_no
+		WHERE report_no = #{report_no};
 	</select>
 	
 </mapper>

@@ -18,24 +18,26 @@
     	<div class="report-list-form"> <!-- 페이징 필요 -->
 	    	<h1>Report List</h1>
 	    	<div class="select-search-form">
-	    		<select>
-		    		<option>No</option>
-		    		<option>Title</option>
-		    		<option>Email</option>
-		    		<option>Booth</option>
-		    		<option>Created</option>
-		    	</select>
-		    	<input type="text" id="search">
-		    	<input type="submit" id="submit" value="검색">
+			    <form action="report_search" id="searchForm">
+			    	<select name="type">
+			    		<option value="no">No</option>
+					    <option value="title">Title</option>
+					    <option value="email">Email</option>
+					    <option value="booth">Booth</option>
+					    <option value="created">Created</option>
+			    	</select>
+			    	<input name="word" type="text" id="search">
+			    	<input type="button" id="submit" value="검색" onclick="searchReport()">
+		    	</form>
 	    	</div>
-	    	<table>
+	    	<table id="sortableTable">
 				<thead>
     				<tr>
-      					<th>No</th>
+      					<th>No <i class="fa-solid fa-caret-down"></i></th>
 					    <th>Title</th>
 					    <th>Email</th>
 					    <th>Booth</th>
-					    <th>Created <i class="fa-solid fa-caret-down"></i></th>
+					    <th>Created</th>
     				</tr>
 				</thead>
 				<tbody>
@@ -45,9 +47,9 @@
 					%>
     				<tr>
 				      	<td><%= bag.getReport_no() %></td>
-				      	<td><a href="report_detail.jsp"><%= bag.getReport_title() %></a></td>
+				      	<td><a href="report_detail?report_no=<%= bag.getReport_no() %>"><%= bag.getReport_title() %></a></td>
 				      	<td><a href="user_detail.jsp"><%= bag.getUser_id() %></a></td>
-				      	<td><a href="booth_detail.jsp"><%= bag.getBooth_name() %></a></td>
+				      	<td><a href="booth_detail?booth_no=<%= bag.getBooth_no() %>"><%= bag.getBooth_name() %></a></td>
 				      	<td><%= bag.getReport_date() %></td>
 				    </tr>
 				    <% } %>
@@ -58,5 +60,18 @@
     
     <%@ include file="../../footer.jsp" %>
     
+	<script>
+	    function searchReport() {
+	    	
+	        $.ajax({
+	            type: "POST",
+	            url: "report_search",
+	            data: $('#searchForm').serialize(),
+	            success: function (data) {
+	                $("tbody").html(data);
+	            }
+	        });
+	    }
+	</script>
 </body>
 </html>
