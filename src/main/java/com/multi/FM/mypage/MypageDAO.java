@@ -38,8 +38,8 @@ public class MypageDAO {
     public List<FestivalVO> jjim_list(String user_id){
         return my.selectList("myPage.jjim_list", user_id);
     }
-//    
-//    public int review_delete(int review_no) {
-//        return my.delete("myPage.review_delete",review_no);
-//    }
+    
+    public int jjim_delete(UsersVO users) {
+        return my.delete("myPage.jjim_delete",users);
+    }
 }

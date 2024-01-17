@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.multi.FM.booth.BoothReviewVO;
 import com.multi.FM.fstv.FestivalVO;
 import com.multi.FM.users.UsersVO;
@@ -58,6 +59,18 @@ public class MypageController {
   public void mypage_review(String user_id, Model model) throws Exception {
     List<BoothReviewVO> list = dao.review_list(user_id);
     model.addAttribute("list", list);
+  }
+  
+  @RequestMapping("mypage_jjim_delete")
+  @ResponseBody
+  public String delete(UsersVO users) {
+      int result = dao.jjim_delete(users);
+      System.out.println("result:"+result);
+      if(result == 1) {
+          return "";
+      }else {
+          return "fail";
+      }
   }
 
   @RequestMapping("mypage_ask") // 문의 내역
