@@ -15,7 +15,4 @@ public class BoothReviewService {
     return dao.list(booth_no);
   }
 
-  public BoothVO Rbooth(int booth_no) {
-    return dao.Rbooth(booth_no);
-  }
 }
