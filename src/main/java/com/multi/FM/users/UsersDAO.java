@@ -38,6 +38,16 @@ public class UsersDAO {
       return result;
     }
 	
+	public int seller_black_list(String user_id) {
+      int result = my.selectOne("users.black_list",user_id);
+      return result;
+    }
+    
+    public int seller_duplicate(String selling_number) {
+      int result = my.selectOne("users.seller_duplicate",selling_number);
+      return result;
+    }
+	
 	public int phone_duplicate(String user_tel) {
 		int result = my.selectOne("users.phone_duplicate", user_tel);
 		return result;

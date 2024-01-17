@@ -3,7 +3,6 @@ jQuery(document).ready(function() {
 	editButtons[0].disabled = true;
 	let passwordIsValid = false;
 	let passwordSameIsValid = false;
-	console.log(editButtons[0].disabled);	 
 	$('#user_password').on('blur', function() {
 	  // 입력 값이 변경되었을 때 실행되는 함수
 		passwordIsValid = validatePassword($(this).val());
@@ -19,7 +18,7 @@ jQuery(document).ready(function() {
             passwordMessage.style.color = "red";
             passwordMessage.style.display = "block";
 		}
-		console.log('패스워드1 : ' + passwordIsValid); // 삭제예정 
+		//console.log('패스워드1 : ' + passwordIsValid); // 삭제예정 
      }); // 입력 값이 변경되었을 때 실행되는 함수
 		 
 	$('#user_password_check').on('blur', function() {
@@ -36,7 +35,6 @@ jQuery(document).ready(function() {
 			passwordMessage2.textContent = "비밀번호가 일치하지않습니다!"
             passwordMessage2.style.display = "block";
 		}
-		console.log('패스워드2 : ' + passwordSameIsValid);// 삭제예정 
 	});// 비밀번호와 비밀번호 확인 로직
 		
 }); // 제이쿼리 전체
