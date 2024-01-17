@@ -48,5 +48,15 @@
 		UPDATE users
 		SET user_password = #{user_password}
 		WHERE user_tel = #{user_tel};
-	</update>
+	</update> <!-- 비밀번호 수정 -->
+	<select id="black_list" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM seller
+		WHERE user_id = #{user_id} and seller_black = 0;
+	</select>
+	<select id="seller_duplicate" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM seller
+		WHERE selling_number = #{selling_number} or seller_black = 1;
+	</select>
 </mapper>
