@@ -90,7 +90,10 @@ public class FestivalService {
         dao.jjimchu(jvo);
         return 1;
       }
-      
+    }
+    
+    public List<FestivalBoothVO> boothup() {
+      return dao.boothup();
     }
     
 }

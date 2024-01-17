@@ -136,4 +136,10 @@ public class FestivalController {
     return ResponseEntity.ok().body(data);
   }
   
+  @RequestMapping("fstv_boothup")
+  public void boothup(Model model) {
+    List<FestivalBoothVO> list = service.boothup();
+    model.addAttribute("list",list);
+  }
+  
 }

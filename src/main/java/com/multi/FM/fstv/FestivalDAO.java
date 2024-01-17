@@ -113,4 +113,8 @@ public class FestivalDAO {
     my.delete("fest.jjimsak",jvo);
   }
   
+  public List<FestivalBoothVO> boothup() {
+    return my.selectList("fest.boothup");
+  }
+  
 }
