@@ -17,30 +17,38 @@ public class MyBoothController {
 
   @Autowired
   private MyboothService MyboothService;
-  
+
   @PostMapping("/add")
-  public String addBooth(BoothVO boothVO) {
-    MyboothService.addBooth(boothVO);
-    return "redirect:/mypage_booth.jsp"; // Redirect to the booth management page
+  public String addBooth(@RequestBody BoothVO boothVO) {
+      try {
+          MyboothService.addBooth(boothVO);
+          // 리다이렉트 경로를 mypage_booth.jsp로 지정
+          return "redirect:/mypage_booth.jsp";
+      } catch (Exception e) {
+          e.printStackTrace();
+          // 에러가 발생한 경우, 에러 메시지를 콘솔에 출력하고 다시 폼 페이지로 이동
+          return "redirect:/mypage_booth.jsp";
+      }
   }
-//  @GetMapping("/festivals")
-//  public String showFestivalForm(Model model) {
-//    System.out.println("Festivals: test");
-//    List<FestivalVO> festivals = MyboothService.ShowAllfstv();
-//    model.addAttribute("festivals", festivals);
-//    System.out.println("Festivals: " + festivals);
-//    return "mypage_booth_add";
-//  }
-//  @GetMapping("/getFestivals")
-//  @ResponseBody
-//  public List<FestivalVO> getFestivals() {
-//    System.out.println("getFestivals test");
-//      return MyboothService.ShowAllfstv();
-//  }
+  //  @GetMapping("/festivals")
+  //  public String showFestivalForm(Model model) {
+  //    System.out.println("Festivals: test");
+  //    List<FestivalVO> festivals = MyboothService.ShowAllfstv();
+  //    model.addAttribute("festivals", festivals);
+  //    System.out.println("Festivals: " + festivals);
+  //    return "mypage_booth_add";
+  //  }
+  //  @GetMapping("/getFestivals")
+  //  @ResponseBody
+  //  public List<FestivalVO> getFestivals() {
+  //    System.out.println("getFestivals test");
+  //      return MyboothService.ShowAllfstv();
+  //  }
   @GetMapping("/mypage_booth_add")
   public void getFestivals(Model model) {
     System.out.println("getFestivals test");
-      List<FestivalVO> festivals = MyboothService.ShowAllfstv();
-      model.addAttribute("festivals", festivals);
+    List<FestivalVO> festivals = MyboothService.ShowAllfstv();
+    model.addAttribute("festivals", festivals);
+    System.out.println("getFestivals test : " + festivals);
   }
 }

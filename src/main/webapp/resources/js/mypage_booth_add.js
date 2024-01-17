@@ -1,25 +1,38 @@
+var boothData = {}; 
 jQuery(document).ready(function() {
-        // 이벤트 핸들러: select 요소가 클릭될 때
-    $("#fstv_title").on("click", function() {
-        // Ajax 요청
-        $.ajax({
-            type: "GET",
-            url: "/Mybooth/getFestivals", // MyBoothController의 getFestivals 메소드와 매핑된 URL
-            success: function(data) {
-            	console.log("Ajax request success: ", data);
-                // 기존의 옵션 제거
-                $("#fstv_title").empty();
+    $('#fstv_title').on('change', function() {
+        updateBoothData();
+    });
 
-                // 새로운 축제 목록으로 옵션 업데이트
-                $.each(data, function(index, festival) {
-                    $("#fstv_title").append('<option value="' + festival.fstv_no + '">' + festival.fstv_title + '</option>');
-                });
+    $('#submitForm').on('click', function() {
+        updateBoothData();
+
+        // Ajax 요청 및 서버에 boothData 전송
+        $.ajax({
+            type: 'POST',
+            url: '/add',
+            contentType: 'application/json',
+            data: JSON.stringify(boothData),
+            success: function(response) {
+                console.log('Booth inserted successfully.');
             },
-            error: function(xhr, status, error) {
-                console.error("Error fetching festivals: " + error);
+            error: function(error) {
+            	console.error(boothData.fstvTitle);
+            	console.error(boothData.boothName);
+            	console.error(boothData.boothType);
+            	console.error(boothData.boothImage);
+            	console.error(boothData.boothLoc);
+            	console.error(boothData.boothTel);
+            	console.error(boothData.boothHour);
+            	console.error(boothData.boothIntro);
+            	console.error(boothData.items);
+            	console.error(boothData.userId);
+                console.error('Error inserting booth:', error);
             }
         });
     });
+    
+    updateBoothData();
     
     $("#item-add").click(function(){
 		
@@ -54,3 +67,23 @@ jQuery(document).ready(function() {
         
     });
 });
+function updateBoothData() {
+    var selectedFestival = $('#fstv_title option:selected').val();
+    console.log('Selected Festival:', selectedFestival);
+    boothData.fstvTitle = selectedFestival;
+	boothData.userId = userId;
+    boothData.boothName = $('#booth-name').val();
+    boothData.boothType = $('#booth-type').val();
+    boothData.boothImage = $('#booth-img').val();
+    boothData.boothLoc = $('#booth-loc').val();
+    boothData.boothTel = $('#booth-tel').val();
+    boothData.boothHour = $('#booth-hour').val();
+    boothData.boothIntro = $('#booth-intro').val();
+	boothData.items = [];
+    $(".item").each(function(index, element) {
+        var itemName = $(element).find("#booth-item").val();
+        var itemPrice = $(element).find("#booth-item-price").val();
+        boothData.items.push({ name: itemName, price: itemPrice });
+    });
+
+}
