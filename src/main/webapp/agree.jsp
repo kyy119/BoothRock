@@ -7,9 +7,15 @@
 <title>모든 축제의 부스를 담다 - 부스락</title>
 <style type="text/css">
 	#termsModal {
-    	width: 300px;
+    	width: 500px;
     	height: 300px;
-    	margin: auto;
+    	margin: 130px auto 0px;
+    	text-align: center;
+	}
+	#termsModal p {
+		line-height: 30px;
+		text-align: left;
+		margin-top: 40px;
 	}
 	#close {
 		width: 100px;
@@ -22,7 +28,6 @@
 		font-size: 15px;
 		color: #757575;
 		display: inline-block;
-		vertical-align: top;
 		box-sizing: border-box;
 		line-height: 40px;
 	}

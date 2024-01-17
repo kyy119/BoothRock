@@ -41,7 +41,7 @@
 	    		</a>
 	    	</div>
 	    	<div>
-	    		<a href="report_list.jsp">
+	    		<a href="report_list">
 	    			<i class="fa-solid fa-land-mine-on"></i>
 	    			<span>신고 내역 관리</span>
 	    			<p>신고 리스트 조회 및 세부내역 열람</p>
