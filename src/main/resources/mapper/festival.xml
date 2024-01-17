@@ -138,4 +138,24 @@
 		order by fstv_jjimCount desc
 	</select>
 	
+	<select id="jjimcnt" parameterType="jjimVO" resultType="int">
+		select fstv_jjimCount from festival where fstv_no = #{fstv_no}
+	</select>
+	
+	<update id="upcnt" parameterType="jjimVO">
+		update festival set fstv_jjimCount = #{fstv_jjimCount} where fstv_no = #{fstv_no}
+	</update>
+	
+	<insert id="jjimchu" parameterType="jjimVO">
+		insert into jjim values (#{user_id}, #{fstv_no}, null)
+	</insert>
+	
+	<select id="jjimsearch" parameterType="jjimVO" resultType="int">
+		select count(*) from jjim where user_id = #{user_id} and fstv_no = #{fstv_no}
+	</select>
+	
+	<delete id="jjimsak" parameterType="jjimVO">
+		delete from jjim where fstv_no = #{fstv_no} and user_id = #{user_id}
+	</delete>
+	
 </mapper>

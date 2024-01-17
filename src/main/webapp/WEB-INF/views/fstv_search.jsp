@@ -28,7 +28,6 @@
 		        <ul>
 					<c:forEach items="${list}" var="vo">
 						<li>
-		                	<i class="fa-regular fa-heart"></i>
 		                    <a href="fstv_detail?fstv_no=${vo.fstv_no}">
 		                        <img src="${vo.fstv_image}" alt="이미지1">
 		                        <div class="search-fstv-info">

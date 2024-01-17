@@ -117,4 +117,23 @@ public class FestivalController {
     return "fstv_maplist";
   }
   
+  @RequestMapping("fstv_detail_jjim")
+  public void jjimchu(JjimVO jvo, Model model) {
+    int res = service.jjimChu(jvo);
+    if(res==0) {
+      model.addAttribute("res", "찜 목록에서 삭제되었습니다");
+    }else {
+      model.addAttribute("res", "찜 목록에 추가되었습니다");
+    }
+  }
+  
+  @GetMapping("jjim_search")
+  @ResponseBody
+  public ResponseEntity<Map<String, Integer>> jjimSearch(JjimVO jvo) {
+    Map<String, Integer> data = new HashMap<>();
+    int count = service.jjimSearch(jvo);
+    data.put("count", count);
+    return ResponseEntity.ok().body(data);
+  }
+  
 }

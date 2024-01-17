@@ -2,7 +2,7 @@ package com.multi.FM.fstv;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,9 @@ public class FestivalService {
 	
 	@Autowired
 	FestivalDAO dao;
+	
+	@Autowired
+	SqlSessionTemplate my;
 	
 	public ArrayList<FestivalVO> insert() {
 		fstvGetApi api = new fstvGetApi();
@@ -67,6 +70,27 @@ public class FestivalService {
     
     public List<FestivalVO> mapJ(String region) {
       return dao.mapJ(region);
+    }
+    
+    public int jjimSearch(JjimVO jvo) {
+      return my.selectOne("fest.jjimsearch",jvo);
+    }
+    
+    public int jjimChu(JjimVO jvo) {
+      int res = my.selectOne("fest.jjimsearch",jvo);
+      int cnt = my.selectOne("fest.jjimcnt", jvo);
+      if(res==1) {
+        cnt--;
+        jvo.setFstv_jjimCount(cnt);
+        dao.jjimsak(jvo);
+        return 0;
+      } else {
+        cnt++;
+        jvo.setFstv_jjimCount(cnt);
+        dao.jjimchu(jvo);
+        return 1;
+      }
+      
     }
     
 }

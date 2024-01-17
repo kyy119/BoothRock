@@ -103,4 +103,14 @@ public class FestivalDAO {
     return my.selectList("fest.mapJ", region);
   }
   
+  public void jjimchu(JjimVO jvo) {
+    my.update("fest.upcnt",jvo);
+    my.insert("fest.jjimchu", jvo);
+  }
+  
+  public void jjimsak(JjimVO jvo) {
+    my.update("fest.upcnt",jvo);
+    my.delete("fest.jjimsak",jvo);
+  }
+  
 }
