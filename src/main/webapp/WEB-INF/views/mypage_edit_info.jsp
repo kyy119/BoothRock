@@ -8,10 +8,10 @@
 <%
 List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 String sellerNum = (String) request.getAttribute("sellerNum");
+String userRole = (String) session.getAttribute("role");
 %>
-<%
-  String userRole = (String) session.getAttribute("role");
-%>
+
+<script type="text/javascript">let userRole = "<%=userRole%>";</script>
 <script src="resources/js/mypage_edit.js" defer type="text/javascript"></script>
 <h1>회원정보수정</h1>
 <br>
@@ -59,7 +59,8 @@ String sellerNum = (String) request.getAttribute("sellerNum");
 		%>
 		<div class="seller-number">
 			<label for="seller-number">사업자번호</label> <input type="text"
-				id="seller-number" name="seller-number" value=<%=sellerNum %> required>
+				id="seller-number" name="selling_number" value=<%=sellerNum %> required>
+				<button type ="button" id="auth">인증하기</button>
 		</div>
 		<%
 		  }

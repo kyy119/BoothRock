@@ -35,6 +35,13 @@
 		UPDATE users SET user_password = #{user_password}, user_tel = #{user_tel}, user_updated_at = #{user_updated_at}
 		WHERE user_id = #{user_id}
 	</update>
+	
+	<update id="seller_edit" parameterType="usersVO">
+		UPDATE seller SET selling_number = #{selling_number}
+		WHERE user_id = #{user_id}
+	</update>
+	
+	
 	<!-- <delete id="review_delete" parameterType="int"> DELETE FROM review 
 		WHERE review_no = #{review_no} </delete> -->
 

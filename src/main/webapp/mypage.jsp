@@ -14,7 +14,6 @@ String userRole = (String)session.getAttribute("role");
 %>
 <!-- 세션 값을 JavaScript 변수에 할당 -->
 <!-- 세션이 없다면 메인페이지로 이동 -->
-
 <script type="text/javascript">
 let userRole = "<%=userRole%>";
 let userId = "<%=userId%>"; 

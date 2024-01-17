@@ -34,10 +34,12 @@ public class MypageController {
     Date date = new Date();
     SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
     users.setUser_updated_at(ft.format(date));
+    if (users.getUser_role().equals("seller")) { //판매자이면 사업자 번호 수정
+      dao.seller_edit(users);
+    }
     int result = dao.user_edit(users);
     if (result == 1) { // 수정 필요 - 성공여부에 따라 다른 결과 전송하기
       model.addAttribute("alertMessage", "Success!");
-      System.out.println("성공");
   } else {
       model.addAttribute("alertMessage", "Error!");
   }
