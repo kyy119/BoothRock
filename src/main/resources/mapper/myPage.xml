@@ -45,7 +45,7 @@
 	<!-- <delete id="review_delete" parameterType="int"> DELETE FROM review 
 		WHERE review_no = #{review_no} </delete> -->
 
-	<!-- <select id="jjim_list" parameterType="String" resultType="festivalVO"> 
-		select f.fstv_title, f.fstv_eventcont, f.fstv_image FROM jjim jj JOIN festival 
-		f ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id} </select> -->
+	<select id="jjim_list" parameterType="String" resultType="festivalVO">
+		select f.fstv_no, f.fstv_title, f.fstv_startdate, f.fstv_enddate, f.fstv_eventplace, f.fstv_image FROM jjim jj JOIN festival f
+		ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id} </select>
 </mapper>

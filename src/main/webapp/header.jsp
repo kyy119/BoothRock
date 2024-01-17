@@ -41,7 +41,7 @@
                 <% }else{ %>
                  	<ul>
                     	<li><a href="logout.jsp">로그아웃</a></li>		 
-                    	<li><a href="mypage_edit.jsp" class="mypage">마이페이지</a></li>
+                    	<li><a href="mypage.jsp" class="mypage">마이페이지</a></li>
                 	</ul>
                 <% } %>
             </div>
