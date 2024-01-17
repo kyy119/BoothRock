@@ -25,6 +25,14 @@ public class MypageDAO {
     public int user_edit(UsersVO users) {
       return my.update("myPage.mypage_edit", users);
     }
+    
+    public int seller_edit(UsersVO users) {
+      return my.update("myPage.seller_edit", users);
+    }
+    
+    public String user_seller_info(String user_id) {
+      return my.selectOne("myPage.user_seller_info", user_id);
+    }
 //    
 //    public List<FestivalVO> jjim_list(String user_id){
 //        return my.selectList("myPage.jjim_list", user_id);

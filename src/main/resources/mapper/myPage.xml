@@ -7,7 +7,7 @@
 	<select id="review_list" parameterType="String"
 		resultType="reviewVO">
 		SELECT r.review_no, r.review_starpoint, r.keyword1,
-		r.keyword2 , r.keyword3 ,
+		r.keyword2 , r.keyword3 , r.user_id ,
 		r.review_created_at ,b.booth_name ,
 		b.booth_category,
 		f.fstv_title
@@ -24,12 +24,24 @@
 		SELECT * FROM users
 		WHERE user_id = #{user_id}
 	</select>
+	
+	<select id="user_seller_info" parameterType="String"
+		resultType="String">
+		SELECT selling_number FROM seller
+		WHERE user_id = #{user_id}
+	</select>
 
 	<update id="mypage_edit" parameterType="usersVO">
-		UPDATE
-		users SET user_password = #{user_password}, user_tel = #{user_tel}
+		UPDATE users SET user_password = #{user_password}, user_tel = #{user_tel}, user_updated_at = #{user_updated_at}
 		WHERE user_id = #{user_id}
 	</update>
+	
+	<update id="seller_edit" parameterType="usersVO">
+		UPDATE seller SET selling_number = #{selling_number}
+		WHERE user_id = #{user_id}
+	</update>
+	
+	
 	<!-- <delete id="review_delete" parameterType="int"> DELETE FROM review 
 		WHERE review_no = #{review_no} </delete> -->
 
