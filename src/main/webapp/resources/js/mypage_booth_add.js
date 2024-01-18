@@ -15,6 +15,10 @@ jQuery(document).ready(function() {
             data: JSON.stringify(boothData),
             success: function(response) {
                 console.log('Booth inserted successfully.');
+                var boothNo = response.booth_no;
+
+                // booth_product 테이블에 데이터 삽입
+                insertBoothProduct(boothNo);
             },
             error: function(error) {
             	console.error(boothData.fstvTitle);
@@ -41,18 +45,13 @@ jQuery(document).ready(function() {
 	        var newItemForm = $(".item:first").clone();
 	        
 	        var newFormName = "booth-item" + $(".item").length;
-	        var newPriceName = "booth-item-price" + $(".item").length;
-	        var newFormId = "booth-item" + $(".item").length;
-		    var newPriceId = "booth-item-price" + $(".item").length;
-		    var newLabelFor = "booth-item" + $(".item").length;
-		    var newPriceLabelFor = "booth-item-price" + $(".item").length;
-	
-	        newItemForm.find("#booth-item").attr("name", newFormName);
-	        newItemForm.find("#booth-item-price").attr("name", newPriceName);
-		    newItemForm.find("#booth-item").attr("id", newFormId);
-		    newItemForm.find("#booth-item-price").attr("id", newPriceId);
-		    newItemForm.find("label[for='booth-item']").attr("for", newLabelFor);
-		    newItemForm.find("label[for='booth-item-price']").attr("for", newPriceLabelFor);
+        var newPriceName = "booth-item-price" + $(".item").length;
+
+        newItemForm.find(".booth-item").attr("name", newFormName);
+        newItemForm.find(".booth-item-price").attr("name", newPriceName);
+
+        newItemForm.find(".booth-item").val("");
+        newItemForm.find(".booth-item-price").val("");
 	
 	        newItemForm.find("input").val("");
 			
@@ -61,6 +60,7 @@ jQuery(document).ready(function() {
 	        var currentHeight = $(".item-form:first").height();
 	        var newHeight = currentHeight + 100;
 	        $(".item-add-form").css("height", newHeight + "px");
+	        console.log('추가완.');
 		} else {
             alert("상품은 최대 8개 등록할 수 있습니다.");
         }
@@ -80,10 +80,33 @@ function updateBoothData() {
     boothData.boothHour = $('#booth-hour').val();
     boothData.boothIntro = $('#booth-intro').val();
 	boothData.items = [];
-    $(".item").each(function(index, element) {
-        var itemName = $(element).find("#booth-item").val();
-        var itemPrice = $(element).find("#booth-item-price").val();
+	alert($(".item").length);
+    $(".item").each(function (index, element) {
+    	console.log(index + ": " + element);
+        var itemName = $(element).find(".booth-item").val();
+        var itemPrice = $(element).find(".booth-item-price").val();
         boothData.items.push({ name: itemName, price: itemPrice });
     });
+}
+function insertBoothProduct(boothNo) {
+    // booth_product 테이블에 데이터 저장
+    boothData.items.forEach(function(item) {
+        item.boothNo = boothNo; // boothNo 값을 booth_product 데이터에 추가
+    });
 
+    // 각 상품에 대한 개별적인 Ajax 요청
+    boothData.items.forEach(function(item) {
+        $.ajax({
+            type: 'POST',
+            url: '/add-product',
+            contentType: 'application/json',
+            data: JSON.stringify(item), // 개별 상품 데이터 전송
+            success: function(response) {
+                console.log('Booth product inserted successfully.');
+            },
+            error: function(error) {
+                console.error('Error inserting booth product:', error);
+            }
+        });
+    });
 }
