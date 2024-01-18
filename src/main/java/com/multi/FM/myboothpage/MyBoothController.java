@@ -61,8 +61,8 @@ public class MyBoothController {
     System.out.println("mybooth test");
     List<BoothVO> mybooths = myboothService.showMybooth(user_id);
     System.out.println("user_id : " + user_id);
-    System.out.println("mybooths : " + mybooths);
     for (BoothVO booth : mybooths) {
+      System.out.println("booth_no: " + booth.getBooth_no());
       System.out.println("booth_image: " + booth.getBooth_image());
       System.out.println("fstv_no: " + booth.getFstv_no());
       System.out.println("booth_name: " + booth.getBooth_name());
@@ -77,5 +77,18 @@ public class MyBoothController {
     List<FestivalVO> festivals = myboothService.ShowAllfstv();
     model.addAttribute("festivals", festivals);
     System.out.println("getFestivals test : " + festivals);
+  }
+  @PostMapping("deleteBooth")
+  @ResponseBody
+  public String deleteBooth(int boothNo) {
+    System.out.println("deltebooth하기");
+    try {
+      // 부스 삭제 서비스 호출
+      myboothService.deleteBooth(boothNo);
+      return "Success";
+    } catch (Exception e) {
+      // 삭제 중 오류 발생 시 오류 메시지 반환
+      return "Error: " + e.getMessage();
+    }
   }
 }

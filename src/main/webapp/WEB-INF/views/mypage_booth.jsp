@@ -8,6 +8,7 @@
 <%
   List<BoothVO> VO = (List<BoothVO>) request.getAttribute("mybooths");
 %>
+<script src="resources/js/mypage_booth.js" defer type="text/javascript"></script>
 <div class="mypage-form">
 	<div class="booth-head">
 		<h1>내 부스관리</h1>
@@ -18,10 +19,13 @@
 	<hr class="shadow">
 	<br>
 	<div class="booth-form">
+	<%
+  if (VO.size() > 0) {
+%>
 		<%-- 페이징 필요 --%>
 		<ul>
             <% for (BoothVO booth : VO) { %>
-            <li>
+            <li data-booth-no="<%= booth.getBooth_no() %>">
                 <img src="<%= booth.getBooth_image() %>">
                 <div class="booth">
                     <h4><%= booth.getFstv_title() %></h4>
@@ -36,5 +40,10 @@
             <hr>
             <% } %>
         </ul>
+        <%
+  } else {
+%>
+<div id="no-booth">등록한 부스가 없습니다.</div>
+<%}%>
 	</div>
 </div>

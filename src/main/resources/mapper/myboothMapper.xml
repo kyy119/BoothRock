@@ -27,9 +27,13 @@
 	</insert>
 	<select id="showMybooth" parameterType="String"
 		resultType="boothVO">
-		SELECT b.booth_image, f.fstv_title, b.booth_name, b.booth_category
+		SELECT b.booth_no, b.booth_image, f.fstv_title, b.booth_name, b.booth_category
 		FROM booth b
 		JOIN festival f ON b.fstv_no = f.fstv_no
 		WHERE b.seller_id = #{user_id}
 	</select>
+	<delete id="deleteBooth" parameterType="int">
+        DELETE FROM booth
+        WHERE booth_no = #{boothNo}
+    </delete>
 </mapper>

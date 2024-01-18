@@ -22,5 +22,9 @@ public class MyboothService {
   }
   public List<BoothVO> showMybooth(String user_id){
     return myboothdao.showMybooth(user_id);
-}
+  }
+  public void deleteBooth(int boothNo) {
+    // 부스 삭제 DAO 메서드 호출
+    myboothdao.deleteBooth(boothNo);
+  }
 }

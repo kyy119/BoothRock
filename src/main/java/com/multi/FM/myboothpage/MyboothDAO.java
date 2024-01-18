@@ -24,4 +24,8 @@ public class MyboothDAO {
   public List<BoothVO> showMybooth(String user_id){
     return my.selectList("Mybooth.showMybooth",user_id);
   }
+  public void deleteBooth(int boothNo) {
+    // MyBatis를 이용하여 부스 삭제 SQL 호출
+    my.delete("Mybooth.deleteBooth", boothNo);
+  }
 }
