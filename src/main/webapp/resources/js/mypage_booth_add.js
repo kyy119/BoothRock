@@ -124,7 +124,7 @@ function insertBoothProduct(boothNo) {
     });
 
     // 각 상품에 대한 개별적인 Ajax 요청
-    boothData.items.forEach(function(item) {
+    boothData.items.forEach(function(item, index, array) {
         $.ajax({
             type: 'POST',
             url: 'add-product',
@@ -132,7 +132,9 @@ function insertBoothProduct(boothNo) {
             data: JSON.stringify(item), // 개별 상품 데이터 전송
             success: function(response) {
                 console.log('Booth product inserted successfully.' + response);
-                window.location.href = 'mypage_booth.jsp';
+                if (index === array.length - 1) {
+                    loadBoothList();
+                }
             },
             error: function(error) {
                 console.error('Error inserting booth product:', error);
@@ -170,4 +172,20 @@ function isNanFormData(){
 	        }
 	    }
 	 return true;
+}
+function loadBoothList() {
+    // 부스 목록을 Ajax로 불러오는 요청
+    $.ajax({
+        type: 'GET',
+        url: 'mypage_booth',
+        data: { user_id: userId },
+        success: function(response) {
+            console.log('Booth list loaded successfully.' + response);
+            // 부스 목록이 성공적으로 로드되면 해당 목록을 페이지에 반영
+            $('#result').html(response);
+        },
+        error: function(error) {
+            console.error('Error loading booth list:', error);
+        }
+    });
 }
