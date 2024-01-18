@@ -4,17 +4,32 @@
 <mapper namespace="Mybooth">
 	<!-- 현재 진행중인 축제 / 시작날짜가 가까운게 먼저 전으로 뒤로 -->
 	<select id="getAllFestivals" resultType="festivalVO">
-		select fstv_no, fstv_title from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_startdate desc
+		select fstv_no,
+		fstv_title from festival where fstv_startdate &lt;= current_date() and
+		fstv_enddate &gt;= current_date() order by fstv_startdate desc
 	</select>
-	<insert id="insertBooth" parameterType="boothVO" useGeneratedKeys="true" keyProperty="booth_no">
-		INSERT INTO booths (booth_name, seller_id,fstv_no, booth_addr, booth_image, booth_tel,
-		booth_hours, booth_category, booth_introduction)
-		VALUES (#{booth_name}, #{fstv_no}, #{booth_addr}, #{booth_image}, #{booth_tel},
+	<insert id="insertBooth" parameterType="boothVO"
+		useGeneratedKeys="true" keyProperty="booth_no">
+		INSERT INTO booth (booth_name,
+		seller_id,fstv_no, booth_addr, booth_image, booth_tel,
+		booth_hours,
+		booth_category, booth_introduction)
+		VALUES (#{booth_name},
+		#{seller_id}, #{fstv_no}, #{booth_addr}, #{booth_image}, #{booth_tel},
 		#{booth_hours}, #{booth_category}, #{booth_introduction})
 	</insert>
-	
+
 	<insert id="insertBoothProduct" parameterType="boothProductVO">
-		INSERT INTO booth_product (product, price, booth_no)
-		VALUES (#{product}, #{price}, #{booth_no})
+		INSERT INTO
+		booth_product (product, price, booth_no)
+		VALUES (#{product}, #{price},
+		#{booth_no})
 	</insert>
+	<select id="showMybooth" parameterType="String"
+		resultType="boothVO">
+		SELECT b.booth_image, f.fstv_title, b.booth_name, b.booth_category
+		FROM booth b
+		JOIN festival f ON b.fstv_no = f.fstv_no
+		WHERE b.seller_id = #{user_id}
+	</select>
 </mapper>
