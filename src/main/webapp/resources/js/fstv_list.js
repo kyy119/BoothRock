@@ -37,10 +37,6 @@ jQuery(document).ready(function(){
         })
     });
     
-	$(".fa-regular.fa-heart").click(function(){
-		$(this).toggleClass("bold-text");
-	});
-	
 	// 축제 리스트 첫 페이지를 위한 ajax, idx 0~9까지의 결과를 가져온다
 	$.ajax({
 		url : list_url,

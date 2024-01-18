@@ -1,7 +1,11 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.multi.FM.fstv.FestivalVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% FestivalVO vo = (FestivalVO)request.getAttribute("vo"); %>
+<%	
+	FestivalVO vo = (FestivalVO)request.getAttribute("vo");
+	String id = (String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
     	<div class="fstv-detail-form">
 	    	<div class="fstv-title">
 	    		<h1 style="display: inline-block; font-weight: 500;"><%=vo.getFstv_title() %></h1>
-	    		<i id="jjim" class="fa-regular fa-heart">  <%=vo.getFstv_jjimCount() %></i><br>
+	    		<i id="jjim" class="fa-regular fa-heart" data="<%=vo.getFstv_no()%>">  <%=vo.getFstv_jjimCount() %></i><br>
 	    		<span class="fstv-date"><%=vo.getFstv_startdate() %> ~ <%=vo.getFstv_enddate() %></span>
 		    </div>
 	        <div class="fstv-detail-form">
@@ -149,28 +153,69 @@
 		    yAnchor: 1 
 		});
 	</script>
-<script>
-    $(document).ready(function () {
-        adjustHeights(); // 페이지 로드시 높이 조정 함수 호출
-
-        // 창 크기가 변경될 때 높이 조정 함수 호출
-        $(window).resize(function () {
-            adjustHeights();
-        });
-
-        function adjustHeights() {
-            var containerHeight = $('.fstv-container').height();
-            var infoHeight = $('.fstv-info').height();
-
-            if (infoHeight < 350) {
-                $('.fstv-container').css('height', '350px');
-            } else {
-                $('.fstv-container').css('height', infoHeight + 'px');
-	            $('.fstv-img img').css('height', infoHeight + 'px');
-            }
-
-        }
-    });
-</script>
+	<script>
+	    $(document).ready(function () {
+	        adjustHeights(); // 페이지 로드시 높이 조정 함수 호출
+	
+	        // 창 크기가 변경될 때 높이 조정 함수 호출
+	        $(window).resize(function () {
+	            adjustHeights();
+	        });
+	
+	        function adjustHeights() {
+	            var containerHeight = $('.fstv-container').height();
+	            var infoHeight = $('.fstv-info').height();
+	
+	            if (infoHeight < 350) {
+	                $('.fstv-container').css('height', '350px');
+	            } else {
+	                $('.fstv-container').css('height', infoHeight + 'px');
+		            $('.fstv-img img').css('height', infoHeight + 'px');
+	            }
+	
+	        }
+	        
+	        var userId = '${id}';
+	        var fstvNo = '<%=vo.getFstv_no()%>';
+	        
+	        $('#jjim').click(function() {							// 찜 버튼 클릭 시 찜리스트 추가 JS
+	        	console.log(userId);
+	            if(userId == ""){
+	            	alert('로그인이 필요한 기능입니다');
+	            } else {
+		        	$('#jjim').toggleClass("jjim-bold-text");	    // 볼드처리
+	    	        $.ajax({										// 찜목록 추가 + 찜 카운트 + 1
+	    	        	url : "fstv_detail_jjim",
+	    	        	data : {
+	    	        		user_id : userId,
+	    	        		fstv_no : fstvNo
+	    	        	},
+	    	        	success : function(data) {
+			            	alert(data);
+			            	location.reload();
+	    	        	}
+	    	        });
+	    		}
+	        });
+	        
+	        if(userId != ""){
+		        $.ajax({
+		        	url : "jjim_search",
+		        	data : {
+		        		user_id : userId,
+		        		fstv_no : fstvNo
+		        	},
+		        	type : "GET",
+		        	dataType : 'json',
+		        	success : function(a) {
+		        		var cnt = a.count;
+		        		if(cnt == '1'){
+			        		$('#jjim').toggleClass("jjim-bold-text");
+		        		};
+		        	}
+		        });
+	        }
+		});
+	</script>
 </body>
 </html>

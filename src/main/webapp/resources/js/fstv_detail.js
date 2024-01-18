@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	
+
 	$("#def-btn").click(function(){
 		$("#def-btn").addClass("bold-text");
 		$("#pop-btn").removeClass("bold-text");
@@ -30,10 +30,6 @@ jQuery(document).ready(function() {
 	    })        
     });
     
-    $("#jjim").click(function(){
-		$(this).toggleClass("jjim-bold-text");
-	});
-	
 	$(".more").click(function(){
 		var infoCont = $(this).siblings('.info-cont');
 		var infoText = $(this).siblings('.info-text');
