@@ -82,12 +82,6 @@ jQuery(document).ready(function() {
             }
          }
     });
-    $('.signup').click(function(){
-    	if(submitButtons[0].disabled){
-    		alert("회원가입 조건을 만족하지않습니다!");
-    		return false;
-    	}
-    })
 });
 
 function validatePassword(password) { // 비밀번호 유효성 검사 함수
