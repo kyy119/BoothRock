@@ -42,10 +42,12 @@
 	</update>
 	
 	
-	<!-- <delete id="review_delete" parameterType="int"> DELETE FROM review 
-		WHERE review_no = #{review_no} </delete> -->
+	<delete id="jjim_delete" parameterType="usersVO"> 
+		DELETE FROM jjim 
+		WHERE user_id = #{user_id} AND fstv_no = #{fstv_no}
+	</delete>
 
-	<!-- <select id="jjim_list" parameterType="String" resultType="festivalVO"> 
-		select f.fstv_title, f.fstv_eventcont, f.fstv_image FROM jjim jj JOIN festival 
-		f ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id} </select> -->
+	<select id="jjim_list" parameterType="String" resultType="festivalVO">
+		select f.fstv_no, f.fstv_title, f.fstv_startdate, f.fstv_enddate, f.fstv_eventplace, f.fstv_image FROM jjim jj JOIN festival f
+		ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id} </select>
 </mapper>

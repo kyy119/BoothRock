@@ -19,7 +19,20 @@
 	text-align: left;
 }
 .input-form div input {
-	width: 150px;
+	width: 130px;
+	height: 40px;
+	border: none;
+	background-color: #fff;
+	padding: 0px 10px;
+	font-size: 15px;
+	text-align: center;
+}
+.input-form div label {
+	width: 90px;
+	display: inline-block; 
+}
+#email {
+	width: 170px;
 	height: 40px;
 	border: none;
 	background-color: #fff;
@@ -77,10 +90,12 @@ input:-webkit-autofill:active {
 #dynamicImage1 {
 	width: 25px;
 	height: 25px;
+	float: right;
 	vertical-align: middle;
 }
 #dynamicImage2 {
 	width: 25px;
+	float: right;
 	height: 25px;
 	vertical-align: middle;
 }

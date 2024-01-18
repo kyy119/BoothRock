@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.multi.FM.booth.BoothReviewVO;
+import com.multi.FM.fstv.FestivalVO;
 import com.multi.FM.users.UsersVO;
 
 @Repository
@@ -33,12 +34,12 @@ public class MypageDAO {
     public String user_seller_info(String user_id) {
       return my.selectOne("myPage.user_seller_info", user_id);
     }
-//    
-//    public List<FestivalVO> jjim_list(String user_id){
-//        return my.selectList("myPage.jjim_list", user_id);
-//    }
-//    
-//    public int review_delete(int review_no) {
-//        return my.delete("myPage.review_delete",review_no);
-//    }
+    
+    public List<FestivalVO> jjim_list(String user_id){
+        return my.selectList("myPage.jjim_list", user_id);
+    }
+    
+    public int jjim_delete(UsersVO users) {
+        return my.delete("myPage.jjim_delete",users);
+    }
 }

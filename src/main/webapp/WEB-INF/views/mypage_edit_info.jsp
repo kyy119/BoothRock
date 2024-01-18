@@ -27,7 +27,7 @@ String userRole = (String) session.getAttribute("role");
 				value=<%=list.get(0).getUser_id()%> readonly>
 		</div>
 		<div id="password_box">
-			<label for="user_password">비밀번호</label> <input type="password"
+			<label for="user_password">비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="password"
 				id="password" name="user_password"
 				value=<%=list.get(0).getUser_password()%> required>
 			<output id="passwordMessage" style="color: red; font-size: 10px;"></output>
