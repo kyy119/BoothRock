@@ -6,11 +6,15 @@
 	<select id="getAllFestivals" resultType="festivalVO">
 		select fstv_no, fstv_title from festival where fstv_startdate &lt;= current_date() and fstv_enddate &gt;= current_date() order by fstv_startdate desc
 	</select>
-	<insert id="insertBooth" parameterType="boothVO">
-		INSERT INTO booths (booth_name, fstv_no, booth_addr, booth_image, booth_tel,
+	<insert id="insertBooth" parameterType="boothVO" useGeneratedKeys="true" keyProperty="booth_no">
+		INSERT INTO booths (booth_name, seller_id,fstv_no, booth_addr, booth_image, booth_tel,
 		booth_hours, booth_category, booth_introduction)
-		VALUES (#{boothName}, #{fstvNo}, #{boothAddr}, #{boothImage}, #{boothTel},
-		#{boothHours}, #{boothCategory}, #{boothIntroduction})
+		VALUES (#{booth_name}, #{fstv_no}, #{booth_addr}, #{booth_image}, #{booth_tel},
+		#{booth_hours}, #{booth_category}, #{booth_introduction})
 	</insert>
-
+	
+	<insert id="insertBoothProduct" parameterType="boothProductVO">
+		INSERT INTO booth_product (product, price, booth_no)
+		VALUES (#{product}, #{price}, #{booth_no})
+	</insert>
 </mapper>

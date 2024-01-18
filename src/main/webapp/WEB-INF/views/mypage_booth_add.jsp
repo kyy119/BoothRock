@@ -99,12 +99,12 @@ let userId = "<%=userId%>";
 					<div class="item-form">
 						<div class="item">
 							<div>
-								<i class="fa-solid fa-tag"></i> <input type="text"
-									id="booth-item" name="booth-item" placeholder="상품명" required>
+								<i class="fa-solid fa-tag"></i> <input type="text" class = "booth-item" value = "테스트 상품"
+									name="booth-item" placeholder="상품명" required>
 							</div>
 							<div>
-								<i class="fa-solid fa-sack-dollar"></i> <input type="text"
-									id="booth-item-price" name="booth-item-price" placeholder="가격"
+								<i class="fa-solid fa-sack-dollar"></i> <input type="text" class = "booth-item-price" value = "123"
+									name="booth-item-price" placeholder="가격"
 									required>
 							</div>
 						</div>

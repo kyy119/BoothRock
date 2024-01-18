@@ -12,7 +12,7 @@ public class MyboothDAO {
   SqlSessionTemplate my;
   
   public void addbooth(BoothVO boothVO) {
-    my.insert("MyboothMapper.insertBooth",boothVO);
+    my.insert("Mybooth.insertBooth",boothVO);
   }
   public List<FestivalVO> showAllfstv() {
     return my.selectList("Mybooth.getAllFestivals");
