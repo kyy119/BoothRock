@@ -16,4 +16,5 @@ public class UsersVO {
 	private String user_name;
 	private String user_tel;
 	private String selling_number;
+	private int fstv_no;
 }

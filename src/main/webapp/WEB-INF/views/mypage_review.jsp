@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="resources/css/mypage_review.css"
 	type="text/css">
 <%
-  /* List<ReviewVO> VO = (List<ReviewVO>)request.getAttribute("list"); */
 List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 %>
 <h1>내 리뷰보기</h1>
@@ -14,13 +13,13 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 <hr class="shadow">
 <br>
 <div class="review-list">
-
 	<%
-	  for (BoothReviewVO list : VO) { //카테고리별 이미지
+	if(VO.size()>0){
+	  for (BoothReviewVO list : VO) { 
 	%>
 	<div class="review-form">
 		<%
-		  if (list.getBooth_category().equals("food")) {
+		  if (list.getBooth_category().equals("food")) { //카테고리별 이미지
 		%>
 		<i class="fa-solid fa-utensils" id="review-icon"></i>
 		<%
@@ -60,7 +59,9 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 		</div>
 	</div>
 	<%
-	  }
+	  } 
+	} else {
 	%>
-
+		<div id="no-review">리뷰가 없습니다.</div>
+	<%} %>
 </div>

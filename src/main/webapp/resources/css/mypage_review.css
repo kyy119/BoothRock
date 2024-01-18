@@ -48,3 +48,9 @@
 	color: #876ed5;
 	font-weight: 540 !important;
 }
+#no-review {
+    text-align: center;
+    color: #888;
+    font-size: 2em;
+    margin-top: 50px;
+}
