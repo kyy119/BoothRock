@@ -34,7 +34,6 @@
 		    	<div class="report-form">
 		    	    <input type="hidden" name="booth_no" value="<%= request.getAttribute("booth_no")%>">
 		    	    <input type="hidden" name="user_id" value="<%= reportSession.getAttribute("id")%>">
-	                <p>User ID from session: <%= reportSession.getAttribute("id") %></p>
 	                
 	                <input type="text" name="report_title" class="report-title" placeholder="제목을 입력해주세요.">
 	                <textarea name="report_comment" class="report-content" placeholder="신고 내용을 입력해주세요."></textarea>

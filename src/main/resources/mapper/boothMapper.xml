@@ -4,50 +4,59 @@
 
 
 	<select id="detail" parameterType="boothVO" resultType="boothVO">
-		select booth.*, festival.fstv_title
+		select
+		booth.*, festival.fstv_title
 		from booth
-		inner join festival on booth.fstv_no = festival.fstv_no 
+		inner join festival on
+		booth.fstv_no = festival.fstv_no
 		where booth.booth_no = #{booth_no}
 	</select>
-		
-	<select id="product" resultType="boothProductVO" parameterType="java.util.Map">
-    	select * from booth_product 
-    	where booth_no = #{booth_no}
+
+	<select id="product" resultType="boothProductVO"
+		parameterType="java.util.Map">
+		select * from booth_product
+		where booth_no = #{booth_no}
 	</select>
-	
-	
-	
-	<select id="reviewlist" resultType="reviewVO" parameterType="java.util.Map">
-	    select r.*, b.booth_name, b.booth_category 
-	    from review r 
-	    	join booth b on r.booth_no = b.booth_no 
-	    where r.booth_no = #{booth_no} 
-	    order by r.review_created_at DESC
+
+
+
+	<select id="reviewlist" resultType="reviewVO"
+		parameterType="java.util.Map">
+		select r.*, b.booth_name, b.booth_category
+		from review r
+		join booth b on r.booth_no = b.booth_no
+		where r.booth_no = #{booth_no}
+		order by r.review_created_at DESC
 	</select>
-	
-	<select id="ReportHistory" resultType="boothReportVO" parameterType="java.util.Map">
-        select * from report
-        where user_id = #{user_id} and booth_no = #{booth_no}
-    </select>
-    
-    <select id="reportBooth" parameterType="boothReportVO" resultType="boothReportVO">
+
+	<select id="ReportHistory" resultType="boothReportVO"
+		parameterType="java.util.Map">
+		select * from report
+		where user_id = #{user_id} and booth_no = #{booth_no}
+	</select>
+
+	<select id="reportBooth" parameterType="boothReportVO"
+		resultType="boothReportVO">
 		select booth.booth_name, festival.fstv_title
 		from booth
-			inner join festival on booth.fstv_no = festival.fstv_no 
+		inner join festival on booth.fstv_no = festival.fstv_no
 		where booth.booth_no = #{booth_no}
 	</select>
 
 	<insert id="insertReport" parameterType="java.util.Map">
-	    <selectKey keyProperty="fstv_no" resultType="int" order="AFTER">
-	        select fstv_no 
-	        from festival 
-	        where booth_no = #{booth_no}
-	    </selectKey>
-	    
-	    insert into report (report_title, report_comment, fstv_no, user_id, booth_no, report_date) 
-	    values (#{report_title}, #{report_comment}, #{fstv_no}, #{user_id}, #{booth_no}, CURRENT_TIMESTAMP)
+		<selectKey keyProperty="fstv_no" resultType="int"
+			order="AFTER">
+			select fstv_no
+			from booth
+			where booth_no = #{booth_no}
+		</selectKey>
+
+		insert into report (report_title, report_comment, fstv_no, user_id,
+		booth_no, report_date)
+		values (#{report_title}, #{report_comment}, #{fstv_no}, #{user_id},
+		#{booth_no}, CURRENT_TIMESTAMP)
 	</insert>
 
-	
-	
+
+
 </mapper>
