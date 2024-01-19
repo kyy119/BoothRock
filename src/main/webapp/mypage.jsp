@@ -54,7 +54,7 @@ if (userId == null) {
 				</li>
 				<%if(userRole=="consumer"){ %> <!-- 소비자면 부스관리 탭 없애기 -->
 				<%} else {%>
-				<li data-tab="mypage_booth" class="tabmenu">
+				<li data-tab="mypage_booth" class="tabmenu" id = "boothManage">
 					<span></span>
 					<a><i class="fa-solid fa-store"></i>내 부스관리</a>
 				</li>

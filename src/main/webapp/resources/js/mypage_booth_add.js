@@ -197,6 +197,8 @@ function loadBoothList() {
             console.log('Booth list loaded successfully.' + response);
             // 부스 목록이 성공적으로 로드되면 해당 목록을 페이지에 반영
             $('#result').html(response);
+            var newUrl = 'mypage.jsp';
+            window.location.href = newUrl;
         },
         error: function(error) {
             console.error('Error loading booth list:', error);

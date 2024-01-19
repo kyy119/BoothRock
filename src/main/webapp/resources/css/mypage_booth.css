@@ -71,3 +71,9 @@
 .side-navi li a .fa-store {
 	color: #8080c0;
 }
+#no-jjim {
+    text-align: center;
+    color: #888;
+    font-size: 2em;
+    margin-top: 50px;
+}
