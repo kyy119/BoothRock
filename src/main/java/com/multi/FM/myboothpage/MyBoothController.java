@@ -67,6 +67,7 @@ public class MyBoothController {
       System.out.println("fstv_no: " + booth.getFstv_no());
       System.out.println("booth_name: " + booth.getBooth_name());
       System.out.println("booth_category: " + booth.getBooth_category());
+      System.out.println("sellr_id: " + booth.getSeller_id());
     }
     model.addAttribute("mybooths", mybooths);
   }

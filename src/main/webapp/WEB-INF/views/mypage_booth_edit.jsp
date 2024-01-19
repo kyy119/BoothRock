@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<% String boothNo = request.getParameter("booth_no"); %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
     <script src="resources/js/mypage_booth_add.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../../header.jsp" %>
     
     <div class="bodywrap">
 	    <nav class="side-menu">
@@ -118,7 +119,7 @@
     	</div>
    	</div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../../footer.jsp" %>
     
 </body>
 </html>
