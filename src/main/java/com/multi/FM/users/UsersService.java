@@ -53,6 +53,11 @@ public class UsersService {
       return result;
     }
     
+	public int consumer_black_list(String user_id) {
+	  int result = users_dao.consumer_black_list(user_id);
+	  return result;
+	}
+	
     public int seller_duplicate(String selling_number) {
       int result = users_dao.seller_duplicate(selling_number);
       return result;
