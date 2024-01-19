@@ -13,28 +13,27 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 @RestController
 public class SmsSend {
 	
-//	@GetMapping("/get-message-list")
-	public MessageListResponse getMessageList(String receive) {
+	public MessageListResponse get_message_list(String receive) {
 		MessageListRequest request = new MessageListRequest();
-		return this.messageService.getMessageList(request);
+		return this.message_service.getMessageList(request);
 	}
 
-	private String apiKey = "";
-	private String apiSecretKey = "";
+	private String api_key = "";
+	private String api_secretKey = "";
 
-	final DefaultMessageService messageService;
+	final DefaultMessageService message_service;
 
 	public SmsSend() { 
-		this.messageService = NurigoApp.INSTANCE.initialize(apiKey, apiSecretKey, "https://api.coolsms.co.kr");
+		this.message_service = NurigoApp.INSTANCE.initialize(api_key, api_secretKey, "https://api.coolsms.co.kr");
 	}
 
-	public SingleMessageSentResponse sendOne(String receive,String num) {
+	public SingleMessageSentResponse send_one(String receive,String num) {
 		Message message = new Message();
 		message.setFrom("01041784636");
 		message.setTo(receive);
 		message.setText("[부스樂] 아래의 인증번호를 입력해주세요\n" + num);
 
-		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
+		SingleMessageSentResponse response = this.message_service.sendOne(new SingleMessageSendingRequest(message));
 		System.out.println(response);
 		
 		return response;

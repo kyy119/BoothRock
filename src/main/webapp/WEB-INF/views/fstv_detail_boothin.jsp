@@ -5,7 +5,7 @@
 <%
 	List<FestivalBoothVO> list = (List<FestivalBoothVO>)request.getAttribute("list");
 	int idx = 0;	
-	for(int i = 0; i < (list.size() % 4)+1; i++){
+	for(int i = 0; i < (list.size() / 4)+1; i++){
 %>
 <ul>
 	<% 

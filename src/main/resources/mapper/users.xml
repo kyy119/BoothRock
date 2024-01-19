@@ -39,6 +39,12 @@
 		WHERE user_id = #{user_id} and user_password = #{user_password} 
 		and user_role = 'seller'	
 	</select> <!-- 판매자 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
+	<select id="admin_login" parameterType="usersVO" resultType="int">
+		SELECT count(*)
+		FROM users
+		WHERE user_id = #{user_id} and user_password = #{user_password} 
+		and user_role = 'admin'	
+	</select> <!-- 판매자 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
 	<select id="find_id" parameterType="usersVO" resultType="String">
 		SELECT user_id
 		FROM users
