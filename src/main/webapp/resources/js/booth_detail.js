@@ -69,7 +69,7 @@ $('.boothDetailReview').removeAttr("style");
 	function duplicateReportCheck(user_id,booth_no) {
 	    console.log("duplicateReportCheck 함수 호출 user_id:", user_id,"booth_no:", booth_no);
 	
-		if (user_id == null) {
+		if (user_id === null || user_id === "null") {
 			LogInCheck();
 		}else {
 			window.location.href = 'duplicate_report_check?booth_no=' + booth_no;
