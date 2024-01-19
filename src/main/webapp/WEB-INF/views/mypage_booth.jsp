@@ -1,4 +1,4 @@
-<%@page import="java.util.List"%>
+ <%@page import="java.util.List"%>
 <%@page import="com.multi.FM.myboothpage.BoothVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

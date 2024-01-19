@@ -14,7 +14,7 @@
     <div class="bodywrap">
     	<div class="admin-main-form">
 	    	<div>
-	    		<a href="user_list.jsp">
+	    		<a href="user_list">
 	    			<i class="fa-regular fa-user"></i>
 	    			<span>회원 관리</span>
 	    			<p>회원 조회 및 수정, 삭제</p>

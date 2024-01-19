@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.multi.FM.users.UsersVO;
 
 @Controller
 public class ManagerController {
@@ -22,16 +23,47 @@ public class ManagerController {
 	@Autowired
 	ManagerService service;
 	
-	@RequestMapping("report_list")
-	public void report_list(ReportVO reportVO, PagingVO pagingVO, Model model) throws Exception {
+	@RequestMapping("user_list")
+	public void user_list(PagingVO pagingVO, Model model) {
 	  pagingVO.setStartEnd();
+	  pagingVO.setTable("users");
+	  List<UsersVO> list = service.user_list(pagingVO);
+	  
+      int count = dao.total_count(pagingVO);
+      int pages = pagingVO.getPages(count);
+      
+      model.addAttribute("user_list",list);
+      model.addAttribute("count",count);      
+      model.addAttribute("pages",pages);
+	}
+	
+    @RequestMapping("user_search")
+    @ResponseBody
+    public Map<String, Object> user_search(PagingVO pagingVO, Model model) throws Exception {
+        pagingVO.setStartEnd();
+        pagingVO.setTable("users");
+        List<UsersVO> list = service.user_search(pagingVO);
+
+        int search_count = dao.user_count(pagingVO);
+        int search_pages = pagingVO.getPages(search_count);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("list", list);
+        response.put("search_count", search_count);
+        response.put("search_pages", search_pages);
+
+        return response;
+    }	
+	
+	@RequestMapping("report_list")
+	public void report_list(PagingVO pagingVO, Model model) throws Exception {
+	  pagingVO.setStartEnd();
+	  pagingVO.setTable("report");
 	  List<ReportVO> list = service.report_list(pagingVO);
 	  
-      int count = dao.total_count();
-      int pages = count / 10;
-      if (count % 10 != 0) {
-          pages = (count / 10)+1;
-      }
+      int count = dao.total_count(pagingVO);
+      int pages = pagingVO.getPages(count);
+      
       model.addAttribute("report_list",list);
       model.addAttribute("count",count);      
       model.addAttribute("pages",pages);
@@ -44,16 +76,8 @@ public class ManagerController {
 	    List<ReportVO> list = service.report_search(pagingVO);
 
 	    int search_count = dao.report_count(pagingVO);
-	    int search_pages = search_count / 10;
-	    if (search_count % 10 != 0) {
-	        search_pages = (search_count / 10) + 1;
-	    }
+	    int search_pages = pagingVO.getPages(search_count);
 
-	    model.addAttribute("report_search", list);
-	    model.addAttribute("search_count", search_count);
-	    model.addAttribute("search_pages", search_pages);
-
-	    // 응답 데이터를 Map에 담아서 전송
 	    Map<String, Object> response = new HashMap<>();
 	    response.put("list", list);
 	    response.put("search_count", search_count);
