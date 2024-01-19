@@ -1,9 +1,9 @@
-jQuery(document).ready(function(){
-
-    $("#fa-solid fa-heart").on("click", function(){
-        $(this).closest("li").remove();
-        
+jQuery(document).ready(function() {
+	alert("test2");
+	$('.jjim-item i.fa-heart').on('click', function () {
+        // 현재 클릭된 하트의 부모 li를 숨김
+        alert("test");
+        $(this).closest('li.jjim-item').remove();
+        alert("test2");
     });
 });
-
-// 반응형 제이쿼리일뿐입니다 바로 찜 데이터에서 지워버리기!

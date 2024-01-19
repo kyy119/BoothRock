@@ -8,11 +8,13 @@
 		resultType="reviewVO">
 		SELECT r.review_no, r.review_starpoint, r.keyword1,
 		r.keyword2 , r.keyword3 , r.user_id ,
-		r.review_created_at ,b.booth_name ,
+		r.review_created_at ,b.booth_name
+		,
 		b.booth_category,
 		f.fstv_title
 		FROM review r
-		join booth b on r.booth_no =
+		join booth b on r.booth_no
+		=
 		b.booth_no
 		join festival f on b.fstv_no = f.fstv_no
 		where r.user_id =
@@ -24,7 +26,7 @@
 		SELECT * FROM users
 		WHERE user_id = #{user_id}
 	</select>
-	
+
 	<select id="user_seller_info" parameterType="String"
 		resultType="String">
 		SELECT selling_number FROM seller
@@ -32,22 +34,35 @@
 	</select>
 
 	<update id="mypage_edit" parameterType="usersVO">
-		UPDATE users SET user_password = #{user_password}, user_tel = #{user_tel}, user_updated_at = #{user_updated_at}
+		UPDATE users SET
+		user_password = #{user_password}, user_tel = #{user_tel},
+		user_updated_at = #{user_updated_at}
 		WHERE user_id = #{user_id}
 	</update>
-	
+
 	<update id="seller_edit" parameterType="usersVO">
-		UPDATE seller SET selling_number = #{selling_number}
+		UPDATE seller SET
+		selling_number = #{selling_number}
 		WHERE user_id = #{user_id}
 	</update>
-	
-	
-	<delete id="jjim_delete" parameterType="usersVO"> 
-		DELETE FROM jjim 
+
+
+	<delete id="jjim_delete" parameterType="jjimVO">
+		DELETE FROM jjim
 		WHERE user_id = #{user_id} AND fstv_no = #{fstv_no}
 	</delete>
 
-	<select id="jjim_list" parameterType="String" resultType="festivalVO">
-		select f.fstv_no, f.fstv_title, f.fstv_startdate, f.fstv_enddate, f.fstv_eventplace, f.fstv_image FROM jjim jj JOIN festival f
-		ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id} </select>
+	<select id="jjim_list" parameterType="String"
+		resultType="festivalVO">
+		select f.fstv_no, f.fstv_title, f.fstv_startdate,
+		f.fstv_enddate, f.fstv_eventplace, f.fstv_image FROM jjim jj JOIN
+		festival f
+		ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id}
+	</select>
+	
+	<select id="ask_list" parameterType="String"
+		resultType="askVO">
+		SELECT * FROM ask
+		WHERE user_id = #{user_id}
+	</select>
 </mapper>

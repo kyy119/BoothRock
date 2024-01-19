@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.multi.FM.booth.BoothReviewVO;
 import com.multi.FM.fstv.FestivalVO;
+import com.multi.FM.fstv.JjimVO;
+import com.multi.FM.manager.AskVO;
 import com.multi.FM.users.UsersVO;
 
 @Controller
@@ -61,9 +63,9 @@ public class MypageController {
     model.addAttribute("list", list);
   }
   
-  @RequestMapping("mypage_jjim_delete")
+  @RequestMapping("mypage_jjim_delete") //찜 삭제
   @ResponseBody
-  public String delete(UsersVO users) {
+  public String delete(JjimVO users) {
       int result = dao.jjim_delete(users);
       System.out.println("result:"+result);
       if(result == 1) {
@@ -74,8 +76,8 @@ public class MypageController {
   }
 
   @RequestMapping("mypage_ask") // 문의 내역
-  public void mypage_ask() throws Exception {
-
+  public void mypage_ask(String user_id, Model model) throws Exception {
+    List<AskVO> list = dao.mypage_ask(user_id);
+    model.addAttribute("list",list);
   }
-
 }
