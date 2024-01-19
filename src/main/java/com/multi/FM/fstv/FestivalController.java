@@ -129,7 +129,7 @@ public class FestivalController {
   
   @GetMapping("jjim_search")
   @ResponseBody
-  public ResponseEntity<Map<String, Integer>> jjimSearch(JjimVO jvo) {
+  public ResponseEntity<Map<String, Integer>> jjim_search(JjimVO jvo) {
     Map<String, Integer> data = new HashMap<>();
     int count = service.jjimSearch(jvo);
     data.put("count", count);

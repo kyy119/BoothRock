@@ -29,7 +29,6 @@ jQuery(document).ready(function(){
         	region : region
         	},
         	success : function(list) {
-        		console.log(list_url);
         		$('.fstv-list').empty();				// 기존 fstv-list에 있던 내용들 지우고
         		$('.fstv-list').html(list);				// 인기순 정렬을 불러온다
         	}
@@ -49,16 +48,14 @@ jQuery(document).ready(function(){
 	    $(".fstv-map").stop().animate({"top": newPosition + "px"}, 800);
 	});
 	
-	// 축제 리스트 첫 페이지를 위한 ajax, idx 0~9까지의 결과를 가져온다
+	// 축제 리스트 첫 페이지를 위한 ajax
 	$.ajax({
 		url : list_url,
 		data : {
         region : region
 		},
 		success : function(list) {
-			console.log(region)
 			$('.fstv-list').html(list);
-			console.log(list);
 		}
 	})
 });
