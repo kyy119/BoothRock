@@ -45,8 +45,9 @@
 	margin-bottom: 30px;
 	font-weight: 500;
 }
-.fstv-map img {
+.fstv-map #Map {
 	width: 500px;
+	height: 700px;
 }
 .fstv-list-form {
 	width: 650px;
@@ -98,13 +99,33 @@
 	font-weight: bold !important;
 }
 .fstv-list li {
-  position: relative;
+	position: relative;
 }
 .fstv-list li i.fa-regular.fa-heart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 .fstv-list li i.fa-regular.fa-heart:hover {
    	font-weight: bold;
+}
+#area {
+	position: absolute;
+	background: #feffd5;
+	border-radius: 10px;
+	font-size: 12px;
+	bottom: 38px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px 12px;
+}
+#area2 {
+	position: absolute;
+	background: #feffd5;
+	border-radius: 10px;
+	font-size: 12px;
+	bottom: 38px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px 12px;
 }
