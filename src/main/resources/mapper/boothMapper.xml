@@ -43,9 +43,8 @@
 		where booth.booth_no = #{booth_no}
 	</select>
 
-	<insert id="insertReport" parameterType="java.util.Map">
-		<selectKey keyProperty="fstv_no" resultType="int"
-			order="AFTER">
+	<insert id="insertReport" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="fstv_no">
+		<selectKey keyColumn="fstv_no" keyProperty="fstv_no" resultType="int" order="BEFORE">
 			select fstv_no
 			from booth
 			where booth_no = #{booth_no}

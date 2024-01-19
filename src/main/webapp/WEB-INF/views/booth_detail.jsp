@@ -5,11 +5,12 @@
 <%@ page import="com.multi.FM.booth.BoothProductVO"%>
 <%@ page import="java.util.List"%>
 
-<% BoothVO boothDetail = (BoothVO) request.getAttribute("boothDetail"); %>
-
-<% 	HttpSession boothSession = request.getSession();
-	String user_id = (String) boothSession.getAttribute("id"); %>
-
+<% 	
+	BoothVO boothDetail = (BoothVO) request.getAttribute("boothDetail");
+	HttpSession boothSession = request.getSession();
+	String user_id = (String) boothSession.getAttribute("id"); 	
+	
+%>
 
 
 <!DOCTYPE html>
@@ -23,13 +24,16 @@
 <script src="resources/js/booth_detail.js?ver=01151712" defer
 	type="text/javascript"></script>
 <script>
-        <c:if test="${showAlert}">
-            alert('신고가 성공적으로 제출되었습니다.');
-            window.location.href = '/booth_detail?booth_no=${booth_no}';
-        </c:if>
-    </script>
+window.onload = function() {
+    var showAlert = <%= session.getAttribute("showAlert") %> ;
+		if (showAlert) {
+		    alert("신고가 성공적으로 접수되었습니다");
+		}
+}
+</script>
 </head>
 <body>
+	<% session.removeAttribute("showAlert"); %>
 	<%@ include file="../../header.jsp"%>
 
 	<div class="bodywrap">

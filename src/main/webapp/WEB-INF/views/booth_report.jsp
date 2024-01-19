@@ -3,7 +3,12 @@
 <%@ page import="com.multi.FM.report.BoothReportVO"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 
-<% HttpSession reportSession = request.getSession(); %>
+<% 
+
+HttpSession reportSession = request.getSession(); 
+BoothReportVO DuplicateTrue = (BoothReportVO)request.getAttribute("DuplicateTrue");
+
+%>
     
 
 <!DOCTYPE html>
@@ -16,10 +21,13 @@
       <script src="resources/js/booth_detail.js?ver=01151712" defer
 	type="text/javascript"></script>
       
-    <% BoothReportVO DuplicateTrue = (BoothReportVO)request.getAttribute("DuplicateTrue"); 
-		if(DuplicateTrue != null){ %>
-		<script>duplicateReportCheckAlert('<%= DuplicateTrue %>');</script>
-	<%}%>
+<script>
+    var showAlert = <%= session.getAttribute("showAlert") %> ;
+		if (showAlert) {
+		    alert("이미 신고하신 부스입니다");
+		   	window.history.back();
+		}
+</script>
       
 </head>
 <body>

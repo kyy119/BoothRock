@@ -81,4 +81,5 @@ $('.boothDetailReview').removeAttr("style");
         alert(duplicateTrue);
         history.back();
     }
+   
 	
