@@ -55,10 +55,15 @@
 		SET user_password = #{user_password}
 		WHERE user_tel = #{user_tel};
 	</update> <!-- 비밀번호 수정 -->
-	<select id="black_list" parameterType="String" resultType="int">
+	<select id="seller_black_list" parameterType="String" resultType="int">
 		SELECT count(*)
 		FROM seller
 		WHERE user_id = #{user_id} and seller_black = 0;
+	</select>
+	<select id="consumer_black_list" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM users
+		WHERE user_id = #{user_id} and user_black = 0;
 	</select>
 	<select id="seller_duplicate" parameterType="String" resultType="int">
 		SELECT count(*)

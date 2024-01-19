@@ -44,10 +44,15 @@ public class UsersDAO {
 	}
 	
 	public int seller_black_list(String user_id) {
-      int result = my.selectOne("users.black_list",user_id);
+      int result = my.selectOne("users.seller_black_list",user_id);
       return result;
     }
     
+	public int consumer_black_list(String user_id) {
+	  int result = my.selectOne("users.consumer_black_list",user_id);
+	  return result;
+	}
+	
     public int seller_duplicate(String selling_number) {
       int result = my.selectOne("users.seller_duplicate",selling_number);
       return result;
