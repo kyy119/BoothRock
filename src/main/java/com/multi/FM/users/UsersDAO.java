@@ -38,6 +38,11 @@ public class UsersDAO {
       return result;
     }
 	
+	public int admin_login(UsersVO usersvo) {
+	  int result = my.selectOne("users.admin_login",usersvo);
+	  return result;
+	}
+	
 	public int seller_black_list(String user_id) {
       int result = my.selectOne("users.black_list",user_id);
       return result;

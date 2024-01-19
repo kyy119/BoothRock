@@ -17,6 +17,7 @@
 		    <hr>
     		<div class="input-form">
     			<form action="login" method="post">
+    				<input type="hidden" name ="referer" value = "<%= request.getHeader("Referer") %>">
     				<div>
     					<i class="fa-regular fa-user"></i>
 						<input type="email" id="user_id" name="user_id" placeholder="이메일" required>
