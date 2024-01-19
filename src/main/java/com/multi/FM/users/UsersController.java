@@ -73,9 +73,14 @@ public class UsersController {
 	  String admin = String.valueOf(result_admin);
 	  String result = "0";
 	  if (consumer.equals("1")) {
-         session.setAttribute("id", usersvo.getUser_id());
-         session.setAttribute("role", "consumer");
-         result = "1";
+	     String consumer_black_list = String.valueOf(users_service.consumer_black_list(usersvo.getUser_id()));
+         if(consumer_black_list.equals("1")) {
+           session.setAttribute("id", usersvo.getUser_id());
+           session.setAttribute("role", "consumer");
+           result = "1";
+         }else {
+           result = "2";
+         }
       }else if(seller.equals("1")) {
         String seller_black_list = String.valueOf(users_service.seller_black_list(usersvo.getUser_id()));
         if(seller_black_list.equals("1")) {
