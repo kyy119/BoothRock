@@ -45,7 +45,7 @@ public class BoothReportController {
                              @RequestParam("booth_no") int booth_no, HttpSession session,
                              RedirectAttributes redirectAttributes, Model model) {
       reportSV.insertReport(report_title, report_comment, booth_no, user_id);
-      redirectAttributes.addFlashAttribute("booth_no", booth_no);
+      model.addAttribute("booth_no", booth_no);
       redirectAttributes.addFlashAttribute("showAlert", true);
       System.out.println("report insert 호출");
       return "redirect:/booth_detail";
