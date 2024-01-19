@@ -9,13 +9,18 @@
 <title>모든 축제의 부스를 담다 - 부스락</title>
 <%
 String userId = (String)session.getAttribute("id");
+String userRole = (String)session.getAttribute("role");
 /* String userRole = "consumer"; */
 %>
 <!-- 세션 값을 JavaScript 변수에 할당 -->
 <!-- 세션이 없다면 메인페이지로 이동 -->
-
 <script type="text/javascript">
+let userRole = "<%=userRole%>";
 let userId = "<%=userId%>"; 
+if (userId == null) {
+	alert("로그인이 필요합니다.");
+	window.location.href = 'main.jsp';
+}
 </script>
 <link rel="stylesheet" href="resources/css/mypage_booth_add.css"
 	type="text/css">
@@ -31,12 +36,11 @@ let userId = "<%=userId%>";
 		<nav class="side-menu">
 			<h2>마이페이지</h2>
 			<ul class="side-navi">
-				<li><span></span><a href="mypage_edit.jsp">회원정보수정</a></li>
-				<li><span></span><a href="mypage_jjim.jsp">찜 목록</a></li>
-				<li><span></span><a href="mypage_review.jsp">내 리뷰보기</a></li>
-				<li><span></span><a href="mypage_ask.jsp">내 문의내역</a></li>
-				<li style="font-weight: bold"><span class="stick"></span><a
-					href="mypage_booth.jsp">내 부스관리</a></li>
+				<li data-tab="mypage_edit_info" class="tabmenu"><span></span><a>회원정보수정</a></li>
+				<li data-tab="mypage_jjimlist" class="tabmenu"><span></span><a>찜 목록</a></li>
+				<li data-tab="mypage_review" class="tabmenu"><span></span><a>내 리뷰보기</a></li>
+				<li data-tab="mypage_ask" class="tabmenu"><span></span><a>내 문의내역</a></li>
+				<li style="font-weight: bold" data-tab="mypage_booth" class="tabmenu"><span class="stick"></span><a>내 부스관리</a></li>
 				<%-- 세션으로 판매자만 볼 수 있어야함 --%>
 			</ul>
 		</nav>
@@ -69,8 +73,8 @@ let userId = "<%=userId%>";
 					<div>
 						<i class="fa-solid fa-hashtag"></i> <select id="booth-type"
 							name="booth-type">
-							<option value="selling">판매형</option>
-							<option value="trial">체험형</option>
+							<option value="판매형">판매형</option>
+							<option value="체험형">체험형</option>
 						</select>
 					</div>
 					<div>
@@ -99,12 +103,12 @@ let userId = "<%=userId%>";
 					<div class="item-form">
 						<div class="item">
 							<div>
-								<i class="fa-solid fa-tag"></i> <input type="text" class = "booth-item" value = "테스트 상품"
+								<i class="fa-solid fa-tag"></i> <input type="text" class = "booth-item"
 									name="booth-item" placeholder="상품명" required>
 							</div>
 							<div>
-								<i class="fa-solid fa-sack-dollar"></i> <input type="text" class = "booth-item-price" value = "123"
-									name="booth-item-price" placeholder="가격"
+								<i class="fa-solid fa-sack-dollar"></i> <input type="text" class = "booth-item-price"
+									name="booth-item-price" placeholder="가격 입력(숫자만 입력해주세요)"
 									required>
 							</div>
 						</div>

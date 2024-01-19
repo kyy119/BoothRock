@@ -78,9 +78,4 @@ public class MypageController {
 
   }
 
-  @RequestMapping("mypage_booth") // 부스 관리
-  public void mypage_booth() throws Exception {
-
-  }
-
 }
