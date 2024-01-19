@@ -10,22 +10,20 @@
 .report-form .back {
 	text-align: right;
 }
-.report-booth-fstv button {
-	background-color: #fff;
-	border: none;
-}
 .report-booth-fstv .booth-title {
 	font-size: 20px;
 	font-weight: bold;
 	color: red;
+	display: inline-block;
 }
-.report-booth-fstv span button {
+.report-booth-fstv span a {
 	font-size: 16px;
+	display: inline-block;
 }
 .report-booth-fstv .booth-title:hover {
 	color: #ff6868;
 }
-.report-booth-fstv span button:hover {
+.report-booth-fstv span a:hover {
 	color: #757575;
 }
 .report-detail {

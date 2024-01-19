@@ -111,6 +111,7 @@ let userId = "<%=userId%>";
 					</div>
 					<div style="text-align: center;">
 						<i class="fa-solid fa-plus" id="item-add"></i>
+            <i class="fa-solid fa-minus" id="item-remove"></i>
 					</div>
 				</div>
 			</form>
@@ -118,6 +119,5 @@ let userId = "<%=userId%>";
 	</div>
 
 	<%@ include file="../../footer.jsp"%>
-
 </body>
 </html>

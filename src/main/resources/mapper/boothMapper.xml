@@ -47,7 +47,7 @@
 	    insert into report (report_title, report_comment, fstv_no, user_id, booth_no, report_date) 
 	    values (#{report_title}, #{report_comment}, #{fstv_no}, #{user_id}, #{booth_no}, CURRENT_TIMESTAMP)
 	</insert>
-    
+
 	
 	
 </mapper>

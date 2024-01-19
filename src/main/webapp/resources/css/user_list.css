@@ -65,7 +65,12 @@ button {
 	font-weight: bold;
 	padding: 2px 5px;
 	border-radius: 5px;
+	margin: 0px 4px;
 }
 button:hover {
 	background-color: #ddd;
+}
+#pagination {
+	text-align: center;
+	margin-top: 50px;
 }

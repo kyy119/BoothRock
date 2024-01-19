@@ -1,15 +1,9 @@
 jQuery(document).ready(function() {
 		$('.tabmenu').click(function() {
 			var activeTab = $(this).attr('data-tab'); //선택된 탭메뉴 li태그의 data-tab값 
-			$('li').css('font-weight', 'normal');//선택되지 않은 메뉴명 원래대로 되돌리기
-			$('li').find('span').css({
-				'width' : '0px',
-			});
-			$(this).css('font-weight', 'bold'); //선택된 메뉴명굵기, 막대효과 
+			$('li > span').css('background-color', '#fff');
+			
 			$(this).find('span').css({
-				'float' : 'left',
-				'height' : '20px',
-				'width' : '5px',
 				'background-color' : '#876ed5'
 			});
 			$.ajax({

@@ -11,13 +11,12 @@ import lombok.Setter;
 public class ReportVO {
 	private int report_no;
 	private int booth_no;
+	private int fstv_no;
 	private String booth_name;
 	private String fstv_title;
 	private String user_id;
 	private String report_date;
 	private String report_title;
 	private String report_comment;
-	private String word;
-	private String type;
 	
 }
