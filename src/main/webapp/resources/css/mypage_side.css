@@ -10,40 +10,53 @@
 	margin-left: 130px;
 }
 .mypage-form h1 {
-	font-weight: 500;
+	font-family: 'Pretendard';
+	font-weight: 600;
 }
 .side-menu {
-	width: 180px;
-	height: 620px;
+	width: 200px;
+	height: 600px;
 	display: inline-block;
 	margin-left: 140px;
 	margin-top: 80px;
 	vertical-align: top;
 }
+.side-menu h2 {
+	font-weight: 600;
+	margin-left: 20px;
+}
 .side-navi {
-	margin-top: 40px;
-	background-color: #f2f2f2;
 	padding: 20px 0px;
 	overflow: auto;
+	border: 1px solid #876ed5;
+	border-radius: 15px;
+	margin-top: 30px;
 }
 .side-navi li {
-	width: 140px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	font-size: 15px;
+	margin: 13px 0px;
+	font-size: 16px;
 	float: left;
+}
+.side-navi li:nth-child(5) {
+	margin-top: 25px;
+}
+.side-navi li span {
+	width: 5px;
+	height: 20px;
+	float: left;
+	border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.side-navi li i {
+	color: #757575;
+	margin: 0px 10px 0px 20px;
 }
 .side-navi li a {
-	padding-left: 35px;
+	display: inline-block;
+	color: #9b9b9b;
 }
-.side-navi li a:hover {
+.side-navi li a:hover, .side-navi li a:hover i {
 	color: #c0c0c0;
-}
-.stick {
-	float: left;
-	height: 20px;
-	width: 5px;
-	background-color: #876ed5;
 }
 .show-stick {
 	float: left;

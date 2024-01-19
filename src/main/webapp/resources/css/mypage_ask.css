@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+.bodywrap {
+	height: 720px;
+}
 .ask-list table {
   border-collapse: collapse;
   margin-top: 20px;
@@ -16,4 +19,11 @@
 }
 .ask-title:hover {
 	color: #757575;
+}
+.side-navi li:nth-child(4) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-pen-to-square {
+	color: #004e9b;
 }

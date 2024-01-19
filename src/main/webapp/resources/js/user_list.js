@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
         });
 
         function sortTable(columnIndex) {
-            const $table = $('#sortableTable');
+            const $table = $('#sortTable');
             const $tbody = $table.find('tbody');
             const $rows = $tbody.find('tr').toArray();
 

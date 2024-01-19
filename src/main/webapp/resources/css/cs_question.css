@@ -7,7 +7,7 @@
 	width: 800px;
 }
 .question-form h1 {
-	font-weight: 500;
+	font-weight: 600;
 }
 .question-list {
 	padding: 20px;
@@ -18,6 +18,7 @@
 .question h2 {
 	margin-bottom: 10px;
 	font-weight: 500;
+	font-size: 20px;
 }
 .question p {
 	display: none;

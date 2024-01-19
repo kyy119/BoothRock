@@ -1,5 +1,8 @@
+<%@page import="com.multi.FM.manager.AskVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% AskVO vo = (AskVO)request.getAttribute("ask_detail"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +13,19 @@
     <script src="resources/js/user_list.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="admin_header.jsp" %>
+    <%@ include file="../../admin_header.jsp" %>
     
     <div class="bodywrap">
 		<div class="ask-form">
-			<h3 class="back"><a href="ask_list.jsp">Ask List <i class="fa-solid fa-chevron-right"></i></a></h3>
+			<h3 class="back">
+				<a href="ask_list">Ask List <i class="fa-solid fa-chevron-right"></i></a>
+			</h3>
 			<div class="ask-detail">
-				<h2>축제 개최일 수정 문의</h2>
-				<span class="ask-type">/ 축제 문의</span><br>
-				<div class="ask-info">boothrock | 2023-01-15</div>
+				<h2><%= vo.getAsk_title() %></h2>
+				<span class="ask-type">/ <%= vo.getAsk_type() %></span><br>
+				<div class="ask-info"><%= vo.getUser_id() %> | <%= vo.getAsk_created_at() %></div>
 				<p class="ask-content">
-               		멍냥축제 개최측에 전화해 개최일이 3일 미뤄졌다는 답을 받았습니다.<br>
-					아직 사이트에 반영이 되지 않은 것 같아 문의드립니다.
+               		<%= vo.getAsk_content() %>
 				</p>
 				<hr>
         	</div>
@@ -30,13 +34,13 @@
        				<span>↪</span>
        				<i class="fa-solid fa-user-tie"></i>
        			</div>
-       			<textarea></textarea>
+       			<textarea><%= vo.getAsk_answer() %></textarea>
        			<button>답변 등록</button>
 			</div>
 		</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../../footer.jsp" %>
     
 </body>
 </html>

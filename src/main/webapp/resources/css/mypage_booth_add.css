@@ -91,15 +91,6 @@ input:-webkit-autofill:active {
 .booth-add-form div input:focus, .item div input:focus {
 	outline: none;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-transition: background-color 9999s ease-out;
-    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-    -webkit-text-fill-color: #000 !important;
-}
 textarea {
 	width: 250px;
 	height: 70px;
@@ -121,7 +112,7 @@ textarea {
     border: none;
     border-top: 1px dotted #ccc;
 }
-#item-add {
+#item-add, #item-remove {
 	border: 2px solid #757575;
 	padding: 10px;
 	border-radius: 50%;
@@ -130,7 +121,14 @@ textarea {
 	margin-bottom: 20px;
 	color: #757575;
 }
-#item-add:hover {
+#item-add:hover, #item-remove:hover {
 	border-color: #876ed5;
 	color: #876ed5;
+}
+.side-navi li:nth-child(5) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-store {
+	color: #8080c0;
 }

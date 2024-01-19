@@ -34,3 +34,10 @@
 	float: left;
 	width: 500px;
 }
+.side-navi li:nth-child(4) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-pen-to-square {
+	color: #004e9b;
+}

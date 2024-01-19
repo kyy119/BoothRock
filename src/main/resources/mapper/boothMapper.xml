@@ -23,12 +23,7 @@
 	    order by r.review_created_at DESC
 	</select>
 	
-	
-	
-	<select id="ReportHistory" resultType="boothreportVO" parameterType="java.util.Map">
-    	select * from report
-        where userid = #{userid} and booth_no = #{boothNo}
-	</select>
+
 	
 	
 </mapper>

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-	height: 700px;
+	height: 720px;
 }
 .edit-form {
 	width: 332px;
@@ -18,13 +18,19 @@
 	width: 300px;
 	text-align: left;
 }
+.input-form div i {
+	color: #757575;
+}
 .input-form div input {
-	width: 150px;
+	width: 250px;
 	height: 40px;
 	border: none;
 	background-color: #fff;
 	padding: 0px 10px;
 	font-size: 15px;
+}
+#tel {
+	width: 150px;
 }
 .input-form div input:focus {
 	outline: none;
@@ -83,4 +89,11 @@ input:-webkit-autofill:active {
 	width: 25px;
 	height: 25px;
 	vertical-align: middle;
+}
+.side-navi li:nth-child(1) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-user {
+	color: #000040;
 }

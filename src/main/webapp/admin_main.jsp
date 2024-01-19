@@ -48,7 +48,7 @@
 	    			<p>신고에 따른 부스 제재</p>
 	    			<p>허위 신고 등록 및 리스트 조회</p>
 	    		</a>
-	    		<a href="ask_list.jsp">
+	    		<a href="ask_list">
 	    			<i class="fa-regular fa-envelope"></i>
 	    			<span>문의 내역 관리</span>
 	    			<p>문의 리스트 조회 및 삭제</p>
