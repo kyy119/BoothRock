@@ -30,6 +30,8 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 		  }
 		%>
 		<div class="review">
+			<h3><%=list.getBooth_name()%></h3>
+			<span> / <%=list.getFstv_title()%></span>
 			<div class="star-point">
 				<%
 				  for (int i = 0; i < 5; i++) {
@@ -49,8 +51,6 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 			<div class="id-date">
 				<%=list.getUser_id() %> |
 				<%=list.getReview_created_at()%></div>
-			<h3><%=list.getBooth_name()%></h3>
-			<span> / <%=list.getFstv_title()%></span>
 			<ul>
 				<li><i class="fa-solid fa-hashtag"><%=list.getKeyword1()%></i></li>
 				<li><i class="fa-solid fa-hashtag"><%=list.getKeyword2()%></i></li>

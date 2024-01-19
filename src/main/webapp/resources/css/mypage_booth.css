@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+.bodywrap {
+	height: 720px;
+}
 .booth-head h1 {
 	display: inline-block;
 }
@@ -60,4 +63,11 @@
 }
 .booth a:hover {
 	color: #757575;
+}
+.side-navi li:nth-child(5) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-store {
+	color: #8080c0;
 }

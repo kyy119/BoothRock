@@ -1,9 +1,14 @@
 package com.multi.FM.manager;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,40 +23,87 @@ public class ManagerController {
 	ManagerService service;
 	
 	@RequestMapping("report_list")
-	public void report_list(ReportVO reportVO, Model model) throws Exception {
-		List<ReportVO> list = service.report_list();
-		model.addAttribute("report_list", list);
-	}
-
-	@RequestMapping(value="report_search", produces = "text/html; charset=utf8")
-	@ResponseBody
-	public String report_search(@RequestParam(value = "type", required = false) String type,
-	                            @RequestParam(value = "word", required = false) String word) throws Exception {
+	public void report_list(ReportVO reportVO, PagingVO pagingVO, Model model) throws Exception {
+	  pagingVO.setStartEnd();
+	  List<ReportVO> list = service.report_list(pagingVO);
 	  
-	    List<ReportVO> searchResult = service.report_search(type, word);
-        return HtmlResult(searchResult);
+      int count = dao.total_count();
+      int pages = count / 10;
+      if (count % 10 != 0) {
+          pages = (count / 10)+1;
+      }
+      model.addAttribute("report_list",list);
+      model.addAttribute("count",count);      
+      model.addAttribute("pages",pages);
 	}
 
-	private String HtmlResult(List<ReportVO> searchResult) {
+	@RequestMapping("report_search")
+	@ResponseBody
+	public Map<String, Object> report_search(PagingVO pagingVO, Model model) throws Exception {
+	    pagingVO.setStartEnd();
+	    List<ReportVO> list = service.report_search(pagingVO);
 
-	    StringBuilder htmlBuilder = new StringBuilder();
-	    for (ReportVO report : searchResult) {
-	        htmlBuilder.append("<tr>");
-	        htmlBuilder.append("<td>").append(report.getReport_no()).append("</td>");
-	        htmlBuilder.append("<td><a href=\"report_detail?report_no=").append(report.getReport_no()).append("\">").append(report.getReport_title()).append("</a></td>");
-	        htmlBuilder.append("<td><a href=\"user_detail.jsp\">").append(report.getUser_id()).append("</a></td>");
-	        htmlBuilder.append("<td><a href=\"booth_detail?booth_no=").append(report.getBooth_name()).append("\">").append(report.getBooth_name()).append("</a></td>");
-	        htmlBuilder.append("<td>").append(report.getReport_date()).append("</td>");
-	        htmlBuilder.append("</tr>");
-	        
+	    int search_count = dao.report_count(pagingVO);
+	    int search_pages = search_count / 10;
+	    if (search_count % 10 != 0) {
+	        search_pages = (search_count / 10) + 1;
 	    }
-	    return htmlBuilder.toString();
+
+	    model.addAttribute("report_search", list);
+	    model.addAttribute("search_count", search_count);
+	    model.addAttribute("search_pages", search_pages);
+
+	    // 응답 데이터를 Map에 담아서 전송
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("list", list);
+	    response.put("search_count", search_count);
+	    response.put("search_pages", search_pages);
+
+	    return response;
 	}
 
   @RequestMapping("report_detail")
 	public void report_detail(ReportVO reportVO, Model model) {
 	  ReportVO vo = service.report_detail(reportVO);
 	  model.addAttribute("report_detail", vo);
-	}
+  }
+  
+  @RequestMapping(value="ask_search", produces = "text/html; charset=utf8")
+  @ResponseBody
+  public String ask_search(@RequestParam(value = "type", required = false) String type,
+                              @RequestParam(value = "word", required = false) String word) throws Exception {
+    
+      List<AskVO> searchResult = service.ask_search(type, word);
+      return HtmlResultAsk(searchResult);
+  }
+
+  private String HtmlResultAsk(List<AskVO> searchResult) {
+
+      StringBuilder htmlBuilder = new StringBuilder();
+      for (AskVO ask : searchResult) {
+          htmlBuilder.append("<tr>");
+          htmlBuilder.append("<td>").append(ask.getAsk_no()).append("</td>");
+          htmlBuilder.append("<td><a href=\"report_detail?report_no=").append(ask.getAsk_no()).append("\">").append(ask.getAsk_title()).append("</a></td>");
+          htmlBuilder.append("<td>").append(ask.getAsk_type()).append("</td>");
+          htmlBuilder.append("<td><a href=\"user_detail.jsp\">").append(ask.getUser_id()).append("</a></td>");
+          htmlBuilder.append("<td>").append(ask.getAsk_created_at()).append("</td>");
+          htmlBuilder.append("<td><i class=\"fa-solid fa-check\"></i></td>");
+          htmlBuilder.append("</tr>");
+          
+      }
+      return htmlBuilder.toString();
+  }
+  
+  @RequestMapping("ask_list")
+  public void ask_list(AskVO askVO, PagingVO pagingVO, Model model) throws Exception {
+      List<AskVO> list = service.ask_list(pagingVO);
+      model.addAttribute("ask_list", list);
+  }
+  
+  @RequestMapping("ask_detail")
+  public void ask_detail(AskVO askVO, Model model) {
+    AskVO vo = service.ask_detail(askVO);
+    model.addAttribute("ask_detail", vo);
+  }
 	
 }

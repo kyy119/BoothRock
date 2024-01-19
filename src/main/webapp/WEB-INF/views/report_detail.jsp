@@ -17,13 +17,11 @@
     <div class="bodywrap">
 		<div class="report-form">
 			<h3 class="back">
-				<a href="report_list">
-					Report List <i class="fa-solid fa-chevron-right"></i>
-				</a>
+				<a href="report_list">Report List <i class="fa-solid fa-chevron-right"></i></a>
 			</h3>
 			<div class="report-booth-fstv">
-				<button class="booth-title"><%= vo.getBooth_name() %></button>
-				<span> / <button><%= vo.getFstv_title() %></button></span>
+				<a href="booth_detail?booth_no=<%= vo.getBooth_no() %>" class="booth-title"><%= vo.getBooth_name() %></a>
+				<span> / <a href="fstv_detail?fstv_no=<%= vo.getFstv_no() %>"><%= vo.getFstv_title() %></a></span>
 			</div>
 			<div class="report-detail">
 				<h2><%= vo.getReport_title() %></h2>

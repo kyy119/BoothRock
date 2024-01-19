@@ -1,10 +1,16 @@
 @charset "UTF-8";
-
+@font-face {
+	font-family: 'Pretendard Variable';
+	font-weight: 45 920;
+	font-style: normal;
+	font-display: swap;
+	src: url('../font/PretendardVariable.woff2') format('woff2-variations');
+}
 * {
     margin: 0 auto;
     padding: 0;
     list-style: none;
-    font-family: 'Pretendard';
+    font-family: 'Pretendard Variable';
     color: #000;
 }
 a {
@@ -55,11 +61,11 @@ header {
     height: 40px;
     line-height: 40px;
     font-size: 16px;
-    font-weight: bold;
     text-align: center;
     background: linear-gradient(to right top, #876ed5, #0b123f);
     color: transparent;
     -webkit-background-clip: text;
+    font-weight: bold;
 }
 .navi li a:hover {
     border-bottom: 1px solid #757575;
@@ -75,7 +81,6 @@ header {
     width: 120px;
     line-height: 40px;
     font-size: 14px;
-    font-weight: bold;
     text-align: center;
     background-color: #fff;
     background: linear-gradient(to right top, #876ed5, #0b123f);

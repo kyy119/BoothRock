@@ -48,6 +48,13 @@
 	color: #876ed5;
 	font-weight: 540 !important;
 }
+.side-navi li:nth-child(3) a {
+	color: #000;
+	font-weight: 500;
+}
+.side-navi li a .fa-rectangle-list {
+	color: #f0d828;
+}
 #no-review {
     text-align: center;
     color: #888;

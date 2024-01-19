@@ -2,47 +2,115 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="report">
+<mapper namespace="manager">
 	
 	<select id="report_list" parameterType="reportVO" resultType="ReportVO">
-		SELECT report.*, booth.booth_name, festival.fstv_title
-		FROM report
-		JOIN booth ON report.booth_no = booth.booth_no
-		JOIN festival ON report.fstv_no = festival.fstv_no
-		ORDER BY report_no DESC;
+		select * from 
+		(select row_number() OVER(order by TOTAL.REPORT_NO desc) as TOTAL_NO, TOTAL.* 
+		from(
+			select report.*, booth.booth_name, festival.fstv_title
+	    	FROM report
+	    	JOIN booth ON report.booth_no = booth.booth_no
+	    	JOIN festival ON report.fstv_no = festival.fstv_no) TOTAL    
+	    ) TOTAL2 	
+	    WHERE TOTAL2.total_no between ${start} and ${end};
 	</select>
 	
-	<select id="report_search" parameterType="reportVO" resultType="ReportVO">
-		SELECT report.*, booth.booth_name, festival.fstv_title
+	<select id="report_search" parameterType="pagingVO" resultType="reportVO">
+		select * from 
+	    (select row_number() OVER(order by TOTAL3.REPORT_NO desc) as TOTAL_NO2, TOTAL3.*
+	    from (SELECT report.*, booth.booth_name, festival.fstv_title
 	    FROM report
 	    JOIN booth ON report.booth_no = booth.booth_no
 	    JOIN festival ON report.fstv_no = festival.fstv_no
 	    <where>
 	        <if test="type == 'no'">
-	            report_no = #{word}
+	            report_no = #{keyword}
 	        </if>
 	        <if test="type == 'title'">
-	            report_title LIKE CONCAT('%', #{word}, '%')
+	            report_title LIKE CONCAT('%', #{keyword}, '%')
 	        </if>
 	        <if test="type == 'email'">
-	            user_id LIKE CONCAT('%', #{word}, '%')
+	            user_id LIKE CONCAT('%', #{keyword}, '%')
 	        </if>
 	        <if test="type == 'booth'">
-	            booth_name LIKE CONCAT('%', #{word}, '%')
+	            booth_name LIKE CONCAT('%', #{keyword}, '%')
 	        </if>
 	        <if test="type == 'created'">
-	            report_date LIKE CONCAT('%', #{word}, '%')
+	            report_date LIKE CONCAT('%', #{keyword}, '%')
 	        </if>
 	    </where>
-	    ORDER BY report_no DESC
+	    ) TOTAL3) TOTAL4
+	    WHERE TOTAL4.total_no2 between ${start} and ${end};
 	</select>
 	
-	<select id="report_detail" parameterType="reportVO" resultType="ReportVO">
+	<select id="report_count" parameterType="pagingVO" resultType="int">
+		select count(*) from 
+	    (select row_number() OVER(order by TOTAL3.REPORT_NO desc) as TOTAL_NO2, TOTAL3.*
+	    from (SELECT report.*, booth.booth_name, festival.fstv_title
+	    FROM report
+	    JOIN booth ON report.booth_no = booth.booth_no
+	    JOIN festival ON report.fstv_no = festival.fstv_no
+	    <where>
+	        <if test="type == 'no'">
+	            report_no = #{keyword}
+	        </if>
+	        <if test="type == 'title'">
+	            report_title LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="type == 'email'">
+	            user_id LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="type == 'booth'">
+	            booth_name LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="type == 'created'">
+	            report_date LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	    </where>
+	    ) TOTAL3) TOTAL4
+	</select>
+	
+	<select id="report_detail" parameterType="reportVO" resultType="reportVO">
 		SELECT report.*, booth.booth_name, festival.fstv_title
 		FROM report
 		JOIN booth ON report.booth_no = booth.booth_no
 		JOIN festival ON report.fstv_no = festival.fstv_no
 		WHERE report_no = #{report_no};
+	</select>
+	
+	<select id="ask_list" parameterType="askVO" resultType="ASkVO">
+		SELECT * FROM ask
+		ORDER BY ask_no DESC;
+	</select>
+	
+	<select id="ask_search" parameterType="askVO" resultType="AskVO">
+		SELECT * FROM ask
+	    <where>
+	        <if test="type == 'no'">
+	            ask_no = #{word}
+	        </if>
+	        <if test="type == 'title'">
+	            ask_title LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	        <if test="type == 'email'">
+	            user_id LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	        <if test="type == 'created'">
+	            ask_created_at LIKE CONCAT('%', #{word}, '%')
+	        </if>
+	    </where>
+	    ORDER BY ask_no DESC
+	</select>
+	
+	<select id="ask_detail" parameterType="askVO" resultType="AskVO">
+		SELECT * FROM ask
+		WHERE ask_no = #{ask_no}
+		ORDER BY ask_no DESC;
+	</select>
+	
+	<select id="total_count" resultType="int">
+	    SELECT COUNT(*) FROM report;
 	</select>
 	
 </mapper>
