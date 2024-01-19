@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 <title>모든 축제의 부스를 담다 - 부스락</title>
 <!-- 세션 값 가져오기 -->
 <%

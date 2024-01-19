@@ -28,11 +28,7 @@
 	background-color: #fff;
 	padding: 0px 10px;
 	font-size: 15px;
-	text-align: center;
-}
-.input-form div label {
-	width: 90px;
-	display: inline-block; 
+	text-align: left;
 }
 #email {
 	width: 170px;
