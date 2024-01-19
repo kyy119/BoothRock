@@ -7,10 +7,11 @@
 	type="text/css">
 <%
 List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
+String sellerNum = (String) request.getAttribute("sellerNum");
+String userRole = (String) session.getAttribute("role");
 %>
-<%
-  String userRole = (String) session.getAttribute("role");
-%>
+
+<script type="text/javascript">let userRole = "<%=userRole%>";</script>
 <script src="resources/js/mypage_edit.js" defer type="text/javascript"></script>
 <h1>회원정보수정</h1>
 <br>
@@ -50,7 +51,7 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		</div>
 		<div id="authNum"></div>
 		<%
-		  if (userRole == "consumer") {
+		  if (userRole.equals("consumer")) {
 		%>
 		<!-- 소비자면 사업자번호 입력칸 없애기 -->
 		<%
@@ -58,12 +59,14 @@ List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
 		%>
 		<div class="seller-number">
 			<i class="fa-regular fa-address-card"></i>
-			<input type="text" id="seller-number" name="seller-number" placeholder="사업자등록번호" required>
+			<input type="text" id="seller-number" name="seller-number" value=<%=sellerNum %> placeholder="사업자등록번호" required>
+				<button type ="button" id="auth">인증하기</button>
 		</div>
 		<%
 		  }
 		%>
-		<input type="text" name="user_role" value=<%=list.get(0).getUser_role()%> style="display:none;">
+		<input type="text" name="user_role"
+			value=<%=list.get(0).getUser_role()%> style="display: none;">
 		<input type="submit" class="edit" value="완료">
 	</form>
 </div>

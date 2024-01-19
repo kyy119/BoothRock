@@ -3,7 +3,6 @@ $(function() {
 	let emailIsValid = false;
 	let passwordIsValid = false;
 	let passwordSameIsValid = false;
-	let businessIsValid2 = false;
 	let submitButtons = $('.signup')
 	submitButtons[0].disabled = true;
 	// 이메일 중복 확인
@@ -78,16 +77,28 @@ $(function() {
 					contentType : "application/json",
 					accept : "application/json",
 					success : function(result) {
-						console.log(result); // 로직 완성되면 삭제
+						//console.log(result) 
 						$('#result').text(JSON.stringify(result))
 						status_box = result.data
 						if(result.match_cnt == '1' && status_box[0].b_stt == '계속사업자'){
-							alert("사업자여부 인증완료");
-    						businessIsValid = true;
-    						$('#auth').hide();
-    						let inputElement = document.getElementById("selling_number");
-	    					inputElement.readOnly = true;
-	    					businessIsValid2 = businessIsValid;
+							$.ajax({
+								url : "seller_duplicate",
+								async : false,
+								data : {
+									selling_number : $('#selling_number').val()
+								},
+								success : function(result){
+									if(result == '0'){
+										alert("사업자여부 인증완료");
+    									businessIsValid = true;
+    									$('#auth').hide();
+    									let inputElement = document.getElementById("selling_number");
+	    								inputElement.readOnly = true;
+									}else{
+										alert("이미 가입된 사업자 이거나 블랙리스트에 등록된 번호입니다!");
+									}
+								}
+							})
 						}else{
 							businessIsValid = false;
 							alert("사업자여부 인증실패!");
@@ -104,7 +115,7 @@ $(function() {
              // 체크됐을 때의 동작
             let emailConfirm = $('#emailConfirm');
 			let authConfirm = $('#auth');
-			if(businessIsValid2 == true && emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true){
+			if(businessIsValid == true && emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true){
 				submitButtons[0].disabled = false;
 				emailConfirm.disabled = true;
 				authConfirm.disabled = true;
@@ -112,61 +123,7 @@ $(function() {
          }
     });
 	
-	$('.signup').click(function(){
-    	if(submitButtons[0].disabled){
-    		alert("회원가입 조건을 만족하지않습니다!");
-    		return false;
-    	}
-    })
-    
-    
-	
 }); // 제이쿼리 전체
-
-// 아래는 사업자 인증을 하는 로직
-function authenticateBusiness(businessIsValid) {
-    // 여기에 사업자 인증 로직을 추가
-    // 예를 들어, 서버와 통신하여 인증을 수행하고 성공하면 action을 변경
-	
-	//$(document).ready(function() {
-				var data = {
-					"b_no" : [$('#selling_number').val()]
-				};
-				$.ajax({
-					url : "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=27WjNSd41ndjAbIoDRszbjdYwi%2FQXn1wZZhAcrglMHw1vWWIV36eqYIcgL3K2pTHYK499GDNc7wlbmNT7%2Behxg%3D%3D",
-					type : "POST",
-					async : false,
-					data : JSON.stringify(data), // json 을 string으로 변환하여 전송
-					dataType : "JSON",
-					contentType : "application/json",
-					accept : "application/json",
-					success : function(result) {
-						console.log(result); // 로직 완성되면 삭제
-						$('#result').text(JSON.stringify(result))
-						status_box = result.data
-						if(result.match_cnt == '1' && status_box[0].b_stt == '계속사업자'){
-							alert("사업자여부 인증완료");
-    						businessIsValid = true;
-    						$('#auth').hide();
-    						let inputElement = document.getElementById("selling_number");
-	    					inputElement.readOnly = true;
-	    					
-							alert(businessIsValid + " >> 1")
-	    					businessIsValid2 = businessIsValid;
-						}else{
-							businessIsValid = false;
-							alert("사업자여부 인증실패!");
-							businessIsValid2 = businessIsValid;
-						}
-					},
-					error : function(result) {
-						console.log(result.responseText); //responseText의 에러메세지 확인
-					}
-				});// ajax
-				
-		
-	//}); // document ready
-}
 
 function validatePassword(password) { // 비밀번호 유효성 검사 함수
 	// 비밀번호는 최소 8자 이상이어야 합니다.

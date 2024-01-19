@@ -55,3 +55,9 @@
 .side-navi li a .fa-rectangle-list {
 	color: #f0d828;
 }
+#no-review {
+    text-align: center;
+    color: #888;
+    font-size: 2em;
+    margin-top: 50px;
+}

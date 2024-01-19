@@ -7,13 +7,8 @@
 
 <% BoothVO boothDetail = (BoothVO) request.getAttribute("boothDetail"); %>
 
-<% String loginError = (String)request.getAttribute("loginError"); %>
-
-
-<% HttpSession boothSession = request.getSession();
-   String userid = (String) boothSession.getAttribute("user_id"); 
-   
-   String reportLink = "booth_report?userid=" + userid + "&booth_no=" + boothDetail.getBooth_no(); %>
+<% 	HttpSession boothSession = request.getSession();
+	String user_id = (String) boothSession.getAttribute("id"); %>
 
 
 
@@ -27,6 +22,12 @@
 	type="text/css">
 <script src="resources/js/booth_detail.js?ver=01151712" defer
 	type="text/javascript"></script>
+<script>
+        <c:if test="${showAlert}">
+            alert('신고가 성공적으로 제출되었습니다.');
+            window.location.href = '/booth_detail?booth_no=${booth_no}';
+        </c:if>
+    </script>
 </head>
 <body>
 	<%@ include file="../../header.jsp"%>
@@ -34,8 +35,7 @@
 	<div class="bodywrap">
 		<div class="booth-detail-form">
 			<div class="booth-title">
-				<!-- 부스이름 = 축제이름 + 부스 이름으로 없어질 예정 -->
-				<!-- <h3 class="fstv-title">양평 산수유마을 빙어축제</h3> -->
+				<h3 class="fstv-title"><%= boothDetail.getFstv_title() %></h3>
 				<a href="booth_detail.jsp" style="display: inline-block"><%=boothDetail.getBooth_name()%></a>
 				<span class="booth-type"> | <%=boothDetail.getBooth_category()%></span>
 			</div>
@@ -70,7 +70,7 @@
 								<li><i class="fa-solid fa-phone" style="color: #00aa00;"></i>
 									<%=boothDetail.getBooth_tel()%></li>
 							</ul>
-							<button class="report" onclick="loginCheck('<%= loginError %>')">
+							<button class="report" onclick="duplicateReportCheck('<%=user_id %>','<%= request.getParameter("booth_no") %>')">
 								 <i class="fa-solid fa-triangle-exclamation"></i> 부스정보 신고하기 
 							</button>
 						</div></li>
@@ -89,11 +89,6 @@
 	</div>
 
 	<%@ include file="../../footer.jsp"%>
-	<script>
-jQuery(document).ready(function() {
-$('.boothDetailReview').removeAttr("style");
-}
-</script>
 
 </body>
 </html>

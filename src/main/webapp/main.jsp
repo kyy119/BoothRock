@@ -36,54 +36,7 @@
         <hr style="margin-top: 50px; border: 1px solid #ddd;">
         <div class="hot-booth">
         	<h2>요즘 뜨고 있는 부스 <i class="fa-solid fa-fire" style="color: #ce3b3b;"></i></h2>
-        	<div class="hot-booth-list">
-                <ul>
-                    <li>
-                        <a href="booth_detail.jsp">
-                            <div class="fstv-title">서울광장시장 축제</div>
-                            <div class="booth-title">삼촌네 떡볶이</div>
-                           	<div class="star-point">
-								<i class="fa-solid fa-star"> 4.4</i>
-							</div>
-                            <hr>
-                            <p class="booth-comment">서울 광장시장에 위치한 30년 전통 맛있는 떡볶이입니다~ 많이 찾아주세요</p>
-                        </a>
-                    </li>  
-                    <li>
-                        <a href="#">
-                            <div class="fstv-title">속초 태양빛 축제</div>
-                            <div class="booth-title">민지만쥬</div>
-                           	<div class="star-point">
-								<i class="fa-solid fa-star"> 4.5</i>
-							</div>
-							<hr>
-                            <p class="booth-comment">만쥬 존맛탱 전화로 미리 문의 주세욤</p>
-                        </a>
-                    </li>  
-                    <li>
-                        <a href="#">
-                            <div class="fstv-title">임실 치즈 축제</div>
-                            <div class="booth-title">임실 치즈 만들기 체험</div>
-                           	<div class="star-point">
-								<i class="fa-solid fa-star"> 5</i>
-							</div>
-                            <hr>
-                            <p class="booth-comment">치즈 만들어서 먹으면 얼마나 맛있게요</p>
-                        </a>
-                    </li>  
-                    <li>
-                        <a href="#">
-                            <div class="fstv-title">만수천 빛의거리</div>
-	                        <div class="booth-title">GRILLED STEAK</div>
-                            <div class="star-point">
-                            	<i class="fa-solid fa-star"> 4.7</i>                           	
-                            </div>
-                            <hr>
-                            <p class="booth-comment">어떤 호텔 셰프였던 사장님이 운영하는 그릴스테이크집입니다. 최고의 고기로 보답하겠습니다.</p>
-                        </a>
-                    </li>
-                </ul>
-	        </div>
+        	<div class="hot-booth-list" id="boothup"></div> <!-- 요즘 뜨고 있는 부스 데이터 들어가는 div -->
         </div>
     </div>
 	

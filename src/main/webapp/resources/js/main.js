@@ -45,10 +45,19 @@ jQuery(document).ready(function() {
 		}
 	})
 	
+	// 곧 끝나는 축제 불러오는 ajax
 	$.ajax({
 		url : "endlist",
 		success : function(list) {
 			$('#endlist').html(list)
+		}
+	})
+	
+	// 요즘 뜨고 있는 부스 ajax > 리뷰 개수로 리스트업
+	$.ajax({
+		url : "fstv_boothup",
+		success : function(list) {
+			$('#boothup').html(list)
 		}
 	})
     

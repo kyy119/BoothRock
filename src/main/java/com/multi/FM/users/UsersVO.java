@@ -14,5 +14,7 @@ public class UsersVO {
 	private String user_created_at;
 	private String user_updated_at;
 	private String user_name;
-	private String user_tel;		
+	private String user_tel;
+	private String selling_number;
+	private int fstv_no;
 }

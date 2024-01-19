@@ -39,34 +39,46 @@ $('.boothDetailReview').removeAttr("style");
 	    success: function(response) {
 	    $('.boothDetailReview').html(response);
     }
+    
 });
 
+// 신고하기에서 부스정보 불러오기 
+	$.ajax({
+	    url: "booth_detail_report",
+	    contentType: "application/json;charset=UTF-8",
+	    data: { booth_no: boothNo },
+	    success: function(response) {
+	    $('.booth_detail_report').html(response);
+    }
+});
 
+});
 
-	//신고하기 버튼 클릭 시 로그인 여부 체크
-	function loginCheck(loginError) {
-    window.onload = function() {
-       var result = confirm(loginError + '\n\n로그인하러 가시겠습니까?');
-        if (result) {
-            window.location.href = 'login.jsp';
-        	} else {
-            	history.back();
-        	}
-	    }  
-	};
-
-
-
-	//중복 신고여부 체크
-	function duplicateReportCheck(DuplicateTrue) {
-	    alert(DuplicateTrue);
-	    history.back();
+	//로그인해야하는 경우 팝업 confirm창
+	function LogInCheck() {
+	    var result = confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?');
+		    if (result) {
+		        window.location.href = 'login.jsp';
+		    } else {
+		      
+		    }
 	}
 
-	
-	
-	
-});
 
-
+	//신고하기 버튼 클릭 시 로그인 여부와 중복신고여부 체크
+	function duplicateReportCheck(user_id,booth_no) {
+	    console.log("duplicateReportCheck 함수 호출 user_id:", user_id,"booth_no:", booth_no);
+	
+		if (user_id == null) {
+			LogInCheck();
+		}else {
+			window.location.href = 'duplicate_report_check?booth_no=' + booth_no;
+		}
+	}
+	
+	//중복 신고로 확인되었을 경우 alert 
+	function duplicateReportCheckAlert(duplicateTrue) {
+        alert(duplicateTrue);
+        history.back();
+    }
 	

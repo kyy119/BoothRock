@@ -5,12 +5,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul>
 	<c:forEach items="${list}" var="vo">
-		<li><i class="fa-regular fa-heart"></i> <a
-			href="fstv_detail?fstv_no=${vo.fstv_no}"> <img
-				src="${vo.fstv_image}" alt="resources/img/no-image.jpg">
+		<li>
+			<a href="fstv_detail?fstv_no=${vo.fstv_no}">
+				<img src="${vo.fstv_image}" alt="resources/img/no-image.jpg">
 				<div class="fstv-title">${vo.fstv_title}</div>
 				<div class="fstv-loc">${vo.fstv_addr1}</div>
 				<div class="fstv-date">${vo.fstv_startdate} ~ ${vo.fstv_enddate}</div>
-		</a></li>
+			</a>
+		</li>
 	</c:forEach>
 </ul>

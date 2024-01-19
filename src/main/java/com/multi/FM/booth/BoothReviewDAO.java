@@ -18,9 +18,5 @@ public class BoothReviewDAO {
     params.put("booth_no", booth_no);
     return my.selectList("booth.reviewlist", params);
 }
-
-  public BoothVO Rbooth(int booth_no) {
-    return my.selectOne("booth.Rbooth", booth_no);
-  }
-
+   
 }

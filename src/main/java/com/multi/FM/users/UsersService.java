@@ -43,6 +43,16 @@ public class UsersService {
       return result;
     }
 	
+	public int seller_black_list(String user_id) {
+      int result = usersdao.seller_black_list(user_id);
+      return result;
+    }
+    
+    public int seller_duplicate(String selling_number) {
+      int result = usersdao.seller_duplicate(selling_number);
+      return result;
+    }
+	
 	public int phone_duplicate(String user_tel) {
 		int result = usersdao.phone_duplicate(user_tel);
 		return result;

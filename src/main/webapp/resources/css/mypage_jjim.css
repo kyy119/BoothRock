@@ -57,3 +57,17 @@
 .side-navi li a .fa-heart {
 	color: pink;
 }
+#no-jjim {
+    text-align: center;
+    color: #888;
+    font-size: 2em;
+    margin-top: 50px;
+}
+
+#no-jjim-bydelete{
+	 text-align: center;
+    color: #888;
+    font-size: 2em;
+    margin-top: 50px;
+	display: none;
+}

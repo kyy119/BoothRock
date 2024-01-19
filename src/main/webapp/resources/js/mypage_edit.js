@@ -1,12 +1,17 @@
-let telAuth = false; // 전화번호 인증여부 확인
-let sameTel = true; // 전화번호 변경여부 확인
+let telAuth = false; // 전화번호 인증여부
+let sameTel = true; // 전화번호 변경여부
 let passwordIsValid = true; //비밀번호 유효성
-let passwordSameIsValid = true; //비밀번호 일치여부
-let origin_num = document.getElementById('tel').value; //기존 전화번호
+let passwordSameIsValid = true; //비밀번호 확인 일치여부
+let businessIsValid = false; //사업자 번호 인증여부
+let sameBusiness = true; //사업자번호 변경여부
+let origin_tel = document.getElementById('tel').value; //기존 전화번호
+let origin_num = document.getElementById('seller-number').value; //기존 사업자번호
 
 jQuery(document).ready(function() {
 		$('#send').hide(); //전화번호 인증칸 숨기기
-		$('#authNum').hide(); //인증번호칸 숨기기
+		$('#authNum').hide(); //전화번호 인증칸 숨기기
+		$('#auth').hide(); //사업자번호 인증칸 숨기기
+		
 		$('#password').on('blur', function() { //비밀번호 입력값 변경 시 실행되는 함수
 			passwordIsValid = validatePassword($(this).val());
 
@@ -34,14 +39,12 @@ jQuery(document).ready(function() {
 				removeImage2();
 				passwordSameIsValid = false;
 			}
-			console.log('패스워드2 : ' + passwordSameIsValid);// 삭제예정 
 		});// 비밀번호와 비밀번호 확인 로직
-		//console.log(emailIsValid + ' ' + passwordIsValid + ' ' + passwordSameIsValid);
 
 		$('#tel').on('blur', function() { //전화번호 입력값 변경시 실행되는 함수
 			if (telAuth) { // 전화번호 인증 완료시 인증하기 버튼 생성되지 않음
 				return;
-			} else if (origin_num == $(this).val().replace(/\D/g, '')) {
+			} else if (origin_tel == $(this).val().replace(/\D/g, '')) {
 				sameTel = true;
 				$('#send').hide();
 				$('#authNum').hide();
@@ -81,7 +84,52 @@ jQuery(document).ready(function() {
 				}
 			}// else1
 		}); // #send
-	});//document.ready
+		
+		$('#seller-number').on('blur', function() { //사업자 번호 입력값 변경시 실행되는 함수
+			if (businessIsValid) { // 사업자 인증 완료시 인증하기 버튼 생성되지 않음
+				return;
+			} else if (origin_num == $(this).val().replace(/\D/g, '')) {
+				sameBusiness = true;
+				$('#auth').hide();
+			}  else {
+				sameBusiness = false;
+				$('#auth').show();
+			}
+		});
+		
+		$('#auth').click(function(){ //사업자 번호 인증하기 클릭시
+	
+				var data = {
+					"b_no" : [$('#seller-number').val()]
+				};
+				$.ajax({
+					url : "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=27WjNSd41ndjAbIoDRszbjdYwi%2FQXn1wZZhAcrglMHw1vWWIV36eqYIcgL3K2pTHYK499GDNc7wlbmNT7%2Behxg%3D%3D",
+					type : "POST",
+					async : false,
+					data : JSON.stringify(data), // json 을 string으로 변환하여 전송
+					dataType : "JSON",
+					contentType : "application/json",
+					accept : "application/json",
+					success : function(result) {
+						console.log(result); // 로직 완성되면 삭제
+						status_box = result.data
+						if(result.match_cnt == '1' && status_box[0].b_stt == '계속사업자'){
+							alert("사업자여부 인증완료");
+    						businessIsValid = true;
+    						$('#auth').hide();
+    						let inputElement = document.getElementById("seller-number");
+	    					inputElement.readOnly = true;
+						}else{
+							businessIsValid = false;
+							alert("사업자여부 인증실패!");
+						}
+					},
+					error : function(result) {
+						console.log(result.responseText); //responseText의 에러메세지 확인
+					}
+				});// ajax
+			});// auth
+});//document.ready
 
 	function validatePassword(password) { // 비밀번호 유효성 검사 함수
 		// 비밀번호는 최소 8자 이상이어야 합니다.
@@ -156,6 +204,7 @@ jQuery(document).ready(function() {
 						$('#tel').prop('readOnly', true);
 						$('#num').prop('readOnly', true);
 						$('#verify').hide();
+						$('#authNum').hide();
 						telAuth = true;
 						break;
 					} else {
@@ -177,7 +226,7 @@ jQuery(document).ready(function() {
 			return false;
 		} // else2
 	};
-	function validateForm() {
+	function validateForm() { //폼 형식 유효성 체크, 모두 완료시 수정가능
 		if (!passwordSameIsValid) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
@@ -187,11 +236,17 @@ jQuery(document).ready(function() {
 		} else if(!(sameTel || telAuth)) {
 			alert("전화번호 인증이 필요합니다.");
 			return false;
+		} else if(userRole == "seller") {
+			if(!(sameBusiness || businessIsValid)){ //판매자일 경우 사업자 번호 변경없거나 인증 완료되면 수정가능 
+				alert("사업자 인증이 필요합니다.");
+				return false;
+			} else {
+				alert("회원정보수정이 완료되었습니다.");
+				return true;
+			}
 		} else {
 			alert("회원정보수정이 완료되었습니다.");
 			return true;
 		}
-		// 비밀번호 동일 하면 true 다르면 alert
-		// 기존과 전화번호 사업자번호 동일하면 true 다르면 인증해서 true 둘다 아니면 false
-		// 사업자면 post요청 두번 user테이블, seller테이블 
 	};
+	

@@ -15,11 +15,8 @@ String userRole = (String)session.getAttribute("role");
 %>
 <!-- 세션 값을 JavaScript 변수에 할당 -->
 <!-- 세션이 없다면 메인페이지로 이동 -->
-
 <script type="text/javascript">
-let userRoleJS = "<%=userRole%>";
-console.log('userRoleJS', userRoleJS);
-/* alert(userRoleJS); */
+let userRole = "<%=userRole%>";
 let userId = "<%=userId%>"; 
 if (userId == null) {
 	alert("로그인이 필요합니다.");

@@ -74,9 +74,14 @@ public class UsersController {
          session.setAttribute("role", "consumer");
          result = "1";
       }else if(seller.equals("1")) {
-        session.setAttribute("id", usersvo.getUser_id());
-        session.setAttribute("role", "seller");
-        result = "1";
+        String seller_black_list = String.valueOf(usersservice.seller_black_list(usersvo.getUser_id()));
+        if(seller_black_list.equals("1")) {
+          session.setAttribute("id", usersvo.getUser_id());
+          session.setAttribute("role", "seller");
+          result = "1";
+        }else {
+          result = "2";
+        }
       }
 	  model.addAttribute("result",result);
     }
@@ -89,6 +94,14 @@ public class UsersController {
 		//usersservice.message_send(receive,num);
 		return num;
 	}
+	
+	@RequestMapping("seller_duplicate")
+    @ResponseBody
+    public String seller_duplicate(String selling_number) {
+        int result = usersservice.seller_duplicate(selling_number);
+        String result2 = String.valueOf(result);
+        return result2;
+    }
 	
 	@RequestMapping("phone_duplicate")
 	@ResponseBody
