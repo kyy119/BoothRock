@@ -9,13 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class UsersController {
 	
 	@Autowired
-	UsersService usersservice;
+	UsersService users_service;
 	
 	SecureRandom r = new SecureRandom();
 	String num = "";
@@ -29,7 +30,7 @@ public class UsersController {
 		usersvo.setUser_updated_at(ft.format(date));
 		sellervo.setUser_id(usersvo.getUser_id());
 		sellervo.setCreate_date(usersvo.getUser_created_at());
-		usersservice.create_account_seller(usersvo,sellervo);
+		users_service.create_account_seller(usersvo,sellervo);
 	}
 	
 	@RequestMapping("create_account_consumer")
@@ -39,12 +40,12 @@ public class UsersController {
 		usersvo.setUser_role("consumer");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
-		usersservice.create_account_consumer(usersvo);
+		users_service.create_account_consumer(usersvo);
 	}
 	
 	@RequestMapping("find_id")
     public void find_id(UsersVO usersvo,Model model) {
-	  String result = usersservice.find_id(usersvo);
+	  String result = users_service.find_id(usersvo);
 	  String notify = "";
 	  String find_id_result = "0";
 	  if(result != null && !result.equals("")) {
@@ -59,22 +60,24 @@ public class UsersController {
 	
 	@RequestMapping("edit_password")
 	public void edit_password(UsersVO usersvo) {
-	  usersservice.edit_password(usersvo);
+	  users_service.edit_password(usersvo);
     }
 	
 	@RequestMapping("login")
-	public void login(UsersVO usersvo,Model model,HttpSession session) throws Exception{
-	  int resultCus = usersservice.cus_login(usersvo);
-	  int resultSeller = usersservice.seller_login(usersvo);
-	  String consumer = String.valueOf(resultCus);
-	  String seller = String.valueOf(resultSeller);
+	public void login(String referer,UsersVO usersvo,Model model,HttpSession session) throws Exception{
+	  int result_cus = users_service.cus_login(usersvo);
+	  int result_seller = users_service.seller_login(usersvo);
+	  int result_admin = users_service.admin_login(usersvo);
+	  String consumer = String.valueOf(result_cus);
+	  String seller = String.valueOf(result_seller);
+	  String admin = String.valueOf(result_admin);
 	  String result = "0";
 	  if (consumer.equals("1")) {
          session.setAttribute("id", usersvo.getUser_id());
          session.setAttribute("role", "consumer");
          result = "1";
       }else if(seller.equals("1")) {
-        String seller_black_list = String.valueOf(usersservice.seller_black_list(usersvo.getUser_id()));
+        String seller_black_list = String.valueOf(users_service.seller_black_list(usersvo.getUser_id()));
         if(seller_black_list.equals("1")) {
           session.setAttribute("id", usersvo.getUser_id());
           session.setAttribute("role", "seller");
@@ -82,8 +85,13 @@ public class UsersController {
         }else {
           result = "2";
         }
+      }else if(admin.equals("1")) {
+        session.setAttribute("id", usersvo.getUser_id());
+        session.setAttribute("role", "admin");
+        result = "3";
       }
 	  model.addAttribute("result",result);
+	  model.addAttribute("referer", referer);
     }
 	
 	
@@ -91,14 +99,14 @@ public class UsersController {
 	@ResponseBody
 	public String create_authentication1(String receive) {
 		num = String.valueOf(100000 + r.nextInt(900000));// >> 서비스로 빠져야함
-		//usersservice.message_send(receive,num);
+		//users_service.message_send(receive,num);
 		return num;
 	}
 	
 	@RequestMapping("seller_duplicate")
     @ResponseBody
     public String seller_duplicate(String selling_number) {
-        int result = usersservice.seller_duplicate(selling_number);
+        int result = users_service.seller_duplicate(selling_number);
         String result2 = String.valueOf(result);
         return result2;
     }
@@ -106,14 +114,14 @@ public class UsersController {
 	@RequestMapping("phone_duplicate")
 	@ResponseBody
 	public String phone_duplicate(String user_tel) {
-		int result = usersservice.phone_duplicate(user_tel);
+		int result = users_service.phone_duplicate(user_tel);
 		String result2 = String.valueOf(result);
 		return result2;
 	}
 	@RequestMapping("email_duplicate")
 	@ResponseBody
 	public String email_duplicate(String user_id) {
-		int result = usersservice.email_duplicate(user_id);
+		int result = users_service.email_duplicate(user_id);
 		String result2 = String.valueOf(result);
 		return result2;
 	}
