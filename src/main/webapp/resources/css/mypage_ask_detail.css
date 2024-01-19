@@ -41,3 +41,6 @@
 .side-navi li a .fa-pen-to-square {
 	color: #004e9b;
 }
+.back:hover {
+color: #757575;
+}

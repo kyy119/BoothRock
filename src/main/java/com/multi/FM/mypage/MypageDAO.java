@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.multi.FM.booth.BoothReviewVO;
 import com.multi.FM.fstv.FestivalVO;
+import com.multi.FM.fstv.JjimVO;
+import com.multi.FM.manager.AskVO;
 import com.multi.FM.users.UsersVO;
 
 @Repository
@@ -39,7 +41,11 @@ public class MypageDAO {
         return my.selectList("myPage.jjim_list", user_id);
     }
     
-    public int jjim_delete(UsersVO users) {
+    public int jjim_delete(JjimVO users) {
         return my.delete("myPage.jjim_delete",users);
     }
+    
+    public List<AskVO> mypage_ask(String user_id){
+      return my.selectList("myPage.ask_list", user_id);
+  }
 }
