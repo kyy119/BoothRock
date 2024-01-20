@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/signup_num.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/signup_num.css" type="text/css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../header.jsp" %>
 
 	<div class="bodywrap" style="margin: 200px 0px 330px;">
 		<h3>가입한 회원정보를 입력해주세요</h3>
@@ -28,6 +28,6 @@
 	   	</div>
    	</div>
    	
-   	<%@ include file="footer.jsp" %>
+   	<%@ include file="../footer.jsp" %>
 </body>
 </html>

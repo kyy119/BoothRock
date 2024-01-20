@@ -42,7 +42,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="../../header.jsp" %>
+	<%@ include file="../../../header.jsp" %>
 	
 	<div class="bodywrap">
 		<h3><%= notify %></h3><br>
@@ -66,6 +66,6 @@
 		</div>
 	</div>
 	
-	<%@ include file="../../footer.jsp" %>
+	<%@ include file="../../../footer.jsp" %>
 </body>
 </html>

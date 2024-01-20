@@ -6,16 +6,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>모든 축제의 부스를 담다 - 부스락</title>
-<link rel="stylesheet" href="resources/css/signup_num.css" type="text/css">
-<script src="resources/js/signup_num.js" defer type="text/javascript"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/signup_num.css" type="text/css">
+<script src="${pageContext.request.contextPath}/resources/js/find_num.js" defer type="text/javascript"></script>
+
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="../header.jsp"%>
 
 	<div class="bodywrap">
-		<h3>회원가입을 원하시면 휴대전화 인증을 진행해주세요</h3>
+		<h3>본인 확인을 위해 휴대전화 인증을 진행해주세요</h3>
 		<div class="signup-form">
-			<form action="signup_type.jsp" class="input-form" method="post">
+			<form action="new_pw.jsp" class="input-form" method="post">
 				<div>
 					<i class="fa-solid fa-mobile-screen"></i>
 					<input type="text" id="phone_number" name="phone_number" maxlength="11" placeholder="전화번호" required>
@@ -30,6 +31,6 @@
 		</div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
+	<%@ include file="../footer.jsp"%>
 </body>
 </html>
