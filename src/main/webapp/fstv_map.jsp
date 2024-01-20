@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/fstv_map.css" type="text/css">
-    <script src="resources/js/fstv_map.js" defer type="text/javascript"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bfc76317e78b81b1a32b1be44269182"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fstv_map.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/fstv_map.js" defer type="text/javascript"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f555a223b0daef77d257c80c6f4e9ab0"></script>
 </head>
 <body>
     <%@ include file="header.jsp" %>
@@ -35,7 +35,7 @@
 	<script>
 	
 	var region = '서울';
-	let list_url = "fstv_maplist";
+	let list_url = "fstv/fstv_maplist";
 	
 		jQuery(document).ready(function(){
 			console.log(region);

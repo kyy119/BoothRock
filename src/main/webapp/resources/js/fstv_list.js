@@ -1,9 +1,9 @@
 jQuery(document).ready(function(){
 
 	let page = 1;
-	let list_url = "fstv_list";
+	let list_url = "fstv/fstv_list";
 	$("#def-btn").click(function(){
-		list_url = "fstv_list";
+		list_url = "fstv/fstv_list";
 		$("#def-btn").addClass("bold-text");
 		$("#pop-btn").removeClass("bold-text");
 		$.ajax({
@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
 	});
 	
     $("#pop-btn").click(function(){						// 인기순 버튼을 누를때
-    	list_url = "fstv_jjim";							// 불러오는 url을 jjim url으로 변경
+    	list_url = "fstv/fstv_jjim";					// 불러오는 url을 jjim url으로 변경
     	$("#pop-btn").addClass("bold-text");
         $("#def-btn").removeClass("bold-text");
         $.ajax({										// 동시에 ajax
@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
 		event.preventDefault();					// 폼 전송 막기
 		let date1 = document.getElementById('date1').value;
 		let date2 = document.getElementById('date2').value;
-		list_url = "fstv_date_search";
+		list_url = "fstv/fstv_date_search";
 		console.log(date1);
 		$.ajax({
 			url : list_url,

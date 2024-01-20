@@ -12,8 +12,8 @@
 	try{
 		for(int j = 0; j < 4; j++){ %>
 	<li>
-		<a href="booth_detail?booth_no=<%=list.get(idx).getBooth_no()%>">
-			<img src="<%=list.get(idx).getBooth_image()%>" alt="이미지1">
+		<a href="booth/booth_detail?booth_no=<%=list.get(idx).getBooth_no()%>">
+			<img src="${pageContext.request.contextPath}/<%=list.get(idx).getBooth_image()%>" alt="이미지1">
 			<div class="booth-title"><%=list.get(idx).getBooth_name()%></div>
 			<div class="booth-type"><%=list.get(idx).getBooth_category()%></div>
 			<span><i class="fa-solid fa-star"> <%=list.get(idx).getBooth_starpoint()%></i></span>
