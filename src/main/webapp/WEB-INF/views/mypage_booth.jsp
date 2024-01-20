@@ -35,7 +35,7 @@
 				</h2>
 				<div class="booth-type"><%= booth.getBooth_category() %></div>
 				<button class="booth-delete">삭제</button>
-				<button class="booth-edit">
+				<button class="booth-edit"><a href="mypage_booth_edit?boot_no=<%= booth.getBooth_no() %>">
 					수정하기 <i class="fa-solid fa-chevron-right"></i>
 				</button>
 			</div></li>

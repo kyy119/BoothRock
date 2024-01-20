@@ -1,5 +1,7 @@
 package com.multi.FM.myboothpage;
 
+import java.util.List;
+import com.multi.FM.booth.BoothProductVO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +20,6 @@ public class BoothVO {
   private String booth_introduction;
   private String booth_ban;  
   //fstv table 조인
-  private String fstv_title;    
-
-  
+  private String fstv_title;
+  private List<BoothProductVO> products;
 }

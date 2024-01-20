@@ -1,15 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.multi.FM.myboothpage.BoothVO"%>
 <!DOCTYPE html>
+<% BoothVO mybooth = (BoothVO) request.getAttribute("booth"); %>
+
 <html lang="en">
-<% String boothNo = request.getParameter("booth_no"); %>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
+    <%
+String userId = (String)session.getAttribute("id");
+String userRole = (String)session.getAttribute("role");
+/* String userRole = "consumer"; */
+%>
+<!-- 세션 값을 JavaScript 변수에 할당 -->
+<!-- 세션이 없다면 메인페이지로 이동 -->
+<script type="text/javascript">
+let userRole = "<%=userRole%>";
+let userId = "<%=userId%>"; 
+if (userId == null) {
+	alert("로그인이 필요합니다.");
+	window.location.href = 'main.jsp';
+}
+</script>
     <link rel="stylesheet" href="resources/css/mypage_booth_add.css" type="text/css">
     <link rel="stylesheet" href="resources/css/mypage_side.css" type="text/css">
     <script src="resources/js/mypage_booth_add.js" defer type="text/javascript"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // boothCategory 변수에 기본 값 할당 (예시로 "체험형" 설정)
+        var boothCategory = "<%= mybooth.getBooth_category() %>";
+
+        // boothCategory 값을 booth-type 요소에 할당
+        document.getElementById("booth-type").value = boothCategory;
+    });
+</script>
 </head>
 <body>
     <%@ include file="../../header.jsp" %>
@@ -38,41 +65,38 @@
     			<div class="booth-add-form">
 	    			<div>
 	    				<i class="fa-solid fa-drum"></i>
-						<select id="fstv-name" name="fstv-name">
-							<option value="fstv1">양평 산수유마을 빙어축제</option>
-							<option value="fstv2">임실 치즈 축제</option>
-						</select>
+						<input type="text" value="<%= mybooth.getFstv_title()%>" readonly>
 	    			</div>
 	    			<div>
 	    				<i class="fa-solid fa-store"></i>
-						<input type="text" id="booth-name" name="booth-name" value="산수유 떡볶이" required>
+						<input type="text" id="booth-name" name="booth-name" value="<%= mybooth.getBooth_name() %>" required>
 	    			</div>
 	    			<div>
 	    				<i class="fa-solid fa-hashtag"></i>
 						<select id="booth-type" name="booth-type">
-							<option value="selling">판매형</option>
-							<option value="trial">체험형</option>
+							<option value="판매형">판매형</option>
+							<option value="체험형">체험형</option>
 						</select>
 		    		</div>
 	    			<div>
 	    				<i class="fa-solid fa-image"></i>
-						<input type="text" id="booth-img" name="booth-img" value="산수유떡볶이.jpg"><button>첨부파일</button>
+						<input type="text" id="booth-img" name="booth-img" value="<%= mybooth.getBooth_image() %>"><button>첨부파일</button>
 	    			</div>
 	    			<div>
 	    				<i class="fa-solid fa-location-dot"></i>
-		    			<input type="text" id="booth-loc" name="booth-loc" value="축제 정문에서 130m 직진, 광장 옆옆 부스">
+		    			<input type="text" id="booth-loc" name="booth-loc" value="<%= mybooth.getBooth_addr() %>">
 	    			</div>
 	    			<div>
 	    				<i class="fa-solid fa-phone"></i>
-		    			<input type="text" id="booth-tel" name="booth-tel" value="010-1234-5678">
+		    			<input type="text" id="booth-tel" name="booth-tel" value="<%= mybooth.getBooth_tel() %>">
 	    			</div>
 	    			<div>
 	    				<i class="fa-regular fa-clock"></i>
-		    			<input type="text" id="booth-hour" name="booth-hour" value="09:00 ~ 18:00">
+		    			<input type="text" id="booth-hour" name="booth-hour" value="<%= mybooth.getBooth_hours() %>">
 	    			</div>
 	    			<div class="text-area">
 	    				<i class="fa-solid fa-store"></i>
-		    			<textarea id="booth-intro" name="booth-intro">산수유 마을 빙어축제에서 빙어 떡볶이를 맛보세요! 엄청 특별한 맛, 보장합니다.</textarea>
+		    			<textarea id="booth-intro" name="booth-intro"><%= mybooth.getBooth_introduction() %></textarea>
 	    			</div>
 	    		</div>
 	    		<div class="item-add-form">

@@ -18,11 +18,4 @@ jQuery(document).ready(function(){
             }
         });
     });
-    $('.booth-edit').on('click', function() {
-        // 해당 부스의 booth_no 가져오기
-        var boothNo = $(this).closest('li').data('booth-no');
-        console.log("click");
-        // 수정 페이지로 이동
-        location.href = 'mypage_booth_edit.jsp?boot_no=' + boothNo;
-    });
 });

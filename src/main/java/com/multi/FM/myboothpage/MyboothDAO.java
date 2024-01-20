@@ -28,4 +28,10 @@ public class MyboothDAO {
     // MyBatis를 이용하여 부스 삭제 SQL 호출
     my.delete("Mybooth.deleteBooth", boothNo);
   }
+  public BoothVO getBoothDetailsByNo(int boothNo) {
+    return my.selectOne("Mybooth.getBoothDetailsByNo", boothNo);
+  }
+  public List<BoothProductVO> getBoothProductByNo(int boothNo){
+    return my.selectList("Mybooth.getboothproduct", boothNo);
+  }
 }
