@@ -11,6 +11,7 @@ import com.multi.FM.myboothpage.BoothVO;
 
 
 @Controller
+@RequestMapping("booth")
 public class BoothContoller {
 
   @Autowired
@@ -32,7 +33,7 @@ public class BoothContoller {
   public String product(@RequestParam("booth_no") int booth_no, Model model) {
       List<BoothProductVO> boothProduct = boothSV.product(booth_no);
       model.addAttribute("boothProduct", boothProduct);
-      return "booth_product";
+      return "booth/booth_product";
  
   }// product
 }// class

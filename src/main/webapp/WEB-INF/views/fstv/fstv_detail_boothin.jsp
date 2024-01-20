@@ -12,7 +12,7 @@
 	try{
 		for(int j = 0; j < 4; j++){ %>
 	<li>
-		<a href="booth/booth_detail?booth_no=<%=list.get(idx).getBooth_no()%>">
+		<a href="../booth/booth_detail?booth_no=<%=list.get(idx).getBooth_no()%>">
 			<img src="${pageContext.request.contextPath}/<%=list.get(idx).getBooth_image()%>" alt="이미지1">
 			<div class="booth-title"><%=list.get(idx).getBooth_name()%></div>
 			<div class="booth-type"><%=list.get(idx).getBooth_category()%></div>

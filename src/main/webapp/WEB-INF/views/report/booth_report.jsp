@@ -17,8 +17,8 @@ BoothReportVO DuplicateTrue = (BoothReportVO)request.getAttribute("DuplicateTrue
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/booth_report.css" type="text/css"> 
-      <script src="resources/js/booth_detail.js?ver=01151712" defer
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/booth_report.css" type="text/css"> 
+      <script src="${pageContext.request.contextPath}/resources/js/booth_detail.js?ver=01151712" defer
 	type="text/javascript"></script>
       
 <script>
@@ -31,7 +31,7 @@ BoothReportVO DuplicateTrue = (BoothReportVO)request.getAttribute("DuplicateTrue
       
 </head>
 <body>
-    <%@ include file="../../header.jsp" %>
+    <%@ include file="../../../header.jsp" %>
     
     <div class="bodywrap">
     	<div class="booth-report-form">
@@ -52,7 +52,7 @@ BoothReportVO DuplicateTrue = (BoothReportVO)request.getAttribute("DuplicateTrue
     	</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>

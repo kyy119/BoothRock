@@ -23,7 +23,7 @@ $('.boothDetailReview').removeAttr("style");
 
 	// 부스 가격정보 불러오기
 	$.ajax({
-	    url: "booth_product",
+	    url: "/FM/booth/booth_product",
 	    contentType: "application/json;charset=UTF-8",
 	    data: { booth_no: boothNo },
 	    success: function(response) {
@@ -33,7 +33,7 @@ $('.boothDetailReview').removeAttr("style");
 
 	// 부스상세에서 리뷰 불러오기
 	$.ajax({
-	    url: "booth_detail_review",
+	    url: "/FM/review/booth_detail_review",
 	    contentType: "application/json;charset=UTF-8",
 	    data: { booth_no: boothNo },
 	    success: function(response) {
@@ -44,7 +44,7 @@ $('.boothDetailReview').removeAttr("style");
 
 // 신고하기에서 부스정보 불러오기 
 	$.ajax({
-	    url: "booth_detail_report",
+	    url: "/FM/report/booth_detail_report",
 	    contentType: "application/json;charset=UTF-8",
 	    data: { booth_no: boothNo },
 	    success: function(response) {
@@ -58,7 +58,7 @@ $('.boothDetailReview').removeAttr("style");
 	function LogInCheck() {
 	    var result = confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?');
 		    if (result) {
-		        window.location.href = 'login.jsp';
+		        window.location.href = '/FM/users/login.jsp';
 		    } else {
 		      
 		    }
@@ -72,7 +72,7 @@ $('.boothDetailReview').removeAttr("style");
 		if (user_id === null || user_id === "null") {
 			LogInCheck();
 		}else {
-			window.location.href = 'duplicate_report_check?booth_no=' + booth_no;
+			window.location.href = '/FM/report/duplicate_report_check?booth_no=' + booth_no;
 		}
 	}
 	

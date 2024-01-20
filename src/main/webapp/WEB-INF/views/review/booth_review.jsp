@@ -11,10 +11,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/booth_review.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/booth_review.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/booth_detail.js?ver=01151712" defer
+	type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="../../header.jsp" %>
+    <%@ include file="../../../header.jsp" %>
     
     <div class="bodywrap">
     	<div class="booth-detail-form">
@@ -22,7 +24,7 @@
 				<!-- <h3 class="fstv-title">양평 산수유마을 빙어축제</h3> -->
 	    		<c:if test="${not empty boothReview}">
 			        <c:set var="firstReview" value="${boothReview[0]}" />
-			        <a href="booth_detail.jsp" style="display: inline-block">
+			        <a href="booth/booth_detail.jsp" style="display: inline-block">
 			            <h1>${firstReview.getBooth_name()}</h1>
 			        </a>
 			        <span class="booth-type"> | ${firstReview.getBooth_category()}</span>
@@ -54,7 +56,7 @@
         </div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
 
 </body>
 </html>
