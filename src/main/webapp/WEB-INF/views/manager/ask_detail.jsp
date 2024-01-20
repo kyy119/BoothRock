@@ -9,11 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/ask_detail.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ask_detail.css" type="text/css">
     <script src="resources/js/user_list.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
 		<div class="ask-form">
@@ -40,7 +40,7 @@
 		</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>

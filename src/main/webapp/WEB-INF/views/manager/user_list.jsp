@@ -7,19 +7,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/user_list.css" type="text/css">
-    <script src="resources/js/user_list.js" defer type="text/javascript"></script>
-	<script type="text/javascript" src="resources/js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
     $(function(){
         $('.pages').click(function(){
             $.ajax({
                 type: "POST",
-                url: "ban_user_list",
+                url: "user_list",
                 data: {
                     page: $(this).text()
                 },
                 success: function(data){
+                	console.log(JSON.stringify(data));
                     var tbody = $(data).find("tbody").html();
                     $('#result').html(tbody);
                 }
@@ -33,7 +34,7 @@
 		
         $.ajax({
             type: "POST",
-            url: "ban_user_search",
+            url: "user_search",
             data: {
                 page: page,
                 type: type,
@@ -41,7 +42,7 @@
             },
             success: function(data) {
                 $("tbody").empty();
-                $.each(data.list, function(index, user) {
+                $.each(data.user_search, function(index, user) {
                 	var row = "<tr>" +
                     "<td>" + user.user_name + "</td>" +
                     "<td><a href='user_detail.jsp'>" + user.user_id + "</a></td>" +
@@ -76,11 +77,11 @@
 </script>
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="user-list-form"> <!-- 페이징 필요 -->
-	    	<h1>Ban User List</h1>
+	    	<h1>User List</h1>
 	    	<div class="select-search-form">
 	    		<select name="type" id="type">
 		    		<option value="name">Name</option>
@@ -141,7 +142,7 @@
     	</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>
