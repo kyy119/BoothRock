@@ -18,6 +18,7 @@ import com.multi.FM.manager.AskVO;
 import com.multi.FM.users.UsersVO;
 
 @Controller
+@RequestMapping("mypage")
 public class MypageController {
 
   @Autowired

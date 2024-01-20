@@ -30,7 +30,7 @@ if (userId == null) {
 	type="text/javascript"></script>
 </head>
 <body>
-	<%@ include file="../../header.jsp"%>
+	<%@ include file="../../../header.jsp"%>
 
 	<div class="bodywrap">
 		<nav class="side-menu">
@@ -139,6 +139,6 @@ if (userId == null) {
 		</div>
 	</div>
 
-	<%@ include file="../../footer.jsp"%>
+	<%@ include file="../../../footer.jsp"%>
 </body>
 </html>

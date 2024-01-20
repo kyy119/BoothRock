@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-//@RequestMapping("/Mybooth")
+@RequestMapping("mypage")
 public class MyBoothController {
 
   @Autowired
