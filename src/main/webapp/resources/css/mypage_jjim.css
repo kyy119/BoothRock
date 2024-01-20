@@ -11,6 +11,7 @@
 	height: 250px;
 	display: inline-block;
 	margin: 11px;
+	vertical-align: top;
 }
 .jjim-list li:hover {
 	opacity: 0.8;

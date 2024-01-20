@@ -99,7 +99,7 @@
 		var MapContainer = document.getElementById('Map'),				// 이미지 지도를 표시할 div  
 		MapOption = {
 			center: new kakao.maps.LatLng(35.9882085, 127.8579557), 	// 지도의 중심좌표
-	        level: 13 													// 지도의 확대 레벨
+	        level: 13
 		};
 		
 		var map = new kakao.maps.Map(MapContainer, MapOption),

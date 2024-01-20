@@ -19,7 +19,7 @@
 		    		<form id="dateform">
 		    		<!-- date값을 받아들여 검색하는 기능 -->
 		    			<input type="date" id="date1" name="date1"> ~ <input type="date" id="date2" name="date2">
-		    			<input type="submit" value="검색" style="height: 31px; margin-left: 5px;">
+		    			<input type="submit" value="검색" style="height: 28px; margin: 0px 5px;">
 		    		</form>
 	    		</div>
 		        <div class="sort">

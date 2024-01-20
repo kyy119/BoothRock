@@ -35,15 +35,20 @@
             		if(session.getAttribute("id") == null){
             	%>
 	            	<ul>
-	                    <li><a href="login.jsp">로그인</a></li>		<%-- 로그인 세션을 받아오면 로그아웃/마이페이지로 변경 --%>
+	                    <li><a href="users/login.jsp">로그인</a></li>		<%-- 로그인 세션을 받아오면 로그아웃/마이페이지로 변경 --%>
 	                    <li><a href="signup_num.jsp">회원가입</a></li>
 	                </ul>
-                <% }else{ %>
+                <% }else if("admin".equals(session.getAttribute("role"))){ %>
                  	<ul>
                     	<li><a href="logout.jsp">로그아웃</a></li>		 
-                    	<li><a href="mypage.jsp" class="mypage">마이페이지</a></li>
+                    	<li><a href="manager/admin_main.jsp" class="admin">관리자페이지</a></li>
                 	</ul>
-                <% } %>
+                <% } else { %>
+		            <ul>
+		            	<li><a href="logout.jsp">로그아웃</a></li>		 
+		            	<li><a href="mypage.jsp" class="mypage">마이페이지</a></li>
+		        	</ul>
+               <% } %>
             </div>
         </div>
     </header>

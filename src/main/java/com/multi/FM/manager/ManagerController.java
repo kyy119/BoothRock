@@ -26,7 +26,7 @@ public class ManagerController {
 	
 	@RequestMapping("user_list")
 	public void user_list(PagingVO pagingVO, Model model) {
-	  pagingVO.setStartEnd();
+	  pagingVO.Offset();
 	  pagingVO.setTable("users");
 	  List<UsersVO> list = service.user_list(pagingVO);
 	  
@@ -41,11 +41,11 @@ public class ManagerController {
     @RequestMapping("user_search")
     @ResponseBody
     public Map<String, Object> user_search(PagingVO pagingVO, Model model) throws Exception {
-        pagingVO.setStartEnd();
+        pagingVO.Offset();
         pagingVO.setTable("users");
         List<UsersVO> list = service.user_search(pagingVO);
 
-        int search_count = dao.user_count();
+        int search_count = dao.user_count(pagingVO);
         int search_pages = pagingVO.getPages(search_count);
         
         Map<String, Object> response = new HashMap<>();
@@ -58,7 +58,7 @@ public class ManagerController {
     
     @RequestMapping("ban_user_list")
     public void ban_user_list(PagingVO pagingVO, Model model) {
-      pagingVO.setStartEnd();
+      pagingVO.Offset();
       pagingVO.setTable("ban_users");
       List<UsersVO> list = service.ban_user_list(pagingVO);
       
@@ -68,16 +68,15 @@ public class ManagerController {
       model.addAttribute("ban_user_list",list);
       model.addAttribute("count",count);      
       model.addAttribute("pages",pages);
-      System.out.println(list);
     }
     
     @RequestMapping("ban_user_search")
     @ResponseBody
     public Map<String, Object> ban_user_search(PagingVO pagingVO, Model model) throws Exception {
-      pagingVO.setStartEnd();
+      pagingVO.Offset();
       List<UsersVO> list = service.ban_user_search(pagingVO);
       
-      int search_count = dao.ban_user_count();
+      int search_count = dao.ban_user_count(pagingVO);
       int search_pages = pagingVO.getPages(search_count);
       
       Map<String, Object> response = new HashMap<>();
@@ -90,7 +89,7 @@ public class ManagerController {
 	
 	@RequestMapping("report_list")
 	public void report_list(PagingVO pagingVO, Model model) throws Exception {
-	  pagingVO.setStartEnd();
+	  pagingVO.Offset();
 	  pagingVO.setTable("report");
 	  List<ReportVO> list = service.report_list(pagingVO);
 	  
@@ -105,10 +104,10 @@ public class ManagerController {
 	@RequestMapping("report_search")
 	@ResponseBody
 	public Map<String, Object> report_search(PagingVO pagingVO, Model model) throws Exception {
-	    pagingVO.setStartEnd();
+    	pagingVO.Offset();
 	    List<ReportVO> list = service.report_search(pagingVO);
 
-	    int search_count = dao.report_count();
+	    int search_count = dao.report_count(pagingVO);
 	    int search_pages = pagingVO.getPages(search_count);
 
 	    Map<String, Object> response = new HashMap<>();

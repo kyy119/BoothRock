@@ -63,16 +63,16 @@ public class ManagerDAO {
       return my.selectOne("manager.total_count", pagingVO);
     }
     
-    public int report_count() {
-      return my.selectOne("manager.report_count");
+    public int report_count(PagingVO pagingVO) {
+      return my.selectOne("manager.report_count", pagingVO);
     }
 
-    public int user_count() {
-      return my.selectOne("manager.user_count");
+    public int user_count(PagingVO pagingVO) {
+      return my.selectOne("manager.user_count", pagingVO);
     }
 
-    public int ban_user_count() {
-      return my.selectOne("manager.ban_user_count");
+    public int ban_user_count(PagingVO pagingVO) {
+      return my.selectOne("manager.ban_user_count", pagingVO);
     }
 
 
