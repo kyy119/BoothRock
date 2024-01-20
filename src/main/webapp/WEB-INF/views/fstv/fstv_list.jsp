@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.multi.FM.fstv.FestivalVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,8 +15,12 @@
 		  	if(list.get(i)!=null){
 		  	%>
 			<li>
-				<a href="fstv_detail?fstv_no=<%=list.get(i).getFstv_no()%>">
-					<img src="<%=list.get(i).getFstv_image() %>" alt="resources/img/no-image.jpg">
+				<a href="fstv/fstv_detail?fstv_no=<%=list.get(i).getFstv_no()%>">
+					<% if(list.get(i).getFstv_image().equals("resources/img/no-image.jpg")){  %>
+					<img src="${pageContext.request.contextPath}/<%=list.get(i).getFstv_image()%>" alt="">
+					<%} else { %>
+					<img src="<%=list.get(i).getFstv_image()%>" alt="">
+					<%} %>
 					<div class="fstv-title"><%=list.get(i).getFstv_title() %></div>
 					<div class="fstv-loc"><%=list.get(i).getFstv_banneraddr() %></div>
 					<div class="fstv-date"><%=list.get(i).getFstv_startdate() %>~

@@ -36,7 +36,7 @@ jQuery(document).ready(function() {
 	}
 	
 	$.ajax({
-		url : "bannerlist",
+		url : "fstv/bannerlist",
 		success : function(list) {
 			$('#banner').html(list)
 			$('.banner-img').on('load', function() {
@@ -47,7 +47,7 @@ jQuery(document).ready(function() {
 	
 	// 곧 끝나는 축제 불러오는 ajax
 	$.ajax({
-		url : "endlist",
+		url : "fstv/endlist",
 		success : function(list) {
 			$('#endlist').html(list)
 		}
@@ -55,14 +55,14 @@ jQuery(document).ready(function() {
 	
 	// 요즘 뜨고 있는 부스 ajax > 리뷰 개수로 리스트업
 	$.ajax({
-		url : "fstv_boothup",
+		url : "fstv/fstv_boothup",
 		success : function(list) {
 			$('#boothup').html(list)
 		}
 	})
     
     $.ajax({
-    	url : "listcnt",
+    	url : "fstv/listcnt",
     	type : "GET",
     	dataType : 'json',
     	success : function(x){

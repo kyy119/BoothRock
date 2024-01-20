@@ -12,14 +12,14 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-	<link rel="stylesheet" href="resources/css/fstv_detail.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fstv_detail.css" type="text/css">
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APPkey"></script>
-	<script src="resources/js/fstv_detail.js" defer type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/fstv_detail.js" defer type="text/javascript"></script>
 </head>
 <body>
 
-    <%@ include file="../../header.jsp" %>
+    <%@ include file="../../../header.jsp" %>
    
     <div class="bodywrap">
     	<div class="fstv-detail-form">
@@ -104,7 +104,7 @@
         </div>
     </div>
 	
-	<%@ include file="../../footer.jsp" %>
+	<%@ include file="../../../footer.jsp" %>
 	<script>
 		const lat = <%=vo.getFstv_mapy()%>;
 		const lng = <%=vo.getFstv_mapx()%>;
