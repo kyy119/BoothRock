@@ -7,15 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/user_list.css" type="text/css">
-    <script src="resources/js/user_list.js" defer type="text/javascript"></script>
-    <script type="text/javascript" src="resources/js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
     $(function(){
         $('.pages').click(function(){
             $.ajax({
                 type: "POST",
-                url: "report_list",
+                url: "manager/report_list",
                 data: {
                     page: $(this).text()
                 },
@@ -33,7 +33,7 @@
 		
         $.ajax({
             type: "POST",
-            url: "report_search",
+            url: "manager/report_search",
             data: {
                 page: page,
                 type: type,
@@ -67,23 +67,21 @@
 </script>
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="report-list-form"> <!-- 페이징 필요 -->
 	    	<h1>Report List</h1>
 	    	<div class="select-search-form">
-			    <form action="report_search" id="searchForm">
-			    	<select name="type" id="type">
-			    		<option value="no">No</option>
-					    <option value="title">Title</option>
-					    <option value="email">Email</option>
-					    <option value="booth">Booth</option>
-					    <option value="created">Created</option>
-			    	</select>
-			    	<input name="keyword" type="text" id="keyword">
-			    	<input type="button" id="submit" value="검색" onclick="search()">
-		    	</form>
+		    	<select name="type" id="type">
+		    		<option value="no">No</option>
+				    <option value="title">Title</option>
+				    <option value="email">Email</option>
+				    <option value="booth">Booth</option>
+				    <option value="created">Created</option>
+		    	</select>
+		    	<input name="keyword" type="text" id="keyword">
+		    	<input type="button" id="submit" value="검색" onclick="search()">
 	    	</div>
 	    	<table id="sortTable">
 				<thead>
@@ -113,7 +111,7 @@
 		</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>

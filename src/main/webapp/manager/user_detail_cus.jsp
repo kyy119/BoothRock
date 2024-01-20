@@ -69,7 +69,7 @@
     	</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
     
 </body>
 </html>

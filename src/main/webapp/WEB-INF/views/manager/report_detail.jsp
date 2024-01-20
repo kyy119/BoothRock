@@ -9,10 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/report_detail.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/report_detail.css" type="text/css">
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
 		<div class="report-form">
@@ -37,7 +37,7 @@
 		</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>

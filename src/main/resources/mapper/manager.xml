@@ -16,7 +16,7 @@
     			LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
     			LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report where report_lie = 1 group by user_id) AS rpbc ON u.user_id = rpc.user_id
     			LEFT JOIN seller s ON u.user_id = s.user_id
-    			WHERE u.user_black = 0 or s.seller_black = 0
+    			WHERE u.user_black = 0
 		  ) AS TOTAL
 		) AS TOTAL2
 		WHERE TOTAL2.TOTAL_NO BETWEEN ${start} AND ${end};
@@ -35,7 +35,7 @@
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
 	            LEFT JOIN seller s ON u.user_id = s.user_id
-	            WHERE (u.user_black = 0 OR s.seller_black = 0)
+	            WHERE u.user_black = 0;
 	            <choose>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
@@ -79,7 +79,7 @@
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
 	            LEFT JOIN seller s ON u.user_id = s.user_id
-	            WHERE (u.user_black = 0 OR s.seller_black = 0)
+	            WHERE u.user_black = 0
 	            <choose>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
@@ -121,7 +121,7 @@
     			LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
     			LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report where report_lie = 1 group by user_id) AS rpbc ON u.user_id = rpc.user_id
     			LEFT JOIN seller s ON u.user_id = s.user_id
-    			WHERE u.user_black = 1 and s.seller_black = 1
+    			WHERE u.user_black = 1
 		  ) AS TOTAL
 		) AS TOTAL2
 		WHERE TOTAL2.TOTAL_NO BETWEEN ${start} AND ${end};
@@ -140,7 +140,7 @@
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
 	            LEFT JOIN seller s ON u.user_id = s.user_id
-	            WHERE (u.user_black = 1 and s.seller_black = 1)
+	            WHERE u.user_black = 1
 	            <choose>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
@@ -184,7 +184,7 @@
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
 	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
 	            LEFT JOIN seller s ON u.user_id = s.user_id
-	            WHERE (u.user_black = 1 and s.seller_black = 1)
+	            WHERE u.user_black = 1
 	            <choose>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')

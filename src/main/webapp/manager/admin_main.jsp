@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/admin_main.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin_main.css" type="text/css">
 </head>
 <body>
     <%@ include file="admin_header.jsp" %>
@@ -58,7 +58,7 @@
     	</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
     
 </body>
 </html>
