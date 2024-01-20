@@ -35,25 +35,25 @@ if (userId == null) {
 		<nav class="side-menu">
 			<h2>마이페이지</h2>
 			<ul class="side-navi">
-				<li data-tab="mypage_edit_info" class="tabmenu" id="default">
+				<li data-tab="mypage/mypage_edit_info" class="tabmenu" id="default">
 					<span></span>
 					<a><i class="fa-regular fa-user"></i>회원정보수정</a>
 				</li>
-				<li data-tab="mypage_jjimlist" class="tabmenu">
+				<li data-tab="mypage/mypage_jjimlist" class="tabmenu">
 					<span></span>
 					<a><i class="fa-solid fa-heart"></i>찜 목록</a>
 				</li>
-				<li data-tab="mypage_review" class="tabmenu">
+				<li data-tab="mypage/mypage_review" class="tabmenu">
 					<span></span>
 					<a><i class="fa-regular fa-rectangle-list"></i>내 리뷰보기</a>
 				</li>
-				<li data-tab="mypage_ask" class="tabmenu">
+				<li data-tab="mypage/mypage_ask" class="tabmenu">
 					<span></span>
 					<a><i class="fa-regular fa-pen-to-square"></i>내 문의내역</a>
 				</li>
 				<%if(userRole=="consumer"){ %> <!-- 소비자면 부스관리 탭 없애기 -->
 				<%} else {%>
-				<li data-tab="mypage_booth" class="tabmenu" id = "boothManage">
+				<li data-tab="mypage/mypage_booth" class="tabmenu" id = "boothManage">
 					<span></span>
 					<a><i class="fa-solid fa-store"></i>내 부스관리</a>
 				</li>
