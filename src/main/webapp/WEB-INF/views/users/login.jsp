@@ -20,15 +20,10 @@
 <script type="text/javascript">
 	alert("<%= notify %>");
 	let result = <%= login %>;
-	let referer = "${referer}"
 	if(result == "1"){
-	  	if(referer == "http://localhost:8888/FM/login.jsp"){
-		  	location.href = "main.jsp";  	  
-	  	}else{
-		  	location.href = referer;  	  	  	  
-	  	}
+		location.href = "${pageContext.request.contextPath}/main.jsp";
 	}else if(result == "3"){
-	  	location.href= "admin_main.jsp";
+	  	location.href= "${pageContext.request.contextPath}/admin_main.jsp";
 	}else{
 	  	location.href = "login.jsp";
 	}
