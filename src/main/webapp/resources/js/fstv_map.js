@@ -1,10 +1,10 @@
 jQuery(document).ready(function(){
 	
-	let list_url = "fstv_maplist";
+	let list_url = "fstv/fstv_maplist";
 	let region = "서울";
 	
 	$("#def-btn").click(function(){
-		list_url = "fstv_maplist";
+		list_url = "fstv/fstv_maplist";
 		$("#def-btn").addClass("bold-text");
 		$("#pop-btn").removeClass("bold-text");
 		$.ajax({
@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
 	});
 	
     $("#pop-btn").click(function(){						// 인기순 버튼을 누를때
-    	list_url = "fstv_maplistJ";
+    	list_url = "fstv/fstv_maplistJ";
     	$("#pop-btn").addClass("bold-text");
         $("#def-btn").removeClass("bold-text");
         $.ajax({										// 동시에 ajax

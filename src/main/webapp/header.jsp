@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-	<link rel="stylesheet" href="resources/css/header.css" type="text/css">
-    <script src="resources/js/jquery-1.12.3.js"></script>
-    <script src="resources/js/header.js" defer type="text/javascript"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.12.3.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/header.js" defer type="text/javascript"></script>
 	<script src="https://kit.fontawesome.com/fdb840a8cc.js" crossorigin="anonymous"></script>
     
     <header>
         <div class="wrap">
             <div class="logo">
-                <a href="main.jsp">
-					<img src="resources/img/logo.png" alt="로고">
+                <a href="${pageContext.request.contextPath}/main.jsp">
+					<img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고">
                 </a>
             </div>
             <nav class="menu">
                 <ul class="navi">
-                    <li><a href="fstv_list.jsp">축제리스트</a></li>
-                    <li><a href="fstv_map.jsp">전국축제지도</a></li>
+                    <li><a href="${pageContext.request.contextPath}/fstv_list.jsp">축제리스트</a></li>
+                    <li><a href="${pageContext.request.contextPath}/fstv_map.jsp">전국축제지도</a></li>
                     <li><a href="#">고객센터</a>
                         <ul class="sub-menu">
                             <li><a href="cs_question.jsp">자주 묻는 질문</a></li>
@@ -24,7 +24,7 @@
                         </ul>
                     </li>
                     <li class="input-line">
-                    	<form action="fstv_search">
+                    	<form action="fstv/fstv_search">
                     		<input name="q" placeholder="검색어를 입력해주세요."><button class="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     	</form>
                     </li>

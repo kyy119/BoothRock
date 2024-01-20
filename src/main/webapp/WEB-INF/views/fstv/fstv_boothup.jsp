@@ -4,7 +4,7 @@
 <ul>
 	<c:forEach items="${list}" var="vo">
 		<li>
-			<a href="booth_detail?booth_no=${vo.booth_no}">
+			<a href="booth/booth_detail?booth_no=${vo.booth_no}">
 				<div class="fstv-title">${vo.fstv_title}</div>
 				<div class="booth-title">${vo.booth_name}</div>
 				<div class="star-point"><i class="fa-solid fa-star"> ${vo.booth_starpoint}</i></div>
