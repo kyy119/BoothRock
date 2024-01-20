@@ -29,10 +29,8 @@ public class BoothReportController {
         boolean isDuplicate = reportSV.checkDuplicateReport(user_id, booth_no);
         if (isDuplicate) {
             // 중복이면 에러 메시지
-            // FlashAttribute : 데이터가 세션에 저장되어 리다이렉트 되는 페이지에서만 사용가능. 
-            //                  다음 요청에서는 사용된 후에 자동으로 제거_데이터가 단발성으로 사용되어야 하는 경우에 유용
-            redirectAttributes.addFlashAttribute("DuplicateTrue", "이미 신고하신 부스입니다.");
-            return "redirect:/booth_detail";
+          session.setAttribute("showAlert", true);
+            return "booth_report";
         } 
         model.addAttribute("booth_no", booth_no);
         return "booth_report";
@@ -43,13 +41,12 @@ public class BoothReportController {
                              @RequestParam("report_comment") String report_comment,
                              @RequestParam("user_id") String user_id,
                              @RequestParam("booth_no") int booth_no, HttpSession session,
-                             RedirectAttributes redirectAttributes, Model model) {
+                             Model model) {
       reportSV.insertReport(report_title, report_comment, booth_no, user_id);
-      model.addAttribute("booth_no", booth_no);
-      redirectAttributes.addFlashAttribute("showAlert", true);
-      System.out.println("report insert 호출");
-      return "redirect:/booth_detail";
+      session.setAttribute("showAlert", true);
+      return "redirect:/booth_detail?booth_no=" + booth_no;
   }
+  
   
   @RequestMapping("booth_detail_report")
   public String booth_detail_report(@RequestParam("booth_no") int booth_no, Model model) {
