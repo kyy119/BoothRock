@@ -7,23 +7,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/user_list.css" type="text/css">
-    <script src="resources/js/user_list.js" defer type="text/javascript"></script>
-	<script type="text/javascript" src="resources/js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
     $(function(){
-        $('.pages').click(function(){
-            $.ajax({
+	    var pages = <%= request.getAttribute("pages") %>;
+	    $(document).on('click', '.pages', function(){
+        	var page = $(this).text();
+        	
+        	$.ajax({
                 type: "POST",
                 url: "ban_user_list",
                 data: {
-                    page: $(this).text()
+                    page: page
                 },
                 success: function(data){
                     var tbody = $(data).find("tbody").html();
                     $('#result').html(tbody);
+		        	list_pagination(pages, page);
                 }
             });
+		    function list_pagination(pages, current_page) {
+		    	console.log("버튼이 클릭되었습니다.");
+		    	console.log(pages);
+		    	console.log(current_page);
+		        $("#pagination").empty();
+		        
+		        if (current_page == 1) {
+		       		var prev = '<button><i class="fa-solid fa-chevron-left"></i></button>';
+		        	$("#pagination").append(prev);
+		        } else {
+		       		var prev = '<button style="font-size: 0;" class="pages">' + (current_page - 1) + '<i class="fa-solid fa-chevron-left"></i></button>';
+		        	$("#pagination").append(prev);
+		        }
+		        console.log(prev);
+		        for (var i = 1; i <= pages; i++) {
+		            var page = '<button class="pages">' + i + '</button>';
+		            $("#pagination").append(page);
+		        }
+		        
+		        if (current_page == pages) {
+		       		var next = '<button><i class="fa-solid fa-chevron-right"></i></button>';
+		        	$("#pagination").append(next);
+		        } else {
+		       		var next = '<button style="font-size: 0;" class="pages">' + (current_page + 1) + '<i class="fa-solid fa-chevron-right"></i></button>';
+		        	$("#pagination").append(next);
+		        }
+		        	
+		    }
         });
     });
 
@@ -62,21 +94,21 @@
 
                     $("tbody").append(row);
                 });
-                updatePagination(data.search_pages);
+                search_pagination(data.search_pages);
             }
         });
-        function updatePagination(search_pages) {
+        function search_pagination(pages) {
             $("#pagination").empty();
-            for (var i = 1; i <= search_pages; i++) {
-                var button = '<button class="pages" onclick="search(' + i + ')">' + i + '</button>';
-                $("#pagination").append(button);
+            for (var i = 1; i <= pages; i++) {
+                var page = '<button class="pages" onclick="search(' + i + ')">' + i + '</button>';
+                $("#pagination").append(page);
             }
         }
     }
 </script>
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="user-list-form"> <!-- 페이징 필요 -->
@@ -113,7 +145,7 @@
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${user_list}" var="vo">
+					<c:forEach items="${ban_user_list}" var="vo">
 	    				<tr>
 					      	<td>${vo.user_name}</td>
 					      	<td><a href="user_detail.jsp">${vo.user_id}</a></td>
@@ -136,12 +168,12 @@
 				</tbody>
 			</table>
 			<div id="pagination">
-				<c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
     	</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
 </body>
 </html>

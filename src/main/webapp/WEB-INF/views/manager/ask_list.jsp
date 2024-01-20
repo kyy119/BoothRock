@@ -8,26 +8,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/user_list.css" type="text/css">
-    <script src="resources/js/user_list.js" defer type="text/javascript"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="../../admin_header.jsp" %>
+    <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
     	<div class="ask-list-form"> <!-- 페이징 필요 -->
 	    	<h1>Ask List</h1>
 	    	<div class="select-search-form">
-	    		<form action="ask_search" id="searchForm">
-		    		<select name="type">
-			    		<option value="no">No</option>
-			    		<option value="title">Title</option>
-			    		<option value="email">Email</option>
-			    		<option value="created">Created</option>
-			    	</select>
-			    	<input name="word" type="text" id="search">
-			    	<input type="button" id="submit" value="검색" onclick="searchAsk()">
-		    	</form>
+	    		<select name="type">
+		    		<option value="no">No</option>
+		    		<option value="title">Title</option>
+		    		<option value="email">Email</option>
+		    		<option value="created">Created</option>
+		    	</select>
+		    	<input name="word" type="text" id="search">
+		    	<input type="button" id="submit" value="검색" onclick="search()">
 	    	</div>
 	    	<table id="sortTable">
 				<thead>
@@ -66,14 +64,14 @@
     	</div>
     </div>
     
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../../footer.jsp" %>
     
     <script>
 	    function searchAsk() {
 	    	
 	        $.ajax({
 	            type: "POST",
-	            url: "ask_search",
+	            url: "manager/ask_search",
 	            data: $('#searchForm').serialize(),
 	            success: function (data) {
 	                $("tbody").html(data);

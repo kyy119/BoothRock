@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.multi.FM.users.UsersVO;
 
 @Controller
+@RequestMapping("manager")
 public class ManagerController {
 	
 	@Autowired
@@ -46,9 +47,9 @@ public class ManagerController {
 
         int search_count = dao.user_count();
         int search_pages = pagingVO.getPages(search_count);
-
+        
         Map<String, Object> response = new HashMap<>();
-        response.put("user_list", list);
+        response.put("user_search", list);
         response.put("search_count", search_count);
         response.put("search_pages", search_pages);
 
@@ -67,6 +68,7 @@ public class ManagerController {
       model.addAttribute("ban_user_list",list);
       model.addAttribute("count",count);      
       model.addAttribute("pages",pages);
+      System.out.println(list);
     }
     
     @RequestMapping("ban_user_search")
