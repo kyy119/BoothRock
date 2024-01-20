@@ -9,12 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/signup.css" type="text/css">
-    <script type="text/javascript" src="resources/js/jquery-1.12.3.js"></script>
-    <script type="text/javascript" src="resources/js/signup_seller.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/signup.css" type="text/css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.12.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/signup_seller.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../header.jsp" %>
     
     <div class="bodywrap" style="margin: 110px 0px 170px;">
     	<div class="signup-form" style="height: 525px;">
@@ -56,7 +56,7 @@
     	</div>
     </div>
     
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
     
 </body>
 </html>

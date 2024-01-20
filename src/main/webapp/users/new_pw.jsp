@@ -9,11 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-	<link rel="stylesheet" href="resources/css/signup_num.css" type="text/css">
-	<script src="resources/js/new_pw.js" defer type="text/javascript"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/signup_num.css" type="text/css">
+	<script src="${pageContext.request.contextPath}/resources/js/new_pw.js" defer type="text/javascript"></script>
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../header.jsp" %>
 	<%
 		if(user_tel == null){
 	%>
@@ -42,6 +42,6 @@
 		   	</div>
 	   	</div>
    	<% } %>
-   	<%@ include file="footer.jsp" %>
+   	<%@ include file="../footer.jsp" %>
 </body>
 </html>
