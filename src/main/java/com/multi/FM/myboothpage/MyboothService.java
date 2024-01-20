@@ -27,4 +27,10 @@ public class MyboothService {
     // 부스 삭제 DAO 메서드 호출
     myboothdao.deleteBooth(boothNo);
   }
+  public BoothVO getBoothDetailsByNo(int boothNo) {
+    return myboothdao.getBoothDetailsByNo(boothNo);
+  }
+  public List<BoothProductVO> getBoothProductByNo(int boothNo){
+    return myboothdao.getBoothProductByNo(boothNo);
+  }
 }

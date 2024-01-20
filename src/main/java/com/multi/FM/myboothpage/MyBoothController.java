@@ -92,4 +92,11 @@ public class MyBoothController {
       return "Error: " + e.getMessage();
     }
   }
+  @RequestMapping("/mypage_booth_edit")
+  public void showBoothEditPage(@RequestParam(name = "boot_no") int boothNo, Model model) {
+    BoothVO booth = myboothService.getBoothDetailsByNo(boothNo);
+    System.out.println("mypage_booth_edit success");
+    System.out.println("booth : " + booth.getBooth_name());
+    model.addAttribute("booth", booth);
+  }
 }
