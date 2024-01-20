@@ -19,6 +19,14 @@ public class ManagerService {
       return dao.user_search(pagingVO);
     }
     
+    public List<UsersVO> ban_user_list(PagingVO pagingVO) {
+      return dao.ban_user_list(pagingVO);
+    }
+    
+    public List<UsersVO> ban_user_search(PagingVO pagingVO) {
+      return dao.ban_user_search(pagingVO);
+    }
+    
     public List<ReportVO> report_list(PagingVO pagingVO) throws Exception {
       return dao.report_list(pagingVO);
     }

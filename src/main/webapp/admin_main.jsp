@@ -21,20 +21,20 @@
 	    			<p>악성 회원 등록</p>
 	    			<p>관리자 권한 부여</p>
 	    		</a>
-	    		<a href="user_ban_list.jsp">
+	    		<a href="ban_user_list">
 	    			<i class="fa-solid fa-user-slash"></i>
 	    			<span>악성 회원 관리</span>
 	    			<p>악성 회원 조회 및 등록 해제</p>
 	    		</a>
 	    	</div>
 	    	<div>
-	    		<a href="booth_list.jsp">
+	    		<a href="booth_list">
 	    			<i class="fa-regular fa-paste"></i>
 	    			<span>부스 게시물 관리</span>
 	    			<p>게시물 조회 및 수정, 삭제</p>
 	    			<p>허위 게시물 등록</p>
 	    		</a>
-	    		<a href="booth_ban_list.jsp">
+	    		<a href="booth_ban_list">
 	    			<i class="fa-solid fa-paste"></i>
 	    			<span>허위 게시물 관리</span>
 	    			<p>허위 게시물 조회 및 해제</p>
