@@ -20,9 +20,17 @@ public class ManagerDAO {
     }
 
     public List<UsersVO> user_search(PagingVO pagingVO) {
-        return my.selectList("manager.user_search", pagingVO);
+      return my.selectList("manager.user_search", pagingVO);
     }
     
+    public List<UsersVO> ban_user_list(PagingVO pagingVO) {
+        return my.selectList("manager.ban_user_list", pagingVO);
+    }
+    
+    public List<UsersVO> ban_user_search(PagingVO pagingVO) {
+      return my.selectList("manager.ban_user_search", pagingVO);
+    }
+
 	public List<ReportVO> report_list(PagingVO pagingVO) throws Exception {
 		return my.selectList("manager.report_list", pagingVO);
 	}
@@ -55,13 +63,18 @@ public class ManagerDAO {
       return my.selectOne("manager.total_count", pagingVO);
     }
     
-    public int report_count(PagingVO pagingVO) {
-      return my.selectOne("manager.report_count", pagingVO);
+    public int report_count() {
+      return my.selectOne("manager.report_count");
     }
 
-    public int user_count(PagingVO pagingVO) {
-      return my.selectOne("manager.user_count", pagingVO);
+    public int user_count() {
+      return my.selectOne("manager.user_count");
     }
+
+    public int ban_user_count() {
+      return my.selectOne("manager.ban_user_count");
+    }
+
 
 
 

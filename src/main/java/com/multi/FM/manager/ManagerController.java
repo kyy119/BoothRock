@@ -44,15 +44,46 @@ public class ManagerController {
         pagingVO.setTable("users");
         List<UsersVO> list = service.user_search(pagingVO);
 
-        int search_count = dao.user_count(pagingVO);
+        int search_count = dao.user_count();
         int search_pages = pagingVO.getPages(search_count);
 
         Map<String, Object> response = new HashMap<>();
-        response.put("list", list);
+        response.put("user_list", list);
         response.put("search_count", search_count);
         response.put("search_pages", search_pages);
 
         return response;
+    }	
+    
+    @RequestMapping("ban_user_list")
+    public void ban_user_list(PagingVO pagingVO, Model model) {
+      pagingVO.setStartEnd();
+      pagingVO.setTable("ban_users");
+      List<UsersVO> list = service.ban_user_list(pagingVO);
+      
+      int count = dao.total_count(pagingVO);
+      int pages = pagingVO.getPages(count);
+      
+      model.addAttribute("ban_user_list",list);
+      model.addAttribute("count",count);      
+      model.addAttribute("pages",pages);
+    }
+    
+    @RequestMapping("ban_user_search")
+    @ResponseBody
+    public Map<String, Object> ban_user_search(PagingVO pagingVO, Model model) throws Exception {
+      pagingVO.setStartEnd();
+      List<UsersVO> list = service.ban_user_search(pagingVO);
+      
+      int search_count = dao.ban_user_count();
+      int search_pages = pagingVO.getPages(search_count);
+      
+      Map<String, Object> response = new HashMap<>();
+      response.put("ban_user_search", list);
+      response.put("search_count", search_count);
+      response.put("search_pages", search_pages);
+      
+      return response;
     }	
 	
 	@RequestMapping("report_list")
@@ -75,11 +106,11 @@ public class ManagerController {
 	    pagingVO.setStartEnd();
 	    List<ReportVO> list = service.report_search(pagingVO);
 
-	    int search_count = dao.report_count(pagingVO);
+	    int search_count = dao.report_count();
 	    int search_pages = pagingVO.getPages(search_count);
 
 	    Map<String, Object> response = new HashMap<>();
-	    response.put("list", list);
+	    response.put("report_list", list);
 	    response.put("search_count", search_count);
 	    response.put("search_pages", search_pages);
 
