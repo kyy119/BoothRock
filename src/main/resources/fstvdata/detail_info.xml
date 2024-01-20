@@ -7,6 +7,251 @@
 	<body>
 		<items>
 			<item>
+				<contentid>1930109</contentid>
+				<eventenddate>20241231</eventenddate>
+				<playtime>매주 토요일 18시 출항&lt;BR&gt;(일몰시간에 따라 출항시간 변동)</playtime>
+				<eventplace>아라김포여객터미널</eventplace>
+				<eventstartdate>20240101</eventstartdate>
+				<usetimefestival></usetimefestival>
+				<homepage>&lt;a href=&quot;https://cruisestory.co.kr/&quot;
+					target=&quot;_blank&quot; title=&quot;크루즈스토리 홈페이지로
+					이동&quot;&gt;https://cruisestory.co.kr/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2494465</contentid>
+				<eventenddate>20241231</eventenddate>
+				<playtime>매주 금/토/일요일&lt;br&gt;19:00 출항 (일몰시간에 따라 출항시간 변동)</playtime>
+				<eventplace>이사부크루즈</eventplace>
+				<eventstartdate>20240101</eventstartdate>
+				<usetimefestival>대인 37,000원 소인 22,000원(금액 변동있음)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://cruisestory.co.kr&quot;
+					target=&quot;_blank&quot; title=&quot;새창: 크루즈스토리 홈페이지로
+					이동&quot;&gt;http://cruisestory.co.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>3016241</contentid>
+				<eventenddate>20231022</eventenddate>
+				<playtime>11:00 ~ 21:00</playtime>
+				<eventplace>영천강변공원 일원</eventplace>
+				<eventstartdate>20231020</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage></homepage>
+			</item>
+			<item>
+				<contentid>1846797</contentid>
+				<eventenddate>20231009</eventenddate>
+				<playtime></playtime>
+				<eventplace>군산시간여행마을일원</eventplace>
+				<eventstartdate>20231006</eventstartdate>
+				<usetimefestival>무료(일부 유료)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://festival.gunsan.go.kr/&quot;
+					target=&quot;_blank&quot; title=&quot;새창:군산시간여행축제 홈페이지로
+					이동&quot;&gt;http://festival.gunsan.go.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2031318</contentid>
+				<eventenddate>20241006</eventenddate>
+				<playtime></playtime>
+				<eventplace>임실치즈테마파크, 임실치즈마을, 임실읍 일원</eventplace>
+				<eventstartdate>20241003</eventstartdate>
+				<usetimefestival>입장료 무료 / 체험비 유료</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.imsilfestival.com&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 임실N치즈축제 홈페이지로
+					이동&quot;&gt;http://www.imsilfestival.com&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2736064</contentid>
+				<eventenddate>20230910</eventenddate>
+				<playtime>사적 김제군 관아와 향교</playtime>
+				<eventplace>18:00 ~ 22:00</eventplace>
+				<eventstartdate>20230908</eventstartdate>
+				<usetimefestival>무료(부분유료)</usetimefestival>
+				<homepage>&lt;a
+					href=&quot;http://www.xn--4k0bz9vj3h89b7pr85dsib.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 김제 문화재 야행 홈페이지
+					&quot;&gt;www.김제문화재야행.com&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>511801</contentid>
+				<eventenddate>20230507</eventenddate>
+				<playtime>09:00 ~ 18:00</playtime>
+				<eventplace>고창군 공음면 학원농장</eventplace>
+				<eventstartdate>20230415</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a
+					href=&quot;https://www.gochang.go.kr/tour/index.gochang?menuCd=DOM_000000403005001000
+					&quot; target=&quot;_blank&quot; title=&quot;새창:고창 청보리밭 축제 홈페이지로
+					이동&quot;&gt;http://www.gochang.go.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2962944</contentid>
+				<eventenddate>20230510</eventenddate>
+				<playtime>14:00~16:30</playtime>
+				<eventplace>전북대 삼성문화회관</eventplace>
+				<eventstartdate>20230510</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>블로그&lt;a
+					href=&quot;https://blog.naver.com/jeonbuk1001&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 제23회
+					경로국악대공연&quot;&gt;https://blog.naver.com/jeonbuk&lt;/a&gt; </homepage>
+			</item>
+			<item>
+				<contentid>2618976</contentid>
+				<eventenddate>20230916</eventenddate>
+				<playtime>15:00 ~ 21:00</playtime>
+				<eventplace>군산 근대역사박물관 대형 주차장 일원</eventplace>
+				<eventstartdate>20230916</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage></homepage>
+			</item>
+			<item>
+				<contentid>2740109</contentid>
+				<eventenddate>20231105</eventenddate>
+				<playtime>09:00~18:00(17:00 마지막 입장)</playtime>
+				<eventplace>고창청농원</eventplace>
+				<eventstartdate>20230922</eventstartdate>
+				<usetimefestival>5000원(이번 시즌 20% 할인/2011년생 이하 무료)</usetimefestival>
+				<homepage>&lt;a href=&quot;https://blog.naver.com/gobluefarm&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 고창 청농원
+					핑크뮬리가든&quot;&gt;https://blog.naver.com/gobluefarm&lt;/a&gt;
+				</homepage>
+			</item>
+			<item>
+				<contentid>2767541</contentid>
+				<eventenddate>20230914</eventenddate>
+				<playtime>(오프라인) 2023.9.8.~2023.9.10. (온라인)2023.9.8.~2023.9.14.
+				</playtime>
+				<eventplace>전북 어린이창의체험관</eventplace>
+				<eventstartdate>20230908</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a href=&quot;http://jbsf.co.kr/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 :
+					전북특별자치도과학축전&quot;&gt;http://jbsf.co.kr/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2492537</contentid>
+				<eventenddate>20230903</eventenddate>
+				<playtime>15:00~17:00</playtime>
+				<eventplace>비전마을 정자 앞</eventplace>
+				<eventstartdate>20230902</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a href=&quot;http://kartscreative.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 :
+					관광지&quot;&gt;kartscreative.com&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>638241</contentid>
+				<eventenddate>20231015</eventenddate>
+				<playtime>09:00~21:00</playtime>
+				<eventplace>순창전통고추장민속마을 및 순창발효테마파크 일원</eventplace>
+				<eventstartdate>20231013</eventstartdate>
+				<usetimefestival>무료(공연, 행사 프로그램 일부 체험부스) 및 유료(먹거리부스, 푸드트럭, 체험판매부스)
+					&lt;br&gt;(빨간옷을 입은 관광객 일부 할인)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.jangfestival.co.kr&quot;
+					target=&quot;_blank&quot; title=&quot;새창:순창장류축제 홈페이지로
+					이동&quot;&gt;http://www.jangfestival.co.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>2986574</contentid>
+				<eventenddate>20230624</eventenddate>
+				<playtime>18:00~22:00</playtime>
+				<eventplace>1층 무주문화원</eventplace>
+				<eventstartdate>20230623</eventstartdate>
+				<usetimefestival>유/무료(일부체험 유료)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.mujucc.or.kr/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 무주문화재야행 홈페이지
+					이동&quot;&gt;http://www.mujucc.or.kr/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>141188</contentid>
+				<eventenddate>20221030</eventenddate>
+				<playtime>10시~18시(10.30은 10시~15시)</playtime>
+				<eventplace>전주월드컵경기장 만남의 광장</eventplace>
+				<eventstartdate>20221026</eventstartdate>
+				<usetimefestival>무료(일부 프로그램 유료)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.iffe.or.kr&quot;
+					target=&quot;_blank&quot; title=&quot;새창:전주 국제발효식품엑스포 홈페이지로
+					이동&quot;&gt;http://www.iffe.or.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>574969</contentid>
+				<eventenddate>20230924</eventenddate>
+				<playtime>09:00~21:00&lt;br&gt;(일자별 공연 상이함)</playtime>
+				<eventplace>한국소리문화의전당</eventplace>
+				<eventstartdate>20230915</eventstartdate>
+				<usetimefestival>유/무료 (공연마다 상이함)</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.sorifestival.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창: 전주세계소리축제 홈페이지로
+					이동&quot;&gt;http://www.sorifestival.com/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>604454</contentid>
+				<eventenddate>20231023</eventenddate>
+				<playtime></playtime>
+				<eventplace>고창읍성(모양성) 일원</eventplace>
+				<eventstartdate>20231019</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.xn--v52bo3j80dp4c.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창:고창모양성제 홈페이지로
+					이동&quot;&gt;http://www.xn--v52bo3j80dp4c.com/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>631257</contentid>
+				<eventenddate>20231009</eventenddate>
+				<playtime>11:00 ~ 22:00</playtime>
+				<eventplace>전주 종합경기장 야구장</eventplace>
+				<eventstartdate>20231006</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a href=&quot;https://www.bibimis2023.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 :
+					전주비빔밥축제&quot;&gt;https://www.bibimis2023.com/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>763974</contentid>
+				<eventenddate>20230917</eventenddate>
+				<playtime>10:00 ~ 21:00</playtime>
+				<eventplace>장수군 의암공원 및 누리파크 일원</eventplace>
+				<eventstartdate>20230914</eventstartdate>
+				<usetimefestival></usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.jangsufestival.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창: 한우랑사과랑축제 홈페이지로
+					이동&quot;&gt;http://www.jangsufestival.com/&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>1078790</contentid>
+				<eventenddate>20230820</eventenddate>
+				<playtime>14:00~22:30 (일정표 참고)</playtime>
+				<eventplace>필봉문화촌</eventplace>
+				<eventstartdate>20230817</eventstartdate>
+				<usetimefestival></usetimefestival>
+				<homepage>&lt;a href=&quot;http://www.pilbong.co.kr&quot;
+					target=&quot;_blank&quot; title=&quot;새창:필봉마을 굿축제 홈페이지로
+					이동&quot;&gt;www.pilbong.co.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>1248817</contentid>
+				<eventenddate>20240428</eventenddate>
+				<playtime>홈페이지 참조</playtime>
+				<eventplace>모악산(금산사)주차장</eventplace>
+				<eventstartdate>20240427</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a
+					href=&quot;https://www.gimje.go.kr/tour/index.gimje?menuCd=DOM_000000404003000000&quot;
+					target=&quot;_blank&quot; title=&quot;새창:김제시청 문화관광 홈페이지로
+					이동&quot;&gt;https://www.gimje.go.kr&lt;/a&gt;</homepage>
+			</item>
+			<item>
+				<contentid>1262071</contentid>
+				<eventenddate>20230514</eventenddate>
+				<playtime>10:00 ~ 18:00</playtime>
+				<eventplace>진봉면 새만금 민가섬 청보리밭 일원 /주차장(심포항)</eventplace>
+				<eventstartdate>20230513</eventstartdate>
+				<usetimefestival>무료</usetimefestival>
+				<homepage>&lt;a href=&quot;http://barleyfestival.com/&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 지평선 추억의 보리밭
+					축제&quot;&gt;http://barleyfestival.com/&lt;/a&gt;</homepage>
+			</item>
+			<item>
 				<contentid>2719229</contentid>
 				<eventenddate>20240623</eventenddate>
 				<playtime>09:00~18:00 (17:30 마지막 입장)</playtime>
