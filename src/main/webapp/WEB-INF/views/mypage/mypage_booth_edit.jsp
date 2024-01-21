@@ -14,8 +14,12 @@
 	defer type="text/javascript"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var boothCategory = "<%= mybooth.getBooth_category() %>";
+    	var boothCategory = "<%= mybooth.getBooth_category() %>";
+        var boothNo = <%= mybooth.getBooth_no() %>;
+
+        // JavaScript 변수로 booth_no 값을 할당
         document.getElementById("booth-type").value = boothCategory;
+        document.getElementById("booth-no").value = boothNo;
     });
 </script>
 			<div class="booth-head">
@@ -77,12 +81,12 @@
 					<div class="item-form">
 						<div class="item">
 							<div>
-								<i class="fa-solid fa-tag"></i> <input type="text"
+								<i class="fa-solid fa-tag"></i> <input type="text" class="booth-item"
 									id="booth-item" name="booth-item" value="<%= product.getProduct() %>"
 									required>
 							</div>
 							<div>
-								<i class="fa-solid fa-sack-dollar"></i> <input type="text"
+								<i class="fa-solid fa-sack-dollar"></i> <input type="text" class="booth-item-price"
 									id="booth-item-price" name="booth-item-price"
 									value="<%= product.getPrice() %>" required>
 							</div>
@@ -94,5 +98,6 @@
 							class="fa-solid fa-minus" id="item-remove"></i>
 					</div>
 				</div>
+				<input type="hidden" id="booth-no" name="booth-no" value="<%= mybooth.getBooth_no() %>">
 			</form>
 

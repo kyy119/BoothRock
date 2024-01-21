@@ -43,7 +43,7 @@
 	<select id="getBoothDetailsByNo" parameterType="int"
 		resultType="boothVO">
 		SELECT f.fstv_title,
-		b.booth_name,b.booth_category,b.booth_image,b.booth_addr, b.booth_tel,
+		b.booth_no, b.booth_name,b.booth_category,b.booth_image,b.booth_addr, b.booth_tel,
 		b.booth_hours, b.booth_introduction
 		FROM booth b
 		JOIN festival
@@ -56,5 +56,29 @@
 		SELECT product, price from booth_product 
 		where booth_no = #{boothNo}
 	</select>
-
+	
+	<update id="updateBooth" parameterType="boothVO">
+        UPDATE booth
+        SET booth_name = #{booth_name},
+            booth_category = #{booth_category},
+            booth_image = #{booth_image},
+            booth_addr = #{booth_addr},
+            booth_tel = #{booth_tel},
+            booth_hours = #{booth_hours},
+            booth_introduction = #{booth_introduction}
+        WHERE booth_no = #{booth_no}
+    </update>
+    
+    <delete id="deleteBoothProduct" parameterType="int">
+    	DELETE FROM booth_product
+    	WHERE booth_no = #{boothNo}
+	</delete>
+	
+	<insert id="updateBoothProduct" parameterType="map">
+    INSERT INTO booth_product (booth_no, product, price)
+    VALUES
+    <foreach collection="items" item="item" separator=",">
+        (#{boothNo}, #{item.product}, #{item.price})
+    </foreach>
+</insert>
 </mapper>
