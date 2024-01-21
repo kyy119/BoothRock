@@ -1,6 +1,7 @@
 package com.multi.FM.myboothpage;
 
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.multi.FM.booth.BoothProductVO;
@@ -30,7 +31,7 @@ public class MyboothService {
   public BoothVO getBoothDetailsByNo(int boothNo) {
     return myboothdao.getBoothDetailsByNo(boothNo);
   }
-  public List<BoothProductVO> getBoothProductByNo(int boothNo){
-    return myboothdao.getBoothProductByNo(boothNo);
+  public List<BoothProductVO> getboothproduct(int boothNo) {
+    return myboothdao.getboothproduct(boothNo);
   }
 }

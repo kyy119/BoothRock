@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
         // Ajax 요청 및 서버에 boothData 전송
         $.ajax({
             type: 'POST',
-            url: 'add',
+            url: 'mypage/add',
             contentType: 'application/json',
             data: JSON.stringify(boothData),
             success: function(response) {
@@ -87,30 +87,6 @@ jQuery(document).ready(function() {
 	    }
 	   
     });
-    $('.tabmenu').click(function() {
-			var activeTab = $(this).attr('data-tab'); //선택된 탭메뉴 li태그의 data-tab값 
-			$('li').css('font-weight', 'normal');//선택되지 않은 메뉴명 원래대로 되돌리기
-			$('li').find('span').css({
-				'width' : '0px',
-			});
-			$(this).css('font-weight', 'bold'); //선택된 메뉴명굵기, 막대효과 
-			$(this).find('span').css({
-				'float' : 'left',
-				'height' : '20px',
-				'width' : '5px',
-				'background-color' : '#876ed5'
-			});
-			$.ajax({
-				url : activeTab, //탭메뉴 li태그의 data-tab
-				data : {user_id : userId,
-						user_role : userRole
-				},
-				success : function(x) {
-					$('#result').html(x)
-				}//success
-			})//ajax 
-		})//li
-		$('#default').click();
 });
 function updateBoothData() {
     var selectedFestival = $('#fstv_title option:selected').val();
@@ -141,13 +117,13 @@ function insertBoothProduct(boothNo) {
     boothData.items.forEach(function(item, index, array) {
         $.ajax({
             type: 'POST',
-            url: 'add-product',
+            url: 'mypage/add-product',
             contentType: 'application/json',
             data: JSON.stringify(item), // 개별 상품 데이터 전송
             success: function(response) {
                 console.log('Booth product inserted successfully.' + response);
                 if (index === array.length - 1) {
-                    loadBoothList();
+                    $('#boothManage').click(); // 모든 상품 데이터 전송 완료시 부스목록 버튼 활성화
                 }
             },
             error: function(error) {
@@ -186,22 +162,4 @@ function isNanFormData(){
 	        }
 	    }
 	 return true;
-}
-function loadBoothList() {
-    // 부스 목록을 Ajax로 불러오는 요청
-    $.ajax({
-        type: 'GET',
-        url: 'mypage_booth',
-        data: { user_id: userId },
-        success: function(response) {
-            console.log('Booth list loaded successfully.' + response);
-            // 부스 목록이 성공적으로 로드되면 해당 목록을 페이지에 반영
-            $('#result').html(response);
-            //var newUrl = 'FM/mypage.jsp';
-            //window.location.href = newUrl;
-        },
-        error: function(error) {
-            console.error('Error loading booth list:', error);
-        }
-    });
 }

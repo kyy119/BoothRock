@@ -1,7 +1,7 @@
 package com.multi.FM.myboothpage;
 
 import java.util.List;
-
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("mypage")
 public class MyBoothController {
 
   @Autowired
   private MyboothService myboothService;
 
-  @PostMapping("mypage/add-product")
+  @PostMapping("add-product")
   @ResponseBody // 뷰 없이 직접 응답 반환을 위해
   public String addBoothProduct(@RequestBody BoothProductVO boothProductVO) {
     try {
       myboothService.addBoothProduct(boothProductVO);
       // 성공적으로 상품을 추가한 경우 메시지를 반환하거나 다른 적절한 처리를 추가할 수 있습니다.
-      return "redirect:/mypage_booth";
+      return "success_test";
     } catch (Exception e) {
       e.printStackTrace();
       // 에러가 발생한 경우, 에러 메시지를 반환하거나 다른 적절한 처리를 추가할 수 있습니다.
@@ -32,7 +33,7 @@ public class MyBoothController {
     }
   }
 
-  @RequestMapping(value = "mypage/add", method = RequestMethod.POST)
+  @RequestMapping(value = "add", method = RequestMethod.POST)
   @ResponseBody
   public String addBooth(@RequestBody BoothVO boothVO) {
     System.out.println(boothVO.getBooth_name());
@@ -53,7 +54,7 @@ public class MyBoothController {
       return "fail";
     }
   }
-  @RequestMapping("mypage/mypage_booth")
+  @RequestMapping("mypage_booth")
   public void mybooth(String user_id, Model model){
     System.out.println("mybooth test");
     List<BoothVO> mybooths = myboothService.showMybooth(user_id);
@@ -69,7 +70,7 @@ public class MyBoothController {
     model.addAttribute("mybooths", mybooths);
   }
 
-  @GetMapping("mypage/mypage_booth_add")
+  @GetMapping("mypage_booth_add")
   public void getFestivals(Model model) {
     System.out.println("getFestivals test");
     List<FestivalVO> festivals = myboothService.ShowAllfstv();
@@ -89,11 +90,14 @@ public class MyBoothController {
       return "Error: " + e.getMessage();
     }
   }
-  @RequestMapping("mypage/mypage_booth_edit")
-  public void showBoothEditPage(@RequestParam(name = "boot_no") int boothNo, Model model) {
+  @RequestMapping("mypage_booth_edit")
+  public void showBoothEditPage(int boothNo, Model model) {
     BoothVO booth = myboothService.getBoothDetailsByNo(boothNo);
+    List<BoothProductVO> products = myboothService.getboothproduct(boothNo);
     System.out.println("mypage_booth_edit success");
     System.out.println("booth : " + booth.getBooth_name());
+    System.out.println("products : " + products);
+    model.addAttribute("products", products);
     model.addAttribute("booth", booth);
   }
 }
