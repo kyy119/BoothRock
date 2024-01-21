@@ -52,7 +52,7 @@
 	</select>
 
 	<select id="getboothproduct" parameterType="int"
-		resultType="boothVO">
+		resultType="boothProductVO">
 		SELECT product, price from booth_product 
 		where booth_no = #{boothNo}
 	</select>

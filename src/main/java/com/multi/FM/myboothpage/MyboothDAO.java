@@ -1,5 +1,6 @@
 package com.multi.FM.myboothpage;
 
+import java.util.Map;
 import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class MyboothDAO {
   public BoothVO getBoothDetailsByNo(int boothNo) {
     return my.selectOne("Mybooth.getBoothDetailsByNo", boothNo);
   }
-  public List<BoothProductVO> getBoothProductByNo(int boothNo){
+  public List<BoothProductVO> getboothproduct(int boothNo){
     return my.selectList("Mybooth.getboothproduct", boothNo);
   }
 }
