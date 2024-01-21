@@ -25,9 +25,9 @@ if (userId == null) {
 	window.location.href = 'main.jsp';
 }
 </script>
-    <link rel="stylesheet" href="resources/css/mypage_booth_add.css" type="text/css">
-    <link rel="stylesheet" href="resources/css/mypage_side.css" type="text/css">
-    <script src="resources/js/mypage_booth_add.js" defer type="text/javascript"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage_booth_add.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage_side.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/mypage_booth_add.js" defer type="text/javascript"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // boothCategory 변수에 기본 값 할당 (예시로 "체험형" 설정)
@@ -57,7 +57,7 @@ if (userId == null) {
 	    	<div class="booth-head">
 		        <h1>내 부스관리</h1>
 		        <div>
-		        	<input type="submit" value="수정하기"> <i class="fa-solid fa-chevron-right"></i>
+		        	<input type="submit" id="updateSubmit" value="수정하기"> <i class="fa-solid fa-chevron-right"></i>
 		        </div>
 	    	</div>
 		    <br><hr class="shadow"><br>

@@ -22,11 +22,11 @@ if (userId == null) {
 	window.location.href = 'main.jsp';
 }
 </script>
-<link rel="stylesheet" href="resources/css/mypage_booth_add.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage_booth_add.css"
 	type="text/css">
-<link rel="stylesheet" href="resources/css/mypage_side.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage_side.css"
 	type="text/css">
-<script src="resources/js/mypage_booth_add.js" defer
+<script src="${pageContext.request.contextPath}/resources/js/mypage_booth_add.js" defer
 	type="text/javascript"></script>
 </head>
 <body>

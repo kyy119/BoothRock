@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <!-- <link rel="stylesheet" href="resources/css/mypage_jjim.css"
 	type="text/css"> -->
-<link rel="stylesheet" href="resources/css/mypage_booth.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage_booth.css"
 	type="text/css">
 <%
   List<BoothVO> VO = (List<BoothVO>) request.getAttribute("mybooths");
@@ -13,7 +13,7 @@
 <script src="resources/js/mypage_booth.js" defer type="text/javascript"></script>
 <div class="booth-head">
 	<h1>내 부스관리</h1>
-	<a href="mypage_booth_add">부스 등록 <i
+	<a href="mypage/mypage_booth_add">부스 등록 <i
 		class="fa-solid fa-chevron-right"></i></a>
 </div>
 <br>
@@ -35,7 +35,7 @@
 				</h2>
 				<div class="booth-type"><%= booth.getBooth_category() %></div>
 				<button class="booth-delete">삭제</button>
-				<button class="booth-edit"><a href="mypage_booth_edit?boot_no=<%= booth.getBooth_no() %>">
+				<button class="booth-edit"><a href="mypage/mypage_booth_edit?boot_no=<%= booth.getBooth_no() %>">
 					수정하기 <i class="fa-solid fa-chevron-right"></i>
 				</button>
 			</div></li>

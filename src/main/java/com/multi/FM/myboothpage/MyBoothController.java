@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("mypage")
 public class MyBoothController {
 
   @Autowired
   private MyboothService myboothService;
 
-  @PostMapping("add-product")
+  @PostMapping("mypage/add-product")
   @ResponseBody // 뷰 없이 직접 응답 반환을 위해
   public String addBoothProduct(@RequestBody BoothProductVO boothProductVO) {
     try {
@@ -33,7 +32,7 @@ public class MyBoothController {
     }
   }
 
-  @RequestMapping(value = "add", method = RequestMethod.POST)
+  @RequestMapping(value = "mypage/add", method = RequestMethod.POST)
   @ResponseBody
   public String addBooth(@RequestBody BoothVO boothVO) {
     System.out.println(boothVO.getBooth_name());
@@ -45,7 +44,6 @@ public class MyBoothController {
     try {
       myboothService.addBooth(boothVO);
       System.out.println("success");
-      // 리다이렉트 경로를 mypage_booth.jsp로 지정
 
       return String.valueOf(boothVO.getBooth_no());
     } catch (Exception e) {
@@ -55,8 +53,7 @@ public class MyBoothController {
       return "fail";
     }
   }
-
-  @RequestMapping("mypage_booth")
+  @RequestMapping("mypage/mypage_booth")
   public void mybooth(String user_id, Model model){
     System.out.println("mybooth test");
     List<BoothVO> mybooths = myboothService.showMybooth(user_id);
@@ -72,7 +69,7 @@ public class MyBoothController {
     model.addAttribute("mybooths", mybooths);
   }
 
-  @GetMapping("/mypage_booth_add")
+  @GetMapping("mypage/mypage_booth_add")
   public void getFestivals(Model model) {
     System.out.println("getFestivals test");
     List<FestivalVO> festivals = myboothService.ShowAllfstv();
@@ -92,7 +89,7 @@ public class MyBoothController {
       return "Error: " + e.getMessage();
     }
   }
-  @RequestMapping("/mypage_booth_edit")
+  @RequestMapping("mypage/mypage_booth_edit")
   public void showBoothEditPage(@RequestParam(name = "boot_no") int boothNo, Model model) {
     BoothVO booth = myboothService.getBoothDetailsByNo(boothNo);
     System.out.println("mypage_booth_edit success");
