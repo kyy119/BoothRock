@@ -13,7 +13,7 @@
 <script src="resources/js/mypage_booth.js" defer type="text/javascript"></script>
 <div class="booth-head">
 	<h1>내 부스관리</h1>
-	<a href="mypage_booth_add">부스 등록 <i
+	<a id="booth_add">부스 등록 <i
 		class="fa-solid fa-chevron-right"></i></a>
 </div>
 <br>
@@ -35,7 +35,7 @@
 				</h2>
 				<div class="booth-type"><%= booth.getBooth_category() %></div>
 				<button class="booth-delete">삭제</button>
-				<button class="booth-edit"><a href="mypage_booth_edit?boot_no=<%= booth.getBooth_no() %>">
+				<button class="booth-edit">
 					수정하기 <i class="fa-solid fa-chevron-right"></i>
 				</button>
 			</div></li>

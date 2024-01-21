@@ -13,6 +13,7 @@ import com.multi.FM.booth.BoothReviewVO;
 
 
 @Controller
+@RequestMapping("report")
 public class BoothReportController {
 
   @Autowired
@@ -30,10 +31,10 @@ public class BoothReportController {
         if (isDuplicate) {
             // 중복이면 에러 메시지
           session.setAttribute("showAlert", true);
-            return "booth_report";
+            return "report/booth_report";
         } 
         model.addAttribute("booth_no", booth_no);
-        return "booth_report";
+        return "report/booth_report";
   }
   
   @PostMapping("insertReport")
@@ -44,7 +45,7 @@ public class BoothReportController {
                              Model model) {
       reportSV.insertReport(report_title, report_comment, booth_no, user_id);
       session.setAttribute("showAlert", true);
-      return "redirect:/booth_detail?booth_no=" + booth_no;
+      return "redirect:/booth/booth_detail?booth_no=" + booth_no;
   }
   
   
@@ -52,6 +53,6 @@ public class BoothReportController {
   public String booth_detail_report(@RequestParam("booth_no") int booth_no, Model model) {
       BoothReportVO boothDetailReport = reportSV.boothDetailReport(booth_no);
       model.addAttribute("boothDetailReport", boothDetailReport);
-      return "booth_detail_report"; 
+      return "report/booth_detail_report"; 
   }
 }
