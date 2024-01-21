@@ -18,8 +18,8 @@
 
             <div class="user-btn">
                 <ul>
-                    <li><a href="../main.jsp" class="main">메인페이지로</a></li>
-                    <li><a href="../main.jsp" class="logout">로그아웃</a></li>
+                    <li><a href="../main.jsp" class="main">메인페이지</a></li>
+                    <li><a href="../logout.jsp" class="logout">로그아웃</a></li>
                 </ul>
             </div>
         </div>

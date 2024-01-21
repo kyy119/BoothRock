@@ -23,7 +23,7 @@
 	if(result == "1"){
 		location.href = "${pageContext.request.contextPath}/main.jsp";
 	}else if(result == "3"){
-	  	location.href= "${pageContext.request.contextPath}/admin_main.jsp";
+	  	location.href= "../manager/admin_main.jsp";
 	}else{
 	  	location.href = "login.jsp";
 	}

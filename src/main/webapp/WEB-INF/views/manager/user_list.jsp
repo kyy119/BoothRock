@@ -20,7 +20,6 @@
                     page: $(this).text()
                 },
                 success: function(data){
-                	console.log(JSON.stringify(data));
                     var tbody = $(data).find("tbody").html();
                     $('#result').html(tbody);
                 }
@@ -74,6 +73,24 @@
             }
         }
     }
+    
+    $(document).ready(function() {
+        $('.user_role').each(function() {
+          var user_role = $(this).text();
+
+          switch (user_role) {
+            case 'admin':
+              $(this).text('관리자');
+              break;
+            case 'consumer':
+              $(this).text('소비자');
+              break;
+            case 'seller':
+              $(this).text('판매자');
+              break;
+          }
+        });
+      });
 </script>
 </head>
 <body>
@@ -89,6 +106,7 @@
 		    		<option value="tel">Tel</option>
 		    		<option value="created">Created</option>
 		    		<option value="updated">Updated</option>
+		    		<option value="fr">F / R</option>
 		    		<option value="fp">F / P</option>
 		    	</select>
 		    	<input type="text" name="keyword" id="keyword">
@@ -101,15 +119,16 @@
       					<th>Email</th>
       					<th class=type-select>
       						<select>
-      							<option>Type</option>
-      							<option>소비자</option>
-      							<option>판매자</option>
-      							<option>관리자</option>
+      							<option value="all">Type</option>
+      							<option value="consumer">소비자</option>
+      							<option value="seller">판매자</option>
+      							<option value="admin">관리자</option>
       						</select>
       					</th>
 					    <th>Tel</th>
 					    <th>Created</th>
 					    <th>Updated</th>
+					    <th>F / R</th>
 					    <th>F / P</th>
     				</tr>
 				</thead>
@@ -118,20 +137,12 @@
 	    				<tr>
 					      	<td>${vo.user_name}</td>
 					      	<td><a href="user_detail.jsp">${vo.user_id}</a></td>
-					      	<td>${vo.user_role}</td>
+					      	<td class="user_role">${vo.user_role}</td>
 					      	<td>${vo.user_tel}</td>
 					      	<td>${vo.user_created_at}</td>
 					      	<td>${vo.user_updated_at}</td>
-					      	<td>
-							  <c:choose>
-							    <c:when test="${vo.user_role == 'consumer'}">
-							      ${vo.report_ban_count}
-							    </c:when>
-							    <c:when test="${vo.user_role == 'seller'}">
-							      ${vo.booth_ban_count}
-							    </c:when>
-							  </c:choose>
-							 </td>
+					      	<td>${vo.report_ban_count}</td>
+							<td>${vo.booth_ban_count}</td>
 					    </tr>
 					</c:forEach>
 				</tbody>

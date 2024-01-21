@@ -9,17 +9,17 @@ import lombok.Setter;
 @Data
 
 public class PagingVO {
-    private int start;
-    private int end;
+    private int offset;
     private int page = 1;
     private int count;
     private String type;
     private String keyword;
+    private String role;
     private String table;
+    private String user_role;
   
-    public void setStartEnd() {
-      start = 1 + (page - 1) * 10;
-      end = page * 10;
+    public void Offset() {
+      offset = (page - 1) * 10;
     }
     
     public int getPages(int count) {

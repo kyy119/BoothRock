@@ -22,24 +22,13 @@
 	color: #757575;
 }
 .input-form div input {
-	width: 250px;
+	width: 210px;
 	height: 40px;
 	border: none;
 	background-color: #fff;
 	padding: 0px 10px;
 	font-size: 15px;
 	text-align: left;
-}
-#email {
-	width: 170px;
-	height: 40px;
-	border: none;
-	background-color: #fff;
-	padding: 0px 10px;
-	font-size: 15px;
-}
-#tel {
-	width: 150px;
 }
 .input-form div input:focus {
 	outline: none;
