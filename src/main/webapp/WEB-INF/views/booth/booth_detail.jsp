@@ -9,7 +9,6 @@
 	BoothVO boothDetail = (BoothVO) request.getAttribute("boothDetail");
 	HttpSession boothSession = request.getSession();
 	String user_id = (String) boothSession.getAttribute("id"); 	
-	
 %>
 
 
@@ -19,9 +18,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>모든 축제의 부스를 담다 - 부스락</title>
-<link rel="stylesheet" href="resources/css/booth_detail.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/booth_detail.css"
 	type="text/css">
-<script src="resources/js/booth_detail.js?ver=01151712" defer
+<script src="${pageContext.request.contextPath}/resources/js/booth_detail.js?ver=01151712" defer
 	type="text/javascript"></script>
 <script>
 window.onload = function() {
@@ -34,19 +33,19 @@ window.onload = function() {
 </head>
 <body>
 	<% session.removeAttribute("showAlert"); %>
-	<%@ include file="../../header.jsp"%>
+	<%@ include file="../../../header.jsp"%>
 
 	<div class="bodywrap">
 		<div class="booth-detail-form">
 			<div class="booth-title">
 				<h3 class="fstv-title"><%= boothDetail.getFstv_title() %></h3>
-				<a href="booth_detail.jsp" style="display: inline-block"><%=boothDetail.getBooth_name()%></a>
+				<a href="booth/booth_detail.jsp" style="display: inline-block"><%=boothDetail.getBooth_name()%></a>
 				<span class="booth-type"> | <%=boothDetail.getBooth_category()%></span>
 			</div>
 			<div class="booth-menu"
 				style="width: 1000px; height: 300px; margin-top: 20px;">
 				<div class="booth-img">
-					<img alt="부스 이미지" src="<%=boothDetail.getBooth_image()%>">
+					<img alt="부스 이미지" src="${pageContext.request.contextPath}/<%=boothDetail.getBooth_image()%>">
 				</div>
 				<div class="booth-item">
 					<ul>
@@ -83,7 +82,7 @@ window.onload = function() {
 							<a href="booth_review_write.jsp" class="write-review"><i
 								class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 							<div class="boothDetailReview"></div>
-							<a href="booth_review?booth_no=<%=boothDetail.getBooth_no()%>"
+							<a href="/FM/review/booth_review?booth_no=<%=boothDetail.getBooth_no()%>"
 								class="review-more">리뷰 더보기 <i
 								class="fa-solid fa-chevron-right"></i></a>
 						</div></li>
@@ -92,7 +91,7 @@ window.onload = function() {
 		</div>
 	</div>
 
-	<%@ include file="../../footer.jsp"%>
+	<%@ include file="../../../footer.jsp"%>
 
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
+@RequestMapping("review")
 public class BoothReviewContoller {
 
   @Autowired
@@ -27,7 +28,7 @@ public class BoothReviewContoller {
   public String review(@RequestParam("booth_no") int booth_no, Model model) {
       List<BoothReviewVO> boothReview = boothRSV.list(booth_no);
       model.addAttribute("boothReview", boothReview);
-      return "booth_review"; 
+      return "review/booth_review"; 
   }// review list
   
   //review의 부스정보 불러오기
@@ -35,7 +36,7 @@ public class BoothReviewContoller {
   public String detail_review(@RequestParam("booth_no") int booth_no, Model model) {
       List<BoothReviewVO> boothDetailReview = boothRSV.list(booth_no);
       model.addAttribute("boothDetailReview", boothDetailReview);
-      return "booth_detail_review"; 
+      return "review/booth_detail_review"; 
   }// booth_detail_review list
  
   
