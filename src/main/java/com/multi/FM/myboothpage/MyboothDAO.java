@@ -35,4 +35,14 @@ public class MyboothDAO {
   public List<BoothProductVO> getboothproduct(int boothNo){
     return my.selectList("Mybooth.getboothproduct", boothNo);
   }
+  public void updateBooth(BoothVO boothVO) {
+    my.update("Mybooth.updateBooth", boothVO);
+  }
+  public void deleteBoothProduct(int boothNo) {
+    my.delete("Mybooth.deleteBoothProduct", boothNo);
+  }
+  public void insertBoothProduct(Map<String, Object> map) {
+    my.insert("Mybooth.updateBoothProduct", map);
+  }
+
 }

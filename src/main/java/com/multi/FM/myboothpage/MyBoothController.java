@@ -96,8 +96,56 @@ public class MyBoothController {
     List<BoothProductVO> products = myboothService.getboothproduct(boothNo);
     System.out.println("mypage_booth_edit success");
     System.out.println("booth : " + booth.getBooth_name());
+    System.out.println("booth : " + booth.getBooth_no());
     System.out.println("products : " + products);
     model.addAttribute("products", products);
     model.addAttribute("booth", booth);
   }
+  @PostMapping("updateBooth")
+  @ResponseBody
+  public String updateBooth(@RequestBody BoothVO boothVO) {
+      myboothService.updateBooth(boothVO);
+      System.out.println("success");
+      return String.valueOf(boothVO.getBooth_no());
+  }
+  @PostMapping("deleteBoothProduct")
+  @ResponseBody
+  public String deleteBoothProduct(int boothNo) {
+      try {
+          // 부스 상품 삭제 서비스 호출
+          myboothService.deleteBoothProduct(boothNo);
+          System.out.println("delete");
+          return "Success";
+      } catch (Exception e) {
+          // 삭제 중 오류 발생 시 오류 메시지 반환
+          return "Error: " + e.getMessage();
+      }
+  }
+  @PostMapping("updateBoothProduct")
+  @ResponseBody
+  public String insertBoothProduct(@RequestBody Map<String, Object> data) {
+      String boothNoString = (String) data.get("boothNo");
+
+      try {
+          // boothNo를 Integer로 변환
+          int boothNo = Integer.parseInt(boothNoString);
+
+          List<BoothProductVO> items = (List<BoothProductVO>) data.get("items");
+          System.out.println("updateBoothProduct success");
+
+          // 부스 상품 추가 서비스 호출
+          myboothService.insertBoothProduct(boothNo, items);
+          System.out.println("updateBoothProduct success : " + boothNo);
+          System.out.println("updateBoothProduct success : " + items);
+          return "Success";
+      } catch (NumberFormatException e) {
+          // boothNo를 Integer로 변환할 때 오류 발생 시 처리
+          return "Error: Invalid boothNo format";
+      } catch (Exception e) {
+          // 추가 중 오류 발생 시 오류 메시지 반환
+          return "Error: " + e.getMessage();
+      }
+  }
+
+
 }

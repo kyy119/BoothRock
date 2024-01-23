@@ -1,5 +1,6 @@
 package com.multi.FM.myboothpage;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,18 @@ public class MyboothService {
   public List<BoothProductVO> getboothproduct(int boothNo) {
     return myboothdao.getboothproduct(boothNo);
   }
+  public void updateBooth(BoothVO boothVO) {
+    myboothdao.updateBooth(boothVO);
+  }
+  public void deleteBoothProduct(int boothNo) {
+    // 부스 상품 삭제 DAO 메서드 호출
+    myboothdao.deleteBoothProduct(boothNo);
+  }
+  public void insertBoothProduct(int boothNo, List<BoothProductVO> items) {
+    Map<String, Object> map = new HashMap<String, Object>();
+    map.put("boothNo", boothNo);
+    map.put("items", items);
+    myboothdao.insertBoothProduct(map);
+  }
+
 }

@@ -14,8 +14,10 @@
 	defer type="text/javascript"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var boothCategory = "<%= mybooth.getBooth_category() %>";
-        document.getElementById("booth-type").value = boothCategory;
+        var boothNo = <%= mybooth.getBooth_no() %>;
+
+        // JavaScript 변수로 booth_no 값을 할당
+        document.getElementById("booth-no").value = boothNo;
     });
 </script>
 			<div class="booth-head">
@@ -42,8 +44,8 @@
 					<div>
 						<i class="fa-solid fa-hashtag"></i> <select id="booth-type"
 							name="booth-type">
-							<option value="판매형">판매형</option>
-							<option value="체험형">체험형</option>
+							<option value="판매형" <%= mybooth.getBooth_category().equals("판매형") ? "selected" : "" %>>판매형</option>
+							<option value="체험형" <%= mybooth.getBooth_category().equals("체험형") ? "selected" : "" %>>체험형</option>
 						</select>
 					</div>
 					<div>
@@ -77,12 +79,12 @@
 					<div class="item-form">
 						<div class="item">
 							<div>
-								<i class="fa-solid fa-tag"></i> <input type="text"
+								<i class="fa-solid fa-tag"></i> <input type="text" class="booth-item"
 									id="booth-item" name="booth-item" value="<%= product.getProduct() %>"
 									required>
 							</div>
 							<div>
-								<i class="fa-solid fa-sack-dollar"></i> <input type="text"
+								<i class="fa-solid fa-sack-dollar"></i> <input type="text" class="booth-item-price"
 									id="booth-item-price" name="booth-item-price"
 									value="<%= product.getPrice() %>" required>
 							</div>
@@ -94,5 +96,6 @@
 							class="fa-solid fa-minus" id="item-remove"></i>
 					</div>
 				</div>
+				<input type="hidden" id="booth-no" name="booth-no" value="<%= mybooth.getBooth_no() %>">
 			</form>
 

@@ -29,9 +29,11 @@
 		<li data-booth-no="<%= booth.getBooth_no() %>"><img
 			src="<%= booth.getBooth_image() %>">
 			<div class="booth">
+				<a href="fstv/fstv_detail?fstv_no=<%= booth.getFstv_no() %>">
 				<h4><%= booth.getFstv_title() %></h4>
+				</a>
 				<h2>
-					<a href="booth_detail.jsp"><%= booth.getBooth_name() %></a>
+					<a href="booth/booth_detail?booth_no=<%= booth.getBooth_no() %>"><%= booth.getBooth_name() %></a>
 				</h2>
 				<div class="booth-type"><%= booth.getBooth_category() %></div>
 				<button class="booth-delete">삭제</button>
