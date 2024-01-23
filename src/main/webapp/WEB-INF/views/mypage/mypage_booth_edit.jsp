@@ -14,11 +14,9 @@
 	defer type="text/javascript"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    	var boothCategory = "<%= mybooth.getBooth_category() %>";
         var boothNo = <%= mybooth.getBooth_no() %>;
 
         // JavaScript 변수로 booth_no 값을 할당
-        document.getElementById("booth-type").value = boothCategory;
         document.getElementById("booth-no").value = boothNo;
     });
 </script>
@@ -46,8 +44,8 @@
 					<div>
 						<i class="fa-solid fa-hashtag"></i> <select id="booth-type"
 							name="booth-type">
-							<option value="판매형">판매형</option>
-							<option value="체험형">체험형</option>
+							<option value="판매형" <%= mybooth.getBooth_category().equals("판매형") ? "selected" : "" %>>판매형</option>
+							<option value="체험형" <%= mybooth.getBooth_category().equals("체험형") ? "selected" : "" %>>체험형</option>
 						</select>
 					</div>
 					<div>

@@ -27,7 +27,7 @@
 	</insert>
 	<select id="showMybooth" parameterType="String"
 		resultType="boothVO">
-		SELECT b.booth_no, b.booth_image, f.fstv_title,
+		SELECT b.booth_no, b.booth_image, f.fstv_title, b.fstv_no,
 		b.booth_name, b.booth_category , b.seller_id
 		FROM booth b
 		JOIN festival
