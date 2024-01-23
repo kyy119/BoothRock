@@ -51,8 +51,8 @@
 					<div>
 						<i class="fa-solid fa-image"></i> <input type="text"
 							id="booth-img" name="booth-img"
-							value="<%= mybooth.getBooth_image() %>">
-						<button>첨부파일</button>
+							value="<%= mybooth.getBooth_image() %>" readonly>
+<!-- 						<button>첨부파일</button> -->
 					</div>
 					<div>
 						<i class="fa-solid fa-location-dot"></i> <input type="text"

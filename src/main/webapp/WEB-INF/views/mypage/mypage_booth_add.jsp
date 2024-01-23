@@ -40,9 +40,7 @@
 				</select>
 			</div>
 			<div>
-				<i class="fa-solid fa-image"></i> <input type="text"
-					name="booth-img" id="booth-img" placeholder="부스 대표이미지">
-				<button>첨부파일</button>
+				<i class="fa-solid fa-image"></i> <input type="file" name="booth-img" id="booth-img" accept="image/*">
 			</div>
 			<div>
 				<i class="fa-solid fa-location-dot"></i> <input type="text"
