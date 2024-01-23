@@ -1,8 +1,8 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.multi.FM.manager.ReportVO"%>
+<%@page import="com.multi.FM.myboothpage.BoothVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ArrayList<ReportVO> vo = (ArrayList<ReportVO>) request.getAttribute("report_list"); %>
+<% ArrayList<BoothVO> vo = (ArrayList<BoothVO>) request.getAttribute("booth_list"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
     <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 	        var urlParams = new URLSearchParams(window.location.search);
@@ -33,7 +33,7 @@
 	        	
 	            $.ajax({
 	                type: "POST",
-	                url: "report_list",
+	                url: "booth_list",
 	                data: {
 	                    page: page
 	                },
@@ -86,7 +86,7 @@
 			
 	        $.ajax({
 	            type: "POST",
-	            url: "report_search",
+	            url: "booth_search",
 	            data: {
 	                page: page,
 	                type: type,
@@ -94,7 +94,8 @@
 	            },
 	            success: function(data) {
 	                $("tbody").empty();
-	                $.each(data.report_search, function(index, report) {
+	                
+	                $.each(data.booth_search, function(index, booth) {
 	                	var row = "<tr>" +
 	                	"<td>" + booth.booth_no + "</td>" +
 	                    "<td><a href='user_detail?user_id=booth_seller_id'>" + booth.seller_id + "</a></td>" +
@@ -135,28 +136,22 @@
 		        	$("#pagination").append(next);
 		        }
 	        }
-		    function update_booth(action, message) {
-		    	var tr = $(this).closest('tr');
-		    	var booth_no = tr.find('.booth-no').text();
-		    	var booth_ban = tr.find('.booth-ban').text();
-		    	
-	            $.ajax({
+	        
+		    function update_booth(action, message, booth_no) {
+		        $.ajax({
 	                type: "POST",
 	                url: action,
 	                data: { booth_no: booth_no },
 	                success: function(data) {
 	                    alert(message);
-	                    if (parseInt(booth_ban) == 1) {
-	                        window.location.href = 'ban_booth_list';
-	                    } else {
-	                        window.location.href = 'booth_list';
-	                    }
+	                    location.reload(true);
 	                }
 	            });
-	        }
-
+		    }
+		    
 	        $(".update_booth").on("click", function() {
-	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.");
+	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
+	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
 	        });
 	    }
 	</script>
@@ -165,47 +160,50 @@
     <%@ include file="../../../manager/admin_header.jsp" %>
     
     <div class="bodywrap">
-    	<div class="report-list-form"> <!-- 페이징 필요 -->
-	    	<h1>Report List</h1>
+    	<div class="booth-list-form"> <!-- 페이징 필요 -->
+	    	<h1>Booth List</h1>
 	    	<div class="select-search-form">
-		    	<select name="type" id="type">
-		    		<option>Option</option>
-				    <option value="title">Title</option>
-				    <option value="email">Email</option>
-				    <option value="booth">Booth</option>
-				    <option value="created">Created</option>
+	    		<select name="type" id="type">
+	    			<option>Option</option>
+		    		<option value="email">Email</option>
+		    		<option value="booth">Booth</option>
+		    		<option value="fstv">Festival</option>
+		    		<option value="reports">Reports</option>
 		    	</select>
-		    	<input name="keyword" type="text" id="keyword">
+		    	<input type="text" name="keyword" id="keyword">
 		    	<input type="button" id="submit" value="검색" onclick="search()">
 	    	</div>
 	    	<table>
 				<thead>
     				<tr>
       					<th>No</th>
-					    <th>Title</th>
 					    <th>Email</th>
 					    <th>Booth</th>
-					    <th>Created</th>
-					    <th>Resolved</th>
+					    <th>Festival</th>
+					    <th>Reports</th>
+					    <th>Ban</th>
+					    <th>Delete</th>
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${report_list}" var="vo">
+					<c:forEach items="${booth_list}" var="vo">
 	    				<tr>
-					      	<td>${vo.report_no}</td>
-					      	<td><a href="report_detail?report_no=${vo.report_no}">${vo.report_title}</a></td>
-					      	<td><a href="user_detail?user_id=${vo.user_id}">${vo.user_id}</a></td>
-					      	<td><a href="booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
-					      	<td>${vo.report_date}</td>
-					      	<td></td>
-					    </tr>
-					</c:forEach>
+					      	<td class="booth-no">${vo.booth_no}</td>
+					      	<td><a href="user_detail?user_id=${vo.seller_id}">${vo.seller_id}</a></td>
+					      	<td><a href="${pageContext.request.contextPath}/booth/booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
+					      	<td><a href="${pageContext.request.contextPath}/fstv/fstv_detail?fstv_no=${vo.fstv_no}">${vo.fstv_title}</a></td>
+					      	<td><a href="report_list?type=booth_no&keyword=${vo.booth_no}">${vo.report_count} 건</a></td>
+					      	<td><button class="update_booth">등록</button></td>
+					      	<td><button class="delete">삭제</button></td>
+					      	<td class="booth-ban" style="display: none">${vo.booth_ban}</td>
+	    				</tr>
+    				</c:forEach>
 				</tbody>
 			</table>
 			<div id="pagination">
-				<c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
-		</div>
+    	</div>
     </div>
     
     <%@ include file="../../../footer.jsp" %>

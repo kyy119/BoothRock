@@ -3,6 +3,7 @@ package com.multi.FM.manager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.multi.FM.myboothpage.BoothVO;
 import com.multi.FM.users.UsersVO;
 
 @Service
@@ -27,6 +28,41 @@ public class ManagerService {
       return dao.ban_user_search(pagingVO);
     }
     
+    public UsersVO user_detail(UsersVO usersVO) {
+      return dao.user_detail(usersVO);
+    }
+
+    public void update_user(UsersVO usersVO) {
+      dao.update_user(usersVO);
+    }
+    
+    public void update_admin(UsersVO usersVO) {
+      dao.update_admin(usersVO);
+    }
+    
+    public void update_seller(UsersVO usersVO) {
+      dao.update_seller(usersVO);
+    }
+
+    public List<BoothVO> booth_list(PagingVO pagingVO) {
+      return dao.booth_list(pagingVO);
+    }
+    
+    public List<BoothVO> booth_search(PagingVO pagingVO) {
+      return dao.booth_search(pagingVO);
+    }
+    
+    public List<BoothVO> ban_booth_list(PagingVO pagingVO) {
+      return dao.ban_booth_list(pagingVO);
+    }
+    
+    public List<BoothVO> ban_booth_search(PagingVO pagingVO) {
+      return dao.ban_booth_search(pagingVO);
+    }
+
+    public void update_booth(BoothVO boothVO) {
+      dao.update_booth(boothVO);
+    }
     public List<ReportVO> report_list(PagingVO pagingVO) throws Exception {
       return dao.report_list(pagingVO);
     }
@@ -50,5 +86,11 @@ public class ManagerService {
     public List<AskVO> ask_search(String type, String word) {
       return dao.ask_search(type, word);
     }
+
+
+
+
+
+
 
 }
