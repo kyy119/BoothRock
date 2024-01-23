@@ -17,12 +17,11 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @EnableWebMvc
 public class AWSConfiguration {
     
-//    @Value("${SECRET_KEY}")
-//    private String accessKey;
+    @Value("${SECRET_KEY}")
+    private String accessKey;
 
-    private String accessKey = "AKIA4WBDLGZIT6DZFFE6";
- //   @Value("${ACCESS_KEY}")
-    private String secretKey = "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";
+    @Value("${ACCESS_KEY}")
+    private String secretKey;
     
     @Value("${bucketName}")
     private String bucketName;  // 추가: S3 버킷 이름을 가져오기 위한 프로퍼티
