@@ -21,10 +21,8 @@
 		    </div>
 	        <div class="fstv-list-form"> <%-- 페이징 필요 --%>
 	        	<div class="fstv-list-loc">
-					<h2><i class="fa-solid fa-location-dot"></i> 서울</h2>
-		        	<div class="sort">
-		        		<button id="def-btn" class="bold-text">기본순</button> | <button id="pop-btn">인기순</button>
-		        	</div>
+					<h2 class="changed-header"><i class="fa-solid fa-location-dot"></i> 서울</h2>
+		        	<div class="sort"></div>
 	        	</div>
 	        	<div class="fstv-list"></div> <!-- 지역별 축제 리스트 들어가는 부분 -->
 	        </div>
@@ -34,9 +32,9 @@
 	<%@ include file="footer.jsp" %>
 	<script>
 	
-	var region = '서울';
-	let list_url = "fstv/fstv_maplist";
-	
+		var region = '서울';
+		let list_url = "fstv/fstv_maplist";
+		
 		jQuery(document).ready(function(){
 			console.log(region);
 			$.ajax({
@@ -49,16 +47,7 @@
 				}
 			})
 			
-			$('#area').on('DOMSubtreeModified', function() {
-	            // span 태그의 텍스트가 변경되면 실행할 함수
-	            var newText = $('#area').text(); // 변경된 텍스트 가져오기
-	            // Ajax 실행 함수
-	            // executeAjax(newText);
-	            console.log(newText);
-	        });
-			
 		})
-		
 		
 		var areas = [];
 		/* 1. JSON 파일을 읽어들여 areas 배열을 채워넣는 작업 */
@@ -95,7 +84,6 @@
 			});//each
 		});//getJSON
 		
-
 		var MapContainer = document.getElementById('Map'),				// 이미지 지도를 표시할 div  
 		MapOption = {
 			center: new kakao.maps.LatLng(35.9882085, 127.8579557), 	// 지도의 중심좌표
@@ -126,6 +114,10 @@
 		var selectedMarker = null;
 		var selectedCO = null;
 		var selectedPol = null;
+		
+		customOverlay.setContent('<span id="area">서울</span>');		
+        customOverlay.setPosition(new kakao.maps.LatLng(37.570087, 126.962789));
+        customOverlay.setMap(map);
 		
 		// 폴리곤, 마커 생성 + 이벤트 등록 함수
 		function displayArea(area) {
@@ -190,9 +182,35 @@
 		            !!selectedPol && selectedPol.setOptions({fillColor: '#fff'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
 			        polygon.setOptions({fillColor: '#99e8c5'});									// 현재 클릭된 마커의 폴리곤 채움색을 설정한 값으로 변경
 			        
-		        	customOverlay.setContent('<span id="area" class="'+ area.name +'">' + area.name + '</span>');		
+		        	customOverlay.setContent('<span id="area">' + area.name + '</span>');		
 			        customOverlay.setPosition(new kakao.maps.LatLng(area.lat, area.lng));	
 			        customOverlay.setMap(map);
+			        
+			        region = document.getElementById('area').innerText;
+			        updateHeaderTextValue(region);
+			        if(region === '충남'){
+			        	region = '충청남도';
+			        }else if(region === '충북'){
+			        	region = '충청북도';
+			        }else if(region === '전남'){
+			        	region = '전라남도';
+			        }else if(region === '전북'){
+			        	region = '전라북도';
+			        }else if(region === '경북'){
+			        	region = '경상북도';
+			        }else if(region === '경남'){
+			        	region = '경상남도';
+			        }
+			        $.ajax({
+						url : list_url,
+						data : {
+				        region : region
+						},
+						success : function(list) {
+							$('.fstv-list').html(list);
+						}
+					})
+					
 		        }
 		    	//selectedCO = customOverlay;
 		    	selectedMarker = marker;
@@ -201,6 +219,12 @@
 		}
 		map.setDraggable(false);	// 지도 드래그 막기
 		map.setZoomable(false);		// 지도 확대,축소 막기
+		
+		function updateHeaderTextValue(newText) {
+			var currentValue = $('.changed-header').find('i.fa-location-dot').parent();
+		    currentValue.html('<i class="fa-solid fa-location-dot"></i> ' + newText);
+		}
+		
 	</script>
 </body>
 </html>
