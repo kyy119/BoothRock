@@ -60,8 +60,7 @@ function dupli(duplicate){
 					}else{
 						let select = confirm('인증번호가 일치하지않습니다! 재인증 하시겠습니까?');
 						if(select){
-							$('#send').show();
-							$('#authNum').html('');
+							location.href = "find_password_num.jsp";
 						}
 						return false;
 					}// else3

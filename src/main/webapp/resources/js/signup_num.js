@@ -59,15 +59,14 @@ function dupli(duplicate){
 					}else{
 						let select = confirm('인증번호가 일치하지않습니다! 재인증 하시겠습니까?');
 						if(select){
-							$('#send').show();
-							$('#authNum').html('');
+							location.href = "signup_num.jsp";
 						}
 						return false;
 					}// else3
 				}
 	    	}); // #verify
 	  }else{
-	     alert('이미 가입된 전화번호 입니다!');
+	     alert('이미 가입된 전화번호이거나 블랙리스트에 등록된 번호입니다!');
 	     let inputElement = document.getElementById("phone_number");
 	     inputElement.readOnly = false;
 	     document.getElementById('phone_number').value = '';

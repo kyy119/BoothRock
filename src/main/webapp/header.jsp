@@ -36,7 +36,7 @@
             	%>
 	            	<ul>
 	                    <li><a href="${pageContext.request.contextPath}/users/login.jsp">로그인</a></li>		<%-- 로그인 세션을 받아오면 로그아웃/마이페이지로 변경 --%>
-	                    <li><a href="${pageContext.request.contextPath}/signup_num.jsp">회원가입</a></li>
+	                    <li><a href="${pageContext.request.contextPath}/users/signup_num.jsp">회원가입</a></li>
 	                </ul>
                 <% }else if("admin".equals(session.getAttribute("role"))){ %>
                  	<ul>

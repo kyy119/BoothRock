@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,17 @@ public class UsersController {
 	@Autowired
 	UsersService users_service;
 	
+	private final String business_url_key;
+	
+	@Autowired
+	public UsersController(
+	    @Value("${business.urlKey}") String business_url_key) {
+	    this.business_url_key = business_url_key;
+	}
+	
+//	@Autowired
+//	UsersConfiguration config;
+	
 	SecureRandom r = new SecureRandom();
 	String num = "";
 	
@@ -29,8 +41,10 @@ public class UsersController {
 		usersvo.setUser_role("seller");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
+		usersvo.setUser_black(0);
 		sellervo.setUser_id(usersvo.getUser_id());
 		sellervo.setCreate_date(usersvo.getUser_created_at());
+		sellervo.setSeller_black(0);
 		users_service.create_account_seller(usersvo,sellervo);
 	}
 	
@@ -41,6 +55,7 @@ public class UsersController {
 		usersvo.setUser_role("consumer");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
+		usersvo.setUser_black(0);
 		users_service.create_account_consumer(usersvo);
 	}
 	
@@ -131,4 +146,10 @@ public class UsersController {
 		String result2 = String.valueOf(result);
 		return result2;
 	}
+	@RequestMapping("businessAPI")
+    @ResponseBody
+    public String businessAPI(String user_id) {
+	    String result = business_url_key;
+        return result;
+    }
 }
