@@ -22,4 +22,6 @@ public class BoothVO {
   //fstv table 조인
   private String fstv_title;
   private List<BoothProductVO> products;
+  private int report_count;
+  private String user_id;
 }

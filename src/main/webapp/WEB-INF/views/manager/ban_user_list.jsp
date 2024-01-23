@@ -9,10 +9,20 @@
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user_list.css" type="text/css">
     <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">	
 	$(document).ready(function() {
 	    role_update();
+	    
+        var urlParams = new URLSearchParams(window.location.search);
+        var type = urlParams.get("type");
+        var keyword = urlParams.get("keyword");
+
+        if (type && keyword) {
+            $("#type").val(type);
+            $("#keyword").val(keyword);
+            search(1);
+        }
 	});
 	
     $(function(){
@@ -66,7 +76,6 @@
 		       		var next = '<button style="font-size: 0;" class="pages">' + (current_page + 1) + '<i class="fa-solid fa-chevron-right"></i></button>';
 		        	$("#pagination").append(next);
 		        }
-		        	
 		    }
         });
     });
@@ -105,6 +114,7 @@
                 search_pagination(data.search_pages, page);
             }
         });
+        
         function search_pagination(pages, page) {
             $("#pagination").empty();
             var current_page = page || 1;
@@ -160,7 +170,6 @@
 	    	<div class="select-search-form">
 	    		<select name="type" id="type">
 		    		<option>Option</option>
-		    		<option value="no">No</option>
 		    		<option value="name">Name</option>
 		    		<option value="email">Email</option>
 		    		<option value="tel">Tel</option>

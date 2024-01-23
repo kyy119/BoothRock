@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.multi.FM.myboothpage.BoothVO;
 import com.multi.FM.users.UsersVO;
 
 @Controller
@@ -42,7 +43,6 @@ public class ManagerController {
     @ResponseBody
     public Map<String, Object> user_search(PagingVO pagingVO, Model model) throws Exception {
         pagingVO.Offset();
-        pagingVO.setTable("users");
         List<UsersVO> list = service.user_search(pagingVO);
 
         int search_count = dao.user_count(pagingVO);
@@ -86,7 +86,96 @@ public class ManagerController {
       
       return response;
     }	
-	
+    
+    @RequestMapping("user_detail")
+      public void user_detail(UsersVO usersVO, Model model) {
+        UsersVO vo = service.user_detail(usersVO);
+        
+        model.addAttribute("user_detail", vo);
+    }
+    
+    @RequestMapping("update_user")
+    public void update_user(UsersVO usersVO) {
+        service.update_user(usersVO);
+    }
+    
+    @RequestMapping("update_admin")
+    public void update_admin(UsersVO usersVO) {
+      service.update_admin(usersVO);
+    }
+    
+    @RequestMapping("update_seller")
+    public void update_seller(UsersVO usersVO) {
+      service.update_seller(usersVO);
+    }
+    
+    @RequestMapping("booth_list")
+    public void booth_list(PagingVO pagingVO, Model model) {
+      pagingVO.Offset();
+      pagingVO.setTable("booth");
+      List<BoothVO> list = service.booth_list(pagingVO);
+      
+      int count = dao.total_count(pagingVO);
+      int pages = pagingVO.getPages(count);
+      
+      model.addAttribute("booth_list",list);
+      model.addAttribute("count",count);      
+      model.addAttribute("pages",pages);
+    }
+    
+    @RequestMapping("booth_search")
+    @ResponseBody
+    public Map<String, Object> booth_search(PagingVO pagingVO, Model model) throws Exception {
+      pagingVO.Offset();
+      List<BoothVO> list = service.booth_search(pagingVO);
+      
+      int search_count = dao.booth_count(pagingVO);
+      int search_pages = pagingVO.getPages(search_count);
+      
+      Map<String, Object> response = new HashMap<>();
+      response.put("booth_search", list);
+      response.put("search_count", search_count);
+      response.put("search_pages", search_pages);
+      
+      return response;
+    }   
+    
+    @RequestMapping("ban_booth_list")
+    public void ban_booth_list(PagingVO pagingVO, Model model) {
+      pagingVO.Offset();
+      pagingVO.setTable("ban_booth");
+      List<BoothVO> list = service.ban_booth_list(pagingVO);
+      
+      int count = dao.total_count(pagingVO);
+      int pages = pagingVO.getPages(count);
+      
+      model.addAttribute("ban_booth_list",list);
+      model.addAttribute("count",count);      
+      model.addAttribute("pages",pages);
+    }
+    
+    @RequestMapping("ban_booth_search")
+    @ResponseBody
+    public Map<String, Object> ban_booth_search(PagingVO pagingVO, Model model) throws Exception {
+      pagingVO.Offset();
+      List<BoothVO> list = service.ban_booth_search(pagingVO);
+      
+      int search_count = dao.ban_booth_count(pagingVO);
+      int search_pages = pagingVO.getPages(search_count);
+      
+      Map<String, Object> response = new HashMap<>();
+      response.put("ban_booth_search", list);
+      response.put("search_count", search_count);
+      response.put("search_pages", search_pages);
+      
+      return response;
+    }   
+    
+    @RequestMapping("update_booth")
+    public void update_booth(BoothVO boothVO) {
+        service.update_booth(boothVO);
+    }
+    
 	@RequestMapping("report_list")
 	public void report_list(PagingVO pagingVO, Model model) throws Exception {
 	  pagingVO.Offset();
