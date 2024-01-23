@@ -42,7 +42,7 @@
 	    			<p>게시물 조회 및 수정, 삭제</p>
 	    			<p>허위 게시물 등록</p>
 	    		</a>
-	    		<a href="booth_ban_list">
+	    		<a href="ban_booth_list">
 	    			<i class="fa-solid fa-paste"></i>
 	    			<span>허위 게시물 관리</span>
 	    			<p>허위 게시물 조회 및 해제</p>

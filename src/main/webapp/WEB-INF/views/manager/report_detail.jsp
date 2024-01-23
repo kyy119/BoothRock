@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/report_detail.css" type="text/css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 </head>
 <body>
     <%@ include file="../../../manager/admin_header.jsp" %>

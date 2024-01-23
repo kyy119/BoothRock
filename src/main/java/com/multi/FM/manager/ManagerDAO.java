@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.multi.FM.myboothpage.BoothVO;
 import com.multi.FM.users.UsersVO;
 
 @Repository
@@ -20,7 +21,7 @@ public class ManagerDAO {
     }
 
     public List<UsersVO> user_search(PagingVO pagingVO) {
-      return my.selectList("manager.user_search", pagingVO);
+        return my.selectList("manager.user_search", pagingVO);
     }
     
     public List<UsersVO> ban_user_list(PagingVO pagingVO) {
@@ -28,9 +29,45 @@ public class ManagerDAO {
     }
     
     public List<UsersVO> ban_user_search(PagingVO pagingVO) {
-      return my.selectList("manager.ban_user_search", pagingVO);
+        return my.selectList("manager.ban_user_search", pagingVO);
     }
 
+    public UsersVO user_detail(UsersVO usersVO) {
+        return my.selectOne("manager.user_detail", usersVO);
+    }
+    
+    public void update_user(UsersVO usersVO) {
+        my.update("manager.update_user", usersVO);
+    }
+    
+    public void update_admin(UsersVO usersVO) {
+        my.update("manager.update_admin", usersVO);
+    }
+    
+    public void update_seller(UsersVO usersVO) {
+        my.update("manager.update_seller", usersVO);
+    }
+    
+    public List<BoothVO> booth_list(PagingVO pagingVO) {
+        return my.selectList("manager.booth_list", pagingVO);
+    }
+
+    public List<BoothVO> booth_search(PagingVO pagingVO) {
+        return my.selectList("manager.booth_search", pagingVO);
+    }
+    
+    public List<BoothVO> ban_booth_list(PagingVO pagingVO) {
+      return my.selectList("manager.ban_booth_list", pagingVO);
+    }
+    
+    public List<BoothVO> ban_booth_search(PagingVO pagingVO) {
+      return my.selectList("manager.ban_booth_search", pagingVO);
+    }
+
+    public void update_booth(BoothVO boothVO) {
+      my.update("manager.update_booth", boothVO);
+    }
+    
 	public List<ReportVO> report_list(PagingVO pagingVO) throws Exception {
 		return my.selectList("manager.report_list", pagingVO);
 	}
@@ -74,8 +111,14 @@ public class ManagerDAO {
     public int ban_user_count(PagingVO pagingVO) {
       return my.selectOne("manager.ban_user_count", pagingVO);
     }
-
-
+    
+    public int booth_count(PagingVO pagingVO) {
+      return my.selectOne("manager.booth_count", pagingVO);
+    }
+    
+    public int ban_booth_count(PagingVO pagingVO) {
+      return my.selectOne("manager.ban_booth_count", pagingVO);
+    }
 
 
 }

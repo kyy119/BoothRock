@@ -5,9 +5,8 @@
 <mapper namespace="manager">
 
 	<select id="user_list" parameterType="usersVO" resultType="usersVO">
-		SELECT * FROM 
-			( SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
-  			FROM  ( SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
+		SELECT * FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+  			FROM (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
 				rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black FROM users u
    				LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
     			LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_ban_count FROM booth WHERE booth_ban = 1 GROUP BY seller_id) AS bb ON u.user_id = bb.seller_id
@@ -24,8 +23,7 @@
 	</select>
 	
 	<select id="user_search" parameterType="pagingVO" resultType="usersVO">
-	    SELECT * FROM 
-	        (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+	    SELECT * FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
 	          FROM  (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
 	            rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black 
 	            FROM users u
@@ -38,6 +36,9 @@
 	            LEFT JOIN seller s ON u.user_id = s.user_id
 	            WHERE u.user_black = 0
 	            <choose>
+	            	<when test="type == 'no'">
+				        AND total_no = #{keyword}
+				    </when>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
 	                </when>
@@ -72,14 +73,18 @@
 	            </choose>
 	          ) AS TOTAL
 	        ) AS TOTAL2
-	        ORDER BY total_no desc
-			LIMIT 10 OFFSET ${offset};
+        <choose>
+           	<when test="type == 'no'">
+		        AND total_no = #{keyword}
+		    </when>
+	    </choose>
+	    ORDER BY total_no desc
+		LIMIT 10 OFFSET ${offset};
 	</select>
 		
 	<select id="user_count" parameterType="pagingVO" resultType="int">
-	    SELECT COUNT(*) FROM 
-	        (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
-	          FROM  (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
+		SELECT COUNT(*) FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+			FROM  (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
 	            rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black 
 	            FROM users u
 	            LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
@@ -91,6 +96,9 @@
 	            LEFT JOIN seller s ON u.user_id = s.user_id
 	            WHERE u.user_black = 0
 	            <choose>
+	            	<when test="type == 'no'">
+				        AND total_no = #{keyword}
+				    </when>
 	                <when test="type == 'name'">
 	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
 	                </when>
@@ -128,9 +136,8 @@
 	</select>
 	
 	<select id="ban_user_list" parameterType="usersVO" resultType="usersVO">
-		SELECT * FROM 
-			( SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
-  			FROM  ( SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
+		SELECT * FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+  			FROM (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
 				rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black FROM users u
    				LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
     			LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_ban_count FROM booth WHERE booth_ban = 1 GROUP BY seller_id) AS bb ON u.user_id = bb.seller_id
@@ -147,9 +154,8 @@
 	</select>
 	
 	<select id="ban_user_search" parameterType="pagingVO" resultType="usersVO">
-	    SELECT * FROM 
-	        (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
-	          FROM  (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
+		SELECT * FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+			FROM (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
 	            rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black 
 	            FROM users u
 	            LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
@@ -200,7 +206,57 @@
 	</select>
 		
 	<select id="ban_user_count" parameterType="pagingVO" resultType="int">
-	    SELECT COUNT(*) FROM users u
+	    SELECT COUNT(*) FROM (SELECT row_number() OVER(ORDER BY TOTAL.report_count DESC) AS TOTAL_NO, TOTAL.* 
+			FROM (SELECT u.*, bc.booth_count, bb.booth_ban_count, rc.review_count, ac.ask_count,
+	            rpc.report_count, rpbc.report_ban_count, s.selling_number, s.seller_black 
+	            FROM users u
+	            LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
+	            LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_ban_count FROM booth WHERE booth_ban = 1 GROUP BY seller_id) AS bb ON u.user_id = bb.seller_id
+	            LEFT JOIN (SELECT user_id, COUNT(*) AS review_count FROM review GROUP BY user_id) AS rc ON u.user_id = rc.user_id
+	            LEFT JOIN (SELECT user_id, COUNT(*) AS ask_count FROM ask GROUP BY user_id) AS ac ON u.user_id = ac.user_id
+	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
+	            LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
+	            LEFT JOIN seller s ON u.user_id = s.user_id
+	            WHERE u.user_black = 1
+	            <choose>
+	                <when test="type == 'name'">
+	                    AND user_name LIKE CONCAT('%', #{keyword}, '%')
+	                </when>
+	                <when test="type == 'email'">
+	                    AND u.user_id LIKE CONCAT('%', #{keyword}, '%')
+	                </when>
+	                <when test="type == 'tel'">
+	                    AND user_tel LIKE CONCAT('%', #{keyword}, '%')
+	                </when>
+	                <when test="type == 'created'">
+	                    AND user_created_at LIKE CONCAT('%', #{keyword}, '%')
+	                </when>
+	                <when test="type == 'updated'">
+	                    AND user_updated_at LIKE CONCAT('%', #{keyword}, '%')
+	                </when>
+	                <when test="type == 'fr'">
+					    AND report_ban_count = #{keyword}
+	                </when>
+	                <when test="type == 'fp'">
+					    AND booth_ban_count = #{keyword}
+	                </when>
+	                <when test="role == 'all'"></when>
+	                <when test="role == 'consumer'">
+					    AND user_role = #{role}
+	                </when>
+	                <when test="role == 'seller'">
+					    AND user_role = #{role}
+	                </when>
+	                <when test="role == 'admin'">
+					    AND user_role = #{role}
+	                </when>
+	            </choose>
+	          ) AS TOTAL
+	        ) AS TOTAL2
+	</select>
+	
+	<select id="user_detail" parameterType="usersVO" resultType="usersVO">
+	    SELECT * FROM users u
 		LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_count FROM booth GROUP BY seller_id) AS bc ON u.user_id = bc.seller_id
 		LEFT JOIN (SELECT seller_id, COUNT(*) AS booth_ban_count FROM booth WHERE booth_ban = 1 GROUP BY seller_id) AS bb ON u.user_id = bb.seller_id
 		LEFT JOIN (SELECT user_id, COUNT(*) AS review_count FROM review GROUP BY user_id) AS rc ON u.user_id = rc.user_id
@@ -208,42 +264,183 @@
 		LEFT JOIN (SELECT user_id, COUNT(*) AS report_count FROM report GROUP BY user_id) AS rpc ON u.user_id = rpc.user_id
 		LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS rpbc ON u.user_id = rpc.user_id
 		LEFT JOIN seller s ON u.user_id = s.user_id
-		WHERE u.user_black = 1
+		WHERE u.user_id = #{user_id};
+	</select>
+	
+	<update id="update_user" parameterType="usersVO">
+	    UPDATE users
+	    SET user_black = 
+		    CASE
+		        WHEN user_black = 0 THEN 1
+		        WHEN user_black = 1 THEN 0
+		        ELSE user_black
+		    END
+	    WHERE user_id = #{user_id};
+	</update>
+	
+	<update id="update_admin" parameterType="usersVO">
+		UPDATE users u LEFT JOIN seller s ON u.user_id = s.user_id
+		SET user_role =
+		    CASE
+		        WHEN u.user_role != 'admin' THEN 'admin'
+		        WHEN s.selling_number IS NOT NULL THEN 'seller'
+		        ELSE 'consumer'
+		    END
+		WHERE u.user_id = #{user_id};
+	</update>
+	
+	<update id="update_seller" parameterType="usersVO">
+	    UPDATE users u LEFT JOIN seller s ON u.user_id = s.user_id
+	    SET user_role = 
+		    CASE
+		        WHEN user_role = 'seller' THEN 'consumer'
+		        WHEN user_role = 'consumer' THEN 'seller'
+		        ELSE user_role
+		    END,
+		   	seller_black = 
+	        CASE
+	            WHEN seller_black = 1 THEN 0
+	            WHEN seller_black = 0 THEN 1
+	            ELSE seller_black
+	        END
+	    WHERE u.user_id = #{user_id};
+	</update>
+	
+	<select id="booth_list" parameterType="boothVO" resultType="boothVO">
+		SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+		FROM booth b
+		LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+		LEFT JOIN report r ON b.booth_no = r.booth_no
+		WHERE b.booth_ban = 0
+		GROUP BY b.booth_no
+		ORDER BY booth_no desc
+		LIMIT 10 OFFSET ${offset};
+	</select>
+	
+	<select id="booth_search" parameterType="boothVO" resultType="boothVO">
+		SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+		FROM booth b
+		LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+		LEFT JOIN report r ON b.booth_no = r.booth_no
+		WHERE b.booth_ban = 0
 		<choose>
-		    <when test="type == 'name'">
-		        AND user_name LIKE CONCAT('%', #{keyword}, '%')
-		    </when>
-		    <when test="type == 'email'">
-		        AND u.user_id LIKE CONCAT('%', #{keyword}, '%')
-		    </when>
-		    <when test="type == 'tel'">
-		        AND user_tel LIKE CONCAT('%', #{keyword}, '%')
-		    </when>
-		    <when test="type == 'created'">
-		        AND user_created_at LIKE CONCAT('%', #{keyword}, '%')
-		    </when>
-		    <when test="type == 'updated'">
-		        AND user_updated_at LIKE CONCAT('%', #{keyword}, '%')
-		    </when>
-            <when test="type == 'fr'">
-    			AND report_ban_count = #{keyword}
-            </when>
-            <when test="type == 'fp'">
-    			AND booth_ban_count = #{keyword}
-           	</when>
-      		<when test="role == 'all'"></when>
-            <when test="role == 'consumer'">
-    			AND user_role = #{role}
-            </when>
-            <when test="role == 'seller'">
-    			AND user_role = #{role}
-            </when>
-            <when test="role == 'admin'">
-    			AND user_role = #{role}
-            </when>
-		</choose>
+			<when test="type == 'email'">
+				AND seller_id LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'booth'">
+				AND booth_name LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'fstv'">
+				AND fstv_title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'reports'">
+				AND report_count = #{keyword}
+			</when>
+	    </choose>
+		GROUP BY b.booth_no
+		ORDER BY booth_no desc
+		LIMIT 10 OFFSET ${offset};
+	</select>
+	
+	<select id="booth_count" resultType="int">
+	    SELECT COUNT(*) AS result_count
+	    FROM (
+	        SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+	        FROM booth b
+	        LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+	        LEFT JOIN report r ON b.booth_no = r.booth_no
+	        WHERE b.booth_ban = 0
+	        <choose>
+	            <when test="type == 'email'">
+	                AND seller_id LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'booth'">
+	                AND booth_name LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'fstv'">
+	                AND fstv_title LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'reports'">
+	                AND report_count = #{keyword}
+	            </when>
+	        </choose>
+	        GROUP BY b.booth_no
+	    ) AS subquery;
 	</select>
 		
+	<select id="ban_booth_list" parameterType="boothVO" resultType="boothVO">
+		SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+		FROM booth b
+		LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+		LEFT JOIN report r ON b.booth_no = r.booth_no
+		WHERE b.booth_ban = 1
+		GROUP BY b.booth_no
+		ORDER BY booth_no desc
+		LIMIT 10 OFFSET ${offset};
+	</select>
+	
+	<select id="ban_booth_search" parameterType="boothVO" resultType="boothVO">
+		SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+		FROM booth b
+		LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+		LEFT JOIN report r ON b.booth_no = r.booth_no
+		WHERE b.booth_ban = 1
+		<choose>
+			<when test="type == 'email'">
+				AND seller_id LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'booth'">
+				AND booth_name LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'fstv'">
+				AND fstv_title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'reports'">
+				AND report_count = #{keyword}
+			</when>
+	    </choose>
+		GROUP BY b.booth_no
+		ORDER BY booth_no desc
+		LIMIT 10 OFFSET ${offset};
+	</select>
+	
+	<select id="ban_booth_count" resultType="int">
+	    SELECT COUNT(*) AS result_count
+	    FROM (
+	        SELECT b.*, f.fstv_title, COUNT(r.report_no) AS report_count
+	        FROM booth b
+	        LEFT JOIN festival f ON b.fstv_no = f.fstv_no
+	        LEFT JOIN report r ON b.booth_no = r.booth_no
+	        WHERE b.booth_ban = 1
+	        <choose>
+	            <when test="type == 'email'">
+	                AND seller_id LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'booth'">
+	                AND booth_name LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'fstv'">
+	                AND fstv_title LIKE CONCAT('%', #{keyword}, '%')
+	            </when>
+	            <when test="type == 'reports'">
+	                AND report_count = #{keyword}
+	            </when>
+	        </choose>
+	        GROUP BY b.booth_no
+	    ) AS subquery;
+	</select>
+	
+	<update id="update_booth" parameterType="boothVO">
+	    UPDATE booth
+	    SET booth_ban = 
+		    CASE
+		        WHEN booth_ban = 0 THEN 1
+		        WHEN booth_ban = 1 THEN 0
+		        ELSE booth_ban
+		    END
+	    WHERE booth_no = #{booth_no};
+	</update>
+	
 	<select id="report_list" parameterType="reportVO" resultType="reportVO">
 		select * from 
 		(select row_number() OVER(order by TOTAL.REPORT_NO desc) as TOTAL_NO, TOTAL.* 
@@ -364,6 +561,24 @@
 	            users u
 	            LEFT JOIN seller s ON u.user_id = s.user_id
 	            WHERE (u.user_black = 1 OR s.seller_black = 1)
+	        </when>
+	        <when test="table == 'users'">
+	            users u
+	            LEFT JOIN seller s ON u.user_id = s.user_id
+	            WHERE u.user_black = 0
+	        </when>
+	        <when test="table == 'ban_users'">
+	            users u
+	            LEFT JOIN seller s ON u.user_id = s.user_id
+	            WHERE u.user_black = 1
+	        </when>
+	        <when test="table == 'booth'">
+	        	booth
+	            WHERE booth_ban = 0
+	        </when>
+	        <when test="table == 'ban_booth'">
+	        	booth
+	            WHERE booth_ban = 1
 	        </when>
 	    </choose>
 	</select>
