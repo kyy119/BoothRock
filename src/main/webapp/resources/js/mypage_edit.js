@@ -20,32 +20,13 @@ jQuery(document).ready(function() {
 		
 		//========== 비밀번호 입력값 변경 시 실행되는 함수 ==========
 		$('#password').on('blur', function() { 						
-			passwordIsValid = validatePassword($(this).val());
-
-			if (passwordIsValid && $(this).val() != '') {			//비밀번호 유효성에 맞고, 빈칸이 아닐시 체크이미지 생성
-				passwordIsValid = true;
-				removeImage1();
-				addImage1();
-				passwordMessage.textContent = "";
-				passwordMessage.style.display = "none";
-			} else {												//아닐 경우 조건 띄우기
-				removeImage1();
-				passwordMessage.textContent = "조건:8자이상,대소문자,숫자,특수문자(@$!%*?&)";
-				passwordMessage.style.display = "block";
-			}
+			blur_password($(this).val());
 		}); 
 		
 		
 		//========== 비밀번호 확인 입력값 변경시 실행되는 함수 ==========
 		$('#password2').on('blur', function() { 
-			if ($('#password').val() == $(this).val() && $(this).val() != '') {
-				passwordSameIsValid = true;
-				removeImage2();
-				addImage2();
-			} else {
-				removeImage2();
-				passwordSameIsValid = false;
-			}
+			blur_password2($(this).val());
 		});
 		
 		
@@ -155,6 +136,34 @@ jQuery(document).ready(function() {
 		return true;
 	}
 
+	// ========== 비밀번호 유효성 맞을 시 이미지 or 조건 생성 함수 ==========
+	function blur_password(input_password){
+		passwordIsValid = validatePassword(input_password);
+		if (passwordIsValid && input_password != '') {				//비밀번호 유효성에 맞고, 빈칸이 아닐시 체크이미지 생성
+			passwordIsValid = true;
+			removeImage1();
+			addImage1();
+			passwordMessage.textContent = "";
+			passwordMessage.style.display = "none";
+		} else {													//아닐 경우 조건 띄우기
+			removeImage1();
+			passwordMessage.textContent = "조건:8자이상,대소문자,숫자,특수문자(@$!%*?&)";
+			passwordMessage.style.display = "block";
+		}
+	}
+	
+	// ========== 비밀번호 확인,이미지 생성 함수 ==========
+	function blur_password2(input_password2){
+		if ($('#password').val() == input_password2 && input_password2 != '') {
+			passwordSameIsValid = true;
+			removeImage2();
+			addImage2();
+		} else {
+			removeImage2();
+			passwordSameIsValid = false;
+		}
+	}		
+
 	// ========== 체크 이미지 동적으로 추가(패스워드 규칙 위배여부 확인용) ==========
 	function addImage1() { 									
 		let image = document.createElement("img");
@@ -248,6 +257,8 @@ jQuery(document).ready(function() {
 	
 	 // ========== 폼 형식 유효성 체크, 모두 완료시 수정가능 ==========
 	function validateForm() {
+		blur_password($('#password').val());									//default가 true이기에 비밀번호 유효성만 인증해도 넘어가지는 것을 방지
+		blur_password2($('#password2').val());
 		if (!passwordSameIsValid) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
