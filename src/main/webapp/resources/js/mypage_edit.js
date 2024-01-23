@@ -5,7 +5,12 @@ let passwordSameIsValid = true; //비밀번호 확인 일치여부
 let businessIsValid = false; //사업자 번호 인증여부
 let sameBusiness = true; //사업자번호 변경여부
 let origin_tel = document.getElementById('tel').value; //기존 전화번호
-let origin_num = document.getElementById('seller-number').value; //기존 사업자번호
+let origin_num = "";
+if (document.getElementById('seller-number')){ //판매자라면 사업자 번호 가져오기
+	origin_num = document.getElementById('seller-number').value; //기존 사업자번호
+	}
+
+
 
 jQuery(document).ready(function() {
 		$('#send').hide(); //전화번호 인증칸 숨기기
@@ -68,7 +73,7 @@ jQuery(document).ready(function() {
 				return false;
 			} else {
 				$.ajax({
-					url : "phone_duplicate",
+					url : "users/phone_duplicate",
 					data : {
 						user_tel : phoneNumber
 					},
@@ -187,7 +192,7 @@ jQuery(document).ready(function() {
 			$('#authNum').html(authNumHTML);
 			$('#authNum').show(); //인증번호칸 보이기
 			$.ajax({
-				url : "create_authentication",
+				url : "users/create_authentication",
 				data : {
 					receive : $('#tel').val()
 				},
