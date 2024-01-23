@@ -7,7 +7,7 @@
 	<c:forEach items="${list}" var="vo">
 		<li>
 			<a href="fstv/fstv_detail?fstv_no=${vo.fstv_no}">
-				<img src="${vo.fstv_image}" alt="resources/img/no-image.jpg">
+				<img src="${pageContext.request.contextPath}/${vo.fstv_image}" alt="resources/img/no-image.jpg">
 				<div class="fstv-title">${vo.fstv_title}</div>
 				<div class="fstv-loc">${vo.fstv_addr1}</div>
 				<div class="fstv-date">${vo.fstv_startdate} ~ ${vo.fstv_enddate}</div>

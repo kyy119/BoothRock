@@ -29,7 +29,7 @@
 					<c:forEach items="${list}" var="vo">
 						<li>
 		                    <a href="fstv_detail?fstv_no=${vo.fstv_no}">
-		                        <img src="${vo.fstv_image}" alt="이미지1">
+		                        <img src="${pageContext.request.contextPath}/${vo.fstv_image}" alt="이미지1">
 		                        <div class="search-fstv-info">
 			                        <div class="fstv-title">${vo.fstv_title}</div>
 			                        <div class="fstv-loc">${vo.fstv_banneraddr}</div>
