@@ -5,13 +5,11 @@
 <mapper namespace="users">
 	<insert id="create_account" parameterType="usersVO">
 		insert into users
-		values(#{user_id},#{user_password},#{user_role},#{user_created_at},#{user_updated_at},#{user_name},#{user_tel})
+		values(#{user_id},#{user_password},#{user_role},#{user_created_at},#{user_updated_at},#{user_name},#{user_tel},#{user_black})
 	</insert> <!-- 소비자 회원가입 -->
 	<insert id="create_seller" parameterType="sellerVO">
 		INSERT INTO seller
-		(user_id, selling_number, create_date)
-		VALUES (#{user_id},#{selling_number},#{create_date}
-		);
+		VALUES (#{user_id},#{selling_number},#{create_date},#{seller_black});
 	</insert> <!-- 판매자 회원가입 -->
 	<!-- <select id="list" parameterType="pageVO" resultType="bbsVO"> select 
 		* from (select ROW_NUMBER() over(order by id desc) as bbs_no, id, title, 

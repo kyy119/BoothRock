@@ -64,12 +64,20 @@ $(function() {
     });
 	
 	$('#auth').click(function(){
-	
+	let key = "";
+				//$.ajax({
+					//url : "businessAPI",
+					//async : false,
+					//success : function(result){
+					//	key = result
+					//}
+				//})
+				key = "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=27WjNSd41ndjAbIoDRszbjdYwi%2FQXn1wZZhAcrglMHw1vWWIV36eqYIcgL3K2pTHYK499GDNc7wlbmNT7%2Behxg%3D%3D"; 
 	var data = {
 					"b_no" : [$('#selling_number').val()]
 				};
 				$.ajax({
-					url : "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=27WjNSd41ndjAbIoDRszbjdYwi%2FQXn1wZZhAcrglMHw1vWWIV36eqYIcgL3K2pTHYK499GDNc7wlbmNT7%2Behxg%3D%3D",
+					url : key,
 					type : "POST",
 					async : false,
 					data : JSON.stringify(data), // json 을 string으로 변환하여 전송
