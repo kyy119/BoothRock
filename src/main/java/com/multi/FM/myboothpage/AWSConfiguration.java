@@ -2,7 +2,6 @@ package com.multi.FM.myboothpage;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -12,15 +11,15 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
-@PropertySource("classpath:db.properties")
+
 @Configuration
 @EnableWebMvc
 public class AWSConfiguration {
     
-    @Value("${SECRET_KEY}")
+    @Value("${accessKey}")
     private String accessKey;
 
-    @Value("${ACCESS_KEY}")
+    @Value("${secretKey}")
     private String secretKey;
     
     @Value("${bucketName}")
