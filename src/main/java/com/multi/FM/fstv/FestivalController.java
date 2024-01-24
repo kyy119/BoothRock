@@ -83,6 +83,15 @@ public class FestivalController {
     model.addAttribute("list", list);
   }
   
+  @RequestMapping("fstv_date_jjim")
+  public String date_jjim(FestivalPageVO fstvpageVO, Model model) {
+    fstvpageVO.calidx();
+    System.out.println(fstvpageVO);
+    List<FestivalVO> list = service.date_jjim(fstvpageVO);
+    model.addAttribute("list", list);
+    return "fstv/fstv_jjim";
+  }
+  
   @RequestMapping("fstv_detail_boothin")
   public void booth_in(Model model, FestivalVO vo) {
     List<FestivalBoothVO> list = service.booth_in(vo);

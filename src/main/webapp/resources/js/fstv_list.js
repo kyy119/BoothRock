@@ -2,24 +2,24 @@ jQuery(document).ready(function(){
 
 	let page = 1;
 	let list_url = "fstv/fstv_list";
-	$("#def-btn").click(function(){
-		list_url = "fstv/fstv_list";
-		$("#def-btn").addClass("bold-text");
-		$("#pop-btn").removeClass("bold-text");
-		$.ajax({
-        	url : list_url,								// 기본순(fstv_list)으로 지정된 url 어노테이션으로 이동
-        	data : {
-        		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
-        	},
-        	success : function(list) {
-        		$('.fstv-list').empty();				// 기존 fstv-list에 있던 내용들 지우고
-        		$('.fstv-list').html(list);				// 기본순 정렬을 불러온다
-        		page = 1;								// 인기순으로 늘어나있던 페이지를 다시 1로 돌려주고 스크롤할때 새로 불러와준다
-        	}
-        })
+	$(document).on('click', '#def-btn', function() {
+	    list_url = "fstv/fstv_list";
+	    $("#def-btn").addClass("bold-text");
+	    $("#pop-btn").removeClass("bold-text");
+	    $.ajax({
+	        url: list_url,
+	        data: {
+	            page: "1"
+	        },
+	        success: function (list) {
+	            $('.fstv-list').empty();
+	            $('.fstv-list').html(list);
+	            page = 1;
+	        }
+	    });
 	});
 	
-    $("#pop-btn").click(function(){						// 인기순 버튼을 누를때
+    $(document).on('click', '#pop-btn', function() {	// 인기순 버튼을 누를때
     	list_url = "fstv/fstv_jjim";					// 불러오는 url을 jjim url으로 변경
     	$("#pop-btn").addClass("bold-text");
         $("#def-btn").removeClass("bold-text");
@@ -58,6 +58,51 @@ jQuery(document).ready(function(){
 		$.ajax({
 			url : list_url,
 			data : {
+				date1 : date1,
+				date2 : date2,
+			},
+			success : function(data) {
+				$('.fstv-list').html(data);
+				document.getElementById('def-btn').id = 'def-date';
+				document.getElementById('pop-btn').id = 'pop-date';
+				page = "1";
+				$("#def-date").addClass("bold-text");
+				$("#pop-date").removeClass("bold-text");
+			}
+		})
+	});
+	
+	$(document).on('click', '#def-date', function () {
+	    let date1 = document.getElementById('date1').value;
+	    let date2 = document.getElementById('date2').value;
+	    console.log(date1, date2);
+	    list_url = "fstv/fstv_date_search";
+	    $("#def-date").addClass("bold-text");
+	    $("#pop-date").removeClass("bold-text");
+	    $.ajax({
+	        url: list_url,
+	        data: {
+	        	page : "1",
+	            date1: date1,
+	            date2: date2,
+	        },
+	        success: function (data) {
+	            $('.fstv-list').html(data);
+	            page = "1";
+	        }
+	    });
+	});
+	
+	$(document).on('click', '#pop-date', function () {
+		let date1 = document.getElementById('date1').value;
+		let date2 = document.getElementById('date2').value;
+		list_url = "fstv/fstv_date_jjim";
+		$("#def-date").removeClass("bold-text");
+		$("#pop-date").addClass("bold-text");
+		$.ajax({
+			url : list_url,
+			data : {
+				page : "1",
 				date1 : date1,
 				date2 : date2,
 			},

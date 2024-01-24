@@ -57,6 +57,10 @@ public class FestivalDAO {
     return my.selectList("fest.date", vo);
   }
   
+  public List<FestivalVO> date_jjim(FestivalPageVO fstvpageVO) {
+    return my.selectList("fest.date_jjim", fstvpageVO);
+  }
+  
   public List<FestivalBoothVO> booth_in(FestivalVO vo) {
     return my.selectList("fest.booth_in", vo);
   }
