@@ -28,9 +28,6 @@ public class UsersController {
 	    this.business_url_key = business_url_key;
 	}
 	
-//	@Autowired
-//	UsersConfiguration config;
-	
 	SecureRandom r = new SecureRandom();
 	String num = "";
 	
@@ -120,7 +117,7 @@ public class UsersController {
 	@ResponseBody
 	public String create_authentication1(String receive) {
 		num = String.valueOf(100000 + r.nextInt(900000));// >> 서비스로 빠져야함
-		//users_service.message_send(receive,num);
+		users_service.message_send(receive,num);
 		return num;
 	}
 	
