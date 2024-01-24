@@ -20,7 +20,7 @@
                     <li><a href="#">고객센터</a>
                         <ul class="sub-menu">
                             <li><a href="cs_question.jsp">자주 묻는 질문</a></li>
-                            <li><a href="cs_ask.jsp">문의하기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/cs_ask.jsp">문의하기</a></li>
                         </ul>
                     </li>
                     <li class="input-line">
