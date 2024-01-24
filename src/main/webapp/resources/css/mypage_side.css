@@ -54,6 +54,7 @@
 .side-navi li a {
 	display: inline-block;
 	color: #9b9b9b;
+	cursor: pointer; 
 }
 .side-navi li a:hover, .side-navi li a:hover i {
 	color: #c0c0c0;

@@ -17,6 +17,9 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 <hr class="shadow">
 <br>
 <div class="ask-list">
+	<%
+		if (VO.size() > 0){
+	%>
 	<table>
 		<thead>
 			<tr>
@@ -41,7 +44,10 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 			  }
 			%>
 		</tbody>
-	</table>
+		</table>
+		<% } else { %>
+		<div id="no_ask">문의하신 내역이 없습니다.</div>
+		<%} %>
 </div>
 </div>
 	<!-- 문의 내용 / 답변 리스트 : 디폴트는 안보임, 타이틀에 의해 선택된 부분만 보여지게 됨 -->

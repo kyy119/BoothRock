@@ -19,7 +19,7 @@ String userRole = (String) session.getAttribute("role");
 <br>
 <div class="edit-form">
 	<form class="input-form" onsubmit="return validateForm()"
-		action="mypage_edit" method="post">
+		action="mypage/mypage_edit" method="post">
 		<div>
 			<%-- 변경 불가 --%>
 			<i class="fa-regular fa-user"></i>
@@ -59,7 +59,7 @@ String userRole = (String) session.getAttribute("role");
 		%>
 		<div class="seller-number">
 			<i class="fa-regular fa-address-card"></i>
-			<input type="text" id="seller-number" name="seller-number" value=<%=sellerNum %> placeholder="사업자등록번호" required>
+			<input type="text" id="seller-number" name="selling_number" value=<%=sellerNum %> placeholder="사업자등록번호" required>
 				<button type ="button" id="auth">인증하기</button>
 		</div>
 		<%

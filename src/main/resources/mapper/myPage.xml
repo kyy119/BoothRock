@@ -3,11 +3,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="myPage">
-
-	<select id="review_list" parameterType="String"
+	<!-- 리뷰 조회  -->
+	<select id="review_list" parameterType="String" 
 		resultType="reviewVO">
 		SELECT r.review_no, r.review_starpoint, r.keyword1,
-		r.keyword2 , r.keyword3 , r.user_id ,
+		r.keyword2 , r.keyword3 , r.user_id , r.booth_no,
 		r.review_created_at ,b.booth_name
 		,
 		b.booth_category,
@@ -20,19 +20,22 @@
 		where r.user_id =
 		#{user_id}
 	</select>
-
+	
+	<!-- 회원정보조회 -->
 	<select id="user_info" parameterType="String"
 		resultType="usersVO">
 		SELECT * FROM users
 		WHERE user_id = #{user_id}
 	</select>
 
+	<!-- 사업자 번호 조회  -->
 	<select id="user_seller_info" parameterType="String"
 		resultType="String">
 		SELECT selling_number FROM seller
 		WHERE user_id = #{user_id}
 	</select>
 
+	<!-- 회원정보 수정  -->
 	<update id="mypage_edit" parameterType="usersVO">
 		UPDATE users SET
 		user_password = #{user_password}, user_tel = #{user_tel},
@@ -40,26 +43,29 @@
 		WHERE user_id = #{user_id}
 	</update>
 
+	<!-- 사업자 번호 수정  -->
 	<update id="seller_edit" parameterType="usersVO">
 		UPDATE seller SET
 		selling_number = #{selling_number}
 		WHERE user_id = #{user_id}
 	</update>
 
-
+	<!-- 찜 삭제  -->
 	<delete id="jjim_delete" parameterType="jjimVO">
 		DELETE FROM jjim
 		WHERE user_id = #{user_id} AND fstv_no = #{fstv_no}
 	</delete>
 
+	<!-- 찜 조회  -->
 	<select id="jjim_list" parameterType="String"
 		resultType="festivalVO">
 		select f.fstv_no, f.fstv_title, f.fstv_startdate,
-		f.fstv_enddate, f.fstv_eventplace, f.fstv_image FROM jjim jj JOIN
+		f.fstv_enddate, f.fstv_addr1, f.fstv_image FROM jjim jj JOIN
 		festival f
 		ON jj.fstv_no = f.fstv_no WHERE jj.user_id = #{user_id}
 	</select>
 	
+	<!-- 문의 내역 조회  -->
 	<select id="ask_list" parameterType="String"
 		resultType="askVO">
 		SELECT * FROM ask
