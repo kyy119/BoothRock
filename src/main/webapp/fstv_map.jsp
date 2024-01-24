@@ -44,29 +44,29 @@
 				},
 				success : function(list) {
 					$('.fstv-list').html(list);
+					append_date();
 				}
 			})
 			
 		})
 		
 		var areas = [];
-		/* 1. JSON 파일을 읽어들여 areas 배열을 채워넣는 작업 */
-		// 1) getJSON도 ajax 메소드와 같이 async(비동기) 방식으로 동작하는데, 순차실행을 위해 이걸 강제로 sync 방식으로 동작하도록 함.
+		// JSON 파일을 읽어들여 areas 배열을 채워넣는 작업
+		// getJSON도 ajax 메소드와 같이 async(비동기) 방식으로 동작하는데, 순차실행을 위해 이걸 강제로 sync 방식으로 동작하도록 함.
 		$.ajaxSetup({
 			async : false 
 		}); 
 		
-		// 2) getJSON 메소드를 이용해 JSON 파일을 파싱함
-		$.getJSON("resources/map_position_list.json", function(geojson) {
-			var units = geojson.features; // 파일에서 key값이 "features"인 것의 value를 통으로 가져옴(이것은 여러지역에 대한 정보를 모두 담고있음)			
-			$.each(units, function(index, unit) { // 1개 지역씩 꺼내서 사용함. val은 그 1개 지역에 대한 정보를 담음
-				var coordinates = [];	//좌표 저장할 배열
-				var name = ''; 			// 지역 이름
-				var lat = 0;			// 마커 위도
-				var lng = 0;			// 마커 경도
+		$.getJSON("resources/map_position_list.json", function(geojson) {	// getJSON 메소드를 이용해 JSON 파일을 파싱함
+			var units = geojson.features; 									// 파일에서 key값이 "features"인 것의 value를 통으로 가져옴(이것은 여러지역에 대한 정보를 모두 담고있음)			
+			$.each(units, function(index, unit) { 							// 1개 지역씩 꺼내서 사용함. val은 그 1개 지역에 대한 정보를 담음
+				var coordinates = [];										// 좌표 저장할 배열
+				var name = ''; 												// 지역 이름
+				var lat = 0;												// 마커 위도
+				var lng = 0;												// 마커 경도
 	
-				coordinates = unit.geometry.coordinates;	// 1개 지역의 영역을 구성하는 도형의 모든 좌표 배열을 가져옴 
-				name = unit.properties.CTP_ENG_NM; 			// 1개 지역의 이름을 가져옴
+				coordinates = unit.geometry.coordinates;					// 1개 지역의 영역을 구성하는 도형의 모든 좌표 배열을 가져옴 
+				name = unit.properties.CTP_ENG_NM; 							// 1개 지역의 이름을 가져옴
 				lat = unit.properties.LAT;
 				lng = unit.properties.LNG;
 	
@@ -76,7 +76,7 @@
 				ob.lng = lng;
 				ob.path = [];
 				ob.lng = lng;
-				$.each(coordinates[0], function(index, coordinate) { // []로 한번 더 감싸져 있어서 index 0번의 것을 꺼내야 배열을 접근가능.
+				$.each(coordinates[0], function(index, coordinate) {		 // []로 한번 더 감싸져 있어서 index 0번의 것을 꺼내야 배열을 접근가능.
 					ob.path.push(new kakao.maps.LatLng(coordinate[1], coordinate[0]));
 				});
 	
@@ -84,9 +84,9 @@
 			});//each
 		});//getJSON
 		
-		var MapContainer = document.getElementById('Map'),				// 이미지 지도를 표시할 div  
+		var MapContainer = document.getElementById('Map'),					// 이미지 지도를 표시할 div  
 		MapOption = {
-			center: new kakao.maps.LatLng(35.9882085, 127.8579557), 	// 지도의 중심좌표
+			center: new kakao.maps.LatLng(35.9882085, 127.8579557), 		// 지도의 중심좌표
 	        level: 13
 		};
 		
@@ -94,21 +94,8 @@
 	    	customOverlay = new kakao.maps.CustomOverlay({}),
 			customOverlay2 = new kakao.maps.CustomOverlay({});
 		
-		/* 3. 폴리곤 도형을 지도위에 띄우고 마우스 이벤트 붙이기 */
-		for (var i = 0, len = areas.length; i < len; i++) {				// 지역데이터를 폴리곤 표시 
+		for (var i = 0, len = areas.length; i < len; i++) {					// 폴리곤 도형을 지도위에 띄우고 마우스 이벤트 붙이기
 			displayArea(areas[i]);
-		}
-		
-		function displayBack(area) {
-			var polygon = new kakao.maps.Polygon({		    						// 다각형을 생성합니다 
-		        map: map, 															// 다각형을 표시할 지도 객체
-		        path: area.path,
-		        strokeWeight: 2,													// 외곽선 굵기
-		        strokeColor: '#004c80',												// 외곽선 색상
-		        strokeOpacity: 0.8,													// 외곽선 투명도
-		        fillColor: '#dc362eff',												// 내부 섹싱
-		        fillOpacity: 0.5 													// 내부 색상 투명도
-		    });
 		}
 		
 		var selectedMarker = null;
@@ -118,9 +105,8 @@
 		customOverlay.setContent('<span id="area">서울</span>');		
         customOverlay.setPosition(new kakao.maps.LatLng(37.570087, 126.962789));
         customOverlay.setMap(map);
-		
-		// 폴리곤, 마커 생성 + 이벤트 등록 함수
-		function displayArea(area) {
+
+		function displayArea(area) {												// 폴리곤, 마커 생성 + 이벤트 등록 함수
 
 			var imageSize = new kakao.maps.Size(40, 40); 							// 마커 이미지 크기 조절
 			var imageSrc = "resources/img/normalMarker.png", 						// 마커 이미지 경로
@@ -128,18 +114,18 @@
 			var normalImage = new kakao.maps.MarkerImage(imageSrc, imageSize), 		// 마커 이미지 생성
 				clickImage = new kakao.maps.MarkerImage(imageSrc2, imageSize);
 			
-		    var marker = new kakao.maps.Marker({									// 마커를 생성합니다
-		        map: map, 															// 마커를 표시할 지도
-		        position: new kakao.maps.LatLng(area.lat, area.lng), 				// 마커를 표시할 위치
-		        title : area.name, 													// 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		    var marker = new kakao.maps.Marker({									// 마커 생성
+		        map: map,
+		        position: new kakao.maps.LatLng(area.lat, area.lng), 				// 마커 표시 위치
+		        title : area.name,
 		        image : normalImage 												// 마커 이미지 
 		    });
 			
 			marker.normalImage = normalImage;
 			
-		    var polygon = new kakao.maps.Polygon({		    						// 다각형을 생성합니다 
-		        map: map, 															// 다각형을 표시할 지도 객체
-		        path: area.path,
+		    var polygon = new kakao.maps.Polygon({		    						// 폴리곤 생성
+		        map: map,
+		        path: area.path,													// 폴리곤 경로
 		        strokeWeight: 2,													// 외곽선 굵기
 		        strokeColor: '#004c80',												// 외곽선 색상
 		        strokeOpacity: 0.8,													// 외곽선 투명도
@@ -147,12 +133,9 @@
 		        fillOpacity: 1 														// 내부 색상 투명도
 		    });
 		    
-		    // 마커에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
-		    // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
-		    kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
-		    	// 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면 마커의 이미지를 클릭이미지로 변경
-		    	// mouserover된 co가 클릭된 co가 아니면 co의 이미지를 띄움
-		    	if (!selectedMarker || selectedMarker !== marker) {	
+		    kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {			// 마커에 mouseover 이벤트 등록 mouseover시 폴리곤의 채움색 변경 + 커스텀 오버레이 표시
+
+		    	if (!selectedMarker || selectedMarker !== marker) {								// 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면 마커의 이미지를 클릭이미지로 변경
 		            marker.setImage(clickImage);
 		            
 				    !!selectedPol && selectedPol.setOptions({fillColor: '#fff'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
@@ -164,8 +147,7 @@
 		        }
 		    });
 	
-		    // 마커에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
-		    kakao.maps.event.addListener(marker, 'mouseout', function() {
+		    kakao.maps.event.addListener(marker, 'mouseout', function() {						// 마커에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
 		    	if (!selectedMarker || selectedMarker !== marker) {
 		            marker.setImage(normalImage);
 		            !!selectedPol && selectedPol.setOptions({fillColor: '#99e8c5'});			// 선택된 폴리곤이 있으면 마커에서 마우스를 뗐을 때 그 폴리곤을 다시 칠함
@@ -174,8 +156,7 @@
 		        }
 		    }); 
 	
-		    // 마커에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-		    kakao.maps.event.addListener(marker, 'click', function(mouseEvent) {
+		    kakao.maps.event.addListener(marker, 'click', function(mouseEvent) {				// 마커에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
 		    	if (!selectedMarker || selectedMarker !== marker) {
 		            !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);	// 클릭된 마커 객체가 null이 아니면 클릭된 마커의 이미지를 기본 이미지로 변경
 		            marker.setImage(clickImage);												// 현재 클릭된 마커의 이미지는 클릭 이미지로 변경
@@ -186,8 +167,9 @@
 			        customOverlay.setPosition(new kakao.maps.LatLng(area.lat, area.lng));	
 			        customOverlay.setMap(map);
 			        
-			        region = document.getElementById('area').innerText;
-			        updateHeaderTextValue(region);
+			        region = document.getElementById('area').innerText;							// 지도에서 선택한 지역명을 데이터로 가져옴
+			        updateHeaderTextValue(region);												// 선택한 지역명으로 우측 title 변경 함수
+			        
 			        if(region === '충남'){
 			        	region = '충청남도';
 			        }else if(region === '충북'){
@@ -213,6 +195,7 @@
 			        }else if(region === '광주'){
 			        	region = '광주광역시';
 			        }
+			        
 			        $.ajax({
 						url : list_url,
 						data : {
@@ -220,11 +203,11 @@
 						},
 						success : function(list) {
 							$('.fstv-list').html(list);
+							append_date();
 						}
 					})
 					
 		        }
-		    	//selectedCO = customOverlay;
 		    	selectedMarker = marker;
 		    	selectedPol = polygon;
 		    });
@@ -237,6 +220,10 @@
 		    currentValue.html('<i class="fa-solid fa-location-dot"></i> ' + newText);
 		}
 		
+		function append_date() {
+		    $('li.fstv-end').append('<div class="fstv-end-text">축제종료</div>');
+		    $('li.fstv-will').append('<div class="fstv-will-text">개최예정</div>');
+		}
 	</script>
 </body>
 </html>
