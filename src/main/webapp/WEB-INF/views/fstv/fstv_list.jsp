@@ -48,6 +48,7 @@
 					<div class="fstv-loc"><%=list.get(i).getFstv_banneraddr() %></div>
 					<div class="fstv-date"><%=list.get(i).getFstv_startdate() %>~
 						<%=list.get(i).getFstv_enddate() %></div>
+					<div><%=list.get(i).getFstv_jjimCount()%></div>
 				</a>
 			</li>
 		<% }}} catch (Exception e){} %>

@@ -35,6 +35,7 @@
 				<div class="fstv-title">${vo.fstv_title}</div>
 				<div class="fstv-loc">${vo.fstv_banneraddr}</div>
 				<div class="fstv-date">${vo.fstv_startdate} ~ ${vo.fstv_enddate}</div>
+				<div class="fstv-jjim">${vo.fstv_jjimCount}</div>
 			</a>
 		</li>
 	</c:forEach>
