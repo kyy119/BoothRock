@@ -89,12 +89,20 @@ jQuery(document).ready(function() {
 		});
 		
 		//========== 사업자 번호 인증하기 클릭시==========
-		$('#auth').click(function(){ 
+		$('#auth').click(function(){
+				let key = "";
+					$.ajax({
+						url : "users/businessAPI",
+						async : false,
+						success : function(result){
+							key = result
+						}
+					}) 
 				var data = {
 					"b_no" : [$('#seller-number').val()]									//입력한 사업자 번호 값
 				};
 				$.ajax({
-					url : "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=serviceKEY", // 서비스키 입력하기
+					url : key, // 서비스키 입력하기
 					type : "POST",
 					async : false,
 					data : JSON.stringify(data), 											// json 을 string으로 변환하여 전송
@@ -217,7 +225,6 @@ jQuery(document).ready(function() {
 				},
 				success : function(result) {
 					num = result
-					alert("" + num)	 											// 맨 마지막에 꼭 지우기!!
 				}// success
 			}) // ajax
 			
