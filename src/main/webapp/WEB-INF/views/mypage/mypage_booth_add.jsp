@@ -40,7 +40,7 @@
 				</select>
 			</div>
 			<div>
-				<i class="fa-solid fa-image"></i> <input type="file" name="booth-img" id="booth-img" accept="image/*">
+				<i class="fa-solid fa-image"></i> <input type="file" name="booth-img" id="booth-img">
 			</div>
 			<div>
 				<i class="fa-solid fa-location-dot"></i> <input type="text"
