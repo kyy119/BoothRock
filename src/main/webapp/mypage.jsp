@@ -17,7 +17,7 @@ String userRole = (String)session.getAttribute("role");
 <script type="text/javascript">
 let userRole = "<%=userRole%>";
 let userId = "<%=userId%>"; 
-if (userId == null) {
+if (userId == "null") {
 	alert("로그인이 필요합니다.");
 	window.location.href = 'main.jsp';
 }
