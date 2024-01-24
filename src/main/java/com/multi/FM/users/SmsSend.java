@@ -13,15 +13,12 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @RestController
 public class SmsSend {
-	
-//    @Autowired
-//    UsersConfiguration config;
   
     @Autowired
-    private String sms_key = "";// ""다 지우기
+    private String sms_key;// ""다 지우기
    
     @Autowired
-    private String sms_secret_key =  ""; // ""다 지우기
+    private String sms_secret_key; // ""다 지우기
 	
     public MessageListResponse get_message_list(String receive) {
 		MessageListRequest request = new MessageListRequest();
