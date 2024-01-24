@@ -10,7 +10,7 @@
     <script src="resources/js/booth_review_write.js" defer type="text/javascript"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../../../header.jsp" %>
     
     <div class="bodywrap">
     	<div class="booth-detail-form">
@@ -72,7 +72,7 @@
 	     </div>
     </div>
 	
-	<%@ include file="footer.jsp" %>
+	<%@ include file="../../../footer.jsp" %>
 
 </body>
 </html>
