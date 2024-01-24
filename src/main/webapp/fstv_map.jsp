@@ -200,6 +200,18 @@
 			        	region = '경상북도';
 			        }else if(region === '경남'){
 			        	region = '경상남도';
+			        }else if(region === '부산'){
+			        	region = '부산광역시';
+			        }else if(region === '대구'){
+			        	region = '대구광역시';
+			        }else if(region === '세종'){
+			        	region = '세종특별자치시';
+			        }else if(region === '울산'){
+			        	region = '울산광역시';
+			        }else if(region === '서울'){
+			        	region = '서울특별시';
+			        }else if(region === '광주'){
+			        	region = '광주광역시';
 			        }
 			        $.ajax({
 						url : list_url,

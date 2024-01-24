@@ -40,7 +40,7 @@
 	        	<hr>
 	        	<div class="fstv-container" style="width: 1000px; text-align: center;">
 	        		<div class="fstv-img">
-	        			<img alt="페스티벌 이미지" src="${pageContext.request.contextPath}/<%=vo.getFstv_image()%>">
+	        			<img alt="페스티벌 이미지" src="<%=vo.getFstv_image()%>">
 	        		</div>
 	        		<div class="fstv-info">
 	        			<div>
