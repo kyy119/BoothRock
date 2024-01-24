@@ -24,6 +24,24 @@
 	            $("#keyword").val(keyword);
 	            search(1);
 	        }
+
+	        function update_booth(action, message, booth_no) {
+	        	console.log("클릭");
+		        $.ajax({
+	                type: "POST",
+	                url: action,
+	                data: { booth_no: booth_no },
+	                success: function(data) {
+	                    alert(message);
+	                     location.reload(true);
+	                }
+	            });
+		    }
+
+	        $(".update_booth").on("click", function() {
+	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
+	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
+	        });
 		});
 		
 	    $(function(){
@@ -97,10 +115,10 @@
 	                $.each(data.ban_booth_search, function(index, booth) {
 	                	var row = "<tr>" +
 	                	"<td>" + booth.booth_no + "</td>" +
-	                    "<td><a href='user_detail?user_id=booth_seller_id'>" + booth.seller_id + "</a></td>" +
+	                    "<td><a href='user_detail?user_id=" + booth.seller_id + "'>" + booth.seller_id + "</a></td>" +
 	                    "<td><a href='../booth/booth_detail?booth_no=" + booth.booth_no + "'>" + booth.booth_name + "</a></td>" +
 	                    "<td><a href='../fstv/fstv_detail?fstv_no=" + booth.fstv_no + "'>" + booth.fstv_title + "</a></td>" +
-						"<td>" + booth.report_count + "회 </td>" +
+						"<td>" + booth.report_count + " 건 </td>" +
 	                    "<td><button class='update_booth'>해제</button></td>" + 
 	                    "<td><button class='delete'>삭제</button></td>";
 	
@@ -135,24 +153,6 @@
 		        	$("#pagination").append(next);
 		        }
 	        }
-	        
-	        function update_booth(action, message, booth_no) {
-	        	console.log("클릭");
-		        $.ajax({
-	                type: "POST",
-	                url: action,
-	                data: { booth_no: booth_no },
-	                success: function(data) {
-	                    alert(message);
-	                     location.reload(true);
-	                }
-	            });
-		    }
-
-	        $(".update_booth").on("click", function() {
-	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
-	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
-	        });
 	    }
 	</script>
 </head>

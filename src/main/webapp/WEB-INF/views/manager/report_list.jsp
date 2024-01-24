@@ -93,17 +93,27 @@
 	                keyword: keyword,
 	            },
 	            success: function(data) {
+	                var report_checked = ${report_checked};
+	                
 	                $("tbody").empty();
 	                $.each(data.report_search, function(index, report) {
 	                	var row = "<tr>" +
-	                	"<td>" + booth.booth_no + "</td>" +
-	                    "<td><a href='user_detail?user_id=booth_seller_id'>" + booth.seller_id + "</a></td>" +
-	                    "<td><a href='../booth/booth_detail?booth_no=" + booth.booth_no + "'>" + booth.booth_name + "</a></td>" +
-	                    "<td><a href='../fstv/fstv_detail?fstv_no=" + booth.fstv_no + "'>" + booth.fstv_title + "</a></td>" +
-						"<td>" + booth.report_count + "회 </td>" +
-	                    "<td><button class='update_booth'>등록</button></td>" + 
-	                    "<td><button class='delete'>삭제</button></td>";
-	
+	                	"<td>" + report.report_no + "</td>" +
+	                    "<td><a href='report_detail?report_no=" + report.report_no + "'>" + report.report_title + "</a></td>" +
+	                    "<td><a href='user_detail?user_id=" + report.user_id + "'>" + report.user_id + "</a></td>" +
+	                    "<td><a href='../booth/booth_detail?booth_no=" + report.booth_no + "'>" + report.booth_name + "</a></td>" +
+						"<td>" + report.report_date + "</td>";
+
+						if (report_checked == true && report.report_lie == 0) {
+	                    	row += "<td><i class='fa-solid fa-check'></i></td>";
+						} else if (report_checked == true && report.report_lie == 1) {
+							row += "<td><i class='fa-solid fa-xmark'></i></td>";
+						} else {
+							row += "<td></td>";
+						}
+						
+						row += "</tr>";
+						
 	                    $("tbody").append(row);
 	                });
 	                search_pagination(data.search_pages, page);
@@ -135,29 +145,6 @@
 		        	$("#pagination").append(next);
 		        }
 	        }
-		    function update_booth(action, message) {
-		    	var tr = $(this).closest('tr');
-		    	var booth_no = tr.find('.booth-no').text();
-		    	var booth_ban = tr.find('.booth-ban').text();
-		    	
-	            $.ajax({
-	                type: "POST",
-	                url: action,
-	                data: { booth_no: booth_no },
-	                success: function(data) {
-	                    alert(message);
-	                    if (parseInt(booth_ban) == 1) {
-	                        window.location.href = 'ban_booth_list';
-	                    } else {
-	                        window.location.href = 'booth_list';
-	                    }
-	                }
-	            });
-	        }
-
-	        $(".update_booth").on("click", function() {
-	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.");
-	        });
 	    }
 	</script>
 </head>
@@ -173,6 +160,7 @@
 				    <option value="title">Title</option>
 				    <option value="email">Email</option>
 				    <option value="booth">Booth</option>
+				    <option value="booth_no" style="display: none;">Booth_no</option>
 				    <option value="created">Created</option>
 		    	</select>
 		    	<input name="keyword" type="text" id="keyword">
@@ -186,7 +174,7 @@
 					    <th>Email</th>
 					    <th>Booth</th>
 					    <th>Created</th>
-					    <th>Resolved</th>
+					    <th>Checked</th>
     				</tr>
 				</thead>
 				<tbody id="result">
@@ -195,15 +183,24 @@
 					      	<td>${vo.report_no}</td>
 					      	<td><a href="report_detail?report_no=${vo.report_no}">${vo.report_title}</a></td>
 					      	<td><a href="user_detail?user_id=${vo.user_id}">${vo.user_id}</a></td>
-					      	<td><a href="booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
+					      	<td><a href="../booth/booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
 					      	<td>${vo.report_date}</td>
-					      	<td></td>
+					      	<c:if test="${report_checked == true && vo.report_lie == 0}">
+						      	<td><i class="fa-solid fa-check"></i></td>
+					      	</c:if>
+					      	<c:if test="${report_checked == true && vo.report_lie == 1}">
+						      	<td><i class="fa-solid fa-xmark"></i></td>
+					      	</c:if>
+					      	<c:if test="${report_checked == null}">
+						      	<td></td>
+					      	</c:if>	
+					      	<c:out value="${report_checked}">${report_checked}</c:out>
 					    </tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<div id="pagination">
-				<c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
 		</div>
     </div>

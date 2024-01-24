@@ -129,7 +129,7 @@
 		    			<c:if test="${user_detail.selling_number != null}">
 				    		<li>
 				    			<span class="title">Booth</span>
-				    			<span><a href="booth_list?type=email&keyword=${user_detail.user_id}">${user_detail.report_ban_count} 건</a></span>
+				    			<span><a href="booth_list?type=email&keyword=${user_detail.user_id}">${user_detail.booth_count} 건</a></span>
 				    		</li>
 			    		</c:if>
 			    		<li>
@@ -147,7 +147,7 @@
 			    		<c:if test="${user_detail.selling_number != null}">
 					    	<li>
 				    			<span class="title">False Post</span>
-								<span><a href="ban_booth_list?type=email&keyword=${user_detail.user_id}">${user_detail.report_ban_count} 건</a></span>
+								<span><a href="ban_booth_list?type=email&keyword=${user_detail.user_id}">${user_detail.booth_ban_count} 건</a></span>
 					    	</li>
 			    		</c:if>
 			    		<li>
