@@ -6,7 +6,7 @@
 	<select id="getAllFestivals" resultType="festivalVO">
 		select fstv_no,
 		fstv_title from festival where
-		fstv_enddate &gt;= current_date() order by fstv_startdate desc
+		fstv_enddate &gt;= current_date() order by fstv_title
 	</select>
 	<insert id="insertBooth" parameterType="boothVO"
 		useGeneratedKeys="true" keyProperty="booth_no">
