@@ -5,7 +5,7 @@
 	<!-- 현재 진행중인 축제 / 시작날짜가 가까운게 먼저 전으로 뒤로 -->
 	<select id="getAllFestivals" resultType="festivalVO">
 		select fstv_no,
-		fstv_title from festival where fstv_startdate &lt;= current_date() and
+		fstv_title from festival where
 		fstv_enddate &gt;= current_date() order by fstv_startdate desc
 	</select>
 	<insert id="insertBooth" parameterType="boothVO"

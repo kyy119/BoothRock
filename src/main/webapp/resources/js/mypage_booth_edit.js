@@ -58,6 +58,10 @@ jQuery(document).ready(function() {
                 var itemPrice = $(element).find(".booth-item-price").val();
                 boothData.items.push({ product: itemName, price: itemPrice });
             });
+            if (!isValidFormData(boothData)) {
+		        alert("부스 정보를 모두 입력하세요.");
+		        return;
+		    }
 			console.log(boothData.booth_name);
             // AJAX를 사용하여 서버에 업데이트 요청을 보냅니다.
             $.ajax({
@@ -69,8 +73,7 @@ jQuery(document).ready(function() {
                     // 업데이트 성공 시 처리할 내용을 여기에 추가하세요.
                     console.log(response);
                     alert("부스 정보가 업데이트되었습니다.");
-                   	deleteBoothProduct(response);
-                   	insertBP(response, boothData.items);
+                   	deleteBoothProductAndInsertBP(response, boothData.items);
                    	$('#boothManage').click();
                     //window.location.reload(); // 페이지 새로고침
                 },
@@ -91,18 +94,26 @@ jQuery(document).ready(function() {
             });
         });
 });
-function deleteBoothProduct(boothNo){
-	$.ajax({
+function deleteBoothProductAndInsertBP(boothNo, items) {
+    // 부스 상품 삭제 후 추가하는 순서를 조절하기 위해 콜백 함수 사용
+    deleteBoothProduct(boothNo, function () {
+        insertBP(boothNo, items);
+    });
+}
+function deleteBoothProduct(boothNo, callback) {
+    $.ajax({
         type: "POST",
         url: "mypage/deleteBoothProduct",
         data: { boothNo: boothNo },
         success: function(response) {
-            // 삭제 성공 시 처리할 내용을 추가하세요.
             console.log(response);
+            // 삭제 성공 시 콜백 함수 호출
+            callback();
         },
         error: function(error) {
-            // 삭제 실패 시 처리할 내용을 추가하세요.
             console.error(error);
+            // 실패 시 콜백 함수 호출
+            callback();
         }
     });
 }
@@ -121,4 +132,24 @@ $.ajax({
             console.error(error);
         }
     });
+}
+function isValidFormData(boothData) {
+    if (
+        !boothData.booth_name ||
+        !boothData.booth_category ||
+        !boothData.booth_addr ||
+        !boothData.booth_tel ||
+        !boothData.booth_hours ||
+        !boothData.booth_introduction
+    ) {
+        return false;
+    }
+
+    for (let i = 0; i < boothData.items.length; i++) {
+        if (!boothData.items[i].product || !boothData.items[i].price) {
+            return false;
+        }
+    }
+
+    return true;
 }
