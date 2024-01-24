@@ -32,7 +32,7 @@
         	
             $.ajax({
                 type: "POST",
-                url: "user_list",
+                url: "common_user_list1",
                 data: {
                     page: page
                 },
@@ -87,7 +87,7 @@
 		
         $.ajax({
             type: "POST",
-            url: "user_search",
+            url: "common_search",
             data: {
                 page: page,
                 type: type,
@@ -96,7 +96,7 @@
             },
             success: function(data) {
                 $("tbody").empty();
-                $.each(data.user_search, function(index, user) {
+                $.each(data.list, function(index, user) {
                 	var row = "<tr>" +
                 	"<td>" + user.total_no + "</td>" +
                     "<td>" + user.user_name + "</td>" +

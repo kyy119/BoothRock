@@ -100,13 +100,13 @@
                 	var row = "<tr>" +
                     "<td>" + user.total_no + "</td>" +
                     "<td>" + user.user_name + "</td>" +
-                    "<td><a href='user_detail?user_id=${vo.user_id}'>" + user.user_id + "</a></td>" +
+                    "<td><a href='user_detail?user_id=" + user.user_id + "'>" + user.user_id + "</a></td>" +
                     "<td class='user_role'>" + user.user_role + "</td>" +
                     "<td>" + user.user_tel + "</td>" +
                     "<td>" + user.user_created_at + "</td>" +
                     "<td>" + user.user_updated_at + "</td>" +
-                    "<td>" + user.report_ban_count + "</td>" +
-                    "<td>" + user.booth_ban_count + "</td>";
+                    "<td>" + user.report_ban_count + " 건</td>" +
+                    "<td>" + user.booth_ban_count + " 건</td>";
 
                     $("tbody").append(row);
                 });
@@ -212,8 +212,8 @@
 					      	<td>${vo.user_tel}</td>
 					      	<td>${vo.user_created_at}</td>
 					      	<td>${vo.user_updated_at}</td>
-					      	<td>${vo.report_ban_count}</td>
-							<td>${vo.booth_ban_count}</td>
+					      	<td>${vo.report_ban_count} 건</td>
+							<td>${vo.booth_ban_count} 건</td>
 					    </tr>
 					</c:forEach>
 				</tbody>

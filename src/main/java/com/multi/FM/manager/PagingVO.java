@@ -15,6 +15,8 @@ public class PagingVO {
     private String type;
     private String keyword;
     private String role;
+    private String answer;
+    private String ask;
     private String table;
     private String user_role;
   
