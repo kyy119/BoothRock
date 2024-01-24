@@ -78,9 +78,10 @@ public class FestivalController {
   }
 
   @RequestMapping("fstv_date_search")
-  public void date(Model model, FestivalPageVO vo) {
+  public String date(Model model, FestivalPageVO vo) {
     List<FestivalVO> list = service.date(vo);
     model.addAttribute("list", list);
+    return "fstv/fstv_jjim";
   }
   
   @RequestMapping("fstv_date_jjim")

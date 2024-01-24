@@ -15,6 +15,7 @@ jQuery(document).ready(function(){
 	            $('.fstv-list').empty();
 	            $('.fstv-list').html(list);
 	            page = 1;
+	            append_date();
 	        }
 	    });
 	});
@@ -29,10 +30,10 @@ jQuery(document).ready(function(){
         		page : "1"								// 페이지값 1지정 후 idx계산해서 첫페이지 출력
         	},
         	success : function(list) {
-        		console.log(list_url);
         		$('.fstv-list').empty();				// 기존 fstv-list에 있던 내용들 지우고
         		$('.fstv-list').html(list);				// 인기순 정렬을 불러온다
         		page = 1;								// 기본순으로 늘어나있던 페이지를 다시 1로 돌려주고 스크롤할때 새로 불러와준다
+        		append_date();
         	}
         })
     });
@@ -45,6 +46,7 @@ jQuery(document).ready(function(){
 		},
 		success : function(list) {
 			$('.fstv-list').html(list)
+			append_date();
 		}
 	})
 		
@@ -54,7 +56,6 @@ jQuery(document).ready(function(){
 		let date1 = document.getElementById('date1').value;
 		let date2 = document.getElementById('date2').value;
 		list_url = "fstv/fstv_date_search";
-		console.log(date1);
 		$.ajax({
 			url : list_url,
 			data : {
@@ -63,11 +64,14 @@ jQuery(document).ready(function(){
 			},
 			success : function(data) {
 				$('.fstv-list').html(data);
-				document.getElementById('def-btn').id = 'def-date';
-				document.getElementById('pop-btn').id = 'pop-date';
+				if (!$('#def-date').length && !$('#pop-date').length) {
+					document.getElementById('def-btn').id = 'def-date';
+					document.getElementById('pop-btn').id = 'pop-date';
+				};
 				page = "1";
 				$("#def-date").addClass("bold-text");
 				$("#pop-date").removeClass("bold-text");
+				append_date();
 			}
 		})
 	});
@@ -75,7 +79,6 @@ jQuery(document).ready(function(){
 	$(document).on('click', '#def-date', function () {
 	    let date1 = document.getElementById('date1').value;
 	    let date2 = document.getElementById('date2').value;
-	    console.log(date1, date2);
 	    list_url = "fstv/fstv_date_search";
 	    $("#def-date").addClass("bold-text");
 	    $("#pop-date").removeClass("bold-text");
@@ -89,6 +92,7 @@ jQuery(document).ready(function(){
 	        success: function (data) {
 	            $('.fstv-list').html(data);
 	            page = "1";
+	           	append_date();
 	        }
 	    });
 	});
@@ -109,6 +113,7 @@ jQuery(document).ready(function(){
 			success : function(data) {
 				$('.fstv-list').html(data);
 				page = "1";
+				append_date();
 			}
 		})
 	});
@@ -121,7 +126,6 @@ jQuery(document).ready(function(){
 	        // 스크롤이 페이지 하단에 도달하고 로딩 중이 아닐 때
 	        loading = true; 								// 로딩 상태로 변경
 	        page++;											// 페이지 1추가
-	        console.log(page);
 	
 	        $.ajax({										// AJAX를 사용하여 새로운 리스트를 서버에서 가져옴
 	            url: list_url,
@@ -131,6 +135,7 @@ jQuery(document).ready(function(){
 	            type: 'GET',
 	            success: function(data) {					// 새로운 리스트 가져오기 성공 시
 	                $('.fstv-list').append(data);			// 가져온 리스트를 추가
+	                append_date();
 	                loading = false;						// 로딩 완료 상태로 변경
 	            },
 	            error: function() {
@@ -141,5 +146,10 @@ jQuery(document).ready(function(){
 	});
 	
 	// ===============================================================================================
+	
+	function append_date() {
+	    $('li.fstv-end').append('<div class="fstv-end-text">축제종료</div>');
+	    $('li.fstv-will').append('<div class="fstv-will-text">개최예정</div>');
+	}
 	
 });
