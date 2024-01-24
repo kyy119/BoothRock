@@ -1,5 +1,6 @@
 package com.multi.FM.myboothpage;
 
+import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class MyBoothController {
 
   @Autowired
   private MyboothService myboothService;
+  
+  @Autowired
+  private AwsS3Biz awsS3Biz; 
 
   @PostMapping("add-product")
   @ResponseBody // 뷰 없이 직접 응답 반환을 위해
@@ -147,5 +151,16 @@ public class MyBoothController {
       }
   }
 
-
+  @PostMapping("image.do")
+  @ResponseBody
+  public String handleFileUpload(@RequestParam("file") MultipartFile file) {
+      try {
+          // 이미지 업로드 서비스 호출
+          String imageUrl = awsS3Biz.uploadAndSaveBoothImage(file);
+          return imageUrl;
+      } catch (Exception e) {
+          e.printStackTrace();
+          return "Error uploading image.";
+      }
+  }
 }

@@ -15,31 +15,26 @@ jQuery(document).ready(function() {
         	alert("상품 가격은 숫자로 입력해주세요.");
         	return;
         }
-        // Ajax 요청 및 서버에 boothData 전송
-        $.ajax({
-            type: 'POST',
-            url: 'mypage/add',
-            contentType: 'application/json',
-            data: JSON.stringify(boothData),
-            success: function(response) {
-                console.log('Booth inserted successfully.');
-                console.log(response);
-                // booth_product 테이블에 데이터 삽입
-                insertBoothProduct(response);
-            },
-            error: function(error) {
-            	console.error(boothData.fstvTitle);
-            	console.error(boothData.boothName);
-            	console.error(boothData.boothType);
-            	console.error(boothData.boothImage);
-            	console.error(boothData.boothLoc);
-            	console.error(boothData.boothTel);
-            	console.error(boothData.boothHour);
-            	console.error(boothData.boothIntro);
-            	console.error(boothData.items);
-            	console.error(boothData.userId);
-                console.error('Error inserting booth:', error);
-            }
+        uploadAndSaveBoothImage(function() {
+            console.log("booth name : " + boothData.booth_name);
+            console.log("booth image : " + boothData.booth_image);
+            
+            // Ajax 요청 및 서버에 boothData 전송
+            $.ajax({
+                type: 'POST',
+                url: 'mypage/add',
+                contentType: 'application/json',
+                data: JSON.stringify(boothData),
+                success: function(response) {
+                    console.log('Booth inserted successfully.');
+                    console.log(response);
+                    // booth_product 테이블에 데이터 삽입
+                    insertBoothProduct(response);
+                },
+                error: function(error) {
+                    console.error('Error inserting booth:', error);
+                }
+            });
         });
     });
     
@@ -95,7 +90,6 @@ function updateBoothData() {
 	boothData.seller_id = userId;
     boothData.booth_name = $('#booth-name').val();
     boothData.booth_category = $('#booth-type').val();
-    boothData.booth_image = $('#booth-img').val();
     boothData.booth_addr = $('#booth-loc').val();
     boothData.booth_tel = $('#booth-tel').val();
     boothData.booth_hours = $('#booth-hour').val();
@@ -134,19 +128,20 @@ function insertBoothProduct(boothNo) {
 }
 function isValidFormData() {
     // 각 필드의 값을 확인하고 빈 값이 있으면 false 반환
-    if (boothData.booth_name.trim() === '' ||
-        boothData.booth_category.trim() === '' ||
-        boothData.booth_image.trim() === '' ||
-        boothData.booth_addr.trim() === '' ||
-        boothData.booth_tel.trim() === '' ||
-        boothData.booth_hours.trim() === '' ||
-        boothData.booth_introduction.trim() === '') {
+    if (
+        !boothData.booth_name ||
+        !boothData.booth_category ||
+        !boothData.booth_addr ||
+        !boothData.booth_tel ||
+        !boothData.booth_hours ||
+        !boothData.booth_introduction
+    ) {
         return false;
     }
 
     // items 배열의 각 요소에 대해서도 빈 값 확인
     for (let i = 0; i < boothData.items.length; i++) {
-        if (boothData.items[i].product.trim() === '' || boothData.items[i].price.trim() === '') {
+        if (!boothData.items[i].product || !boothData.items[i].price) {
             return false;
         }
     }
@@ -154,6 +149,9 @@ function isValidFormData() {
     // 모든 필드가 비어있지 않으면 true 반환
     return true;
 }
+
+
+
 function isNanFormData(){
 	for (let i = 0; i < boothData.items.length; i++) {
 	        // 추가: 상품 가격이 숫자가 아닌 경우 false 반환
@@ -162,4 +160,30 @@ function isNanFormData(){
 	        }
 	    }
 	 return true;
+}
+function uploadAndSaveBoothImage(callback) {
+    var formData = new FormData();
+    formData.append('file', $('#booth-img')[0].files[0]);
+
+    // 이미지 업로드 Ajax 요청
+    $.ajax({
+        type: 'POST',
+        url: 'mypage/image.do',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (imageUrl) {
+            console.log('이미지 업로드 성공.');
+            console.log(imageUrl);
+            // 이미지 URL을 boothData에 설정
+            boothData.booth_image = imageUrl;
+            console.log("booth image : " + boothData.booth_image);
+
+            // 이미지 업로드 완료 후에 callback 호출
+            callback();
+        },
+        error: function (error) {
+            console.error('이미지 업로드 오류:', error);
+        }
+    });
 }

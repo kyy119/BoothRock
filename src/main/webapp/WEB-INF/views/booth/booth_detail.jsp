@@ -45,7 +45,7 @@ window.onload = function() {
 			<div class="booth-menu"
 				style="width: 1000px; height: 300px; margin-top: 20px;">
 				<div class="booth-img">
-					<img alt="부스 이미지" src="${pageContext.request.contextPath}/<%=boothDetail.getBooth_image()%>">
+					<img alt="부스 이미지" src="<%=boothDetail.getBooth_image()%>">
 				</div>
 				<div class="booth-item">
 					<ul>
