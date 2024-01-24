@@ -9,14 +9,4 @@ jQuery(document).ready(function(){
 	    $(".fstv-map").stop().animate({"top": newPosition + "px"}, 800);
 	});
 	
-	// 축제 리스트 첫 페이지를 위한 ajax
-	$.ajax({
-		url : list_url,
-		data : {
-        region : region
-		},
-		success : function(list) {
-			$('.fstv-list').html(list);
-		}
-	})
 });
