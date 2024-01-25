@@ -6,6 +6,8 @@
     pageEncoding="UTF-8"%>
 <% 
   	String q = (String)request.getAttribute("q");
+	List<FestivalVO> lists = (List<FestivalVO>)request.getAttribute("list");
+	int cnt = lists.size();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,11 @@
 	    <div class="search-form">
 	    	<div class="search-head">
 	    		<h1>'${q}'</h1>
+	    		<% if(cnt == 0) { %>
+	    		<h2>검색 결과가 없습니다 <i class="fa-solid fa-magnifying-glass"></i></h2>
+	    	</div>
+	    	<img src="https://boothrockstorage.s3.ap-northeast-2.amazonaws.com/992ba1ca-afad-4510-8f0c-6ca05531b6bb" class="no-search">
+    			<% } else {%>
 	    		<h2>검색 결과 <i class="fa-solid fa-magnifying-glass"></i></h2>
 	    	</div>
 	         <div class="search-fstv-list">
@@ -66,6 +73,7 @@
 					</c:forEach>
 				</ul>
 	        </div>
+    			<% } %>
 	    </div>
     </div>
 	

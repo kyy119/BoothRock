@@ -1,5 +1,9 @@
+<%@page import="com.multi.FM.fstv.PropertiesReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String apiKey = PropertiesReader.getProperty("map.apiKey");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fstv_map.css" type="text/css">
     <script src="${pageContext.request.contextPath}/resources/js/fstv_map.js" defer type="text/javascript"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f555a223b0daef77d257c80c6f4e9ab0"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=apiKey%>"></script>
 </head>
 <body>
     <%@ include file="header.jsp" %>
@@ -204,6 +208,7 @@
 						success : function(list) {
 							$('.fstv-list').html(list);
 							append_date();
+							scroll_to_top();
 						}
 					})
 					
@@ -224,16 +229,19 @@
 		    $('li.fstv-end').append('<div class="fstv-end-text">축제종료</div>');
 		    $('li.fstv-will').append('<div class="fstv-will-text">개최예정</div>');
 		}
-		
+    function scroll_to_top() {
+		    window.scrollTo({
+		        top: 0,
+		        behavior: 'smooth'
+		    });
+		}
 	    $('#Map').css('background', 'none');
 	    $('#Map > div:nth-child(1) > div > div:nth-child(2)').css('display', 'none');
 	    $('#Map > div:nth-child(1) > div > div:nth-child(6) > div > img').on('click', function() {
     		$(this).parent().addClass('img-before');
     		$(this).parent().siblings().removeClass('img-before');
 		});
-
-	    
-	    
+		
 	</script>
 </body>
 </html>

@@ -15,7 +15,14 @@
 </head>
 <body>
 	<%@ include file="../header.jsp"%>
-
+	<%
+    	if(phone_number == null){
+    %>
+    	<script type="text/javascript">
+    		alert("전화번호 인증을 먼저 진행해주세요!");
+    		location.href="signup_num.jsp";
+    	</script>
+    <% }else{ %>
 	<div class="bodywrap" style="margin: 120px 0px 180px;">
 		<div class="signup-form">
 			<h1 style="font-weight: 500; text-align: left;">회원가입</h1>
@@ -56,7 +63,7 @@
 			</form>
 		</div>
 	</div>
-
+	<% } %>
 	<%@ include file="../footer.jsp"%>
 
 </body>
