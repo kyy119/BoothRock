@@ -3,7 +3,7 @@
 .bodywrap {
     width: 1400px;
     overflow: auto;
-    margin-bottom: 200px;
+    margin-bottom: 570px;
 }
 .search-form {
 	width: 1000px;
@@ -23,9 +23,6 @@
 	margin: 20px 0px;
 	color: #ddd;
 }
-.search-form h3 {
-	font-size: 21px;
-}
 .search-form div img {
 	float: left;
 	width: 230px;
@@ -38,7 +35,7 @@
 	width: 740px;
 }
 .search-form li {
-	margin: 30px 0px;
+	margin: 40px 0px;
 	height: 150px;
 	position: relative;
 	overflow: hidden;
@@ -52,9 +49,6 @@
 	left: 195px;
 	color: pink;
 	font-size: 25px;
-}
-.search-form li i:hover{
-   	font-weight: bold;
 }
 .search-fstv-info .fstv-title {
 	margin: 5px 0px;
@@ -70,9 +64,9 @@
 	border-radius: 50px;
 	padding-left: 15px;
 	padding-right: 15px;
-	width: 185px;
 	margin: 5px 0px;
 	text-align: center;
+	display: inline-block;
 }
 .search-fstv-list {
 	margin: 50px 0px 50px;
@@ -83,7 +77,7 @@
 .search-booth-info .booth-title {
 	margin: 5px 0px 10px;
 	font-size: 25px;
-	font-weight: bold;
+	font-weight: 600;
 	display: inline-block;
 }
 .search-booth-info .booth-type {
@@ -91,7 +85,7 @@
 	margin: 5px 0px;
 }
 .search-fstv-info p {
-	margin-top: 15px;
+	margin-top: 5px;
 }
 .search-list li {
 	position: relative;
@@ -102,8 +96,8 @@
     left: 0px;
     background-color: #876ed5;
     padding: 5px;
+    font-weight: 600;
     border-radius: 10px 5px 5px 5px;
-    font-weight: bold;
     color: #fff;
 }
 .fstv-will-text {
@@ -112,8 +106,8 @@
     left: 0px;
     background-color: #bffd9f;
     padding: 5px;
+    font-weight: 600;
     border-radius: 10px 5px 5px 5px;
-    font-weight: bold;
 }
 .no-search {
     opacity: 0.5;

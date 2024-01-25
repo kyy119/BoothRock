@@ -20,7 +20,7 @@
     <div class="bodywrap">
 	    <div class="fstv-map-form">
 		    <div class="fstv-map">
-	    		<h1>전국축제지도</h1>
+	    		<h1><i class="fa-regular fa-map"></i> 전국축제지도</h1>
 		    	<div id="Map"></div>
 		    </div>
 	        <div class="fstv-list-form"> <%-- 페이징 필요 --%>
@@ -91,7 +91,7 @@
 		var MapContainer = document.getElementById('Map'),					// 이미지 지도를 표시할 div  
 		MapOption = {
 			center: new kakao.maps.LatLng(35.9882085, 127.8579557), 		// 지도의 중심좌표
-	        level: 13
+	        level: 12.7
 		};
 		
 		var map = new kakao.maps.Map(MapContainer, MapOption),
@@ -131,9 +131,9 @@
 		        map: map,
 		        path: area.path,													// 폴리곤 경로
 		        strokeWeight: 2,													// 외곽선 굵기
-		        strokeColor: '#004c80',												// 외곽선 색상
+		        strokeColor: '#fff',												// 외곽선 색상
 		        strokeOpacity: 0.8,													// 외곽선 투명도
-		        fillColor: '#fff',													// 내부 섹싱
+		        fillColor: '#e9e3f7',													// 내부 섹싱
 		        fillOpacity: 1 														// 내부 색상 투명도
 		    });
 		    
@@ -142,8 +142,8 @@
 		    	if (!selectedMarker || selectedMarker !== marker) {								// 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면 마커의 이미지를 클릭이미지로 변경
 		            marker.setImage(clickImage);
 		            
-				    !!selectedPol && selectedPol.setOptions({fillColor: '#fff'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
-			        polygon.setOptions({fillColor: '#99e8c5'});									// 마커에 마우스를 둘 때 변하는 색
+				    !!selectedPol && selectedPol.setOptions({fillColor: '#e9e3f7'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
+			        polygon.setOptions({fillColor: '#fddd9b'});									// 마커에 마우스를 둘 때 변하는 색
 			        
 			    	customOverlay2.setContent('<div id="area2">' + area.name + '</div>');		// 마커에 마우스를 올렸을 때 오버레이되는 컨텐츠(div)
 				    customOverlay2.setPosition(new kakao.maps.LatLng(area.lat, area.lng));
@@ -154,8 +154,8 @@
 		    kakao.maps.event.addListener(marker, 'mouseout', function() {						// 마커에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
 		    	if (!selectedMarker || selectedMarker !== marker) {
 		            marker.setImage(normalImage);
-		            !!selectedPol && selectedPol.setOptions({fillColor: '#99e8c5'});			// 선택된 폴리곤이 있으면 마커에서 마우스를 뗐을 때 그 폴리곤을 다시 칠함
-		            polygon.setOptions({fillColor: '#fff'});
+		            !!selectedPol && selectedPol.setOptions({fillColor: '#fddd9b'});			// 선택된 폴리곤이 있으면 마커에서 마우스를 뗐을 때 그 폴리곤을 다시 칠함
+		            polygon.setOptions({fillColor: '#e9e3f7'});
 		            customOverlay2.setMap(null);
 		        }
 		    }); 
@@ -164,8 +164,8 @@
 		    	if (!selectedMarker || selectedMarker !== marker) {
 		            !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);	// 클릭된 마커 객체가 null이 아니면 클릭된 마커의 이미지를 기본 이미지로 변경
 		            marker.setImage(clickImage);												// 현재 클릭된 마커의 이미지는 클릭 이미지로 변경
-		            !!selectedPol && selectedPol.setOptions({fillColor: '#fff'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
-			        polygon.setOptions({fillColor: '#99e8c5'});									// 현재 클릭된 마커의 폴리곤 채움색을 설정한 값으로 변경
+		            !!selectedPol && selectedPol.setOptions({fillColor: '#e9e3f7'});				// 클릭된 폴리곤 객체가 null이 아니면 클릭된 마커의 폴리곤 채움색을 기본색을 변경
+			        polygon.setOptions({fillColor: '#fddd9b'});									// 현재 클릭된 마커의 폴리곤 채움색을 설정한 값으로 변경
 			        
 		        	customOverlay.setContent('<span id="area">' + area.name + '</span>');		
 			        customOverlay.setPosition(new kakao.maps.LatLng(area.lat, area.lng));	
@@ -229,12 +229,19 @@
 		    $('li.fstv-end').append('<div class="fstv-end-text">축제종료</div>');
 		    $('li.fstv-will').append('<div class="fstv-will-text">개최예정</div>');
 		}
-		function scroll_to_top() {
+    function scroll_to_top() {
 		    window.scrollTo({
 		        top: 0,
 		        behavior: 'smooth'
 		    });
 		}
+	    $('#Map').css('background', 'none');
+	    $('#Map > div:nth-child(1) > div > div:nth-child(2)').css('display', 'none');
+	    $('#Map > div:nth-child(1) > div > div:nth-child(6) > div > img').on('click', function() {
+    		$(this).parent().addClass('img-before');
+    		$(this).parent().siblings().removeClass('img-before');
+		});
+		
 	</script>
 </body>
 </html>

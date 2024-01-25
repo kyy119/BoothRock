@@ -25,7 +25,7 @@
                     </li>
                     <li class="input-line">
                     	<form action="${pageContext.request.contextPath}/fstv/fstv_search">
-                    		<input name="q" placeholder="검색어를 입력해주세요."><button class="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    		<input name="q" placeholder="축제를 검색해주세요."><button class="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     	</form>
                     </li>
                 </ul>

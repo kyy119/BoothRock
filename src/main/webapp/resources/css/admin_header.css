@@ -63,14 +63,14 @@ header {
 .user-btn ul li {
     float: left;
 }
-.user-btn .main {
+.user-btn .main, .user-btn .data-update {
 	width: 100px;
 }
 .user-btn a {
     width: 90px;
     height: 40px;
     line-height: 40px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
     border: 1px solid #876ed5;

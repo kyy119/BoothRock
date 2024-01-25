@@ -18,6 +18,7 @@
 
             <div class="user-btn">
                 <ul>
+					<li><a href="#" class="data-update">GET API</a></li>
                     <li><a href="../main.jsp" class="main">메인페이지</a></li>
                     <li><a href="../logout.jsp" class="logout">로그아웃</a></li>
                 </ul>

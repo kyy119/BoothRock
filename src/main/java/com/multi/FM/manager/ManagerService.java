@@ -14,20 +14,12 @@ public class ManagerService {
   @Autowired
   ManagerDAO dao;
 
-  public List<UsersVO> user_list(PagingVO pagingVO) {
+  public List<UsersVO> user_list(PagingVO pagingVO, int user_black) {
     return dao.user_list(pagingVO);
   }
 
-  public List<UsersVO> user_search(PagingVO pagingVO) {
-    return dao.user_search(pagingVO);
-  }
-
-  public List<UsersVO> ban_user_list(PagingVO pagingVO) {
-    return dao.ban_user_list(pagingVO);
-  }
-
-  public List<UsersVO> ban_user_search(PagingVO pagingVO) {
-    return dao.ban_user_search(pagingVO);
+  public int user_count(PagingVO pagingVO, int user_black) {
+    return dao.user_count(pagingVO);
   }
 
   public UsersVO user_detail(UsersVO usersVO) {
@@ -46,20 +38,12 @@ public class ManagerService {
     dao.update_seller(usersVO);
   }
 
-  public List<BoothVO> booth_list(PagingVO pagingVO) {
+  public List<BoothVO> booth_list(PagingVO pagingVO, int booth_ban) {
     return dao.booth_list(pagingVO);
   }
-
-  public List<BoothVO> booth_search(PagingVO pagingVO) {
-    return dao.booth_search(pagingVO);
-  }
-
-  public List<BoothVO> ban_booth_list(PagingVO pagingVO) {
-    return dao.ban_booth_list(pagingVO);
-  }
-
-  public List<BoothVO> ban_booth_search(PagingVO pagingVO) {
-    return dao.ban_booth_search(pagingVO);
+  
+  public int booth_count(PagingVO pagingVO, int booth_ban) {
+    return dao.booth_count(pagingVO);
   }
 
   public void update_booth(BoothVO boothVO) {
@@ -70,8 +54,8 @@ public class ManagerService {
     return dao.report_list(pagingVO);
   }
 
-  public List<ReportVO> report_search(PagingVO pagingVO) {
-    return dao.report_search(pagingVO);
+  public int report_count(PagingVO pagingVO) {
+    return dao.report_count(pagingVO);
   }
 
   public ReportVO report_detail(ReportVO reportVO) {
@@ -82,12 +66,16 @@ public class ManagerService {
     dao.update_report(reportVO);
   }
 
+  public void report_check(ReportVO reportVO) {
+    dao.report_check(reportVO);
+  }
+  
   public List<AskVO> ask_list(PagingVO pagingVO) {
     return dao.ask_list(pagingVO);
   }
 
-  public List<AskVO> ask_search(PagingVO pagingVO) {
-    return dao.ask_search(pagingVO);
+  public int ask_count(PagingVO pagingVO) {
+    return dao.ask_count(pagingVO);
   }
 
   public AskVO ask_detail(AskVO askVO) {
@@ -98,29 +86,4 @@ public class ManagerService {
     dao.update_ask(askVO);
   }
 
-  public List<UsersVO> common_user_list(PagingVO pagingVO, int user_black) {
-    Map<String, Integer> map = new HashMap();
-    map.put("user_black", user_black);
-    map.put("offset", pagingVO.getOffset());
-    return dao.common_user_list(map);
-  }
-
-  public int total_user_count(PagingVO pagingVO, int user_black) {
-    Map<String, Integer> map = new HashMap<>();
-    map.put("user_black", user_black);
-    return dao.total_user_count(map);
-  }
-
-  public List<UsersVO> common_search(PagingVO pagingVO, int user_black) {
-    Map<String, Integer> map = new HashMap();
-    map.put("user_black", user_black);
-    map.put("offset", pagingVO.getOffset());
-    return dao.common_search(map);
-  }
-
-  public int search_user_count(PagingVO pagingVO, int user_black) {
-    Map<String, Integer> map = new HashMap<>();
-    map.put("user_black", user_black);
-    return dao.search_user_count(map);
-  }
 }

@@ -45,7 +45,7 @@
 }
 .more {
 	border: none;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 15px;
 	background: linear-gradient(to right top, #876ed5, #0b123f);
     color: transparent;
@@ -195,7 +195,7 @@
 	font-weight: bold !important;
 }
 .bold-text {
-	font-weight: bold !important;
+	font-weight: 600 !important;
 }
 .customoverlay {
 	position:relative;

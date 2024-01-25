@@ -59,9 +59,6 @@ jQuery(document).ready(function() {
 			
 	        $(".item-form").append("<hr>").append(newItemForm);
 	
-	        var currentHeight = $(".item-form:first").height();
-	        var newHeight = currentHeight + 100;
-	        $(".item-add-form").css("height", newHeight + "px");
 	        console.log('추가완.');
 		} else {
             alert("상품은 최대 8개 등록할 수 있습니다.");
@@ -73,12 +70,9 @@ jQuery(document).ready(function() {
     
     	if (itemForms.length > 1) {
 	        var lastItemForm = itemForms.last();
-	        var currentHeight = $(".item-form:first").height();
-	        var newHeight = currentHeight - 100;
 	        
 	        lastItemForm.prev("hr").remove(); // hr 요소 제거
 	        lastItemForm.remove(); // 마지막으로 추가된 item 제거
-	        $(".item-add-form").css("height", newHeight + "px");
 	    }
 	   
     });

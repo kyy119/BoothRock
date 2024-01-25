@@ -74,9 +74,9 @@
 						<textarea id="booth-intro" name="booth-intro"><%= mybooth.getBooth_introduction() %></textarea>
 					</div>
 				</div>
-				<div class="item-add-form">
-					<%for (BoothProductVO product : products) {%>
+				<div class="item-add-form" id="edit-item-form">
 					<div class="item-form">
+					<%for (BoothProductVO product : products) {%>
 						<div class="item">
 							<div>
 								<i class="fa-solid fa-tag"></i> <input type="text" class="booth-item"
@@ -89,8 +89,9 @@
 									value="<%= product.getPrice() %>" required>
 							</div>
 						</div>
-					</div>
+						<hr>
 					<% } %>
+					</div>
 					<div style="text-align: center;">
 						<i class="fa-solid fa-plus" id="item-add"></i> <i
 							class="fa-solid fa-minus" id="item-remove"></i>

@@ -46,12 +46,15 @@
 	padding: 0px 15px;
 }
 .input-form div input, select {
-	width: 250px;
+	width: 255px;
 	height: 40px;
 	background-color: #fff;
 	padding: 0px 10px;
 	border: none;
 	font-size: 15px;
+}
+.input-form div select {
+	width: 278px;
 }
 #booth-img {
 	width: 190px !important;
@@ -73,14 +76,14 @@ input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
     -webkit-text-fill-color: #000 !important;
 }
-.input-form div button {
+.input-form div #file-upload-button {
 	color: #757575;
 	background-color: #fff;
 	border: none;
 }
 .input-form div button:hover {
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }
 .booth-add-form div:focus-within , .item div:focus-within {
 	border-color: #876ed5;
@@ -118,8 +121,8 @@ textarea {
 	border-radius: 50%;
 	font-size: 20px;
 	text-align: center;
-	margin-bottom: 20px;
 	color: #757575;
+	margin: 0px 3px 20px;
 }
 #item-add:hover, #item-remove:hover {
 	border-color: #876ed5;

@@ -6,8 +6,7 @@
         return;
     }
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,27 +21,27 @@
     <div class="bodywrap">
     	<div class="admin-main-form">
 	    	<div>
-	    		<a href="common_user_list1?user_black=0">
+	    		<a href="user_list?user_black=0">
 	    			<i class="fa-regular fa-user"></i>
 	    			<span>회원 관리</span>
 	    			<p>회원 조회 및 수정, 삭제</p>
 	    			<p>악성 회원 등록</p>
 	    			<p>관리자 권한 부여</p>
 	    		</a>
-	    		<a href="common_user_list1?user_black=1">
+	    		<a href="user_list?user_black=1">
 	    			<i class="fa-solid fa-user-slash"></i>
 	    			<span>악성 회원 관리</span>
 	    			<p>악성 회원 조회 및 등록 해제</p>
 	    		</a>
 	    	</div>
 	    	<div>
-	    		<a href="booth_list">
+	    		<a href="booth_list?booth_ban=0">
 	    			<i class="fa-regular fa-paste"></i>
 	    			<span>부스 게시물 관리</span>
 	    			<p>게시물 조회 및 수정, 삭제</p>
 	    			<p>허위 게시물 등록</p>
 	    		</a>
-	    		<a href="ban_booth_list">
+	    		<a href="booth_list?booth_ban=1">
 	    			<i class="fa-solid fa-paste"></i>
 	    			<span>허위 게시물 관리</span>
 	    			<p>허위 게시물 조회 및 해제</p>
