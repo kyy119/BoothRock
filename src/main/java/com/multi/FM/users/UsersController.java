@@ -34,7 +34,7 @@ public class UsersController {
 	@RequestMapping("create_account_seller")
 	public void create_account_seller(UsersVO usersvo,SellerVO sellervo) {
 		Date date = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		usersvo.setUser_role("seller");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
@@ -48,7 +48,7 @@ public class UsersController {
 	@RequestMapping("create_account_consumer")
 	public void create_account_consumer(UsersVO usersvo) {
 		Date date = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		usersvo.setUser_role("consumer");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
