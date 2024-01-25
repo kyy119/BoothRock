@@ -24,7 +24,14 @@
 </head>
 <body>
     <%@ include file="../header.jsp" %>
-    
+    <%
+    	if(phone_number == null){
+    %>
+    	<script type="text/javascript">
+    		alert("전화번호 인증을 먼저 진행해주세요!");
+    		location.href="signup_num.jsp";
+    	</script>
+    <% }else{ %>
     <div class="bodywrap">
     	<div class="signup-type">
     		<h2>사이트 이용 유형을 선택해주세요</h2>
@@ -49,7 +56,7 @@
     		</div>
     	</div>
     </div>
-    
+    <% } %>
     <%@ include file="../footer.jsp" %>
     
 </body>
