@@ -2,47 +2,64 @@
 
 .bodywrap {
 	width: 1200px;
-	margin: 110px auto 265px;
+	margin: 121px auto 265px;
 }
+
 .report-form {
 	width: 600px;
 }
+
 .report-form .back {
 	text-align: right;
 }
+
 .report-booth-fstv .booth-title {
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 21px;
+	font-weight: 600;
 	color: red;
 	display: inline-block;
 }
+
 .report-booth-fstv span a {
 	font-size: 16px;
 	display: inline-block;
 }
+
 .report-booth-fstv .booth-title:hover {
 	color: #ff6868;
 }
+
 .report-booth-fstv span a:hover {
 	color: #757575;
 }
+
 .report-detail {
 	margin-top: 10px;
 }
+
 .report-info {
 	font-size: 15px;
 	color: #757575;
 	text-align: right;
 }
+
+.user-id {
+	display: inline-block;
+	color: #757575;
+	font-size: 16px;
+}
+
 .report-content {
 	width: 600px;
 	height: 200px;
 	margin-top: 20px;
 }
+
 .btn {
 	text-align: center;
 	margin-top: 40px;
 }
+
 .btn button {
 	padding: 5px 10px;
 	background-color: #fff;
@@ -51,6 +68,7 @@
 	font-size: 17px;
 	margin: 0px 6px 10px;
 }
+
 .btn button:hover {
 	background-color: #ddd;
 }

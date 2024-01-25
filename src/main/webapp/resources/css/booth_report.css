@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 100px 0px 230px;
+	margin: 120px 0px 220px;
 }
 .booth-report-form {
 	width: 600px;
 }
 .booth-report-form h1 {
-	font-weight: 500;
+	font-weight: 600;
 }
 .booth-info {
 	margin-bottom: 20px;
@@ -63,5 +63,5 @@
 .report-submit:hover, .back:hover {
 	border-color: #876ed5;
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }

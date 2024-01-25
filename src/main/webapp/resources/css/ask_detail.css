@@ -4,43 +4,59 @@
 	width: 1200px;
 	margin: 110px auto 201px;
 }
+
 .ask-form {
 	width: 600px;
 }
+
 .ask-form .back {
 	text-align: right;
 	margin-bottom: 20px;
 }
+
 .ask-detail h2 {
 	display: inline-block;
 }
+
 .ask-info {
 	font-size: 15px;
 	color: #757575;
 	text-align: right;
 }
+
+.user-id {
+	display: inline-block;
+	color: #757575;
+	font-size: 16px;
+}
+
 .ask-content {
 	width: 600px;
 	height: 200px;
 	margin-top: 20px;
 }
+
 .comment-form {
 	margin-top: 20px;
 	margin-left: 10px;
 }
+
 .icon-form {
 	font-size: 30px;
 	float: left;
 	width: 80px;
 	height: 100px;
 }
+
 .icon-form span {
 	transform: rotateY(180deg);
 }
+
 .admin-comment {
 	width: 500px;
 	height: 120px;
 }
+
 .comment-form textarea {
 	width: 500px;
 	height: 100px;
@@ -48,11 +64,12 @@
 	box-sizing: border-box;
 	border-radius: 10px;
 }
+
 .comment-form button {
 	width: 100px;
 	height: 40px;
 	line-height: 40px;
-	font-weight: bold;
+	font-weight: 600;
 	background-color: #fff;
 	border: 1px solid rgb(118, 118, 118);
 	border-radius: 10px;
@@ -60,6 +77,7 @@
 	margin-top: 5px;
 	margin-left: 480px;
 }
+
 .comment-form button:hover {
 	background-color: #ddd;
 }

@@ -31,9 +31,8 @@
 	display: block;
 }
 .admin-main-form span {
-	font-size: 19px;
-	font-weight: bold;
-	margin: 0px 0px 20px;
+	font-size: 22px;
+	font-weight: 600;
 }
 .admin-main-form p {
 	margin: 5px 0px;

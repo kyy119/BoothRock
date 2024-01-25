@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% AskVO vo = (AskVO)request.getAttribute("ask_detail"); %>
+<% AskVO vo = (AskVO) request.getAttribute("vo"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +13,15 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script>
     	$(document).ready(function() {
+    		var ask_no = <%= vo.getAsk_no() %>;
     		var answer = $('#ask_answer').val();
+    		
 	        function update_ask(action, message) {
 	            $.ajax({
 	                type: "POST",
 	                url: action,
 	                data: {
-							ask_no: '<%= vo.getAsk_no() %>',
+							ask_no: ask_no,
 	                		answer: answer
 	                		},
 	                success: function(data) {
@@ -43,30 +45,28 @@
 			<h3 class="back">
 				<a href="ask_list">Ask List <i class="fa-solid fa-chevron-right"></i></a>
 			</h3>
-			<c:if test="${not empty ask_detail}">
-				<div class="ask-detail">
-					<h2>${ask_detail.ask_title}</h2>
-					<span class="ask-type">/ ${ask_detail.ask_type}</span><br>
-					<div class="ask-info">${ask_detail.user_id} | ${ask_detail.ask_created_at}</div>
-					<p class="ask-content">
-	               		${ask_detail.ask_content}
-					</p>
-					<hr>
-	        	</div>
-	       		<div class="comment-form">
-	       			<div class="icon-form">
-	       				<span>↪</span>
-	       				<i class="fa-solid fa-user-tie"></i>
-	       			</div>
-	       			<c:if test="${ask_detail.ask_answer == null}">
-	       				<textarea id="ask_answer"></textarea>
-		       			<button class="insert_answer">답변 등록</button>
-	       			</c:if>
-	       			<c:if test="${ask_detail.ask_answer != null}">
-	       				<p class="admin-comment">${ask_detail.ask_answer}</p>
-	       			</c:if>
-				</div>
-			</c:if>
+			<div class="ask-detail">
+				<h2>${vo.ask_title}</h2>
+				<span class="ask-type">/ ${vo.ask_type}</span><br>
+				<div class="ask-info"><a class="user-id" href="user_detail?user_id=${vo.user_id}">${vo.user_id}</a> | ${vo.ask_created_at}</div>
+				<p class="ask-content">
+               		${vo.ask_content}
+				</p>
+				<hr>
+        	</div>
+       		<div class="comment-form">
+       			<div class="icon-form">
+       				<span>↪</span>
+       				<i class="fa-solid fa-user-tie"></i>
+       			</div>
+       			<c:if test="${vo.ask_answer == null}">
+       				<textarea id="ask_answer"></textarea>
+	       			<button class="insert_answer">답변 등록</button>
+       			</c:if>
+       			<c:if test="${vo.ask_answer != null}">
+       				<p class="admin-comment">${vo.ask_answer}</p>
+       			</c:if>
+			</div>
 		</div>
     </div>
     

@@ -13,6 +13,7 @@ public class ReportVO {
 	private int booth_no;
 	private int fstv_no;
 	private int report_lie;
+	private int report_check;
 	private String booth_name;
 	private String fstv_title;
 	private String user_id;
@@ -20,6 +21,5 @@ public class ReportVO {
 	private String report_title;
 	private String report_comment;
 	private String seller_id;
-	private Boolean report_checked;
 	
 }

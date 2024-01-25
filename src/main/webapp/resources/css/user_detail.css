@@ -34,7 +34,7 @@
 .user-detail ul li {
 	border-radius:6px;
 	box-sizing: border-box;
-	height: 38px;
+	height: 36px;
 	margin: 20px 0px;
 }
 .user-detail ul li:nth-of-type(n) {

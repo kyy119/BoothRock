@@ -11,7 +11,8 @@
 }
 .fstv-list-head h1 {
 	display: inline-block;
-	font-weight: 500;
+	font-weight: 600;
+	margin-left: 20px;
 }
 .date-search {
 	display: inline-block;
@@ -42,9 +43,6 @@
 }
 .sort button:hover {
 	color: #757575;
-}
-.bold-text {
-	font-weight: bold;
 }
 .fstv-list {
 	width: 1100px;
@@ -84,12 +82,8 @@
 	margin: 5px 0px;
 	display: inline-block;
 }
-.fstv-list i {
-	color: pink;
-	font-size: 30px;
-}
 .bold-text {
-	font-weight: bold !important;
+	font-weight: 600 !important;
 }
 .fstv-list li {
 	position: relative;
@@ -101,7 +95,7 @@
     background-color: #876ed5;
     padding: 5px;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 600;
     color: #fff;
 }
 .fstv-will-text {
@@ -111,5 +105,19 @@
     background-color: #bffd9f;
     padding: 5px;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 600;
+}
+.fstv-jjim {
+	position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 17px
+}
+.fstv-jjim i {
+	color: pink;
+	font-size: 17px;
 }

@@ -54,12 +54,12 @@ input:-webkit-autofill:active {
 	border: 1px solid #757575;
 	background-color: #fff;
 	border-radius: 15px;
-	font-size: 15px;
+	font-size: 16px;
 }
 .login:hover {
 	border-color: #876ed5;
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }
 .sub-btn {
 	width: 332px;
@@ -70,17 +70,16 @@ input:-webkit-autofill:active {
 }
 .sub-btn ul li {
 	float: left;
-	margin: 0px 10px;
+	margin: 0px 12px;
 	color: #757575;
 }
 .sub-btn ul li a {
 	height: 35px;
     background-color: #fff;
     border-radius: 15px;
-    font-size: 14px;
+    font-size: 15px;
     color: #757575;
 }
 .sub-btn ul li a:hover {
-	color: #876ed5;
-	font-weight: bold;
+	font-weight: 500;
 }
