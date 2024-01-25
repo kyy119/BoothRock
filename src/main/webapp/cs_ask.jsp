@@ -7,6 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
     <link rel="stylesheet" href="resources/css/cs_ask.css" type="text/css">
+    <script src="resources/js/cs_ask.js" defer type="text/javascript"></script>
+    <%
+String userId = (String)session.getAttribute("id");
+/* String userRole = "consumer"; */
+%>
+<!-- 세션 값을 JavaScript 변수에 할당 -->
+<!-- 세션이 없다면 메인페이지로 이동 -->
+<script type="text/javascript">
+let userId = "<%=userId%>"; 
+if (userId == "null") {
+	alert("로그인이 필요합니다.");
+	window.location.href = 'main.jsp';
+}
+</script>
 </head>
 <body>
     <%@ include file="header.jsp" %>

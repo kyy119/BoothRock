@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ask">
+	<insert id="insertAsk" parameterType="askVO" useGeneratedKeys="true" keyProperty="ask_no">
+		INSERT INTO ask (user_id, ask_title, ask_type, ask_content, ask_created_at)
+		VALUES (#{user_id}, #{ask_title}, #{ask_type}, #{ask_content}, #{ask_created_at})
+	</insert>
+
+</mapper>
