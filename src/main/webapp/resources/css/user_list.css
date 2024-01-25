@@ -2,7 +2,7 @@
 
 .bodywrap {
 	margin: 100px 0px;
-	height: 700px;
+	height: 600px;
 }
 .user-list-form, .ban-list-form, .booth-list-form, .ask-list-form, .report-list-form {
 	width: 1200px;
@@ -10,6 +10,7 @@
 h1 {
 	display: inline-block;
 	margin-left: 50px;
+	font-weight: 600;
 }
 .select-search-form {
 	display: inline-block;

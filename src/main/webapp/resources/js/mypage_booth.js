@@ -55,4 +55,5 @@ jQuery(document).ready(function(){
             }
         });
     });
+    $('#result > div.booth-form > ul > hr:last').remove();
 });

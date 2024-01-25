@@ -29,7 +29,7 @@
 	margin: 0px 10px;
 }
 .bold-text {
-	font-weight: bold !important;
+	font-weight: 600 !important;
 }
 .tag-list p {
 	color: #757575;
@@ -84,7 +84,7 @@
     background-color: #fff;
 }
 .tag-list input:hover {
-	font-weight: bold;
+	font-weight: 600;
 	border: 1px solid #876ed5;
 	color: #876ed5;
 }

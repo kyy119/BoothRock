@@ -7,10 +7,10 @@
 	width: 800px;
 }
 .jjim-list li {
-	width: 240px;
+	width: 220px;
 	height: 250px;
 	display: inline-block;
-	margin: 11px;
+	margin: 11px 21px;
 	vertical-align: top;
 }
 .jjim-list li:hover {
@@ -21,7 +21,7 @@
 	color: pink;
 }
 .jjim-list li a img {
-	width: 240px;
+	width: 220px;
 	height: 150px;
 	border-radius: 20px;
 	object-fit: cover;

@@ -1,10 +1,13 @@
 jQuery(document).ready(function() {
+
+	   $('.item-form hr:last').remove();
+	    
 		$("#item-add").click(function(){
 		
-		var currentItemCount = $(".item-form").length;
+		var currentItemCount = $(".item").length;
 
     if (currentItemCount < 8) {
-        var newItemForm = $(".item-form:first").clone();
+        var newItemForm = $(".item:first").clone();
 
         var newFormName = "booth-item" + currentItemCount;
         var newPriceName = "booth-item-price" + currentItemCount;
@@ -14,12 +17,8 @@ jQuery(document).ready(function() {
 
         newItemForm.find(".booth-item").val("");
         newItemForm.find(".booth-item-price").val("");
+         $(".item-form").append("<hr>").append(newItemForm);
 
-         $(".item-form:last").after(newItemForm).after("<hr>");
-
-        var currentHeight = $(".item-form:first").height();
-        var newHeight = currentHeight + 100;
-        $(".item-add-form").css("height", newHeight + "px");
         console.log('추가완.');
     } else {
         alert("상품은 최대 8개 등록할 수 있습니다.");
@@ -27,16 +26,13 @@ jQuery(document).ready(function() {
     });
     $("#item-remove").click(function() {
     
-   		var itemForms = $(".item-form");
+   		var itemForms = $(".item");
 
     if (itemForms.length > 1) {
-        var lastItemForm = itemForms.last();
-        var currentHeight = $(".item-form:first").height();
-        var newHeight = currentHeight - 100;
-
-        lastItemForm.prev("hr").remove(); // hr 요소 제거
-        lastItemForm.remove(); // 마지막으로 추가된 item 제거
-        $(".item-add-form").css("height", newHeight + "px");
+	        var lastItemForm = itemForms.last();
+	        
+	        lastItemForm.prev("hr").remove(); // hr 요소 제거
+	        lastItemForm.remove(); // 마지막으로 추가된 item 제거
     }
 	   
     });

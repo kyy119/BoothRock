@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% String user_black = request.getParameter("user_black"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +26,9 @@
         }
 	});
 	
+	var user_black = <%= user_black %>;
+    var pages = <%= request.getAttribute("pages") %>;
     $(function(){
-	    var pages = <%= request.getAttribute("pages") %>;
 	    $(document).on('click', '.pages', function(){
         	var page = $(this).text();
         	
@@ -34,7 +36,8 @@
                 type: "POST",
                 url: "user_list",
                 data: {
-                    page: page
+                    page: page,
+                    user_black: user_black
                 },
                 success: function(data){
                     var tbody = $(data).find("tbody").html();
@@ -84,40 +87,23 @@
     	var role = $("#role").val();
         var type = $("#type").val();
         var keyword = $("#keyword").val();
-		
+        var user_black = parseInt('<%= user_black %>');
+        
         $.ajax({
             type: "POST",
-            url: "user_search",
+            url: "user_list",
             data: {
                 page: page,
                 type: type,
                 keyword: keyword,
-                role: role
+                role: role,
+                user_black: user_black
             },
             success: function(data) {
-                $("tbody").empty();
-                $.each(data.user_search, function(index, user) {
-                	var row = "<tr>" +
-                	"<td>" + user.total_no + "</td>" +
-                    "<td>" + user.user_name + "</td>" +
-                    "<td><a href='user_detail?user_id=" + user.user_id + "'>" + user.user_id + "</a></td>";
-
-                    if (user.user_role === "consumer" && user.selling_number !== null) {
-                        row += "<td class='user_role' style='color: blue;'>" + user.user_role + "</td>";
-                    } else {
-                        row += "<td class='user_role'>" + user.user_role + "</td>";
-                    }
-                    
-                    row +="<td>" + user.user_tel + "</td>" +
-                    "<td>" + user.user_created_at + "</td>" +
-                    "<td>" + user.user_updated_at + "</td>" +
-                    "<td>" + user.report_ban_count + " 건</td>" +
-                    "<td>" + user.booth_ban_count + " 건</td>";
-
-                    $("tbody").append(row);
-                });
+            	var tbody = $(data).find("tbody").html();
+                $('#result').html(tbody);
                 role_update();
-                search_pagination(data.search_pages, page);
+                search_pagination(pages, page);
             }
         });
         
@@ -181,8 +167,6 @@
 		    		<option value="tel">Tel</option>
 		    		<option value="created">Created</option>
 		    		<option value="updated">Updated</option>
-		    		<option value="fr">F / R</option>
-		    		<option value="fp">F / P</option>
 		    	</select>
 		    	<input type="text" name="keyword" id="keyword">
 		    	<input type="button" id="submit" value="검색" onclick="search()">
@@ -195,7 +179,7 @@
       					<th>Email</th>
       					<th class=type-select>
 							<select onchange="search()" id="role" name="role">
-      							<option value="all">Type</option>
+      							<option>Type</option>
       							<option value="consumer">소비자</option>
       							<option value="seller">판매자</option>
       							<option value="admin">관리자</option>
@@ -204,12 +188,10 @@
 					    <th>Tel</th>
 					    <th>Created</th>
 					    <th>Updated</th>
-					    <th>F / R</th>
-					    <th>F / P</th>
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${user_list}" var="vo">
+					<c:forEach items="${list}" var="vo">
 	    				<tr>
 	    					<td>${vo.total_no}</td>
 					      	<td>${vo.user_name}</td>
@@ -225,8 +207,6 @@
 					      	<td>${vo.user_tel}</td>
 					      	<td>${vo.user_created_at}</td>
 					      	<td>${vo.user_updated_at}</td>
-					      	<td>${vo.report_ban_count} 건</td>
-							<td>${vo.booth_ban_count} 건</td>
 					    </tr>
 					</c:forEach>
 				</tbody>

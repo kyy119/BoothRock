@@ -56,7 +56,7 @@ input:-webkit-autofill:active {
 	border: none;
 }
 .input-form div button:hover {
-	font-weight: bold;
+	font-weight: 600;
 }
 .signup {
 	width: 100px;
@@ -76,7 +76,7 @@ input:-webkit-autofill:active {
 .signup:hover {
 	border-color: #876ed5;
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }
 .behind {
 	width: 100px;
@@ -96,5 +96,5 @@ input:-webkit-autofill:active {
 .behind:hover {
 	border-color: #876ed5;
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }

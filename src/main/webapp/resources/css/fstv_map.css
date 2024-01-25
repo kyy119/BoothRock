@@ -31,9 +31,6 @@
 .fstv-list-loc .sort button:hover {
 	color: #757575;
 }
-.bold-text {
-	font-weight: bold;
-}
 .fstv-map {
 	width: 500px;
 	display: inline-block;
@@ -42,12 +39,12 @@
 	top: 160px;
 }
 .fstv-map h1 {
-	margin-bottom: 30px;
-	font-weight: 500;
+	font-weight: 600;
+	margin-left: 40px;
 }
 .fstv-map #Map {
 	width: 500px;
-	height: 700px;
+	height: 750px;
 }
 .fstv-list-form {
 	width: 650px;
@@ -96,7 +93,7 @@
 	font-size: 22px;
 }
 .bold-text {
-	font-weight: bold !important;
+	font-weight: 600 !important;
 }
 .fstv-list li {
 	position: relative;
@@ -111,40 +108,93 @@
 }
 #area {
 	position: absolute;
-	background: #feffd5;
+	background: #5a38c0;
 	border-radius: 10px;
-	font-size: 12px;
-	bottom: 38px;
+	font-size: 15px;
+	bottom: 50px;
 	left: 50%;
 	transform: translateX(-50%);
-	padding: 10px 12px;
+	padding: 10px 15px;
+	font-weight: 500;
+	color: #fff;
 }
 #area2 {
 	position: absolute;
-	background: #feffd5;
+	background: #5a38c0;
 	border-radius: 10px;
-	font-size: 12px;
-	bottom: 38px;
+	font-size: 15px;
+	bottom: 50px;
 	left: 50%;
 	transform: translateX(-50%);
-	padding: 10px 12px;
+	padding: 10px 15px;
+	font-weight: 500;
+	color: #fff;
+}
+#area::after {
+	background: url('../img/vertex_5a38c0.png');
+	content:'';
+	position:absolute;
+	margin-left:-6px;
+	left:50%;
+	bottom:-8px;
+	width:14px;
+	height:8px;
+}
+#area2::after {
+	background: url('../img/vertex_5a38c0.png');
+	content:'';
+	position:absolute;
+	margin-left:-6px;
+	left:50%;
+	bottom:-8px;
+	width:14px;
+	height:8px;
 }
 .fstv-end-text {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 5px;
+    left: 5px;
     background-color: #876ed5;
     padding: 5px;
-    border-radius: 10px 5px 5px 5px;
-    font-weight: bold;
+    border-radius: 10px;
+    font-weight: 600;
     color: #fff;
+    font-size: 14px;
 }
 .fstv-will-text {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 5px;
+    left: 5px;
     background-color: #bffd9f;
     padding: 5px;
-    border-radius: 10px 5px 5px 5px;
-    font-weight: bold;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.fstv-jjim {
+	position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px
+}
+.fstv-jjim i {
+	color: pink;
+	font-size: 14px;
+}
+.img-before::before {
+	content: '';
+    position: absolute;
+    bottom: -45px;
+    left: 20px;
+    transform: translateX(-50%);
+    display: block;
+    width: 24px;
+    height: 11px;
+    background: #fdcb64;
+    border-radius: 50%;
+    z-index: -1;
 }

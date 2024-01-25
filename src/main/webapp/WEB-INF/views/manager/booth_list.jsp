@@ -1,8 +1,7 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.multi.FM.myboothpage.BoothVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ArrayList<BoothVO> vo = (ArrayList<BoothVO>) request.getAttribute("booth_list"); %>
+<% String booth_ban = request.getParameter("booth_ban"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,12 +25,8 @@
 	        }
 	        
 		    window.update_booth = function(action, message, booth_no) {
-		    	console.log()
-		    	console.log(action);
-		    	console.log(message);
-		    	console.log(booth_no);
-		    	
-		        $.ajax({
+		        
+		    	$.ajax({
 	                type: "POST",
 	                url: action,
 	                data: { booth_no: booth_no },
@@ -46,10 +41,17 @@
 	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
 	        });
+	        
+	        $("a").on("click", function(event) {
+	            if ($(this).text() === '0 건') {
+	              event.preventDefault();
+	              alert('검색 정보가 없습니다.');
+	            }
+	        });
 		});
 		
+	    var pages = <%= request.getAttribute("pages") %>;
 	    $(function(){
-		    var pages = <%= request.getAttribute("pages") %>;
 		    $(document).on('click', '.pages', function(){
 	        	var page = $(this).text();
 	        	
@@ -105,35 +107,32 @@
 	    function search(page) {
 	        var type = $("#type").val();
 	        var keyword = $("#keyword").val();
+	        var booth_ban = parseInt('<%= booth_ban %>');
 			
 	        $.ajax({
 	            type: "POST",
-	            url: "booth_search",
+	            url: "booth_list",
 	            data: {
 	                page: page,
 	                type: type,
 	                keyword: keyword,
+	                booth_ban: booth_ban
 	            },
 	            success: function(data) {
-	                $("tbody").empty();
-	                
-	                $.each(data.booth_search, function(index, booth) {
-	                	var row = "<tr>" +
-	                	"<td class='booth-no'>" + booth.booth_no + "</td>" +
-	                    "<td><a href='user_detail?user_id=" + booth.seller_id + "'>" + booth.seller_id + "</a></td>" +
-	                    "<td><a href='../booth/booth_detail?booth_no=" + booth.booth_no + "'>" + booth.booth_name + "</a></td>" +
-	                    "<td><a href='../fstv/fstv_detail?fstv_no=" + booth.fstv_no + "'>" + booth.fstv_title + "</a></td>" +
-						"<td>" + booth.report_count + " 건 </td>" +
-	                    "<td><button class='update_booth'>등록</button></td>" + 
-	                    "<td><button class='delete'>삭제</button></td>";
-	
-	                    $("tbody").append(row);
-	                });
+                    var tbody = $(data).find("tbody").html();
+                    $('#result').html(tbody);
 	                search_pagination(data.search_pages, page);
 	                
 	    	        $(".update_booth").on("click", function() {
 	    	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	    	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
+	    	        });
+	    	        
+	    	        $("a").on("click", function(event) {
+	    	            if ($(this).text() === '0 건') {
+	    	              event.preventDefault();
+	    	              alert('검색 정보가 없습니다.');
+	    	            }
 	    	        });
 	            }
 	        });
@@ -196,14 +195,17 @@
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${booth_list}" var="vo">
+					<c:forEach items="${list}" var="vo">
 	    				<tr>
 					      	<td class="booth-no">${vo.booth_no}</td>
 					      	<td><a href="user_detail?user_id=${vo.seller_id}">${vo.seller_id}</a></td>
 					      	<td><a href="${pageContext.request.contextPath}/booth/booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
 					      	<td><a href="${pageContext.request.contextPath}/fstv/fstv_detail?fstv_no=${vo.fstv_no}">${vo.fstv_title}</a></td>
 					      	<td><a href="report_list?type=booth_no&keyword=${vo.booth_no}">${vo.report_count} 건</a></td>
-					      	<td><button class="update_booth">등록</button></td>
+					      	<td><button class="update_booth">
+					      		<c:if test="${vo.booth_ban == 0}">등록</c:if>
+					      		<c:if test="${vo.booth_ban == 1}">해제</c:if>
+					      	</button></td>
 					      	<td><button class="delete">삭제</button></td>
 					      	<td class="booth-ban" style="display: none">${vo.booth_ban}</td>
 	    				</tr>

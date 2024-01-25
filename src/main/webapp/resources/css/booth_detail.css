@@ -206,7 +206,7 @@
 	font-weight: 540 !important;
 }
 .review-form .write-review {
-	width: 153px;
+	width: 132px;
 	margin-top: 30px;
 	font-size: 18px;
 	background: linear-gradient(to right top, #876ed5, #0b123f);
@@ -225,8 +225,8 @@
 	opacity: 0.7;
 }
 .review-more {
-	font-weight: bold;
-	width: 103px;
+	font-weight: 600;
+	width: 87px;
 	float: right;
 	margin-right: 25px;
 }

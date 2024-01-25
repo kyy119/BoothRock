@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-	margin: 100px 0px 280px;
+	margin: 150px 0px 300px;
 }
 .question-form {
 	width: 800px;
@@ -22,7 +22,7 @@
 }
 .question p {
 	display: none;
-	margin-left: 60px;
+	margin-left: 40px;
 	font-size: 17px;
 	line-height: 30px;
 }

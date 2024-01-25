@@ -49,10 +49,11 @@
 	border: none;
 	float: right;
 	line-height: 40px;
+	font-size: 15px;
 }
 .input-form div button:hover {
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }
 .pw-edit {
 	width: 120px;
@@ -67,5 +68,5 @@
 .pw-edit:hover {
 	border-color: #876ed5;
 	color: #876ed5;
-	font-weight: bold;
+	font-weight: 600;
 }

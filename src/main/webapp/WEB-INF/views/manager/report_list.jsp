@@ -18,10 +18,12 @@
 	        var urlParams = new URLSearchParams(window.location.search);
 	        var type = urlParams.get("type");
 	        var keyword = urlParams.get("keyword");
+	        var keyword = urlParams.get("checked");
 	
-	        if (type && keyword) {
+	        if (type && keyword && checked) {
 	            $("#type").val(type);
 	            $("#keyword").val(keyword);
+	            $("#checked").val();
 	            search(1);
 	        }
 		});
@@ -83,39 +85,20 @@
 	    function search(page) {
 	        var type = $("#type").val();
 	        var keyword = $("#keyword").val();
+	        var checked = $("#checked").val();
 			
 	        $.ajax({
 	            type: "POST",
-	            url: "report_search",
+	            url: "report_list",
 	            data: {
 	                page: page,
 	                type: type,
 	                keyword: keyword,
+	                checked: checked
 	            },
 	            success: function(data) {
-	                var report_checked = ${report_checked};
-	                
-	                $("tbody").empty();
-	                $.each(data.report_search, function(index, report) {
-	                	var row = "<tr>" +
-	                	"<td>" + report.report_no + "</td>" +
-	                    "<td><a href='report_detail?report_no=" + report.report_no + "'>" + report.report_title + "</a></td>" +
-	                    "<td><a href='user_detail?user_id=" + report.user_id + "'>" + report.user_id + "</a></td>" +
-	                    "<td><a href='../booth/booth_detail?booth_no=" + report.booth_no + "'>" + report.booth_name + "</a></td>" +
-						"<td>" + report.report_date + "</td>";
-
-						if (report_checked == true && report.report_lie == 0) {
-	                    	row += "<td><i class='fa-solid fa-check'></i></td>";
-						} else if (report_checked == true && report.report_lie == 1) {
-							row += "<td><i class='fa-solid fa-xmark'></i></td>";
-						} else {
-							row += "<td></td>";
-						}
-						
-						row += "</tr>";
-						
-	                    $("tbody").append(row);
-	                });
+                    var tbody = $(data).find("tbody").html();
+                    $('#result').html(tbody);
 	                search_pagination(data.search_pages, page);
 	            }
 	        });
@@ -174,27 +157,33 @@
 					    <th>Email</th>
 					    <th>Booth</th>
 					    <th>Created</th>
-					    <th>Checked</th>
+					    <th class=type-select>
+					    	<select onchange="search()" id="checked" name="checked">
+      							<option>Checked</option>
+      							<option value="completed">completed</option>
+      							<option value="false_post">false_post</option>
+      							<option value="incomplete">incomplete</option>
+      						</select>
+					    </th>
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${report_list}" var="vo">
+					<c:forEach items="${list}" var="vo">
 	    				<tr>
 					      	<td>${vo.report_no}</td>
 					      	<td><a href="report_detail?report_no=${vo.report_no}">${vo.report_title}</a></td>
 					      	<td><a href="user_detail?user_id=${vo.user_id}">${vo.user_id}</a></td>
 					      	<td><a href="../booth/booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
 					      	<td>${vo.report_date}</td>
-					      	<c:if test="${report_checked == true && vo.report_lie == 0}">
+					      	<c:if test="${vo.report_check == 1 && vo.report_lie == 0}">
 						      	<td><i class="fa-solid fa-check"></i></td>
 					      	</c:if>
-					      	<c:if test="${report_checked == true && vo.report_lie == 1}">
+					      	<c:if test="${vo.report_check == 1 && vo.report_lie == 1}">
 						      	<td><i class="fa-solid fa-xmark"></i></td>
 					      	</c:if>
-					      	<c:if test="${report_checked == null}">
+					      	<c:if test="${vo.report_check == 0 || vo.report_check == null}">
 						      	<td></td>
-					      	</c:if>	
-					      	<c:out value="${report_checked}">${report_checked}</c:out>
+					      	</c:if>
 					    </tr>
 					</c:forEach>
 				</tbody>

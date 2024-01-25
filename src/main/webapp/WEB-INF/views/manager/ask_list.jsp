@@ -1,8 +1,6 @@
 <%@page import="com.multi.FM.manager.AskVO"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ArrayList<AskVO> vo = (ArrayList<AskVO>) request.getAttribute("ask_list"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +85,7 @@
 			
 	        $.ajax({
 	            type: "POST",
-	            url: "ask_search",
+	            url: "ask_list",
 	            data: {
 	                page: page,
 	                type: type,
@@ -95,25 +93,8 @@
 	                ask: ask
 	            },
 	            success: function(data) {
-	                $("tbody").empty();
-	                $.each(data.ask_search, function(index, ask) {
-	                	var row = "<tr>" +
-	                	"<td>" + ask.ask_no + "</td>" +
-	                    "<td><a href='ask_detail?ask_no=" + ask.ask_no + "'>" + ask.ask_title + "</a></td>" +
-	                    "<td>" + ask.ask_type + "</td>" +
-	                    "<td><a href='user_detail?user_id=" + ask.user_id + "'>" + ask.user_id + "</a></td>" +
-						"<td>" + ask.ask_created_at + "</td>";
-						
-						if (ask.ask_answer != null) {
-	                    	row += "<td><i class='fa-solid fa-check'></i></td>";
-						} else {
-							row += "<td></td>";
-						}
-						
-						row += "</tr>";
-						
-	                    $("tbody").append(row);
-	                });
+                    var tbody = $(data).find("tbody").html();
+                    $('#result').html(tbody);
 	                search_pagination(data.search_pages, page);
 	            }
 	        });
@@ -181,7 +162,7 @@
     				</tr>
 				</thead>
 				<tbody id="result">
-					<c:forEach items="${ask_list}" var="vo">
+					<c:forEach items="${list}" var="vo">
 	    				<tr>
 					      	<td>${vo.ask_no}</td>
 					      	<td><a href="ask_detail?ask_no=${vo.ask_no}">${vo.ask_title}</a></td>

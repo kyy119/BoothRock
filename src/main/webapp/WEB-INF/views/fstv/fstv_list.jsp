@@ -44,11 +44,11 @@
 					<%} else { %>
 					<img src="<%=list.get(i).getFstv_image()%>" alt="">
 					<%} %>
+					<div class="fstv-jjim"><i class="fa-solid fa-heart"></i> <%=list.get(i).getFstv_jjimCount()%></div>
 					<div class="fstv-title"><%=list.get(i).getFstv_title() %></div>
 					<div class="fstv-loc"><%=list.get(i).getFstv_banneraddr() %></div>
 					<div class="fstv-date"><%=list.get(i).getFstv_startdate() %>~
 						<%=list.get(i).getFstv_enddate() %></div>
-					<div><%=list.get(i).getFstv_jjimCount()%></div>
 				</a>
 			</li>
 		<% }}} catch (Exception e){} %>
