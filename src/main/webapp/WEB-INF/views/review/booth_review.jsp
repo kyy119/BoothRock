@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="com.multi.FM.booth.BoothReviewVO"%>
+<%@page import="com.multi.FM.review.BoothReviewVO"%>
 <%@ page import="java.util.List"%>
-<% List<BoothReviewVO> boothReview = (List<BoothReviewVO>) request.getAttribute("boothReview");%>
+<%
+List<BoothReviewVO> boothReview = (List<BoothReviewVO>) request.getAttribute("boothReview");
+HttpSession boothSession = request.getSession();
+String user_id = (String) boothSession.getAttribute("id");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +28,9 @@
 	<div class="bodywrap">
 		<div class="booth-detail-form">
 			<div class="booth-title">
-				<!-- <h3 class="fstv-title">양평 산수유마을 빙어축제</h3> -->
 				<c:if test="${not empty boothReview}">
 					<c:set var="firstReview" value="${boothReview[0]}" />
+					<h3 class="fstv-title">${firstReview.getFstv_title()}</h3>
 					<a href="booth/booth_detail.jsp" style="display: inline-block">
 						<h1>${firstReview.getBooth_name()}</h1>
 					</a>
@@ -36,7 +40,7 @@
 			</div>
 			<div class="review-list-form">
 				<a href="#" class="write-review"
-					onclick="showFileSelector(event)"><i
+					onclick="showFileSelector(event,'<%=user_id%>')"><i
 					class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 				<ul class="review-ul">
 					<c:if test="${not empty boothReview}">

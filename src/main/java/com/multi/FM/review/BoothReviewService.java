@@ -1,4 +1,4 @@
-package com.multi.FM.booth;
+package com.multi.FM.review;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

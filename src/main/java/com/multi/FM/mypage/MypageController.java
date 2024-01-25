@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.multi.FM.booth.BoothReviewVO;
 import com.multi.FM.fstv.FestivalVO;
 import com.multi.FM.fstv.JjimVO;
 import com.multi.FM.manager.AskVO;
+import com.multi.FM.review.BoothReviewVO;
 import com.multi.FM.users.UsersVO;
 
 @Controller
