@@ -8,11 +8,8 @@
 		insert into festival values
 		(#{fstv_no}, #{fstv_title}, #{fstv_startdate}, #{fstv_enddate},
 		#{fstv_addr1}, #{fstv_mapx}, #{fstv_mapy}, #{fstv_image},
-		#{fstv_tel},
-		#{fstv_eventinfo}, #{fstv_eventcont},
-		#{fstv_usetimefestival},
-		#{fstv_eventplace}, #{fstv_playtime}, #{fstv_homepage}
-		)
+		#{fstv_tel}, #{fstv_eventinfo}, #{fstv_eventcont}, #{fstv_usetimefestival},
+		#{fstv_eventplace}, #{fstv_playtime}, #{fstv_homepage}, 0)
 	</insert>
 	
 	<!-- 진행중인 축제 찜순으로 정렬 완료 -->

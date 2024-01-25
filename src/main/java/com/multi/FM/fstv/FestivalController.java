@@ -1,6 +1,5 @@
 package com.multi.FM.fstv;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,11 +24,17 @@ public class FestivalController {
   @Autowired
   FestivalService service;
 
-  @RequestMapping("festivalinsert")
-  public void insert(FestivalVO festivalVO, Model model) {
+  @PostMapping("fstv_insert")
+  @ResponseBody
+  public String insert() {
     System.out.println("controller start");
-    ArrayList<FestivalVO> list = service.insert();
-    model.addAttribute("vo", list);
+    try {
+      service.insert();
+      return "Success Get Data";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "Failed Get Data";
+    }
   }
 
   // 메인페이지 bannerlist를 불러오는 메서드

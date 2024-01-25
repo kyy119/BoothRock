@@ -15,13 +15,12 @@ public class FestivalService {
 	@Autowired
 	SqlSessionTemplate my;
 	
-	public ArrayList<FestivalVO> insert() {
+	public void insert() {
 		fstvGetApi api = new fstvGetApi();
 		ArrayList<FestivalVO> list = api.parse();
 		for (int i = 0; i < list.size(); i++) {
 			dao.insert(list.get(i));
 		}
-		return list;
 	}
 	
 	public List<FestivalVO> banner() {
