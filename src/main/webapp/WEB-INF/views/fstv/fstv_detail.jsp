@@ -1,3 +1,4 @@
+<%@page import="com.multi.FM.fstv.PropertiesReader"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.multi.FM.fstv.FestivalVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
 <%	
 	FestivalVO vo = (FestivalVO)request.getAttribute("vo");
 	String id = (String)session.getAttribute("id");
+	String apiKey = PropertiesReader.getProperty("map.apiKey");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
     <title>모든 축제의 부스를 담다 - 부스락</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fstv_detail.css" type="text/css">
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APPkey"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=apiKey%>"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/fstv_detail.js" defer type="text/javascript"></script>
 </head>
 <body>
@@ -81,7 +83,10 @@
 	        		</h3>
 	        	
 	        		<div id="map" class="fstv-map">
-	        			<a class="route-finder" href="https://map.kakao.com/link/to/' + title + ',' + lat + ',' + lng + '" target="_blank"><i class="fa-solid fa-location-arrow"></i> 길찾기</a>
+	        			<a class="route-finder"
+	        			href="https://map.kakao.com/link/to/<%=vo.getFstv_title()%>,<%=vo.getFstv_mapy()%>,<%=vo.getFstv_mapx()%>"
+	        			target="_blank">
+	        			<i class="fa-solid fa-location-arrow"></i> 길찾기</a>
 	        		</div>
 	        		<!-- <div class="fstv-map">
 	        			<img alt="카카오맵" src="resources/img/카카오맵.png">
@@ -118,7 +123,7 @@
 
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		var imageSrc = 'resources/img/marker.png', // 마커이미지의 주소입니다    
+		var imageSrc = '${pageContext.request.contextPath}/resources/img/marker.png', // 마커이미지의 주소입니다    
 		    imageSize = new kakao.maps.Size(35, 38), // 마커이미지의 크기입니다
 		    imageOption = {offset: new kakao.maps.Point(18, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 	    
@@ -136,12 +141,11 @@
 		marker.setMap(map);  
 
 		// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		var content = '<div class="customoverlay">' +
-		    '  <a class="title-finder" href="https://map.kakao.com/link/to/' + title + ',' + lat + ',' + lng + '" target="_blank">' +
+		var content = '<div class="customoverlay">'+'<a class="title-finder" href="https://map.kakao.com/link/to/'+ title +','+lat+','+lng+'" target="_blank">' +
 		    '    <span class="title">' + title + '</span>' +
 		    '  </a>' +
 		    '</div>';
-
+		console.log(title);
 		// 커스텀 오버레이가 표시될 위치입니다 
 		var position = new kakao.maps.LatLng(lat, lng);  
 
