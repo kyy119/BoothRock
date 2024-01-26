@@ -15,34 +15,34 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 @EnableWebMvc
 public class AWSConfiguration {
-    
-    @Value("${accessKey}")
-    private String accessKey;
 
-    @Value("${secretKey}")
-    private String secretKey;
-    
-    @Value("${bucketName}")
-    private String bucketName;  // 추가: S3 버킷 이름을 가져오기 위한 프로퍼티
+  @Value("${accessKey}")
+  private String accessKey;
 
-    @Bean
-    public BasicAWSCredentials AwsCredentials() {
-        BasicAWSCredentials AwsCreds = new BasicAWSCredentials(accessKey, secretKey);
-        return AwsCreds;
-    }
+  @Value("${secretKey}")
+  private String secretKey;
 
-    @Bean
-    public AmazonS3 AwsS3Client() {
-        AmazonS3 s3Builder = AmazonS3ClientBuilder.standard()
-                .withRegion(Regions.AP_NORTHEAST_2)
-                .withCredentials(new AWSStaticCredentialsProvider(this.AwsCredentials()))
-                .build();
+  @Value("${bucketName}")
+  private String bucketName;  // 추가: S3 버킷 이름을 가져오기 위한 프로퍼티
 
-        return s3Builder;
-    }
-    
-    @Bean(name = "bucketName")  // 추가: 버킷 이름을 Bean으로 등록
-    public String getBucketName() {
-        return bucketName;
-    }
+  @Bean
+  public BasicAWSCredentials AwsCredentials() {
+    BasicAWSCredentials AwsCreds = new BasicAWSCredentials(accessKey, secretKey);
+    return AwsCreds;
+  }
+
+  @Bean
+  public AmazonS3 AwsS3Client() {
+    AmazonS3 s3Builder = AmazonS3ClientBuilder.standard()
+        .withRegion(Regions.AP_NORTHEAST_2)
+        .withCredentials(new AWSStaticCredentialsProvider(this.AwsCredentials()))
+        .build();
+
+    return s3Builder;
+  }
+
+  @Bean(name = "bucketName")  // 추가: 버킷 이름을 Bean으로 등록
+  public String getBucketName() {
+    return bucketName;
+  }
 }
