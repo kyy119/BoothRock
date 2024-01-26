@@ -53,9 +53,7 @@ public class MyBoothController {
   }
   @RequestMapping("mypage_booth")
   public void mybooth(String user_id, Model model){
-    System.out.println("mybooth test");
     List<BoothVO> mybooths = myboothService.showMybooth(user_id);
-    System.out.println("user_id : " + user_id);
     model.addAttribute("mybooths", mybooths);
   }
 
