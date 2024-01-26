@@ -20,7 +20,7 @@
     <div class="bodywrap">
 	    <div class="fstv-map-form">
 		    <div class="fstv-map">
-	    		<h1><i class="fa-regular fa-map"></i> 전국축제지도</h1>
+	    		<h1>전국축제지도</h1>
 		    	<div id="Map"></div>
 		    </div>
 	        <div class="fstv-list-form"> <%-- 페이징 필요 --%>
@@ -52,6 +52,30 @@
 				}
 			})
 			
+			var seoul = $('#Map > div:nth-child(1) > div > div:nth-child(6) > div:nth-child(1) > img');
+			var other = $('#Map > div:nth-child(1) > div > div:nth-child(6) > div > img');
+			var map_img = $('#Map > div:nth-child(1) > div > div:nth-child(2)');
+			
+			seoul.attr('src', 'resources/img/clickMarker.png');
+			seoul.parent().addClass('img-before');
+			$('#daum-maps-shape-0').removeAttr('style');
+			$('#daum-maps-shape-0').attr('fill', 'rgb(253, 221, 155)');
+			
+	        other.on('click', function() {
+	        	seoul.attr('src', 'resources/img/normalMarker.png');
+	    		$(this).parent().addClass('img-before');
+	    		$(this).parent().siblings().removeClass('img-before');
+	    		$('#daum-maps-shape-0').attr('fill', 'rgb(233, 227, 247)');
+	        });
+	        
+	        seoul.on('click', function() {
+	        	$(this).attr('src', 'resources/img/clickMarker.png');
+	    		$(this).parent().addClass('img-before');
+	    		$(this).parent().siblings().removeClass('img-before');
+	        });
+	        
+		    $('#Map').css('background', 'none');
+		    map_img.css('display', 'none');
 		})
 		
 		var areas = [];
@@ -235,12 +259,6 @@
 		        behavior: 'smooth'
 		    });
 		}
-	    $('#Map').css('background', 'none');
-	    $('#Map > div:nth-child(1) > div > div:nth-child(2)').css('display', 'none');
-	    $('#Map > div:nth-child(1) > div > div:nth-child(6) > div > img').on('click', function() {
-    		$(this).parent().addClass('img-before');
-    		$(this).parent().siblings().removeClass('img-before');
-		});
 		
 	</script>
 </body>

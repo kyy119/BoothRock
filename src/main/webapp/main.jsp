@@ -10,20 +10,19 @@
     <script src="resources/js/main.js" defer type="text/javascript"></script>
 </head>
 <body>
+    <div class="banner-back">
     <%@ include file="header.jsp" %>
     
-    <div class="bodywrap">
         <div class="img-slide">
             <div class="slide-list" id="banner"></div> <!-- 축제 배너 데이터 들어가는 div 정렬은 찜 많은 순(인기순) -->
-            <div class="banner-btn">
-		        <button class="banner-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-		        <button class="banner-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-	        </div>
 	        <div class="dot">
+		        <button class="banner-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
 		        <i id="img1" class="fa-solid fa-minus current-img"></i>
 		        <i id="img2" class="fa-solid fa-minus"></i>
 		        <i id="img3" class="fa-solid fa-minus"></i>
+		        <button class="banner-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
 	        </div>
+        </div>
         </div>
         <div class="soon-fstv">
         	<h2>곧 끝나는 축제 <i class="fa-solid fa-calendar-days" style="color: #fbd037;"></i></h2>
@@ -38,7 +37,6 @@
         	<h2>요즘 뜨고 있는 부스 <i class="fa-solid fa-fire" style="color: #ce3b3b;"></i></h2>
         	<div class="hot-booth-list" id="boothup"></div> <!-- 요즘 뜨고 있는 부스 데이터 들어가는 div -->
         </div>
-    </div>
 	
 	<%@ include file="footer.jsp" %>
 
