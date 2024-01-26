@@ -8,11 +8,8 @@
 		insert into festival values
 		(#{fstv_no}, #{fstv_title}, #{fstv_startdate}, #{fstv_enddate},
 		#{fstv_addr1}, #{fstv_mapx}, #{fstv_mapy}, #{fstv_image},
-		#{fstv_tel},
-		#{fstv_eventinfo}, #{fstv_eventcont},
-		#{fstv_usetimefestival},
-		#{fstv_eventplace}, #{fstv_playtime}, #{fstv_homepage}
-		)
+		#{fstv_tel}, #{fstv_eventinfo}, #{fstv_eventcont}, #{fstv_usetimefestival},
+		#{fstv_eventplace}, #{fstv_playtime}, #{fstv_homepage}, 0)
 	</insert>
 	
 	<!-- 진행중인 축제 찜순으로 정렬 완료 -->
@@ -137,11 +134,6 @@
 	<select id="map3" parameterType="String" resultType="festivalVO">
 		select * from festival where fstv_enddate &lt; current_date()
 		and fstv_addr1 like concat('%', #{region}, '%') order by fstv_startdate desc
-	</select>
-	
-	<select id="mapJ" parameterType="String" resultType="festivalVO">
-		select * from festival where fstv_addr1 like concat('%', #{region}, '%')
-		order by fstv_jjimCount desc
 	</select>
 	
 	<select id="jjimcnt" parameterType="jjimVO" resultType="int">

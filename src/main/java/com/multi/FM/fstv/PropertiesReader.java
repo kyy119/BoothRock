@@ -15,7 +15,7 @@ public class PropertiesReader {
         }
     }
 
-    public static String getProperty(String key) {
+    public static String get_property(String key) {
         return properties.getProperty(key);
     }
 }

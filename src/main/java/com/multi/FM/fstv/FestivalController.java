@@ -1,15 +1,16 @@
 package com.multi.FM.fstv;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.jws.WebParam.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,12 +24,26 @@ public class FestivalController {
 
   @Autowired
   FestivalService service;
+  
+  private final String festival_key;
+  
+  @Autowired
+  public FestivalController(
+      @Value("${fstv.key}") String festival_key) {
+      this.festival_key = festival_key;
+  }  
 
-  @RequestMapping("festivalinsert")
-  public void insert(FestivalVO festivalVO, Model model) {
+  @PostMapping("fstv_insert")
+  @ResponseBody
+  public String insert() {
     System.out.println("controller start");
-    ArrayList<FestivalVO> list = service.insert();
-    model.addAttribute("vo", list);
+    try {
+      service.insert();
+      return "Success Get Data";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "Failed Get Data";
+    }
   }
 
   // 메인페이지 bannerlist를 불러오는 메서드
@@ -120,17 +135,9 @@ public class FestivalController {
     model.addAttribute("region", region);
   }
   
-  @RequestMapping("fstv_maplistJ")
-  public String mapJ(String region, Model model) {
-    List<FestivalVO> list = service.mapJ(region);
-    model.addAttribute("list", list);
-    model.addAttribute("region", region);
-    return "fstv_maplist";
-  }
-  
   @RequestMapping("fstv_detail_jjim")
   public void jjimchu(JjimVO jvo, Model model) {
-    int res = service.jjimChu(jvo);
+    int res = service.jjim_chu(jvo);
     if(res==0) {
       model.addAttribute("res", "찜 목록에서 삭제되었습니다");
     }else {
@@ -142,7 +149,7 @@ public class FestivalController {
   @ResponseBody
   public ResponseEntity<Map<String, Integer>> jjim_search(JjimVO jvo) {
     Map<String, Integer> data = new HashMap<>();
-    int count = service.jjimSearch(jvo);
+    int count = service.jjim_search(jvo);
     data.put("count", count);
     return ResponseEntity.ok().body(data);
   }
