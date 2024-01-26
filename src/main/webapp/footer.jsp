@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" type="text/css">
-	<div style="height: 20px;"></div>
+	<div style="height: 30px;"></div>
     <footer>
  		<div class="copy">
              COPYRIGHTⓒ by FM. ALL RIGHTS RESERVED

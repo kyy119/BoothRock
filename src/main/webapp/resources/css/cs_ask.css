@@ -16,7 +16,7 @@
 }
 .ask-title {
 	height: 35px;
-	width: 400px;
+	width: 390px;
 	padding: 0px 10px;
 	box-sizing: border-box;
 	font-size: 17px;
@@ -27,9 +27,10 @@
 }
 #ask-type {
 	height: 35px;
-	width: 90px;
+	width: 100px;
 	margin-left: 3px;
 	vertical-align: top;
+	font-size: 16px;
 }
 .ask-content {
 	padding: 10px;

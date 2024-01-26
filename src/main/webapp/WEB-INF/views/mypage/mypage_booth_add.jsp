@@ -40,7 +40,8 @@
 				</select>
 			</div>
 			<div>
-				<i class="fa-solid fa-image"></i> <input type="file" name="booth-img" id="booth-img">
+				<i class="fa-solid fa-image"></i>
+				<input type="file" name="booth-img" id="booth-img"> <label for="booth-img" class="insert-img">파일첨부</label>
 			</div>
 			<div>
 				<i class="fa-solid fa-location-dot"></i> <input type="text"

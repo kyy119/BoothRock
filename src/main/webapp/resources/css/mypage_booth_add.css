@@ -57,7 +57,22 @@
 	width: 278px;
 }
 #booth-img {
-	width: 190px !important;
+	width: 222px !important;
+	color: #757575;
+	vertical-align: middle;
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+.insert-img {
+	font-size: 15px;
+	color: #757575;
+}
+input[type=file]::file-selector-button {
+	display: none;
+}
+.insert-img:hover {
+	font-weight: 600;
+	color: #876ed5;
 }
 .input-form div input:focus, select:focus, textarea:focus {
 	outline: none;
