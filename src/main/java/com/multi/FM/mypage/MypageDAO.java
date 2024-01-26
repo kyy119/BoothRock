@@ -5,10 +5,10 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.multi.FM.booth.BoothReviewVO;
 import com.multi.FM.fstv.FestivalVO;
 import com.multi.FM.fstv.JjimVO;
 import com.multi.FM.manager.AskVO;
+import com.multi.FM.review.BoothReviewVO;
 import com.multi.FM.users.UsersVO;
 
 @Repository

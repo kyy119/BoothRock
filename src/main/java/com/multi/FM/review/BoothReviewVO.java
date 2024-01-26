@@ -1,4 +1,4 @@
-package com.multi.FM.booth;
+package com.multi.FM.review;
 
 import lombok.Getter;
 import lombok.Setter;

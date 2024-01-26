@@ -32,7 +32,8 @@
 	<select id="ReportHistory" resultType="boothReportVO"
 		parameterType="java.util.Map">
 		select * from report
-		where user_id = #{user_id} and booth_no = #{booth_no}
+		where user_id = #{user_id} and
+		booth_no = #{booth_no}
 	</select>
 
 	<select id="reportBooth" parameterType="boothReportVO"
@@ -40,22 +41,37 @@
 		select booth.booth_name, festival.fstv_title
 		from booth
 		inner join festival on booth.fstv_no = festival.fstv_no
-		where booth.booth_no = #{booth_no}
+		where
+		booth.booth_no = #{booth_no}
 	</select>
 
-	<insert id="insertReport" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="fstv_no">
-		<selectKey keyColumn="fstv_no" keyProperty="fstv_no" resultType="int" order="BEFORE">
+	<insert id="insertReport" parameterType="java.util.Map"
+		useGeneratedKeys="true" keyProperty="fstv_no">
+		<selectKey keyColumn="fstv_no" keyProperty="fstv_no"
+			resultType="int" order="BEFORE">
 			select fstv_no
 			from booth
-			where booth_no = #{booth_no}
+			where booth_no =
+			#{booth_no}
 		</selectKey>
 
 		insert into report (report_title, report_comment, fstv_no, user_id,
 		booth_no, report_date)
-		values (#{report_title}, #{report_comment}, #{fstv_no}, #{user_id},
+		values (#{report_title}, #{report_comment},
+		#{fstv_no}, #{user_id},
 		#{booth_no}, CURRENT_TIMESTAMP)
 	</insert>
 
+	<insert id="saveReceipt" parameterType="receiptVO">
+		insert into receipt
+		(user_id, selling_number,
+		transaction_date) values (#{user_id},
+		#{selling_number},
+		#{transaction_date})
+	</insert>
 
-
+	<select id="countByTransactionDate" parameterType="String"
+		resultType="long">
+		select count(*) from receipt where transaction_date = #{date}
+	</select>
 </mapper>

@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모든 축제의 부스를 담다 - 부스락</title>
-    <link rel="stylesheet" href="resources/css/booth_review_write.css" type="text/css">
-    <script src="resources/js/booth_review_write.js" defer type="text/javascript"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/booth_review_write.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/resources/js/booth_review_write.js" defer type="text/javascript"></script>
 </head>
 <body>
     <%@ include file="../../../header.jsp" %>

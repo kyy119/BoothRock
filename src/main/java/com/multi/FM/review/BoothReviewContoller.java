@@ -1,6 +1,5 @@
-package com.multi.FM.booth;
+package com.multi.FM.review;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import com.multi.FM.booth.BoothDAO;
 
 
 
 @Controller
+//@PropertySource("classpath:key.properties")
 @RequestMapping("review")
 public class BoothReviewContoller {
 
@@ -25,7 +26,20 @@ public class BoothReviewContoller {
   BoothReviewService boothRSV;
   
   @Autowired
-  BoothService boothSV;
+  ReceiptService receiptService;
+  
+  //@Autowired
+  //static ApplicationContext ctx;
+
+  @Autowired
+  ApiKey return_key;
+  
+  public BoothReviewContoller() {
+    
+      // System.out.println("ocrSecretKey: " + secretKey);
+       //Environment env = ctx.getEnvironment();
+       //System.out.println(env.getProperty("ocr.secretKey"));
+     } 
 
   
   // review 리스트(더보기)
@@ -44,32 +58,45 @@ public class BoothReviewContoller {
       return "review/booth_detail_review"; 
   }// booth_detail_review list
   
-  //ocr 검증
+//ocr 검증
   @PostMapping("/ocr_auth")
   @ResponseBody
-  public String ocr_auth(@RequestPart("file") MultipartFile file) {
+  public String ocr_auth(@RequestPart("file") MultipartFile file,
+                         @RequestParam(value = "user_id", required = false) String user_id) {
+  //  Environment env = ctx.getEnvironment();
+  // String key= env.getProperty("ocr.secretKey");
+    String key = return_key.key();
       try {
-          // 파일을 서버에 저장
+          System.out.println("서버에서 받은 사용자 ID: " + user_id);
+
           byte[] fileBytes = file.getBytes();
 
           // OCR 처리 로직
           NaverOCR naverOCR = new NaverOCR();
-          ReceiptVO ocrResultList = naverOCR.ocr(fileBytes);
-          
-          // 이 부분이 추가되었습니다. OCR 결과를 어딘가에 활용하거나 저장할 수 있습니다.
-          // 아래는 예시로 콘솔에 출력하는 코드입니다.
-          if (ocrResultList != null) {
-              System.out.println("OCR 결과: " + ocrResultList);
-          }
+          ReceiptVO receiptVO = naverOCR.ocr(fileBytes, user_id, key);
 
-          // 처리 결과에 따라 응답을 반환할 수 있습니다.
-          return "success";
+          if (receiptVO != null) {
+              // 중복 데이터 확인
+              if (!receiptService.isDuplicate(receiptVO)) {
+                  // 중복되지 않으면 저장
+                  receiptService.saveReceipt(receiptVO);
+                  return "success";
+              } else {
+                  return "duplicate";
+              }
+          } else {
+              return "error";
+          }
       } catch (Exception e) {
-          e.printStackTrace(); // 예외 처리를 적절히 수행
+          e.printStackTrace(); 
           return "error";
       }
   }
   
+  @RequestMapping("/go_booth_review_write")
+  public String goToBoothReviewWrite() {
+      return "review/booth_review_write";
+  }
  
   
 }// class

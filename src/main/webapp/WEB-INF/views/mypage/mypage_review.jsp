@@ -1,6 +1,6 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
-<%@page import="com.multi.FM.booth.BoothReviewVO"%>
+<%@page import="com.multi.FM.review.BoothReviewVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
