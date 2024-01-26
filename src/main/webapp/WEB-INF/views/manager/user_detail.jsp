@@ -29,7 +29,7 @@
 	            }
 	        });
 	        
-	        var user_id = <%= vo.getUser_id() %>;
+	        var user_id = '<%= vo.getUser_id() %>';
 	        var user_black = <%= vo.getUser_black() %>
 	        function update_user(action, message) {
 	            $.ajax({

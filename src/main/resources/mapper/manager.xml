@@ -339,7 +339,7 @@
 
 	<update id="update_ask" parameterType="askVO">
 		UPDATE ask
-		SET ask_answer = #{answer}
+		SET ask_answer = #{ask_answer}
 		WHERE ask_no = #{ask_no};
 	</update>
 
