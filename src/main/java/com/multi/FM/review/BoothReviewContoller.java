@@ -1,6 +1,5 @@
 package com.multi.FM.review;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,7 @@ import com.multi.FM.booth.BoothDAO;
 
 
 @Controller
+//@PropertySource("classpath:key.properties")
 @RequestMapping("review")
 public class BoothReviewContoller {
 
@@ -27,6 +27,19 @@ public class BoothReviewContoller {
   
   @Autowired
   ReceiptService receiptService;
+  
+  //@Autowired
+  //static ApplicationContext ctx;
+
+  @Autowired
+  ApiKey return_key;
+  
+  public BoothReviewContoller() {
+    
+      // System.out.println("ocrSecretKey: " + secretKey);
+       //Environment env = ctx.getEnvironment();
+       //System.out.println(env.getProperty("ocr.secretKey"));
+     } 
 
   
   // review 리스트(더보기)
@@ -50,6 +63,9 @@ public class BoothReviewContoller {
   @ResponseBody
   public String ocr_auth(@RequestPart("file") MultipartFile file,
                          @RequestParam(value = "user_id", required = false) String user_id) {
+  //  Environment env = ctx.getEnvironment();
+  // String key= env.getProperty("ocr.secretKey");
+    String key = return_key.key();
       try {
           System.out.println("서버에서 받은 사용자 ID: " + user_id);
 
@@ -57,7 +73,7 @@ public class BoothReviewContoller {
 
           // OCR 처리 로직
           NaverOCR naverOCR = new NaverOCR();
-          ReceiptVO receiptVO = naverOCR.ocr(fileBytes, user_id);
+          ReceiptVO receiptVO = naverOCR.ocr(fileBytes, user_id, key);
 
           if (receiptVO != null) {
               // 중복 데이터 확인

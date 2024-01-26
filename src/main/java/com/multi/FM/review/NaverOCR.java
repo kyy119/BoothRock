@@ -1,37 +1,35 @@
 package com.multi.FM.review;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+
+
+//@Configuration
 @Component
 public class NaverOCR {
-  
-  private String ocrURL="";
-  private String ocrSecretKey ="";
-  
-  
-  public NaverOCR() {
-    // 로깅을 이용하여 값 출력
-    System.out.println("ocrURL: " + ocrURL);
-    System.out.println("ocrSecretKey: " + ocrSecretKey);
-  }
+
+  private String ocr_url="https://yf0txwt9ox.apigw.ntruss.com/custom/v1/27980/1774bc610515286c013a601e02950e81873bb242ff30d10b4ae293236f4fd153/infer";
   
     private static final String FIELD_NAME_BUSINESS_NUMBER = "사업자번호";
     private static final String FIELD_NAME_TRANSACTION_DATE = "거래일시";
     
-    public ReceiptVO ocr(byte[] fileBytes, String user_id) {
+    public ReceiptVO ocr(byte[] fileBytes, String user_id, String key) {
         ReceiptVO receiptVO = new ReceiptVO(); // ReceiptVO 인스턴스 생성
+        
+      
 
         try {
-            URL url = new URL(ocrURL);
+            URL url = new URL(ocr_url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setUseCaches(false);
             con.setDoInput(true);
@@ -40,7 +38,7 @@ public class NaverOCR {
             con.setRequestMethod("POST");
             String boundary = "----" + UUID.randomUUID().toString().replaceAll("-", "");
             con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-            con.setRequestProperty("X-OCR-SECRET", ocrSecretKey);
+            con.setRequestProperty("X-OCR-SECRET", key);
 
             JSONObject json = new JSONObject();
             json.put("version", "V2");

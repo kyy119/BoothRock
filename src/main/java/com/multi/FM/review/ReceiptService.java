@@ -11,9 +11,9 @@ public class ReceiptService {
   @Autowired
   ReceiptDAO dao;
 
-  public ReceiptVO getOcrResult(byte[] fileBytes,String user_id) {
+  public ReceiptVO getOcrResult(byte[] fileBytes,String user_id, String key) {
     try {
-      ReceiptVO ocrResult = naverOCR.ocr(fileBytes, user_id);
+      ReceiptVO ocrResult = naverOCR.ocr(fileBytes, user_id,key);
       return ocrResult;
     } catch (Exception e) {
       e.printStackTrace();
