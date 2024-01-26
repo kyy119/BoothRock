@@ -19,22 +19,6 @@ jQuery(document).ready(function() {
 	    }
 	}
 	
-	
-	// 이미지 사이즈 조절 함수
-	function adjustImageSize(img) {
- 
-		var imgWidth = img.width();
-		var imgHeight = img.height();
-	
-		var imgRatio = imgWidth / imgHeight;
-	
-		if (imgRatio >= 1) {
-			img.css('width', '480px');
-		} else if (imgRatio < 1) {
-			img.css('height', '500px');
-		}
-	}
-	
 	$.ajax({
 		url : "fstv/bannerlist",
 		success : function(list) {
@@ -75,7 +59,7 @@ jQuery(document).ready(function() {
 	let currentIndex = 0;
 	const totalSlides = 3;
 	function showSlide(index) {
-	    const marginLeft = -index * 1000;
+	    const marginLeft = -index * 1050;
 	    $('.slide-list').animate({ marginLeft }, 500);
 	    
 	    for (let i = 0; i < totalSlides; i++) {
@@ -99,7 +83,7 @@ jQuery(document).ready(function() {
 	$('.banner-prev-btn').on('click', prevSlide);
 	$('.banner-next-btn').on('click', nextSlide);
 	
-	setInterval(nextSlide, 3000);
+	setInterval(nextSlide, 4000);
    
     $('.next-btn').click(function() {
     	org++;
