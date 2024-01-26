@@ -103,16 +103,12 @@ public class FestivalDAO {
     return total;
   }
   
-  public List<FestivalVO> mapJ(String region) {
-    return my.selectList("fest.mapJ", region);
-  }
-  
-  public void jjimchu(JjimVO jvo) {
+  public void jjim_chu(JjimVO jvo) {
     my.update("fest.upcnt",jvo);
     my.insert("fest.jjimchu", jvo);
   }
   
-  public void jjimsak(JjimVO jvo) {
+  public void jjim_sak(JjimVO jvo) {
     my.update("fest.upcnt",jvo);
     my.delete("fest.jjimsak",jvo);
   }
