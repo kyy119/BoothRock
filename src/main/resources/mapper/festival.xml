@@ -136,11 +136,6 @@
 		and fstv_addr1 like concat('%', #{region}, '%') order by fstv_startdate desc
 	</select>
 	
-	<select id="mapJ" parameterType="String" resultType="festivalVO">
-		select * from festival where fstv_addr1 like concat('%', #{region}, '%')
-		order by fstv_jjimCount desc
-	</select>
-	
 	<select id="jjimcnt" parameterType="jjimVO" resultType="int">
 		select fstv_jjimCount from festival where fstv_no = #{fstv_no}
 	</select>

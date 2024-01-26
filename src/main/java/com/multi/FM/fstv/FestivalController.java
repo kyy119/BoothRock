@@ -135,17 +135,9 @@ public class FestivalController {
     model.addAttribute("region", region);
   }
   
-  @RequestMapping("fstv_maplistJ")
-  public String mapJ(String region, Model model) {
-    List<FestivalVO> list = service.mapJ(region);
-    model.addAttribute("list", list);
-    model.addAttribute("region", region);
-    return "fstv_maplist";
-  }
-  
   @RequestMapping("fstv_detail_jjim")
   public void jjimchu(JjimVO jvo, Model model) {
-    int res = service.jjimChu(jvo);
+    int res = service.jjim_chu(jvo);
     if(res==0) {
       model.addAttribute("res", "찜 목록에서 삭제되었습니다");
     }else {
@@ -157,7 +149,7 @@ public class FestivalController {
   @ResponseBody
   public ResponseEntity<Map<String, Integer>> jjim_search(JjimVO jvo) {
     Map<String, Integer> data = new HashMap<>();
-    int count = service.jjimSearch(jvo);
+    int count = service.jjim_search(jvo);
     data.put("count", count);
     return ResponseEntity.ok().body(data);
   }

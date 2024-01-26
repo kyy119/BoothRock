@@ -1,5 +1,10 @@
 package com.multi.FM.fstv;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class FestivalPageVO {
   private int index;
   private int page;
@@ -8,38 +13,6 @@ public class FestivalPageVO {
 
   public void calidx() {
     index = (page - 1) * 9;
-  }
-
-  public int getIndex() {
-    return index;
-  }
-
-  public void setIndex(int index) {
-    this.index = index;
-  }
-
-  public int getPage() {
-    return page;
-  }
-
-  public void setPage(int page) {
-    this.page = page;
-  }
-
-  public String getDate1() {
-    return date1;
-  }
-
-  public void setDate1(String date1) {
-    this.date1 = date1;
-  }
-
-  public String getDate2() {
-    return date2;
-  }
-
-  public void setDate2(String date2) {
-    this.date2 = date2;
   }
 
   @Override

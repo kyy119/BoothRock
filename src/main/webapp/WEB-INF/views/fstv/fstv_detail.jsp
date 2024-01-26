@@ -6,7 +6,7 @@
 <%	
 	FestivalVO vo = (FestivalVO)request.getAttribute("vo");
 	String id = (String)session.getAttribute("id");
-	String apiKey = PropertiesReader.getProperty("map.apiKey");
+	String apiKey = PropertiesReader.get_property("map.apiKey");
 %>
 <!DOCTYPE html>
 <html lang="en">
