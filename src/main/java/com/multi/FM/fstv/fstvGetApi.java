@@ -7,16 +7,18 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 public class fstvGetApi {
   
-  String key = "kr90lRK39YPQ8kZufNKeOnhj2uSxGiJSv%2BcIO3dLF3qKXeST425NvYJvS%2F6%2FhSVZpJTO17Sp636lg7FXrSUnOA%3D%3D&";
+  @Autowired
+  private String fstv_key;
 
   public ArrayList<FestivalVO> parse() {
     String url = "http://apis.data.go.kr/B551011/KorService1/areaBasedList1";
-    String parameter = "?numOfRows=2&pageNo=1&MobileOS=ETC&MobileApp=AppTest&ServiceKey=" + key
+    String parameter = "?numOfRows=2&pageNo=1&MobileOS=ETC&MobileApp=AppTest&ServiceKey=" + fstv_key
                      + "&listYN=Y&arrange=C&contentTypeId=15&areaCode=&sigunguCode=&cat1=&cat2=&cat3=";
 
     RestTemplate rt = new RestTemplate();
@@ -55,14 +57,17 @@ public class fstvGetApi {
   
   // eventinfo / eventcont 가져오기
   public FestivalVO get_eventinfo_api(FestivalVO vo) {
-    
     String url = "http://apis.data.go.kr/B551011/KorService1/detailInfo1";
-    String parameter = "?ServiceKey=" + key
-                     + "contentTypeId=15&contentId="+ vo.getFstv_no() +"&MobileOS=ETC&MobileApp=AppTest";
+    String parameter = "?ServiceKey=" + fstv_key
+                     + "&contentTypeId=15&contentId="+ vo.getFstv_no() +"&MobileOS=ETC&MobileApp=AppTest";
     RestTemplate rt = new RestTemplate();
     rt.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));   // RestTemplate 사용 및 한글 깨짐 방지용 코드
-    String rsp = rt.getForObject(url + parameter, String.class);                                // API 호출 후 데이터를 response에저장
-    JSONArray arr = transfer_json(rsp).getJSONArray("item");
+    String rsp = rt.getForObject(url + parameter, String.class);                                // API 호출 후 데이터를 response에 저장
+    JSONObject json = XML.toJSONObject(rsp);
+    JSONObject response = json.getJSONObject("response");
+    JSONObject body = response.getJSONObject("body");
+    JSONObject items = body.getJSONObject("items");
+    JSONArray arr = items.getJSONArray("item");
 
     int cnt = arr.length();
     if(cnt == 1) {
@@ -82,7 +87,7 @@ public class fstvGetApi {
   public FestivalVO get_fstvdate_api(FestivalVO vo) {
     
     String url = "http://apis.data.go.kr/B551011/KorService1/detailIntro1";
-    String paramter = "?ServiceKey=" + key
+    String paramter = "?ServiceKey=" + fstv_key
         + "&contentTypeId=15&contentId=" + vo.getFstv_no() + "&MobileOS=ETC&MobileApp=AppTest";
     
     RestTemplate rt = new RestTemplate();
@@ -113,7 +118,7 @@ public class fstvGetApi {
   public FestivalVO get_fstvsite_api(FestivalVO vo) {
     
     String url = "http://apis.data.go.kr/B551011/KorService1/detailCommon1";
-    String paramter = "?ServiceKey=" + key
+    String paramter = "?ServiceKey=" + fstv_key
         + "&contentTypeId=15&contentId=" + vo.getFstv_no()
         + "&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y";
     
