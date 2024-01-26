@@ -149,12 +149,11 @@ jQuery(document).ready(function() {
 		passwordIsValid = validatePassword(input_password);
 		if (passwordIsValid && input_password != '') {				//비밀번호 유효성에 맞고, 빈칸이 아닐시 체크이미지 생성
 			passwordIsValid = true;
-			removeImage1();
-			addImage1();
-			passwordMessage.textContent = "";
-			passwordMessage.style.display = "none";
+			passwordMessage.textContent = "조건을 만족합니다!";
+			passwordMessage.style.color = "green";
+			passwordMessage.style.display = "block";
 		} else {													//아닐 경우 조건 띄우기
-			removeImage1();
+			passwordMessage.style.color = "red";
 			passwordMessage.textContent = "조건:8자이상,대소문자,숫자,특수문자(@$!%*?&)";
 			passwordMessage.style.display = "block";
 		}
@@ -164,45 +163,16 @@ jQuery(document).ready(function() {
 	function blur_password2(input_password2){
 		if ($('#password').val() == input_password2 && input_password2 != '') {
 			passwordSameIsValid = true;
-			removeImage2();
-			addImage2();
+			passwordMessage2.textContent = "조건을 만족합니다!";
+            passwordMessage2.style.color = "green";
+            passwordMessage2.style.display = "block";
 		} else {
-			removeImage2();
+			passwordMessage2.textContent = "비밀번호가 일치하지않습니다!";
+            passwordMessage2.style.color = "red";
+			passwordMessage2.style.display = "block";
 			passwordSameIsValid = false;
 		}
 	}		
-
-	// ========== 체크 이미지 동적으로 추가(패스워드 규칙 위배여부 확인용) ==========
-	function addImage1() { 									
-		let image = document.createElement("img");
-		image.src = "resources/img/signup_check_mark.png";
-		image.id = "dynamicImage1";
-		document.getElementById("password_box").appendChild(image);
-	}
-	
-	// ========== 체크 이미지 동적으로 추가(패스워드 규칙 위배여부 확인용) ==========
-	function addImage2() {
-		let image = document.createElement("img");
-		image.src = "resources/img/signup_check_mark.png";
-		image.id = "dynamicImage2";
-		document.getElementById("password_box2").appendChild(image);
-	}
-
-	// ========== 체크 이미지 동적으로 제거(패스워드와 패스워드 확인 일치여부 확인용) ==========
-	function removeImage1() { 
-		let image = document.getElementById("dynamicImage1");
-		if (image) {
-			image.parentNode.removeChild(image);
-		}
-	}
-
-	// ========== 체크 이미지 동적으로 제거(패스워드와 패스워드 확인 일치여부 확인용) ==========
-	function removeImage2() { 
-		let image = document.getElementById("dynamicImage2");
-		if (image) {
-			image.parentNode.removeChild(image);
-		}
-	}
 
 	// ========== 전화번호 인증api ==========
 	function dupli(duplicate) { 
