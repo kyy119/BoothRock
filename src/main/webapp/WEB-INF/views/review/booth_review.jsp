@@ -4,9 +4,11 @@
 <%@page import="com.multi.FM.review.BoothReviewVO"%>
 <%@ page import="java.util.List"%>
 <%
-List<BoothReviewVO> boothReview = (List<BoothReviewVO>) request.getAttribute("boothReview");
+  List<BoothReviewVO> boothReview = (List<BoothReviewVO>) request.getAttribute("boothReview");
 HttpSession boothSession = request.getSession();
 String user_id = (String) boothSession.getAttribute("id");
+
+int booth_no = (int)boothSession.getAttribute("booth_no");
 %>
 
 <!DOCTYPE html>
@@ -21,6 +23,10 @@ String user_id = (String) boothSession.getAttribute("id");
 <script
 	src="${pageContext.request.contextPath}/resources/js/booth_review_write.js"
 	defer type="text/javascript"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const booth_no = urlParams.get('booth_no');
+</script>
 </head>
 <body>
 	<%@ include file="../../../header.jsp"%>
@@ -31,7 +37,8 @@ String user_id = (String) boothSession.getAttribute("id");
 				<c:if test="${not empty boothReview}">
 					<c:set var="firstReview" value="${boothReview[0]}" />
 					<h3 class="fstv-title">${firstReview.getFstv_title()}</h3>
-					<a href="booth/booth_detail.jsp" style="display: inline-block">
+					<a href="#" onclick="goToBoothDetail('<%=booth_no%>');"
+						style="display: inline-block">
 						<h1>${firstReview.getBooth_name()}</h1>
 					</a>
 					<span class="booth-type"> |
@@ -40,7 +47,7 @@ String user_id = (String) boothSession.getAttribute("id");
 			</div>
 			<div class="review-list-form">
 				<a href="#" class="write-review"
-					onclick="showFileSelector(event,'<%=user_id%>')"><i
+					onclick="showFileSelector(event,'<%=user_id%>',<%=booth_no%>)"><i
 					class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 				<ul class="review-ul">
 					<c:if test="${not empty boothReview}">

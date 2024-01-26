@@ -1,5 +1,6 @@
 package com.multi.FM.review;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class BoothReviewVO {
   private String booth_name;
   private String fstv_title;
   private String booth_category;
+
 
   
   
