@@ -9,6 +9,11 @@
   BoothVO boothDetail = (BoothVO) request.getAttribute("boothDetail");
 HttpSession boothSession = request.getSession();
 String user_id = (String) boothSession.getAttribute("id");
+
+
+int booth_no = boothDetail.getBooth_no();
+
+boothSession.setAttribute("booth_no", booth_no);
 %>
 
 
@@ -46,7 +51,7 @@ String user_id = (String) boothSession.getAttribute("id");
 		<div class="booth-detail-form">
 			<div class="booth-title">
 				<h3 class="fstv-title"><%=boothDetail.getFstv_title()%></h3>
-				<a href="booth/booth_detail.jsp" style="display: inline-block"><%=boothDetail.getBooth_name()%></a>
+				<a href="#" style="display: inline-block"><%=boothDetail.getBooth_name()%></a>
 				<span class="booth-type"> | <%=boothDetail.getBooth_category()%></span>
 			</div>
 			<div class="booth-menu"
@@ -87,7 +92,7 @@ String user_id = (String) boothSession.getAttribute("id");
 					<li id="tab"><a href="#" class="tab-name">리뷰</a>
 						<div class="review-form">
 							<a href="#" class="write-review"
-								onclick="showFileSelector(event,'<%=user_id%>')"><i
+								onclick="showFileSelector(event,'<%=user_id%>','<%=request.getParameter("booth_no")%>')"><i
 								class="fa-regular fa-file-lines"></i> 영수증 리뷰쓰기</a>
 							<div class="boothDetailReview"></div>
 							<a
