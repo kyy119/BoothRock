@@ -118,7 +118,7 @@ public class FestivalController {
   public String booth_star(Model model, FestivalVO vo) {
     List<FestivalBoothVO> list = service.booth_star(vo);
     model.addAttribute("list", list);
-    return "fstv_detail_boothin";
+    return "fstv/fstv_detail_boothin";
   }
   
   @RequestMapping("fstv_search")

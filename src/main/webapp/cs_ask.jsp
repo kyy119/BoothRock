@@ -32,9 +32,9 @@ if (userId == "null") {
 	    	<div class="ask-form">
                 <input type="text" class="ask-title" placeholder="제목을 입력해주세요.">
                 <select id="ask-type" name="ask-type">
-					<option value="fstv-ask">축제 문의</option>
-					<option value="booth-ask">부스 문의</option>
-					<option value="other-ask">기타 문의</option>
+					<option value="축제 문의">축제 문의</option>
+					<option value="부스 문의">부스 문의</option>
+					<option value="기타 문의">기타 문의</option>
 			    </select>
                 <textarea class="ask-content" placeholder="문의 내용을 입력해주세요."></textarea>
                 <a href="main.jsp" class="back">취소</a>
