@@ -72,6 +72,15 @@
 
 	<select id="countByTransactionDate" parameterType="String"
 		resultType="long">
-		select count(*) from receipt where transaction_date = #{date}
+		select count(*) from receipt where transaction_date =
+		#{date}
 	</select>
+
+
+	<insert id="insertReview" parameterType="reviewVO">
+		insert into review (booth_no, review_starpoint, user_id, keyword1,
+		keyword2, keyword3, review_created_at)
+		VALUES (#{booth_no}, #{review_starpoint}, #{user_id}, #{keyword1}, #{keyword2},
+		#{keyword3}, CURRENT_TIMESTAMP )
+	</insert>
 </mapper>

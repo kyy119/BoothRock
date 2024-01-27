@@ -18,5 +18,9 @@ public class BoothReviewDAO {
     params.put("booth_no", booth_no);
     return my.selectList("booth.reviewlist", params);
 }
+
+  public void insertReview(BoothReviewVO reviewVO) {
+    my.insert("booth.insertReview",reviewVO);
+  }
    
 }

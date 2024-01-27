@@ -2,15 +2,19 @@ package com.multi.FM.review;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.multi.FM.booth.BoothDAO;
+import com.multi.FM.booth.BoothService;
+import com.multi.FM.myboothpage.BoothVO;
 
 
 
@@ -28,8 +32,8 @@ public class BoothReviewContoller {
   @Autowired
   ReceiptService receiptService;
   
-  //@Autowired
-  //static ApplicationContext ctx;
+  @Autowired
+  BoothService boothSV;
 
   @Autowired
   ApiKey return_key;
@@ -58,7 +62,7 @@ public class BoothReviewContoller {
       return "review/booth_detail_review"; 
   }// booth_detail_review list
   
-//ocr 검증
+  //ocr 검증
   @PostMapping("/ocr_auth")
   @ResponseBody
   public String ocr_auth(@RequestPart("file") MultipartFile file,
@@ -94,9 +98,23 @@ public class BoothReviewContoller {
   }
   
   @RequestMapping("/go_booth_review_write")
-  public String goToBoothReviewWrite() {
+  public String go_booth_review_write(@RequestParam("booth_no") int booth_no,Model model,BoothVO boothVO) {
+    BoothVO boothDetail = boothSV.detail(boothVO);
+    model.addAttribute("boothDetail", boothDetail);      
       return "review/booth_review_write";
   }
  
+  @PostMapping("/insert_review")
+  public ResponseEntity<BoothReviewVO> insertReview(@RequestBody BoothReviewVO reviewVO) {
+      try {
+          boothRSV.insertReview(reviewVO);
+          return ResponseEntity.ok(reviewVO);
+      } catch (Exception e) {
+          e.printStackTrace();  // 예외를 콘솔에 출력
+          return ResponseEntity.status(500).body(null);
+      }
+  }
+
+  
   
 }// class
