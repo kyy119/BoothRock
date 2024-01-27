@@ -43,7 +43,7 @@ public class ManagerController {
   @RequestMapping("user_detail")
   public void user_detail(UsersVO usersVO, Model model) {
     UsersVO vo = service.user_detail(usersVO);
-    
+
     model.addAttribute("vo", vo);
   }
 
@@ -61,7 +61,7 @@ public class ManagerController {
   public void update_seller(UsersVO usersVO) {
     service.update_seller(usersVO);
   }
- 
+
   @RequestMapping("booth_list")
   public void booth_list(PagingVO pagingVO, int booth_ban, Model model) {
     pagingVO.Offset();
@@ -74,10 +74,15 @@ public class ManagerController {
     model.addAttribute("count", count);
     model.addAttribute("pages", pages);
   }
-  
+
   @RequestMapping("update_booth")
   public void update_booth(BoothVO boothVO) {
     service.update_booth(boothVO);
+  }
+  
+  @RequestMapping("delete_booth")
+  public void delete_booth(BoothVO boothVO) {
+    service.delete_booth(boothVO);
   }
 
   @RequestMapping("report_list")
@@ -97,12 +102,12 @@ public class ManagerController {
   public void report_detail(ReportVO reportVO, Model model, HttpSession session) {
     ReportVO vo = service.report_detail(reportVO);
     Integer report_check = (Integer) session.getAttribute("report_check");
-    
+
     if (report_check == null || report_check == 0) {
-        session.setAttribute("report_check", 1);
-        service.report_check(reportVO);
+      session.setAttribute("report_check", 1);
+      service.report_check(reportVO);
     }
-    
+
     model.addAttribute("vo", vo);
   }
 
@@ -127,7 +132,7 @@ public class ManagerController {
   @RequestMapping("ask_detail")
   public void ask_detail(AskVO askVO, Model model) {
     AskVO vo = service.ask_detail(askVO);
-    
+
     model.addAttribute("vo", vo);
   }
 

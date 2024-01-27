@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .bodywrap {
-	height: 720px;
+	margin-bottom: 100px;
 }
 .review-list {
 	margin-top: 20px;
@@ -33,6 +33,7 @@
 }
 .review h3 {
 	display: inline-block;
+	font-weight: 600;
 }
 .review ul {
 	margin-top: 5px;

@@ -50,7 +50,7 @@
 					</div>
 					<div>
 						<i class="fa-solid fa-image"></i> <input type="text"
-							id="booth-img" name="booth-img"
+							id="booth-img" name="booth-img" class="edit-booth-img"
 							value="<%= mybooth.getBooth_image() %>" readonly>
 <!-- 						<button>첨부파일</button> -->
 					</div>

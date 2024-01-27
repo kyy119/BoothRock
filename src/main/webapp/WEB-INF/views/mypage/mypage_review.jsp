@@ -47,35 +47,34 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 		  }
 		%>
 		<div class="review">
-		<a href="booth/booth_detail?booth_no=<%=list.getBooth_no() %>">
-			<h3><%=list.getBooth_name()%></h3>
-			<span> / <%=list.getFstv_title()%></span>
-			<div class="star-point">
-				<%
-				for (int j = 0; j < 5; j++) {
-				  if (i < list.getReview_starpoint()) { //별점
-				%>
-				<i class="fa-solid fa-star"></i>
-				<%
-				  } else {
-				%>
-				<i class="fa-regular fa-star"></i>
-				<%
-				  }
-				}
-				%>
-			</div>
-			<!-- 세션값으로 유저아이디 -->
-			<div class="id-date">
-				<%=list.getUser_id() %> |
-				<%=list.getReview_created_at()%></div>
-			<ul>
-				<li><i class="fa-solid fa-hashtag"><%=list.getKeyword1()%></i></li>
-				<li><i class="fa-solid fa-hashtag"><%=list.getKeyword2()%></i></li>
-				<li><i class="fa-solid fa-hashtag"><%=list.getKeyword3()%></i></li>
-			</ul>
-				</a>
-			d
+			<a href="booth/booth_detail?booth_no=<%=list.getBooth_no() %>">
+				<h3><%=list.getBooth_name()%></h3>
+				<span> / <%=list.getFstv_title()%></span>
+				<div class="star-point">
+					<%
+					for (int j = 0; j < 5; j++) {
+					  if (i < list.getReview_starpoint()) { //별점
+					%>
+					<i class="fa-solid fa-star"></i>
+					<%
+					  } else {
+					%>
+					<i class="fa-regular fa-star"></i>
+					<%
+					  }
+					}
+					%>
+				</div>
+				<!-- 세션값으로 유저아이디 -->
+				<div class="id-date">
+					<%=list.getUser_id() %> |
+					<%=list.getReview_created_at()%></div>
+				<ul>
+					<li><i class="fa-solid fa-hashtag"><%=list.getKeyword1()%></i></li>
+					<li><i class="fa-solid fa-hashtag"><%=list.getKeyword2()%></i></li>
+					<li><i class="fa-solid fa-hashtag"><%=list.getKeyword3()%></i></li>
+				</ul>
+			</a>
 		</div>
 	
 	</div> <!-- review-form 태그  -->

@@ -216,9 +216,7 @@ h2 {
 .hot-booth-list .booth-title {
 	font-weight: bold;
 	font-size: 20px;
-}
-.hot-booth-list .fstv-title {
-	line-height: 30px;
+	line-height: 40px;
 }
 .hot-booth-list hr {
 	margin: 10px 0px;
