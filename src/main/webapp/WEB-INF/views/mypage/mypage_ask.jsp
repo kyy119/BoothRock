@@ -26,7 +26,7 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 		<table>
 			<thead>
 				<tr>
-					<th>User ID</th>
+					<th>Email</th>
 					<th>Type</th>
 					<th>Title</th>
 					<th>Date</th>
@@ -47,6 +47,7 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 				  }
 				%>
 			</tbody>
+
 		</table>
 		<%
 		  } else {

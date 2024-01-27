@@ -5,7 +5,8 @@
 <mapper namespace="manager">
 
 	<select id="user_list" parameterType="pagingVO" resultType="usersVO">
-		SELECT row_number() OVER(ORDER BY u.user_id) AS TOTAL_NO, u.*, s.selling_number FROM users u
+		SELECT row_number() OVER(ORDER BY u.user_id) AS TOTAL_NO, u.*, r.report_ban_count, s.selling_number FROM users u
+		LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS r ON u.user_id = r.user_id
 		LEFT JOIN seller s ON u.user_id = s.user_id
 		WHERE u.user_black = #{user_black}
 		<choose>
@@ -24,6 +25,9 @@
 			<when test="type == 'updated'">
 				AND user_updated_at LIKE CONCAT('%', #{keyword}, '%')
 			</when>
+			<when test="type == 'fr'">
+				AND report_count LIKE CONCAT('%', #{keyword}, '%')
+			</when>
 			<when test="role == 'consumer'">
 				AND user_role = #{role}
 			</when>
@@ -40,6 +44,7 @@
 	
 	<select id="user_count" parameterType="pagingVO" resultType="int">
 		SELECT COUNT(*) AS total_rows FROM users u
+		LEFT JOIN (SELECT user_id, COUNT(*) AS report_ban_count FROM report WHERE report_lie = 1 GROUP BY user_id) AS r ON u.user_id = r.user_id
 		WHERE u.user_black = #{user_black}
 		<choose>
 			<when test="type == 'name'">
@@ -56,6 +61,9 @@
 			</when>
 			<when test="type == 'updated'">
 				AND user_updated_at LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'fr'">
+				AND report_count LIKE CONCAT('%', #{keyword}, '%')
 			</when>
 			<when test="role == 'all'"></when>
 			<when test="role == 'consumer'">
@@ -179,6 +187,11 @@
 		END
 		WHERE booth_no = #{booth_no};
 	</update>
+	
+	<delete id="delete_booth" parameterType="boothVO">
+		DELETE FROM booth
+		WHERE booth_no = #{booth_no};
+	</delete>
 
 	<select id="report_list" parameterType="pagingVO" resultType="reportVO">
 		SELECT r.*, b.booth_name, b.seller_id, f.fstv_title FROM report r
@@ -339,7 +352,7 @@
 
 	<update id="update_ask" parameterType="askVO">
 		UPDATE ask
-		SET ask_answer = #{answer}
+		SET ask_answer = #{ask_answer}
 		WHERE ask_no = #{ask_no};
 	</update>
 

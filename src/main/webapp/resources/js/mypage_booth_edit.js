@@ -52,8 +52,16 @@ jQuery(document).ready(function() {
             $(".item").each(function (index, element) {
                 var itemName = $(element).find(".booth-item").val();
                 var itemPrice = $(element).find(".booth-item-price").val();
+                if (containsSpecialCharacters(itemName)) {
+		            containsSpecialChars = true;  // Set the variable to true if special characters are found
+            		return false;  // Exit the each loop early
+		        }
                 boothData.items.push({ product: itemName, price: itemPrice });
             });
+            if (containsSpecialChars) {
+            	alert("상품명에 특수문자가 포함되어 있습니다. 특수문자를 제거해주세요.");
+		        return;
+		    }
             if (!isValidFormData(boothData)) {
 		        alert("부스 정보를 모두 입력하세요.");
 		        return;
@@ -128,6 +136,10 @@ $.ajax({
             console.error(error);
         }
     });
+}
+function containsSpecialCharacters(str) {
+    var pattern = /[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/g;
+    return pattern.test(str);
 }
 function isValidFormData(boothData) {
     if (

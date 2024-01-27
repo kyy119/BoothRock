@@ -1,4 +1,4 @@
- package com.multi.FM.manager;
+package com.multi.FM.manager;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +23,7 @@ public class ManagerDAO {
   public int user_count(PagingVO pagingVO) {
     return my.selectOne("manager.user_count", pagingVO);
   }
-  
+
   public UsersVO user_detail(UsersVO usersVO) {
     return my.selectOne("manager.user_detail", usersVO);
   }
@@ -43,7 +43,7 @@ public class ManagerDAO {
   public List<BoothVO> booth_list(PagingVO pagingVO) {
     return my.selectList("manager.booth_list", pagingVO);
   }
-  
+
   public int booth_count(PagingVO pagingVO) {
     return my.selectOne("manager.booth_count", pagingVO);
   }
@@ -52,10 +52,14 @@ public class ManagerDAO {
     my.update("manager.update_booth", boothVO);
   }
   
+  public void delete_booth(BoothVO boothVO) {
+    my.delete("manager.delete_booth", boothVO);
+  }
+
   public List<ReportVO> report_list(PagingVO pagingVO) {
     return my.selectList("manager.report_list", pagingVO);
   }
-  
+
   public int report_count(PagingVO pagingVO) {
     return my.selectOne("manager.report_count", pagingVO);
   }
@@ -67,7 +71,7 @@ public class ManagerDAO {
   public void update_report(ReportVO reportVO) {
     my.update("manager.update_report", reportVO);
   }
-  
+
   public void report_check(ReportVO reportVO) {
     my.update("manager.report_check", reportVO);
   }
@@ -75,7 +79,7 @@ public class ManagerDAO {
   public List<AskVO> ask_list(PagingVO pagingVO) {
     return my.selectList("manager.ask_list", pagingVO);
   }
-  
+
   public int ask_count(PagingVO pagingVO) {
     return my.selectOne("manager.ask_count", pagingVO);
   }

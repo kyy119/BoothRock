@@ -83,7 +83,7 @@ $('.boothDetailReview').removeAttr("style");
     }
     
     
-   function showFileSelector(event, user_id) {
+   function showFileSelector(event, user_id, booth_no) {
     event.preventDefault();
 
     if (user_id === null || user_id === "null") {
@@ -97,14 +97,14 @@ $('.boothDetailReview').removeAttr("style");
         input.accept = 'image/*';
         input.onchange = function (event) {
             var file = event.target.files[0];
-            uploadFileToServer(file,user_id); // user_id를 uploadFileToServer 함수에 전달
+            uploadFileToServer(file,user_id, booth_no); // user_id를 uploadFileToServer 함수에 전달
         };
         input.click();
     }
 }
 
 	// 파일 업로드 함수 수정
-	function uploadFileToServer(file, user_id) {    
+	function uploadFileToServer(file, user_id, booth_no) {    
     var formData = new FormData();
     formData.append("file", file);
     formData.append("user_id", user_id);
@@ -120,7 +120,7 @@ $('.boothDetailReview').removeAttr("style");
 
             if (responseText === "success") {
                 alert("영수증 인증 성공!\n리뷰작성화면으로 이동합니다.");
-                window.location.href = "/FM/review/go_booth_review_write";
+                window.location.href = "/FM/review/go_booth_review_write?booth_no=" + booth_no;
             } else if (responseText === "duplicate") {
                 alert("해당 영수증으로는 이미 리뷰를 작성하셨습니다.");
                 // 중복 시에 대한 처리 추가
@@ -140,3 +140,8 @@ $('.boothDetailReview').removeAttr("style");
 
     xhr.send(formData);
 }
+
+function goToBoothDetail(booth_no) {
+        var url = '/FM/booth/booth_detail?booth_no=' + booth_no;
+        window.location.href = url;
+    }

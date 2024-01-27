@@ -29,7 +29,7 @@
 	            }
 	        });
 	        
-	        var user_id = <%= vo.getUser_id() %>;
+	        var user_id = '<%= vo.getUser_id() %>';
 	        var user_black = <%= vo.getUser_black() %>
 	        function update_user(action, message) {
 	            $.ajax({
@@ -153,7 +153,7 @@
 			    		</c:if>
 			    		<li>
 			    			<span class="title">False Report</span>
-			    			<span><a href="report_list?type=email&keyword=${vo.user_id}">${vo.report_ban_count} 건</a></span>
+			    			<span><a href="report_list?type=email&keyword=${vo.user_id}&checked=false_post">${vo.report_ban_count} 건</a></span>
 			    		</li>
 		    		</ul>
 		    	</div>
