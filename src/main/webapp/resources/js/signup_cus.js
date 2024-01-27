@@ -109,4 +109,3 @@ function validateEmail(email) { // 이메일 유효성 검사
         return false;
     }
 }
-

@@ -1,12 +1,12 @@
-$(function() {
-	let businessIsValid = false;
-	let emailIsValid = false;
-	let passwordIsValid = false;
-	let passwordSameIsValid = false;
-	let submitButtons = $('.signup')
-	submitButtons[0].disabled = true;
-	// 이메일 중복 확인
-    $('#emailConfirm').click(function() {
+$(function () {
+    let businessIsValid = false;
+    let emailIsValid = false;
+    let passwordIsValid = false;
+    let passwordSameIsValid = false;
+    let submitButtons = $('.signup')
+    submitButtons[0].disabled = true;
+    // 이메일 중복 확인
+    $('#emailConfirm').click(function () {
         let emailType = validateEmail($('#user_id').val());
         if (emailType == true && $('#user_id').val() != '') {
             $.ajax({
@@ -14,7 +14,7 @@ $(function() {
                 data: {
                     user_id: $('#user_id').val()
                 },
-                success: function(result) {
+                success: function (result) {
                     if (result == 0) {
                         emailIsValid = true;
                         alert('회원가입 가능한 이메일입니다!');
@@ -34,7 +34,7 @@ $(function() {
     });
 
     // 입력 필드에 대한 input 이벤트 리스너 등록
-    $('#user_password').on('blur', function() {
+    $('#user_password').on('blur', function () {
         // 입력 값이 변경되었을 때 실행되는 함수
         passwordIsValid = validatePassword($(this).val());
 
@@ -49,101 +49,101 @@ $(function() {
         }
     });
 
-    $('#user_password2').on('blur', function() {
+    $('#user_password2').on('blur', function () {
         if ($('#user_password').val() == $(this).val() && $(this).val() != '') {
             passwordSameIsValid = true;
             passwordMessage2.textContent = "조건을 만족합니다!";
             passwordMessage2.style.color = "green";
             passwordMessage2.style.display = "block";
         } else {
-           	passwordMessage2.textContent = "비밀번호가 일치하지않습니다!";
+            passwordMessage2.textContent = "비밀번호가 일치하지않습니다!";
             passwordMessage2.style.color = "red";
             passwordMessage2.style.display = "block";
             passwordSameIsValid = false;
         }
     });
-	
-	$('#auth').click(function(){
-			let key = "";
-				$.ajax({
-					url : "businessAPI",
-					async : false,
-					success : function(result){
-						key = result
-					}
-				})
-			var data = {
-				"b_no" : [$('#selling_number').val()]
-			};
-				$.ajax({
-					url : key,
-					type : "POST",
-					async : false,
-					data : JSON.stringify(data), // json 을 string으로 변환하여 전송
-					dataType : "JSON",
-					contentType : "application/json",
-					accept : "application/json",
-					success : function(result) {
-						//console.log(result) 
-						$('#result').text(JSON.stringify(result))
-						status_box = result.data
-						if(result.match_cnt == '1' && status_box[0].b_stt == '계속사업자'){
-							$.ajax({
-								url : "seller_duplicate",
-								async : false,
-								data : {
-									selling_number : $('#selling_number').val()
-								},
-								success : function(result){
-									if(result == '0'){
-										alert("사업자여부 인증완료");
-    									businessIsValid = true;
-    									$('#auth').hide();
-    									let inputElement = document.getElementById("selling_number");
-	    								inputElement.readOnly = true;
-									}else{
-										alert("이미 가입된 사업자 이거나 블랙리스트에 등록된 번호입니다!");
-									}
-								}
-							})
-						}else{
-							businessIsValid = false;
-							alert("사업자여부 인증실패!");
-						}
-					},
-					error : function(result) {
-						console.log(result.responseText); //responseText의 에러메세지 확인
-					}
-				});// ajax
-	})
-	
-	$('#termsCheckbox').change(function() {
-         if ($(this).is(':checked')) {
-             // 체크됐을 때의 동작
+
+    $('#auth').click(function () {
+        let key = "";
+        $.ajax({
+            url: "businessAPI",
+            async: false,
+            success: function (result) {
+                key = result
+            }
+        })
+        var data = {
+            "b_no": [$('#selling_number').val()]
+        };
+        $.ajax({
+            url: key,
+            type: "POST",
+            async: false,
+            data: JSON.stringify(data), // json 을 string으로 변환하여 전송
+            dataType: "JSON",
+            contentType: "application/json",
+            accept: "application/json",
+            success: function (result) {
+                //console.log(result) 
+                $('#result').text(JSON.stringify(result))
+                status_box = result.data
+                if (result.match_cnt == '1' && status_box[0].b_stt == '계속사업자') {
+                    $.ajax({
+                        url: "seller_duplicate",
+                        async: false,
+                        data: {
+                            selling_number: $('#selling_number').val()
+                        },
+                        success: function (result) {
+                            if (result == '0') {
+                                alert("사업자여부 인증완료");
+                                businessIsValid = true;
+                                $('#auth').hide();
+                                let inputElement = document.getElementById("selling_number");
+                                inputElement.readOnly = true;
+                            } else {
+                                alert("이미 가입된 사업자 이거나 블랙리스트에 등록된 번호입니다!");
+                            }
+                        }
+                    })
+                } else {
+                    businessIsValid = false;
+                    alert("사업자여부 인증실패!");
+                }
+            },
+            error: function (result) {
+                console.log(result.responseText); //responseText의 에러메세지 확인
+            }
+        });// ajax
+    })
+
+    $('#termsCheckbox').change(function () {
+        if ($(this).is(':checked')) {
+            // 체크됐을 때의 동작
             let emailConfirm = $('#emailConfirm');
-			let authConfirm = $('#auth');
-			if(businessIsValid == true && emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true){
-				submitButtons[0].disabled = false;
-				emailConfirm.disabled = true;
-				authConfirm.disabled = true;
-			}
-         }
+            let authConfirm = $('#auth');
+            if (businessIsValid == true && emailIsValid == true && passwordIsValid == true && passwordSameIsValid == true) {
+                submitButtons[0].disabled = false;
+                emailConfirm.disabled = true;
+                authConfirm.disabled = true;
+            }
+        }
     });
-	
+
 }); // 제이쿼리 전체
 
 function validatePassword(password) { // 비밀번호 유효성 검사 함수
-	// 비밀번호는 최소 8자 이상이어야 합니다.
-	if (password.length < 8) {
-		return false;
-	}
-				 
-	// 비밀번호는 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.
-	const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
-	if (!regex.test(password)) {
-		return false;
-	}
-	return true;
+    // 비밀번호는 최소 8자 이상이어야 합니다.
+    if (password.length < 8) {
+        return false;
+    }
+
+    // 비밀번호는 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+    if (!regex.test(password)) {
+        return false;
+    }
+    return true;
 }
 
 function validateEmail(email) { // 이메일 유효성 검사
@@ -157,5 +157,6 @@ function validateEmail(email) { // 이메일 유효성 검사
         return false;
     }
 }
+
 
 

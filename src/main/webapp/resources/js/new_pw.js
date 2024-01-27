@@ -52,4 +52,3 @@ function validatePassword(password) { // 비밀번호 유효성 검사 함수
 	}
 	return true;
 }
-
