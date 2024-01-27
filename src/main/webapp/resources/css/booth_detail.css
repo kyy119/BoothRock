@@ -6,8 +6,12 @@
 .booth-detail-form {
 	margin-top: 60px;
 }
+.fstv-title {
+	font-weight: 500;
+}
 .booth-title a {
 	font-size: 32px;
+	font-weight: 500;
 }
 .booth-type {
 	font-size: 17px;

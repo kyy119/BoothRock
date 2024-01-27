@@ -41,13 +41,17 @@ public class ManagerService {
   public List<BoothVO> booth_list(PagingVO pagingVO, int booth_ban) {
     return dao.booth_list(pagingVO);
   }
-  
+
   public int booth_count(PagingVO pagingVO, int booth_ban) {
     return dao.booth_count(pagingVO);
   }
 
   public void update_booth(BoothVO boothVO) {
     dao.update_booth(boothVO);
+  }
+  
+  public void delete_booth(BoothVO boothVO) {
+    dao.delete_booth(boothVO);
   }
 
   public List<ReportVO> report_list(PagingVO pagingVO) {
@@ -69,7 +73,7 @@ public class ManagerService {
   public void report_check(ReportVO reportVO) {
     dao.report_check(reportVO);
   }
-  
+
   public List<AskVO> ask_list(PagingVO pagingVO) {
     return dao.ask_list(pagingVO);
   }

@@ -153,7 +153,7 @@
 			    		</c:if>
 			    		<li>
 			    			<span class="title">False Report</span>
-			    			<span><a href="report_list?type=email&keyword=${vo.user_id}">${vo.report_ban_count} 건</a></span>
+			    			<span><a href="report_list?type=email&keyword=${vo.user_id}&checked=false_post">${vo.report_ban_count} 건</a></span>
 			    		</li>
 		    		</ul>
 		    	</div>

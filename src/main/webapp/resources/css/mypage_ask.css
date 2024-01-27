@@ -10,7 +10,8 @@
 }
 .ask-list th {
   padding: 10px 8px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
 }
 .ask-list td {
   border-bottom: 1px solid #ddd;
