@@ -9,13 +9,13 @@ import lombok.Setter;
 @Data
 
 public class AskVO {
-    private int ask_no;
-    private String user_id;
-    private String ask_title;
-    private String ask_content;
-    private String ask_type;
-    private String ask_answer;
-    private String ask_created_at;
-    private String word;
-    private String type;
+  private int ask_no;
+  private String user_id;
+  private String ask_title;
+  private String ask_content;
+  private String ask_type;
+  private String ask_answer;
+  private String ask_created_at;
+  private String word;
+  private String type;
 }

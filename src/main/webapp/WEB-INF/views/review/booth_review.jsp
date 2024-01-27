@@ -31,7 +31,7 @@ String user_id = (String) boothSession.getAttribute("id");
 				<c:if test="${not empty boothReview}">
 					<c:set var="firstReview" value="${boothReview[0]}" />
 					<h3 class="fstv-title">${firstReview.getFstv_title()}</h3>
-					<a href="booth/booth_detail.jsp" style="display: inline-block">
+					<a href="${pageContext.request.contextPath}/booth/booth_detail?booth_no=${firstReview.getBooth_no()}" style="display: inline-block">
 						<h1>${firstReview.getBooth_name()}</h1>
 					</a>
 					<span class="booth-type"> |

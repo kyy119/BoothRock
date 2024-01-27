@@ -53,9 +53,20 @@
 			       		var prev = '<button style="font-size: 0;" class="pages">' + (current_page - 1) + '<i class="fa-solid fa-chevron-left"></i></button>';
 			        	$("#pagination").append(prev);
 			        }
+			        
 			        if (pages > 5) {
-			        	if (current_page > 3) {
+			        	if (current_page <= pages && current_page > 5) {
+					        for (var i = (pages - 4); i <= pages; i++) {
+					            var page = '<button class="pages">' + i + '</button>';
+					            $("#pagination").append(page);
+					        }
+			        	} else if (current_page > 3) {
 					        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+					            var page = '<button class="pages">' + i + '</button>';
+					            $("#pagination").append(page);
+					        }
+			        	} else {
+					        for (var i = 1; i <= 5; i++) {
 					            var page = '<button class="pages">' + i + '</button>';
 					            $("#pagination").append(page);
 					        }
@@ -111,10 +122,29 @@
 		        	$("#pagination").append(prev);
 		        }
 	            
-	            for (var i = 1; i <= pages; i++) {
-	                var page = '<button onclick="search(' + i + ')">' + i + '</button>';
-	                $("#pagination").append(page);
-	            }
+		        if (pages > 5) {
+		        	if (current_page <= pages && current_page > 5) {
+				        for (var i = (pages - 4); i <= pages; i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else if (current_page > 3) {
+				        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else {
+				        for (var i = 1; i <= 5; i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	}
+		        } else {
+			        for (var i = 1; i <= pages; i++) {
+			        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+			            $("#pagination").append(page);
+			        }
+		        }
 	            
 		        if (current_page == pages) {
 		       		var next = '<button><i class="fa-solid fa-chevron-right"></i></button>';
@@ -180,7 +210,7 @@
 				</tbody>
 			</table>
 			<div id="pagination">
-				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:choose><c:when test="${pages <= 5}"><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach></c:when><c:when test="${pages > 5}"><c:forEach var="i" begin="1" end="5"><button class="pages">${i}</button></c:forEach></c:when></c:choose><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
     	</div>
     </div>

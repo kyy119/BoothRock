@@ -12,6 +12,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/user_list.js" defer type="text/javascript"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
 	<script type="text/javascript">
+	var user_black = <%= user_black %>;
 	$(document).ready(function() {
 	    role_update();
 	    
@@ -24,9 +25,36 @@
             $("#keyword").val(keyword);
             search(1);
         }
+        
+        function update_user(user_id, action, message) {
+            $.ajax({
+                type: "POST",
+                url: action,
+                data: { user_id: user_id },
+                success: function(data) {
+                    alert(message);
+                    if (user_black == 1) {
+                        window.location.href = 'user_list?user_black=1';
+                    } else {
+                        window.location.href = 'user_list?user_black=0';
+                    }
+                }
+            });
+        }
+
+        var user_id = $(this).closest('tr').find('td:eq(2)').text();
+        $(".update_user").on("click", function() {
+        	update_user(user_id ,"update_user", "악성 회원 변경이 완료되었습니다.");
+        });
+        
+        $("a").on("click", function(event) {
+            if ($(this).text() === '0 건') {
+              event.preventDefault();
+              alert('검색 정보가 없습니다.');
+            }
+        });
 	});
 	
-	var user_black = <%= user_black %>;
     var pages = <%= request.getAttribute("pages") %>;
     $(function(){
 	    $(document).on('click', '.pages', function(){
@@ -58,9 +86,20 @@
 		       		var prev = '<button style="font-size: 0;" class="pages">' + (current_page - 1) + '<i class="fa-solid fa-chevron-left"></i></button>';
 		        	$("#pagination").append(prev);
 		        }
+		        
 		        if (pages > 5) {
-		        	if (current_page > 3) {
+		        	if (current_page <= pages && current_page > 5) {
+				        for (var i = (pages - 4); i <= pages; i++) {
+				            var page = '<button class="pages">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else if (current_page > 3) {
 				        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+				            var page = '<button class="pages">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else {
+				        for (var i = 1; i <= 5; i++) {
 				            var page = '<button class="pages">' + i + '</button>';
 				            $("#pagination").append(page);
 				        }
@@ -119,10 +158,29 @@
 	        	$("#pagination").append(prev);
 	        }
             
-            for (var i = 1; i <= pages; i++) {
-                var page = '<button onclick="search(' + i + ')">' + i + '</button>';
-                $("#pagination").append(page);
-            }
+	        if (pages > 5) {
+	        	if (current_page <= pages && current_page > 5) {
+			        for (var i = (pages - 4); i <= pages; i++) {
+			        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+			            $("#pagination").append(page);
+			        }
+	        	} else if (current_page > 3) {
+			        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+			        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+			            $("#pagination").append(page);
+			        }
+	        	} else {
+			        for (var i = 1; i <= 5; i++) {
+			        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+			            $("#pagination").append(page);
+			        }
+	        	}
+	        } else {
+		        for (var i = 1; i <= pages; i++) {
+		        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+		            $("#pagination").append(page);
+		        }
+	        }
             
 	        if (current_page == pages) {
 	       		var next = '<button><i class="fa-solid fa-chevron-right"></i></button>';
@@ -167,6 +225,7 @@
 		    		<option value="tel">Tel</option>
 		    		<option value="created">Created</option>
 		    		<option value="updated">Updated</option>
+		    		<option value="fr">False Report</option>
 		    	</select>
 		    	<input type="text" name="keyword" id="keyword">
 		    	<input type="button" id="submit" value="검색" onclick="search()">
@@ -188,6 +247,8 @@
 					    <th>Tel</th>
 					    <th>Created</th>
 					    <th>Updated</th>
+					    <th>False Report</th>
+					    <th>Ban</th>
     				</tr>
 				</thead>
 				<tbody id="result">
@@ -207,12 +268,22 @@
 					      	<td>${vo.user_tel}</td>
 					      	<td>${vo.user_created_at}</td>
 					      	<td>${vo.user_updated_at}</td>
+					      	<td><a href="report_list?type=email&keyword=${vo.user_id}&checked=false_post">${vo.report_ban_count} 건</a></td>
+					      	<c:if test="${vo.user_black == 0 && vo.user_role != 'admin'}">
+					      		<td><button class="update_user">등록</button></td>
+					      	</c:if>
+					      	<c:if test="${vo.user_black == 1}">
+					      		<td><button class="update_user">해제</button></td>
+					      	</c:if>
+					      	<c:if test="${vo.user_role == 'admin'}">
+					      		<td></td>
+					      	</c:if>
 					    </tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<div id="pagination">
-				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:choose><c:when test="${pages <= 5}"><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach></c:when><c:when test="${pages > 5}"><c:forEach var="i" begin="1" end="5"><button class="pages">${i}</button></c:forEach></c:when></c:choose><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
     	</div>
     </div>

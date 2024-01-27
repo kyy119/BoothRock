@@ -1,18 +1,17 @@
 @charset "utf-8";
 
 .bodywrap {
-    margin-bottom: 100px;
-    height: 700px;
+    margin-bottom: 480px;
 }
 .booth-detail-form {
 	width: 1000px;
 	margin-top: 60px;
 }
-.fstv-title {
-	font-weight: 500;
-}
 .booth-title {
 	margin-left: 20px;
+}
+.booth-title > a > h1 {
+	font-weight: 500;
 }
 .booth-type {
 	font-size: 17px;
@@ -30,7 +29,7 @@
 	display: inline-block;
 	width: 420px;
 	margin: 0px 17px 20px;
-	border: 1px solid #757575;
+	border: 1px solid #ddd;
 	border-radius: 15px;
 	padding: 20px;
 }
@@ -59,7 +58,7 @@
 	font-weight: 500 !important;
 }
 .review-list-form .write-review {
-	width: 153px;
+	width: 132px;
 	margin-top: 30px;
 	font-size: 18px;
 	background: linear-gradient(to right top, #876ed5, #0b123f);

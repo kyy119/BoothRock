@@ -37,9 +37,13 @@
 	            });
 		    }
 		    
+        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        $(".update_booth").on("click", function() {
-	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
+	        });
+	        
+	        $(".delete_booth").on("click", function() {
+	        	update_booth("delete_booth", "부스 삭제가 완료되었습니다.", booth_no);
 	        });
 	        
 	        $("a").on("click", function(event) {
@@ -79,9 +83,20 @@
 			       		var prev = '<button style="font-size: 0;" class="pages">' + (current_page - 1) + '<i class="fa-solid fa-chevron-left"></i></button>';
 			        	$("#pagination").append(prev);
 			        }
+			        
 			        if (pages > 5) {
-			        	if (current_page > 3) {
+			        	if (current_page <= pages && current_page > 5) {
+					        for (var i = (pages - 4); i <= pages; i++) {
+					            var page = '<button class="pages">' + i + '</button>';
+					            $("#pagination").append(page);
+					        }
+			        	} else if (current_page > 3) {
 					        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+					            var page = '<button class="pages">' + i + '</button>';
+					            $("#pagination").append(page);
+					        }
+			        	} else {
+					        for (var i = 1; i <= 5; i++) {
 					            var page = '<button class="pages">' + i + '</button>';
 					            $("#pagination").append(page);
 					        }
@@ -123,9 +138,13 @@
                     $('#result').html(tbody);
 	                search_pagination(data.search_pages, page);
 	                
+    	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	    	        $(".update_booth").on("click", function() {
-	    	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	    	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
+	    	        });
+	    	        
+	    	        $(".delete").on("click", function() {
+	    	        	update_booth("delete_booth", "부스 삭제가 완료되었습니다.", booth_no);
 	    	        });
 	    	        
 	    	        $("a").on("click", function(event) {
@@ -149,10 +168,29 @@
 		        	$("#pagination").append(prev);
 		        }
 	            
-	            for (var i = 1; i <= pages; i++) {
-	                var page = '<button onclick="search(' + i + ')">' + i + '</button>';
-	                $("#pagination").append(page);
-	            }
+		        if (pages > 5) {
+		        	if (current_page <= pages && current_page > 5) {
+				        for (var i = (pages - 4); i <= pages; i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else if (current_page > 3) {
+				        for (var i = (current_page - 2); i <= (current_page + 2); i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	} else {
+				        for (var i = 1; i <= 5; i++) {
+				        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+				            $("#pagination").append(page);
+				        }
+		        	}
+		        } else {
+			        for (var i = 1; i <= pages; i++) {
+			        	var page = '<button onclick="search(' + i + ')">' + i + '</button>';
+			            $("#pagination").append(page);
+			        }
+		        }
 	            
 		        if (current_page == pages) {
 		       		var next = '<button><i class="fa-solid fa-chevron-right"></i></button>';
@@ -201,7 +239,7 @@
 					      	<td><a href="user_detail?user_id=${vo.seller_id}">${vo.seller_id}</a></td>
 					      	<td><a href="${pageContext.request.contextPath}/booth/booth_detail?booth_no=${vo.booth_no}">${vo.booth_name}</a></td>
 					      	<td><a href="${pageContext.request.contextPath}/fstv/fstv_detail?fstv_no=${vo.fstv_no}">${vo.fstv_title}</a></td>
-					      	<td><a href="report_list?type=booth_no&keyword=${vo.booth_no}">${vo.report_count} 건</a></td>
+					      	<td><a href="report_list?type=booth_no&keyword=${vo.booth_no}&checked=completed">${vo.report_count} 건</a></td>
 					      	<td><button class="update_booth">
 					      		<c:if test="${vo.booth_ban == 0}">등록</c:if>
 					      		<c:if test="${vo.booth_ban == 1}">해제</c:if>
@@ -213,7 +251,7 @@
 				</tbody>
 			</table>
 			<div id="pagination">
-				<button><i class="fa-solid fa-chevron-left"></i></button><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
+				<button><i class="fa-solid fa-chevron-left"></i></button><c:choose><c:when test="${pages <= 5}"><c:forEach var="i" begin="1" end="${pages}"><button class="pages">${i}</button></c:forEach></c:when><c:when test="${pages > 5}"><c:forEach var="i" begin="1" end="5"><button class="pages">${i}</button></c:forEach></c:when></c:choose><button class="pages" style="font-size: 0;">2<i class="fa-solid fa-chevron-right"></i></button>
 			</div>
     	</div>
     </div>
