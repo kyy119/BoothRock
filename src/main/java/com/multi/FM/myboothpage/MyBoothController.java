@@ -53,9 +53,7 @@ public class MyBoothController {
   }
   @RequestMapping("mypage_booth")
   public void mybooth(String user_id, Model model){
-    System.out.println("mybooth test");
     List<BoothVO> mybooths = myboothService.showMybooth(user_id);
-    System.out.println("user_id : " + user_id);
     model.addAttribute("mybooths", mybooths);
   }
 
@@ -81,10 +79,6 @@ public class MyBoothController {
   public void showBoothEditPage(int boothNo, Model model) {
     BoothVO booth = myboothService.getBoothDetailsByNo(boothNo);
     List<BoothProductVO> products = myboothService.getboothproduct(boothNo);
-    System.out.println("mypage_booth_edit success");
-    System.out.println("booth : " + booth.getBooth_name());
-    System.out.println("booth : " + booth.getBooth_no());
-    System.out.println("products : " + products);
     model.addAttribute("products", products);
     model.addAttribute("booth", booth);
   }

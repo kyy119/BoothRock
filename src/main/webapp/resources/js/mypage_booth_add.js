@@ -15,6 +15,10 @@ jQuery(document).ready(function() {
         	alert("상품 가격은 숫자로 입력해주세요.");
         	return;
         }
+        if(!isFormData()){
+        	alert("상품명은 특수문자 금지입니다.");
+        	return;
+        }
         uploadAndSaveBoothImage(function() {
             console.log("booth name : " + boothData.booth_name);
             console.log("booth image : " + boothData.booth_image);
@@ -154,6 +158,15 @@ function isNanFormData(){
 	        }
 	    }
 	 return true;
+}
+function isFormData(){
+	const regex = /[~`!#$%^&*+=\-\[\]\\';,/{}|\\":<>?]/g;
+	for (let i = 0; i < boothData.items.length; i++) {
+		if(regex.test(boothData.items[i].product.trim())){
+			return false;
+		}
+	}
+	return true;
 }
 function uploadAndSaveBoothImage(callback) {
     var formData = new FormData();

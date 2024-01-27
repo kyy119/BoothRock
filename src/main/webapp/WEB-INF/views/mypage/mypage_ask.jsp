@@ -23,9 +23,9 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 	<table>
 		<thead>
 			<tr>
-				<th>User ID</th>
-				<th>Type</th>
+				<th>Email</th>
 				<th>Title</th>
+				<th>Type</th>
 				<th>Date</th>
 			</tr>
 		</thead>
@@ -35,8 +35,8 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 			%>
 			<tr>
 				<td><%=list.getUser_id()%></td>
-				<td><%=list.getAsk_type()%></td>
 				<td><a class="ask-title" data-ask-no="<%= list.getAsk_no() %>"><%=list.getAsk_title()%></a></td>
+				<td><%=list.getAsk_type()%></td>
 				<td><%=list.getAsk_created_at()%></td>
 				<td id="ask_no" style="display:none"><%=list.getAsk_no() %></td>
 			</tr>
@@ -68,14 +68,16 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 			</p>
 			<hr>
 		</div>
-		<div class="comment-form">
-			<div class="icon-form">
-				<span>↪</span> <i class="fa-solid fa-user-tie"></i>
+		<% if (list.getAsk_answer() != null) { %>
+			<div class="comment-form">
+				<div class="icon-form">
+					<span>↪</span> <i class="fa-solid fa-user-tie"></i>
+				</div>
+				<p class="admin-comment">
+					<%=list.getAsk_answer()%>
+				</p>
 			</div>
-			<p class="admin-comment">
-				<%=list.getAsk_answer()%>
-			</p>
-		</div>
+		<% } %>
 	</div>
 	</div>
 	<%}%>

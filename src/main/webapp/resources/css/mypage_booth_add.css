@@ -57,11 +57,15 @@
 	width: 278px;
 }
 #booth-img {
-	width: 222px !important;
+	width: 222px;
 	color: #757575;
 	vertical-align: middle;
 	padding-top: 10px;
 	box-sizing: border-box;
+}
+.edit-booth-img {
+	width: 275px !important;
+	padding-top: 0px !important;
 }
 .insert-img {
 	font-size: 15px;
