@@ -14,15 +14,14 @@
 	<script>
     	$(document).ready(function() {
     		var ask_no = <%= vo.getAsk_no() %>;
-    		var answer = $('#ask_answer').val();
-    		
 	        function update_ask(action, message) {
+    			var answer = $('#ask_answer').val();
 	            $.ajax({
 	                type: "POST",
 	                url: action,
 	                data: {
 							ask_no: ask_no,
-	                		answer: answer
+	                		ask_answer: answer
 	                		},
 	                success: function(data) {
 	                    alert(message);
@@ -32,7 +31,7 @@
 	        }
 
 	        $(".insert_answer").on("click", function() {
-	        	update_ask("insert_answer", "문의 답변 등록이 완료되었습니다.");
+	        	update_ask("update_ask", "문의 답변 등록이 완료되었습니다.");
 	        });
 	    });
     </script>
