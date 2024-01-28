@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
     }
 }
 
-	// 파일 업로드 함수 수정
+	// 파일 업로드 함수
 	function uploadFileToServer(file, user_id, booth_no) {    
     var formData = new FormData();
     formData.append("file", file);
@@ -69,12 +69,12 @@ jQuery(document).ready(function(){
             console.log("서버 응답: " + responseText);
 
             if(responseText ==="not_equal_sell_no"){
-            	alert("해당 부스의 영수증이 아닙니다.\n영수증을 확인해 주세요.");  	
+            	alert("해당 부스의 영수증이 아닙니다.\n영수증을 확인해 주세요.");  
+            } else if (responseText === "duplicate") {
+                alert("해당 영수증으로는 이미 리뷰를 작성하셨습니다.");
             }else if (responseText === "success") {
                 alert("영수증 인증 성공!\n리뷰작성화면으로 이동합니다.");
                 window.location.href = "/FM/review/go_booth_review_write?booth_no=" + booth_no;
-            } else if (responseText === "duplicate") {
-                alert("해당 영수증으로는 이미 리뷰를 작성하셨습니다.");
             } else {
                 alert("서버 응답 에러");
             }

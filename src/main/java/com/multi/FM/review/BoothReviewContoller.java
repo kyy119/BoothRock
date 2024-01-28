@@ -66,7 +66,7 @@ public class BoothReviewContoller {
   @PostMapping("/ocr_auth")
   @ResponseBody
   public String ocr_auth(@RequestPart("file") MultipartFile file,
-      @RequestParam(value = "user_id", required = false) String user_id, int booth_no) {
+                         @RequestParam(value = "user_id", required = false) String user_id, int booth_no) {
     String key = return_key.key();
 
     try {
