@@ -57,6 +57,7 @@ jQuery(document).ready(function(){
     var formData = new FormData();
     formData.append("file", file);
     formData.append("user_id", user_id);
+    formData.append("booth_no", booth_no);
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/FM/review/ocr_auth", true);
@@ -67,15 +68,15 @@ jQuery(document).ready(function(){
             var responseText = xhr.responseText;
             console.log("서버 응답: " + responseText);
 
-            if (responseText === "success") {
+            if(responseText ==="not_equal_sell_no"){
+            	alert("해당 부스의 영수증이 아닙니다.\n영수증을 확인해 주세요.");  	
+            }else if (responseText === "success") {
                 alert("영수증 인증 성공!\n리뷰작성화면으로 이동합니다.");
                 window.location.href = "/FM/review/go_booth_review_write?booth_no=" + booth_no;
             } else if (responseText === "duplicate") {
                 alert("해당 영수증으로는 이미 리뷰를 작성하셨습니다.");
-                // 중복 시에 대한 처리 추가
             } else {
                 alert("서버 응답 에러");
-                // 기타 오류에 대한 처리 추가
             }
         } else {
             alert("파일 업로드 실패");

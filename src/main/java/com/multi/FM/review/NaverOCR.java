@@ -87,9 +87,9 @@ public class NaverOCR {
 
               // 필드 이름이 "사업자번호"인 경우
               if (FIELD_NAME_BUSINESS_NUMBER.equals(fieldName)) {
-                System.out.println(text);
-                receiptVO.setSelling_number(text);
-                System.out.println(text);
+                String cleanedText = text.replace("-", ""); // "-"를 제외
+                System.out.println(cleanedText);
+                receiptVO.setSelling_number(cleanedText);
             }
             // 필드 이름이 "거래일시"인 경우
             else if (FIELD_NAME_TRANSACTION_DATE.equals(fieldName)) {
@@ -98,8 +98,6 @@ public class NaverOCR {
                 
             }
 
-            // OCR에서 추출한 텍스트를 필요한 경우 사용할 수 있도록 리스트에 추가 (선택 사항)
-            // list.add(text);
         }
 
         // ReceiptVO에 결과 저장

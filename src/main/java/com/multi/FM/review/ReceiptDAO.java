@@ -23,5 +23,9 @@ public class ReceiptDAO {
     return my.selectOne("booth.countByTransactionDate", date);
   }
 
+  public String getSellingNumber(int booth_no) {
+    return my.selectOne("booth.getSellingNumber", booth_no);
+  }
+
    
 }
