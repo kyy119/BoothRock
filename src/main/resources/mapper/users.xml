@@ -11,10 +11,6 @@
 		INSERT INTO seller
 		VALUES (#{user_id},#{selling_number},#{create_date},#{seller_black});
 	</insert> <!-- 판매자 회원가입 -->
-	<!-- <select id="list" parameterType="pageVO" resultType="bbsVO"> select 
-		* from (select ROW_NUMBER() over(order by id desc) as bbs_no, id, title, 
-		content, writer from bbs b) b2 where b2.bbs_no BETWEEN ${start} and ${end} 
-		</select> -->
 	<select id="phone_duplicate" parameterType="string" resultType="int">
 		SELECT count(*)
     	FROM users
