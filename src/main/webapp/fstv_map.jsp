@@ -157,7 +157,7 @@
 		        strokeWeight: 2,													// 외곽선 굵기
 		        strokeColor: '#fff',												// 외곽선 색상
 		        strokeOpacity: 0.8,													// 외곽선 투명도
-		        fillColor: '#e9e3f7',													// 내부 섹싱
+		        fillColor: '#e9e3f7',												// 내부 섹싱
 		        fillOpacity: 1 														// 내부 색상 투명도
 		    });
 		    
@@ -222,6 +222,8 @@
 			        	region = '서울특별시';
 			        }else if(region === '광주'){
 			        	region = '광주광역시';
+			        }else if(region === '경기'){
+			        	region = '경기도'
 			        }
 			        
 			        $.ajax({
@@ -244,16 +246,18 @@
 		map.setDraggable(false);	// 지도 드래그 막기
 		map.setZoomable(false);		// 지도 확대,축소 막기
 		
+		// 마커 선택 시 리스트 헤더의 텍스트를 해당 지역으로 바꿔주는 함수
 		function updateHeaderTextValue(newText) {
 			var currentValue = $('.changed-header').find('i.fa-location-dot').parent();
 		    currentValue.html('<i class="fa-solid fa-location-dot"></i> ' + newText);
 		}
-		
+		// 축제 일정에 따라 리스트업 된 축제 이미지에 div 표시
 		function append_date() {
 		    $('li.fstv-end').append('<div class="fstv-end-text">축제종료</div>');
 		    $('li.fstv-will').append('<div class="fstv-will-text">개최예정</div>');
 		}
-    function scroll_to_top() {
+		// 지도 마커 클릭 시 리스트를 불러올 때 스크롤을 초기화 시키는 함수
+    	function scroll_to_top() {
 		    window.scrollTo({
 		        top: 0,
 		        behavior: 'smooth'
