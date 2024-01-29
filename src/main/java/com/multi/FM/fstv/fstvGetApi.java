@@ -49,14 +49,13 @@ public class fstvGetApi {
       get_fstvsite_api(vo);
 
       list.add(vo);
-      System.out.println(vo);
     }
 
     return list;
   }
   
   // eventinfo / eventcont 가져오기
-  public FestivalVO get_eventinfo_api(FestivalVO vo) {
+  public void get_eventinfo_api(FestivalVO vo) {
     String url = "http://apis.data.go.kr/B551011/KorService1/detailInfo1";
     String parameter = "?ServiceKey=" + fstv_key
                      + "&contentTypeId=15&contentId="+ vo.getFstv_no() +"&MobileOS=ETC&MobileApp=AppTest";
@@ -80,11 +79,10 @@ public class fstvGetApi {
       vo.setFstv_eventinfo(arr.getJSONObject(0).getString("infotext"));
       vo.setFstv_eventcont(arr.getJSONObject(2).getString("infotext"));
     }
-    return vo;
   }
   
   // 기간, 요금, 이용시간 가져오기
-  public FestivalVO get_fstvdate_api(FestivalVO vo) {
+  public void get_fstvdate_api(FestivalVO vo) {
     
     String url = "http://apis.data.go.kr/B551011/KorService1/detailIntro1";
     String paramter = "?ServiceKey=" + fstv_key
@@ -110,12 +108,10 @@ public class fstvGetApi {
     vo.setFstv_usetimefestival(item.getString("usetimefestival"));
     vo.setFstv_eventplace(item.getString("eventplace"));
     vo.setFstv_playtime(item.getString("playtime"));
-    
-    return vo;
   }
   
   // 홈페이지 가져오기
-  public FestivalVO get_fstvsite_api(FestivalVO vo) {
+  public void get_fstvsite_api(FestivalVO vo) {
     
     String url = "http://apis.data.go.kr/B551011/KorService1/detailCommon1";
     String paramter = "?ServiceKey=" + fstv_key
@@ -128,8 +124,6 @@ public class fstvGetApi {
     JSONObject item = transfer_json(rsp).getJSONObject("item");
     
     vo.setFstv_homepage(item.getString("homepage").replaceAll("\\s{2,}", " "));
-    
-    return vo;
   }
   
   public JSONObject transfer_json(String rsp) {
