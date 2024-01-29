@@ -29,6 +29,10 @@
 	        $(".report_lie").on("click", function() {
 	        	update_report("update_report", "허위 신고 변경이 완료되었습니다.");
 	        });
+	        
+	        $(".report_checked").on("click", function() {
+	        	update_report("report_checked", "신고 반영이 완료되었습니다.");
+	        });
 	    });
     </script>
 </head>
@@ -57,6 +61,9 @@
         		</c:if>
         		<c:if test="${vo.report_lie == 1}">
         			<button class="report_lie">허위 신고 등록 해제</button>
+        		</c:if>
+        		<c:if test="${vo.report_check == 0}">
+        			<button class="report_checked">관리자 신고 확인</button>
         		</c:if>
         	</div>
 		</div>

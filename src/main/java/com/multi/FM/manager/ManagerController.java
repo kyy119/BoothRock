@@ -99,14 +99,8 @@ public class ManagerController {
   }
 
   @RequestMapping("report_detail")
-  public void report_detail(ReportVO reportVO, Model model, HttpSession session) {
+  public void report_detail(ReportVO reportVO, Model model) {
     ReportVO vo = service.report_detail(reportVO);
-    Integer report_check = (Integer) session.getAttribute("report_check");
-
-    if (report_check == null || report_check == 0) {
-      session.setAttribute("report_check", 1);
-      service.report_check(reportVO);
-    }
 
     model.addAttribute("vo", vo);
   }
@@ -114,6 +108,11 @@ public class ManagerController {
   @RequestMapping("update_report")
   public void update_report(ReportVO reportVO) {
     service.update_report(reportVO);
+  }
+  
+  @RequestMapping("report_checked")
+  public void report_checked(ReportVO reportVO) {
+    service.report_checked(reportVO);
   }
 
   @RequestMapping("ask_list")

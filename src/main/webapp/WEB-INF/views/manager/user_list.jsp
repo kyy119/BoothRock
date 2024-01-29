@@ -42,8 +42,8 @@
             });
         }
 
-        var user_id = $(this).closest('tr').find('td:eq(2)').text();
         $(".update_user").on("click", function() {
+	        var user_id = $(this).closest('tr').find('td:eq(2)').text();
         	update_user(user_id ,"update_user", "악성 회원 변경이 완료되었습니다.");
         });
         

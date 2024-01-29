@@ -32,6 +32,14 @@
 				<div id=q4 class="question">
 					<h2><i class="fa-solid fa-caret-right"></i> Q. 사이트에서 제공하는 정보와 일정은 실시간으로 업데이트되나요?</h2>
 					<p>A. 네, 사이트의 정보와 일정은 실시간으로 업데이트됩니다. 그러나 이벤트나 상황에 따라 변경될 수 있으니 축제 시작 전에 다시 한 번 확인해주시기 바랍니다.</p>
+				</div><hr>
+				<div id=q5 class="question">
+					<h2><i class="fa-solid fa-caret-right"></i> Q. 사이트에 등록된 정보와 실제 부스 정보가 달라요</h2>
+					<p>A. 실제 부스 정보가 다른 경우, 부스 상세 정보 페이지 내의 '부스정보 신고하기' 기능을 통해 신고해주시면 관리자측에서 확인 후 정정 해드립니다.</p>
+				</div><hr>
+				<div id=q6 class="question">
+					<h2><i class="fa-solid fa-caret-right"></i> Q. 소비자로 가입했는데, 부스를 등록하고 싶어요</h2>
+					<p>A. 고객센터 > 문의하기에서 사업자번호와 함께 문의해주시면 판매자로 등록 변경해드릴 수 있습니다.</p>
 				</div>
             </div>
     	</div>
