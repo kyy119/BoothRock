@@ -234,7 +234,7 @@ jQuery(document).ready(function() {
 	
 	 // ========== 폼 형식 유효성 체크, 모두 완료시 수정가능 ==========
 	function validateForm() {
-		blur_password($('#password').val());									//default가 true이기에 비밀번호 유효성만 인증해도 넘어가지는 것을 방지
+		blur_password($('#password').val());				//default가 true이기에 비밀번호 유효성만 인증해도 넘어가지는 것을 방지
 		blur_password2($('#password2').val());
 		if (!passwordSameIsValid) {
 			alert("비밀번호가 일치하지 않습니다.");
@@ -245,7 +245,7 @@ jQuery(document).ready(function() {
 		} else if(!(sameTel || telAuth)) {					//전화번호가 기존과 같지 않거나 인증을 안했을 경우
 			alert("전화번호 인증이 필요합니다.");
 			return false;
-		} else if(userRole == "seller") {
+		} else if(user_role == "seller") {
 			if(!(sameBusiness || businessIsValid)){ 		//판매자일 경우 사업자 번호 변경없거나 인증 완료되면 수정가능 
 				alert("사업자 인증이 필요합니다.");
 				return false;

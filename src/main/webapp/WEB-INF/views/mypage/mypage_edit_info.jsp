@@ -7,11 +7,11 @@
 	type="text/css">
 <%
 List<UsersVO> list = (List<UsersVO>) request.getAttribute("list");
-String sellerNum = (String) request.getAttribute("sellerNum");
-String userRole = (String) session.getAttribute("role");
+String seller_num = (String) request.getAttribute("seller_num");
+String user_role = (String) session.getAttribute("role");
 %>
 
-<script type="text/javascript">let userRole = "<%=userRole%>";</script>
+<script type="text/javascript">let user_role = "<%=user_role%>";</script>
 <script src="resources/js/mypage_edit.js" defer type="text/javascript"></script>
 <h1>회원정보수정</h1>
 <br>
@@ -52,7 +52,7 @@ String userRole = (String) session.getAttribute("role");
 		</div>
 		<div id="authNum"></div>
 		<%
-		  if (userRole.equals("consumer")) {
+		  if (user_role.equals("consumer")) {
 		%>
 		<!-- 소비자면 사업자번호 입력칸 없애기 -->
 		<%
@@ -60,7 +60,7 @@ String userRole = (String) session.getAttribute("role");
 		%>
 		<div class="seller-number">
 			<i class="fa-regular fa-address-card"></i>
-			<input type="text" id="seller-number" name="selling_number" value=<%=sellerNum %> placeholder="사업자등록번호" required>
+			<input type="text" id="seller-number" name="selling_number" value=<%=seller_num %> placeholder="사업자등록번호" required>
 				<button type ="button" id="auth">인증하기</button>
 		</div>
 		<%
