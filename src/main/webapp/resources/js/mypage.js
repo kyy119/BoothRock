@@ -8,8 +8,8 @@ jQuery(document).ready(function() {
 			});
 			$.ajax({
 				url : activeTab, //탭메뉴 li태그의 data-tab
-				data : {user_id : userId,
-						user_role : userRole
+				data : {user_id : user_id,
+						user_role : user_role
 				},
 				success : function(x) {
 					$('#result').html(x)
