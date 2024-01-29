@@ -20,7 +20,6 @@ public class AskController {
     Date date = new Date();
     SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
     askVO.setAsk_created_at(ft.format(date));
-    System.out.println(askVO);
     askService.insertAsk(askVO);
     return "success";
   }
