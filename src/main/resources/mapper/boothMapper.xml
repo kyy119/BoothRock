@@ -77,10 +77,24 @@
 	</select>
 
 
+
+	<select id="getSellingNumber" parameterType="int"
+		resultType="String">
+		select s.selling_number
+		from booth b
+		join seller s ON b.seller_id = s.user_id
+		where b.booth_no = #{booth_no};
+	</select>
+
+
+
 	<insert id="insertReview" parameterType="reviewVO">
-		insert into review (booth_no, review_starpoint, user_id, keyword1,
-		keyword2, keyword3, review_created_at)
-		VALUES (#{booth_no}, #{review_starpoint}, #{user_id}, #{keyword1}, #{keyword2},
+		insert into review
+		(booth_no, review_starpoint, user_id, keyword1,
+		keyword2, keyword3,
+		review_created_at)
+		VALUES (#{booth_no}, #{review_starpoint},
+		#{user_id}, #{keyword1}, #{keyword2},
 		#{keyword3}, CURRENT_TIMESTAMP )
 	</insert>
 </mapper>
