@@ -21,7 +21,7 @@ int booth_no = (int)boothSession.getAttribute("booth_no");
 	href="${pageContext.request.contextPath}/resources/css/booth_review.css"
 	type="text/css">
 <script
-	src="${pageContext.request.contextPath}/resources/js/booth_review_write.js"
+	src="${pageContext.request.contextPath}/resources/js/booth_review_write.js?ver=0129"
 	defer type="text/javascript"></script>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
