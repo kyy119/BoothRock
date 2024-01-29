@@ -2,7 +2,7 @@
 
 .bodywrap {
 	width: 1200px;
-	margin: 121px auto 265px;
+	margin: 121px auto 245px;
 }
 
 .report-form {
@@ -11,6 +11,7 @@
 
 .report-form .back {
 	text-align: right;
+	margin-bottom: 10px;
 }
 
 .report-booth-fstv .booth-title {

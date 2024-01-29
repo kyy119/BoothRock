@@ -72,8 +72,8 @@ public class ManagerDAO {
     my.update("manager.update_report", reportVO);
   }
 
-  public void report_check(ReportVO reportVO) {
-    my.update("manager.report_check", reportVO);
+  public void report_checked(ReportVO reportVO) {
+    my.update("manager.report_checked", reportVO);
   }
 
   public List<AskVO> ask_list(PagingVO pagingVO) {

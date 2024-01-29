@@ -37,12 +37,13 @@
 	            });
 		    }
 		    
-        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        $(".update_booth").on("click", function() {
+	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        	update_booth("update_booth", "허위 부스 변경이 완료되었습니다.", booth_no);
 	        });
 	        
 	        $(".delete_booth").on("click", function() {
+	        	var booth_no = $(this).closest("tr").find(".booth-no").text();
 	        	update_booth("delete_booth", "부스 삭제가 완료되었습니다.", booth_no);
 	        });
 	        

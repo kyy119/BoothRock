@@ -70,8 +70,8 @@ public class ManagerService {
     dao.update_report(reportVO);
   }
 
-  public void report_check(ReportVO reportVO) {
-    dao.report_check(reportVO);
+  public void report_checked(ReportVO reportVO) {
+    dao.report_checked(reportVO);
   }
 
   public List<AskVO> ask_list(PagingVO pagingVO) {

@@ -26,22 +26,36 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 		<table>
 			<thead>
 				<tr>
-					<th>Email</th>
+					<th>No</th>
 					<th>Type</th>
 					<th>Title</th>
 					<th>Date</th>
+					<th>Response</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
+				  int index = 1;
 				  for (AskVO list : VO) {
 				%>
 				<tr>
-					<td><%=list.getUser_id()%></td>
+					<td id="ask_no" style="display: none;"><%=list.getAsk_no()%></td>
+					<td><%= index++ %></td>
 					<td><%=list.getAsk_type()%></td>
 					<td><a class="ask-title" data-ask-no="<%=list.getAsk_no()%>"><%=list.getAsk_title()%></a></td>
 					<td><%=list.getAsk_created_at()%></td>
-					<td id="ask_no" style="display: none"><%=list.getAsk_no()%></td>
+					<%
+					  if (list.getAsk_answer() == null) {
+					%>
+						<td></td>
+					<%
+					  } else {
+					%>
+						<td><i class="fa-solid fa-check" style="color: green"></i></td>
+					<%
+					  }
+					%>
+							
 				</tr>
 				<%
 				  }
@@ -84,7 +98,14 @@ List<AskVO> VO = (List<AskVO>) request.getAttribute("list");
 			<%
 			  if (list.getAsk_answer() == null) {
 			%>
-			<p class="admin-comment">답변을 기다리는 중입니다.</p>
+			<div class="icon-form">
+				<span>↪</span> <i class="fa-solid fa-user-tie"></i>
+			</div>
+
+
+			<p class="admin-comment">
+				답변을 기다리는 중입니다.
+			</p>
 			<%
 			  } else {
 			%>
