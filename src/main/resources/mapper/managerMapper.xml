@@ -283,11 +283,11 @@
 			WHEN report_lie = 0 THEN 1
 			WHEN report_lie = 1 THEN 0
 			ELSE report_lie
-		END
+		END, report_check = 1
 		WHERE report_no = #{report_no};
 	</update>
 	
-	<update id="report_check" parameterType="reportVO">
+	<update id="report_checked" parameterType="reportVO">
 		UPDATE report
 		SET report_check = 1
 		WHERE report_no = #{report_no};

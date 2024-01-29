@@ -2,7 +2,7 @@
 
 .bodywrap {
 	width: 1200px;
-	margin: 110px auto 191px;
+	margin: 121px auto 245px;
 }
 
 .ask-form {
@@ -11,7 +11,7 @@
 
 .ask-form .back {
 	text-align: right;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .ask-detail h2 {
@@ -39,15 +39,16 @@
 
 .comment-form {
 	margin-top: 20px;
-	margin-left: 10px;
 	text-align: center;
 }
 
 .icon-form {
 	font-size: 30px;
-	float: left;
 	width: 80px;
 	height: 100px;
+	display: inline-block;
+	margin: 0px 10px;
+	vertical-align: top;
 }
 
 .icon-form span {
@@ -55,12 +56,15 @@
 }
 
 .admin-comment {
-	width: 500px;
+	width: 490px;
 	height: 120px;
+	text-align: left;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .comment-form textarea {
-	width: 500px;
+	width: 490px;
 	height: 100px;
 	padding: 10px;
 	box-sizing: border-box;
