@@ -107,6 +107,13 @@ jQuery(document).ready(function(){
     const boldStars = starRating.querySelectorAll('.fa-star.bold-text');
     const selectedRating = boldStars.length;
 
+	// 만약 selectedRating가 0이라면 알림을 표시하고 리뷰를 전송하지 않도록 함
+    if (selectedRating === 0) {
+        alert('별점을 선택한 후에 리뷰를 제출해주세요.');
+        return; // 코드의 추가 실행을 막습니다.
+    }
+
+
     const selectedTags = document.querySelectorAll('.tag-list ul li i.fa-solid');
     const selectedTagNames = Array.from(selectedTags).map(tag => tag.innerText.trim());
 
