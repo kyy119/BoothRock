@@ -65,7 +65,6 @@ public class MyBoothController {
   @PostMapping("deleteBooth")
   @ResponseBody
   public String deleteBooth(int boothNo) {
-    System.out.println("deltebooth하기");
     try {
       // 부스 삭제 서비스 호출
       myboothService.deleteBooth(boothNo);
@@ -94,7 +93,6 @@ public class MyBoothController {
     try {
       // 부스 상품 삭제 서비스 호출
       myboothService.deleteBoothProduct(boothNo);
-      System.out.println("delete");
       return "Success";
     } catch (Exception e) {
       // 삭제 중 오류 발생 시 오류 메시지 반환

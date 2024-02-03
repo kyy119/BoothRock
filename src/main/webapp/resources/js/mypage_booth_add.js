@@ -85,7 +85,7 @@ function updateBoothData() {
     var selectedFestival = $('#fstv_title option:selected').val();
     console.log('Selected Festival:', selectedFestival);
     boothData.fstv_no = selectedFestival;
-	boothData.seller_id = userId;
+	boothData.seller_id = user_id;
     boothData.booth_name = $('#booth-name').val();
     boothData.booth_category = $('#booth-type').val();
     boothData.booth_addr = $('#booth-loc').val();

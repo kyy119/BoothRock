@@ -1,3 +1,7 @@
+function containsSpecialCharacters(str) {
+    var pattern = /[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/g;
+    return pattern.test(str);
+}
 jQuery(document).ready(function() {
 
 	   $('.item-form hr:last').remove();
@@ -49,6 +53,7 @@ jQuery(document).ready(function() {
                 booth_introduction: $("#booth-intro").val(),
                 items: []
             };
+            var containsSpecialChars = false;
             $(".item").each(function (index, element) {
                 var itemName = $(element).find(".booth-item").val();
                 var itemPrice = $(element).find(".booth-item-price").val();
@@ -137,10 +142,7 @@ $.ajax({
         }
     });
 }
-function containsSpecialCharacters(str) {
-    var pattern = /[~`!#$%^&*+=\-[\]\\';,/{}|\\":<>?]/g;
-    return pattern.test(str);
-}
+
 function isValidFormData(boothData) {
     if (
         !boothData.booth_name ||

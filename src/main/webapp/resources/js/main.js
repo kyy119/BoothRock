@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
 		success : function(list) {
 			$('#banner').html(list)
 			$('.banner-img').on('load', function() {
-                adjustImageSize($(this));
+                // adjustImageSize($(this));
             });
 		}
 	})

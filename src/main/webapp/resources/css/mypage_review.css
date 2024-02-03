@@ -1,60 +1,58 @@
 @charset "utf-8";
-
 .bodywrap {
-	margin-bottom: 100px;
+    margin-bottom: 100px;
 }
 .review-list {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 .review-form {
-	height: 100px;
-	width: 500px;
-	border: 1px solid #ddd;
-	padding: 25px;
-	margin-bottom: 30px;
-	border-radius: 20px;
+    width: 500px;
+    border: 1px solid #ddd;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 20px;
 }
 #review-icon {
-	font-size: 40px;
-	color: #000;
-	float: left;
-	width: 55px;
+    font-size: 40px;
+    color: #000;
+    width: 55px;
+    display: inline-block;
+    vertical-align: top;
 }
 .review {
-	float: left;
+    display: inline-block;
+    width: 441px;
 }
 .star-point i {
-	color: #f0d828;
+    color: #f0d828;
 }
 .id-date {
-	color: #757575;
-	font-size: 14px;
-	line-height: 25px;
+    color: #757575;
+    font-size: 14px;
+    line-height: 25px;
 }
 .review h3 {
-	display: inline-block;
-	font-weight: 600;
-}
-.review ul {
-	margin-top: 5px;
+    display: inline-block;
+    font-weight: 600;
 }
 .review ul li {
-	display: inline-block;
+    display: inline-block;
     border-radius: 7px;
-	background-color: #e7e7e7;
-	margin-right: 7px;
-	padding: 0px 7px;
+    background-color: #e7e7e7;
+    margin-right: 7px;
+    padding: 0px 7px;
+    margin-top: 7px;
 }
 .review ul li i {
-	color: #876ed5;
-	font-weight: 540 !important;
+    color: #876ed5;
+    font-weight: 540 !important;
 }
 .side-navi li:nth-child(3) a {
-	color: #000;
-	font-weight: 500;
+    color: #000;
+    font-weight: 500;
 }
 .side-navi li a .fa-rectangle-list {
-	color: #f0d828;
+    color: #f0d828;
 }
 #no-review {
     text-align: center;
@@ -63,15 +61,14 @@
     margin-top: 50px;
 }
 .more {
-	    font-size: 20px;
-	text-align: center;
-	 margin: 0 auto;  
+        font-size: 20px;
+    text-align: center;
+     margin: 0 auto;  
     width: 100px;
     display: block;  
     margin-top: 10px;
      cursor: pointer; 
 }
-
 .more:hover {
-	color: #757575;
+    color: #757575;
 }
