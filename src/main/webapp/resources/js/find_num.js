@@ -48,7 +48,6 @@ if(duplicate){
         },
         success : function(result){
             num = result
-            alert("" + num) // 맨 마지막에 꼭 지우기!!
         }// success
             }) // ajax
         $('#verify').click(function() {
