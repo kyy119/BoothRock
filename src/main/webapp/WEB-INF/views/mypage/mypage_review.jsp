@@ -36,7 +36,7 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 	%>
 	<div class="review-form review-form<%=i / 3%>" style='display: none'>
 		<%
-		  if (list.getBooth_category().equals("food")) { //카테고리별 이미지
+		 if (list.getBooth_category().equals("판매형")) { //카테고리별 이미지
 		%>
 		<i class="fa-solid fa-utensils" id="review-icon"></i>
 		<%
@@ -52,7 +52,7 @@ List<BoothReviewVO> VO = (List<BoothReviewVO>) request.getAttribute("list");
 				<div class="star-point">
 					<%
 					  for (int j = 0; j < 5; j++) {
-					  if (i < list.getReview_starpoint()) { //별점
+					  if (j < list.getReview_starpoint()) { //별점
 					%>
 					<i class="fa-solid fa-star"></i>
 					<%
