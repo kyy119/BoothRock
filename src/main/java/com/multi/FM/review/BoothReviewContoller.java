@@ -38,14 +38,6 @@ public class BoothReviewContoller {
   @Autowired
   ApiKey return_key;
 
-  public BoothReviewContoller() {
-
-    // System.out.println("ocrSecretKey: " + secretKey);
-    // Environment env = ctx.getEnvironment();
-    // System.out.println(env.getProperty("ocr.secretKey"));
-  }
-
-
   // review 리스트(더보기)
   @RequestMapping("booth_review")
   public String review(@RequestParam("booth_no") int booth_no, Model model) {
