@@ -103,7 +103,7 @@ public class UsersController {
 	  String seller = String.valueOf(result_seller);
 	  String admin = String.valueOf(result_admin);
 	  String result = "0";
-	  if (consumer.equals("1") && correct==true) {
+	  if (consumer.equals("1") && correct == true) {
 	     String consumer_black_list = String.valueOf(users_service.consumer_black_list(usersvo.getUser_id()));
          if(consumer_black_list.equals("1")) {
            session.setAttribute("id", usersvo.getUser_id());
