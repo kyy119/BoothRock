@@ -112,7 +112,7 @@ public class UsersController {
          }else {
            result = "2";
          }
-      }else if(seller.equals("1") && correct==true) {
+      }else if(seller.equals("1") && correct == true) {
         String seller_black_list = String.valueOf(users_service.seller_black_list(usersvo.getUser_id()));
         if(seller_black_list.equals("1")) {
           session.setAttribute("id", usersvo.getUser_id());
