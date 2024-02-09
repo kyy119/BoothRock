@@ -24,14 +24,12 @@
 	<select id="cus_login" parameterType="usersVO" resultType="int">
 		SELECT count(*)
 		FROM users
-		WHERE user_id = #{user_id} and user_password = #{user_password}
-		and user_role = 'consumer';
+		WHERE user_id = #{user_id} and user_role = 'consumer';
 	</select> <!-- 소비자 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
 	<select id="seller_login" parameterType="usersVO" resultType="int">
 		SELECT count(*)
 		FROM users
-		WHERE user_id = #{user_id} and user_password = #{user_password} 
-		and user_role = 'seller'	
+		WHERE user_id = #{user_id} and user_role = 'seller'	
 	</select> <!-- 판매자 로그인 성공인 경우 : 결과가 0보다 클때, 로그인 실패인 경우 : 결과가 0인경우 -->
 	<select id="admin_login" parameterType="usersVO" resultType="int">
 		SELECT count(*)
@@ -63,5 +61,10 @@
 		SELECT count(*)
 		FROM seller
 		WHERE selling_number = #{selling_number} or seller_black = 1;
+	</select>
+	<select id="authenticateUser" parameterType="String" resultType="String">
+		SELECT user_password
+		from users
+		where user_id = #{user_id}
 	</select>
 </mapper>
