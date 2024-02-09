@@ -66,4 +66,9 @@ public class UsersDAO {
 		int result = my.selectOne("users.email_duplicate", user_id);
 		return result;
 	}
+	public String authenticateUser(String user_id) {
+      String result = my.selectOne("users.authenticateUser", user_id);
+      return result;
+    }
+
 }
