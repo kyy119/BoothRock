@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Controller
 @RequestMapping("users")
@@ -19,6 +21,9 @@ public class UsersController {
 	
 	@Autowired
 	UsersService users_service;
+	
+	@Autowired
+	UsersDAO usersdao;
 	
 	private final String business_url_key;
 	
@@ -35,6 +40,9 @@ public class UsersController {
 	public void create_account_seller(UsersVO usersvo,SellerVO sellervo) {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(usersvo.getUser_password());
+		usersvo.setUser_password(encodedPassword);
 		usersvo.setUser_role("seller");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
@@ -49,6 +57,9 @@ public class UsersController {
 	public void create_account_consumer(UsersVO usersvo) {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(usersvo.getUser_password());
+        usersvo.setUser_password(encodedPassword);
 		usersvo.setUser_role("consumer");
 		usersvo.setUser_created_at(ft.format(date));
 		usersvo.setUser_updated_at(ft.format(date));
@@ -73,11 +84,18 @@ public class UsersController {
 	
 	@RequestMapping("edit_password")
 	public void edit_password(UsersVO usersvo) {
+	  PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+      String encodedPassword = passwordEncoder.encode(usersvo.getUser_password());
+      usersvo.setUser_password(encodedPassword);
 	  users_service.edit_password(usersvo);
     }
 	
 	@RequestMapping("login")
 	public void login(String referer,UsersVO usersvo,Model model,HttpSession session) throws Exception{
+	  PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	  String answer = usersdao.authenticateUser(usersvo.getUser_id());
+	  boolean correct = passwordEncoder.matches(usersvo.getUser_password(), answer);
+	  System.out.println("로그인 성공 여부 : " + correct);
 	  int result_cus = users_service.cus_login(usersvo);
 	  int result_seller = users_service.seller_login(usersvo);
 	  int result_admin = users_service.admin_login(usersvo);
@@ -85,7 +103,7 @@ public class UsersController {
 	  String seller = String.valueOf(result_seller);
 	  String admin = String.valueOf(result_admin);
 	  String result = "0";
-	  if (consumer.equals("1")) {
+	  if (consumer.equals("1") && correct==true) {
 	     String consumer_black_list = String.valueOf(users_service.consumer_black_list(usersvo.getUser_id()));
          if(consumer_black_list.equals("1")) {
            session.setAttribute("id", usersvo.getUser_id());
@@ -94,7 +112,7 @@ public class UsersController {
          }else {
            result = "2";
          }
-      }else if(seller.equals("1")) {
+      }else if(seller.equals("1") && correct==true) {
         String seller_black_list = String.valueOf(users_service.seller_black_list(usersvo.getUser_id()));
         if(seller_black_list.equals("1")) {
           session.setAttribute("id", usersvo.getUser_id());
